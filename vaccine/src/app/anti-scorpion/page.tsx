@@ -1,6 +1,11 @@
+'use client';
+
 import Header from '@/components/Header';
 
 export default function AntiScorpion() {
+  const pdfFileName = 'scorpion .pdf';
+  const pdfPath = `/${encodeURIComponent(pdfFileName)}`;
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -38,7 +43,7 @@ export default function AntiScorpion() {
               </h2>
               <div style={{width: '100%', marginTop: '2rem'}}>
                 <iframe 
-                  src="/عقرب%20.pdf" 
+                  src={pdfPath}
                   width="100%" 
                   height="800px" 
                   style={{border: 'none', borderRadius: '8px'}}
@@ -46,8 +51,8 @@ export default function AntiScorpion() {
                 />
                 <div style={{marginTop: '1rem', textAlign: 'center'}}>
                   <a 
-                    href="/عقرب%20.pdf" 
-                    download 
+                    href={pdfPath}
+                    download={pdfFileName} 
                     style={{
                       display: 'inline-block',
                       padding: '0.75rem 2rem',

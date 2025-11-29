@@ -92,9 +92,27 @@ export default function HCPBCG() {
                 Based on the documented progress and ongoing challenges, the following key recommendations emerge: Continue the implementation of the WHO TB control policy, including universal BCG vaccination at birth in Egypt, given its role in reducing severe childhood TB. Enhance TB surveillance and reporting to identify emerging trends and inform policy adjustments, particularly as case detection and treatment success rates plateau. Conduct larger, longitudinal studies to fully assess the clinical protection afforded by BCG and the potential need for booster or alternative strategies. Educate healthcare providers and families about the significance of BCG vaccination and clarify misconceptions regarding scar formation and immunity.
               </p>
               
-              <p className="about-lang-intro" style={{fontSize: '0.9rem', fontStyle: 'italic', marginTop: '1.5rem'}}>
-                Sources: https://www.cdc.gov/tb/hcp/vaccines/index.html, https://www.researchgate.net/publication/260804408_Trend_of_application_of_World_Health_Organization_control_strategy_of_tuberculosis_in_Egypt, https://ejpai.journals.ekb.eg/article_199575.html
-              </p>
+              <div style={{
+                marginTop: '2rem', 
+                marginBottom: '1rem', 
+                padding: '0 clamp(1rem, 4vw, 2rem)', 
+                textAlign: 'center', 
+                maxWidth: '100%',
+                boxSizing: 'border-box'
+              }}>
+                <p className="about-lang-intro" style={{
+                  fontSize: '0.9rem', 
+                  fontStyle: 'italic', 
+                  textAlign: 'center', 
+                  margin: '0 auto', 
+                  maxWidth: '800px',
+                  padding: '0 1rem',
+                  wordBreak: 'break-word',
+                  overflowWrap: 'break-word'
+                }}>
+                  Sources: https://www.cdc.gov/tb/hcp/vaccines/index.html, https://www.researchgate.net/publication/260804408_Trend_of_application_of_World_Health_Organization_control_strategy_of_tuberculosis_in_Egypt, https://ejpai.journals.ekb.eg/article_199575.html
+                </p>
+              </div>
             </div>
           </div>
         </div>

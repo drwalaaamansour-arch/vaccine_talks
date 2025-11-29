@@ -386,39 +386,42 @@ body {
 .mobile-menu {
   position: fixed;
   top: 90px;
+  left: 0;
   right: 0;
-  bottom: 0;
-  width: 85%;
-  max-width: 320px;
+  width: 100%;
+  max-height: calc(100vh - 90px);
   background: white;
   z-index: 70;
-  padding: 2rem 1.5rem;
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
-  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  animation: dropDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes slideIn {
+@keyframes dropDown {
   from {
-    transform: translateX(100%);
+    transform: translateY(-20px);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
 .mobile-link {
   display: block;
-  padding: 1rem 1.25rem;
-  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #40606D;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: 8px;
   transition: all 0.2s ease;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;
 }
 
 .mobile-link:hover {
@@ -435,7 +438,8 @@ body {
 
 /* Mobile Submenu Styles */
 .mobile-menu-item {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;
+  width: 100%;
 }
 
 .mobile-link-with-submenu {
@@ -447,11 +451,33 @@ body {
   border: none;
   background: transparent;
   cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #40606D;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin-bottom: 0;
+}
+
+.mobile-link-with-submenu:hover {
+  color: #40606D;
+  background: rgba(139, 115, 85, 0.1);
+  transform: translateX(4px);
+}
+
+.mobile-link-with-submenu.mobile-link-active {
+  color: #40606D;
+  background: rgba(139, 115, 85, 0.15);
+  font-weight: 600;
 }
 
 .mobile-submenu-icon {
   transition: transform 0.3s ease;
   margin-left: auto;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
 }
 
 .mobile-submenu-icon-open {
@@ -459,11 +485,14 @@ body {
 }
 
 .mobile-submenu {
-  margin-top: 0.5rem;
-  margin-left: 1rem;
-  padding-left: 1rem;
+  margin-top: 0.375rem;
+  margin-left: 0;
+  padding-left: 1.25rem;
+  padding-right: 0;
   border-left: 2px solid rgba(139, 115, 85, 0.2);
   animation: slideDown 0.3s ease;
+  width: 100%;
+  overflow: visible;
 }
 
 @keyframes slideDown {
@@ -479,14 +508,18 @@ body {
 
 .mobile-submenu-link {
   display: block;
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: #40606D;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.2s ease;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
+  width: 100%;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .mobile-submenu-link:hover {
@@ -1788,6 +1821,15 @@ body {
     font-size: 0.95rem;
     width: 100%;
     max-width: 300px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* Center disclaimer button section on mobile */
+  .footer-section:has(.disclaimer-btn) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -1947,6 +1989,23 @@ body {
   
   .mobile-menu {
     top: 80px;
+    max-height: calc(100vh - 80px);
+    padding: 0.875rem 0.875rem;
+  }
+  
+  .mobile-link,
+  .mobile-link-with-submenu {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.85rem;
+  }
+  
+  .mobile-submenu {
+    padding-left: 1rem;
+  }
+  
+  .mobile-submenu-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -1958,7 +2017,23 @@ body {
   
   .mobile-menu {
     top: 72px;
-    width: 90%;
+    max-height: calc(100vh - 72px);
+    padding: 0.75rem 0.75rem;
+  }
+  
+  .mobile-link,
+  .mobile-link-with-submenu {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .mobile-submenu {
+    padding-left: 0.875rem;
+  }
+  
+  .mobile-submenu-link {
+    padding: 0.45rem 0.625rem;
+    font-size: 0.75rem;
   }
 }
 

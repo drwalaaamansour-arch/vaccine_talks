@@ -176,57 +176,60 @@ export default function Header() {
             setOpenMobileSubmenu(null);
           }} />
           <div className="mobile-menu">
-            {navLinks.map((link) => (
-              <div key={link.href} className="mobile-menu-item">
-                {link.submenu ? (
-                  <>
-                    <button
-                      className={`mobile-link mobile-link-with-submenu ${pathname === link.href ? 'mobile-link-active' : ''}`}
-                      onClick={() => setOpenMobileSubmenu(openMobileSubmenu === link.href ? null : link.href)}
-                      aria-expanded={openMobileSubmenu === link.href}
+            <nav style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+              {navLinks.map((link) => (
+                <div key={link.href} className="mobile-menu-item">
+                  {link.submenu ? (
+                    <>
+                      <button
+                        className={`mobile-link mobile-link-with-submenu ${pathname === link.href ? 'mobile-link-active' : ''}`}
+                        onClick={() => setOpenMobileSubmenu(openMobileSubmenu === link.href ? null : link.href)}
+                        aria-expanded={openMobileSubmenu === link.href}
+                        type="button"
+                      >
+                        <span>{link.label}</span>
+                        <svg 
+                          width="16" 
+                          height="16" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2"
+                          className={`mobile-submenu-icon ${openMobileSubmenu === link.href ? 'mobile-submenu-icon-open' : ''}`}
+                        >
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </button>
+                      {openMobileSubmenu === link.href && (
+                        <div className="mobile-submenu">
+                          {link.submenu.map((subLink) => (
+                            <Link
+                              key={subLink.href}
+                              href={subLink.href}
+                              className={`mobile-submenu-link ${pathname === subLink.href ? 'mobile-submenu-link-active' : ''}`}
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setOpenMobileSubmenu(null);
+                              }}
+                            >
+                              {subLink.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={`mobile-link ${pathname === link.href ? 'mobile-link-active' : ''}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.label}
-                      <svg 
-                        width="16" 
-                        height="16" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="2"
-                        className={`mobile-submenu-icon ${openMobileSubmenu === link.href ? 'mobile-submenu-icon-open' : ''}`}
-                      >
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </button>
-                    {openMobileSubmenu === link.href && (
-                      <div className="mobile-submenu">
-                        {link.submenu.map((subLink) => (
-                          <Link
-                            key={subLink.href}
-                            href={subLink.href}
-                            className={`mobile-submenu-link ${pathname === subLink.href ? 'mobile-submenu-link-active' : ''}`}
-                            onClick={() => {
-                              setIsMobileMenuOpen(false);
-                              setOpenMobileSubmenu(null);
-                            }}
-                          >
-                            {subLink.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={link.href}
-                    className={`mobile-link ${pathname === link.href ? 'mobile-link-active' : ''}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </div>
-            ))}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </nav>
           </div>
         </>
       )}

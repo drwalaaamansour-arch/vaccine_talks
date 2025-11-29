@@ -1,6 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import Header from '@/components/Header';
 
 export default function urabiesDoc() {
+  const [pdfKey, setPdfKey] = useState(0);
+  const pdfFileName = 'بروتوكول السعار أغسطس ٢٠٢٥ .pdf';
+  const pdfPath = `/rabies/${encodeURIComponent(pdfFileName)}`;
+
+  const reloadFirstPdf = () => {
+    setPdfKey(prev => prev + 1);
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -28,7 +39,7 @@ export default function urabiesDoc() {
         </h2>
       </div>
 
-      {/* PDF: WHO Position Paper - Rabies Vaccines (April 2018) */}
+      {/* PDF: Rabies Protocol (August 2025) */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
@@ -39,20 +50,44 @@ export default function urabiesDoc() {
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
               <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
-                WHO Position Paper - Rabies Vaccines (April 2018)
+                Rabies Protocol (August 2025) / بروتوكول السعار أغسطس ٢٠٢٥
               </h2>
               <div style={{width: '100%', marginTop: '2rem'}}>
                 <iframe
-                  src="/rabies/Rabies%20vaccines-%20WHO%20position%20paper%20%E2%80%93%20April%202018.pdf"
+                  key={pdfKey}
+                  src={`${pdfPath}?t=${Date.now()}`}
                   width="100%"
                   height="800px"
                   style={{border: 'none', borderRadius: '8px'}}
-                  title="WHO Position Paper Rabies Vaccines April 2018 PDF"
+                  title="Rabies Protocol August 2025 PDF"
                 />
-                <div style={{marginTop: '1rem', textAlign: 'center'}}>
+                <div style={{marginTop: '1rem', textAlign: 'center', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+                  <button
+                    onClick={reloadFirstPdf}
+                    style={{
+                      padding: '0.75rem 2rem',
+                      background: '#8b7355',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '6px',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#6b5744';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#8b7355';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    Reload PDF / إعادة تحميل PDF
+                  </button>
                   <a
-                    href="/rabies/Rabies%20vaccines-%20WHO%20position%20paper%20%E2%80%93%20April%202018.pdf"
-                    download
+                    href={pdfPath}
+                    download={pdfFileName}
                     style={{
                       display: 'inline-block',
                       padding: '0.75rem 2rem',
@@ -142,51 +177,6 @@ export default function urabiesDoc() {
                 <div style={{marginTop: '1rem', textAlign: 'center'}}>
                   <a
                     href="/rabies/Pre-exposure%20Prophylaxis.pdf"
-                    download
-                    style={{
-                      display: 'inline-block',
-                      padding: '0.75rem 2rem',
-                      background: '#40606D',
-                      color: 'white',
-                      textDecoration: 'none',
-                      borderRadius: '6px',
-                      fontWeight: '600',
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    Download PDF / تحميل PDF
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PDF: Rabies Protocol (August 2025) */}
-      <section className="about-section">
-        <div className="about-elegant-card">
-          <div className="card-corner card-corner-tl"></div>
-          <div className="card-corner card-corner-tr"></div>
-          <div className="card-corner card-corner-bl"></div>
-          <div className="card-corner card-corner-br"></div>
-
-          <div className="about-bilingual">
-            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
-                Rabies Protocol (August 2025) / بروتوكول السعار أغسطس ٢٠٢٥
-              </h2>
-              <div style={{width: '100%', marginTop: '2rem'}}>
-                <iframe
-                  src="/rabies/%D8%A8%D8%B1%D9%88%D8%AA%D9%88%D9%83%D9%88%D9%84%20%D8%A7%D9%84%D8%B3%D8%B9%D8%A7%D8%B1%20%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3%20%D9%A2%D9%A0%D9%A2%D9%A5%20.pdf"
-                  width="100%"
-                  height="800px"
-                  style={{border: 'none', borderRadius: '8px'}}
-                  title="Rabies Protocol August 2025 PDF"
-                />
-                <div style={{marginTop: '1rem', textAlign: 'center'}}>
-                  <a
-                    href="/rabies/%D8%A8%D8%B1%D9%88%D8%AA%D9%88%D9%83%D9%88%D9%84%20%D8%A7%D9%84%D8%B3%D8%B9%D8%A7%D8%B1%20%D8%A3%D8%BA%D8%B3%D8%B7%D8%B3%20%D9%A2%D9%A0%D9%A2%D9%A5%20.pdf"
                     download
                     style={{
                       display: 'inline-block',
