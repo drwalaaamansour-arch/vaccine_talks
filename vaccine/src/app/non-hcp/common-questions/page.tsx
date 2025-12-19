@@ -1,6 +1,58 @@
+'use client';
+
 import Header from '@/components/Header';
+import { useState } from 'react';
 
 export default function CommonQuestions() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const questions = [
+    {
+      question: "ما هي التطعيمات الأساسية للأطفال في مصر؟",
+      answer: "التطعيمات الأساسية للأطفال في مصر تشمل: لقاح التهاب الكبد الوبائي ب (عند الولادة)، لقاح شلل الأطفال، لقاح الثلاثي البكتيري (الدفتيريا، السعال الديكي، التيتانوس)، لقاح الحصبة والنكاف والحصبة الألمانية، ولقاح التهاب السحايا. يجب اتباع جدول التطعيمات الموصى به من وزارة الصحة المصرية."
+    },
+    {
+      question: "متى يجب تطعيم الأطفال ضد الحصبة؟",
+      answer: "يُنصح بتطعيم الأطفال ضد الحصبة في عمر 12 شهراً، مع جرعة ثانية في عمر 18 شهراً. هذا التطعيم جزء من لقاح MMR الذي يحمي أيضاً من النكاف والحصبة الألمانية."
+    },
+    {
+      question: "هل يمكن تطعيم الطفل إذا كان مريضاً؟",
+      answer: "في معظم الحالات، يمكن تطعيم الطفل حتى لو كان يعاني من نزلة برد خفيفة أو حمى منخفضة. لكن يجب استشارة الطبيب إذا كان الطفل يعاني من مرض شديد أو حمى عالية. سيقوم الطبيب بتقييم الحالة ويقرر ما إذا كان من الآمن المتابعة مع التطعيم."
+    },
+    {
+      question: "ما هي الآثار الجانبية الشائعة للتطعيمات؟",
+      answer: "الآثار الجانبية الشائعة للتطعيمات عادة ما تكون خفيفة وتشمل: احمرار أو تورم في مكان الحقن، حمى خفيفة، أو تهيج. هذه الأعراض عادة ما تختفي خلال يوم أو يومين. الآثار الجانبية الخطيرة نادرة جداً."
+    },
+    {
+      question: "هل التطعيمات آمنة؟",
+      answer: "نعم، التطعيمات آمنة جداً وتخضع لاختبارات صارمة قبل الموافقة عليها. الفوائد الصحية للتطعيمات تفوق بكثير المخاطر المحتملة. التطعيمات تحمي من أمراض خطيرة يمكن أن تسبب مضاعفات شديدة أو حتى الوفاة."
+    },
+    {
+      question: "ماذا أفعل إذا فات موعد تطعيم طفلي؟",
+      answer: "إذا فات موعد تطعيم طفلك، يجب الاتصال بالطبيب في أقرب وقت ممكن. لا حاجة لبدء الجرعات من جديد - يمكن إعطاء الجرعات المفقودة في أي وقت. المهم هو إكمال جدول التطعيمات بأسرع ما يمكن."
+    },
+    {
+      question: "هل يمكن إعطاء عدة تطعيمات في نفس الوقت؟",
+      answer: "نعم، يمكن إعطاء عدة تطعيمات في نفس الوقت بأمان. هذا لا يؤثر على فعالية التطعيمات ولا يزيد من الآثار الجانبية. في الواقع، إعطاء عدة تطعيمات معاً يوفر الوقت ويضمن حماية الطفل في أقرب وقت ممكن."
+    },
+    {
+      question: "ما هي التطعيمات الموصى بها للكبار؟",
+      answer: "التطعيمات الموصى بها للكبار تشمل: لقاح الإنفلونزا السنوي، لقاح التيتانوس والدفتيريا كل 10 سنوات، لقاح التهاب الكبد الوبائي ب (إذا لم يتم تناوله سابقاً)، ولقاح المكورات الرئوية للفئات المعرضة للخطر. قد تكون هناك تطعيمات إضافية حسب الحالة الصحية والعمر."
+    },
+    {
+      question: "هل يجب تطعيم الحوامل؟",
+      answer: "نعم، بعض التطعيمات آمنة ومهمة للحوامل. لقاح الإنفلونزا واللقاح الثلاثي (Tdap) آمنان ومهمان أثناء الحمل. لكن يجب تجنب التطعيمات الحية مثل MMR أثناء الحمل. يجب استشارة الطبيب قبل أي تطعيم أثناء الحمل."
+    },
+    {
+      question: "ما هو لقاح التهاب الكبد الوبائي ب ولماذا مهم؟",
+      answer: "لقاح التهاب الكبد الوبائي ب يحمي من فيروس التهاب الكبد ب الذي يمكن أن يسبب تليف الكبد وسرطان الكبد. يُعطى عادة عند الولادة ثم في عمر شهرين و4 أشهر و6 أشهر. هذا التطعيم مهم جداً لأنه يوفر حماية مدى الحياة من هذا المرض الخطير."
+    }
+  ];
+
+  const toggleQuestion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -23,25 +75,88 @@ export default function CommonQuestions() {
         </div>
       </main>
 
-      {/* Main Content Section */}
+      {/* Title Section */}
+      <section style={{padding:'0.5rem 1rem 0'}}>
+        <h2 className="about-lang-title" style={{textAlign:'center', fontSize:'2rem', margin:'0', direction: 'rtl', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+          الأسئلة الشائعة
+        </h2>
+      </section>
+
+      {/* Q&A Section */}
       <section className="about-section">
         <div className="about-elegant-card">
-          {/* Decorative Corner Elements */}
           <div className="card-corner card-corner-tl"></div>
           <div className="card-corner card-corner-tr"></div>
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
 
-          {/* Content */}
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد قسم الأسئلة الشائعة</span>
-                <span className="coming-soon-text">We're working on preparing the Common Questions section</span>
-              </p>
+          <div className="about-bilingual">
+            <div className="about-lang arabic" style={{alignItems: 'flex-start', direction: 'rtl', textAlign: 'right', width: '100%'}}>
+              <div style={{width: '100%'}}>
+                {questions.map((item, index) => (
+                  <div 
+                    key={index} 
+                    style={{
+                      marginBottom: '1.5rem',
+                      borderBottom: index < questions.length - 1 ? '1px solid rgba(139, 115, 85, 0.2)' : 'none',
+                      paddingBottom: index < questions.length - 1 ? '1.5rem' : '0'
+                    }}
+                  >
+                    <button
+                      onClick={() => toggleQuestion(index)}
+                      style={{
+                        width: '100%',
+                        textAlign: 'right',
+                        background: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        padding: '1rem 0',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: '1rem'
+                      }}
+                    >
+                      <h3 style={{
+                        textAlign: 'right',
+                        fontSize: '1.15rem',
+                        fontWeight: 700,
+                        color: '#40606D',
+                        margin: 0,
+                        flex: 1,
+                        fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"
+                      }}>
+                        {item.question}
+                      </h3>
+                      <span style={{
+                        fontSize: '1.5rem',
+                        color: '#8b7355',
+                        transition: 'transform 0.3s ease',
+                        transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
+                        flexShrink: 0
+                      }}>
+                        ▼
+                      </span>
+                    </button>
+                    {openIndex === index && (
+                      <div style={{
+                        padding: '0 0 1rem 0',
+                        animation: 'fadeIn 0.3s ease'
+                      }}>
+                        <p className="about-lang-intro" style={{
+                          direction: 'rtl',
+                          textAlign: 'right',
+                          marginTop: '0.5rem',
+                          fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif",
+                          lineHeight: '1.8'
+                        }}>
+                          {item.answer}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

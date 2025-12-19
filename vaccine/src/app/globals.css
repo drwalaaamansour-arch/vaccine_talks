@@ -775,11 +775,12 @@ body {
   min-height: 90px;
 }
 
-.feature-item:hover {
+/* Removed hover effect - feature items no longer pop up on hover */
+/* .feature-item:hover {
   background: rgba(255, 255, 255, 0.6);
   transform: translateX(8px);
   box-shadow: 0 4px 12px rgba(139, 115, 85, 0.1);
-}
+} */
 
 .about-lang.arabic .feature-item {
   flex-direction: row;
@@ -792,9 +793,10 @@ body {
   margin-right: 1rem;
 }
 
-.about-lang.arabic .feature-item:hover {
+/* Removed hover effect - Arabic feature items no longer pop up on hover */
+/* .about-lang.arabic .feature-item:hover {
   transform: translateX(-8px);
-}
+} */
 
 .feature-emoji {
   font-size: 2rem;
@@ -809,10 +811,11 @@ body {
   transition: all 0.3s ease;
 }
 
-.feature-item:hover .feature-emoji {
+/* Removed hover effect - feature emojis no longer pop up on hover */
+/* .feature-item:hover .feature-emoji {
   transform: scale(1.05) rotate(-3deg);
   background: rgba(139, 115, 85, 0.12);
-}
+} */
 
 .feature-item p {
   flex: 1;
@@ -893,9 +896,10 @@ body {
   transition: transform 0.3s ease;
 }
 
-.center-image:hover {
+/* Removed hover effect - images no longer pop up on hover */
+/* .center-image:hover {
   transform: scale(1.02);
-}
+} */
 
 /* =====================================================
    BUTTONS SECTION - 6 Interactive Buttons
@@ -1068,6 +1072,17 @@ body {
   }
   60% {
     transform: translateY(-5px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -1484,9 +1499,10 @@ body {
   }
 }
 
-.about-lang:hover .section-image {
+/* Removed hover effect - sections no longer pop up on hover */
+/* .about-lang:hover .section-image {
   transform: scale(1.02);
-}
+} */
 
 .about-lang {
   display: flex;
@@ -2568,5 +2584,85 @@ body {
 @media (min-width: 640px) {
   .button-group {
     flex-direction: row;
+  }
+}
+
+/* =====================================================
+   FAQ ACCORDION STYLES
+   ===================================================== */
+
+.faq-accordion-item {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+  padding-bottom: 1.5rem;
+}
+
+.faq-accordion-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.faq-question-button {
+  width: 100%;
+  text-align: right;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.faq-question-button:hover {
+  opacity: 0.8;
+}
+
+.faq-question-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.faq-question {
+  text-align: right;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #40606D;
+  margin: 0;
+  flex: 1;
+  font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
+}
+
+.faq-arrow {
+  font-size: 1.5rem;
+  color: #8b7355;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-arrow.open {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 0 1rem 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .faq-question {
+    font-size: 1rem;
+  }
+  
+  .faq-arrow {
+    font-size: 1.25rem;
+  }
+  
+  .faq-accordion-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
   }
 }
