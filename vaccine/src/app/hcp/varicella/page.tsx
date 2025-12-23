@@ -179,6 +179,40 @@ export default function HCPVaricella() {
         </div>
       </section>
 
+      {/* PDF: Barycela */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+                Barycela
+              </h2>
+              <div style={{width: '100%', marginTop: '2rem'}}>
+                <iframe
+                  src="/Barycela.pdf"
+                  width="100%"
+                  height="800px"
+                  style={{border: 'none', borderRadius: '8px'}}
+                  title="Barycela PDF"
+                />
+                <div style={{marginTop: '1rem', textAlign: 'center'}}>
+                  <a href="/Barycela.pdf" download style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}>Download PDF / تحميل PDF</a>
+                </div>
+                <p style={{marginTop: '1rem', textAlign: 'center', direction: 'rtl', color: '#40606D', lineHeight: 1.6}}>
+                  المصدر: الهيئة المصرية للدواء / وزارة الصحة<br />
+                  لا توجد علاقة مباشرة بين الموقع وهذه الشركات، والمحتوى لأغراض التوعية فقط. ولا يجوز استخدامها في أي أغراض تجارية
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <div className="footer-top">
