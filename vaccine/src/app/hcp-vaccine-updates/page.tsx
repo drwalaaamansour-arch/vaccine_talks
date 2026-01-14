@@ -23,7 +23,7 @@ export default function HCPVaccineUpdates() {
         </div>
       </main>
 
-      {/* Coming Soon Section (matches What's New design) */}
+      {/* Global Vaccine Updates - Single Section */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
@@ -31,15 +31,86 @@ export default function HCPVaccineUpdates() {
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
 
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد قسم تحديثات اللقاحات</span>
-                <span className="coming-soon-text">We're preparing the Vaccine Updates section</span>
-              </p>
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start', direction: 'ltr', textAlign: 'left'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}}>
+                Global Vaccine Updates
+              </h2>
+              
+              <div style={{width: '100%'}}>
+                <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem'}}>
+                    <span style={{fontSize: '0.9rem', color: '#8b7355', fontWeight: 600}}>January 8, 2026</span>
+                    <span style={{fontSize: '0.75rem', color: '#8b7355', background: 'rgba(139, 115, 85, 0.1)', padding: '0.25rem 0.75rem', borderRadius: '12px', fontWeight: 600, textTransform: 'uppercase'}}>New Recommendation</span>
+                  </div>
+                  
+                  <h2 style={{fontSize: '2rem', fontWeight: 700, color: '#40606D', margin: '0 0 1.5rem 0', lineHeight: 1.3}}>
+                    GSK Pentavalent Meningococcal Vaccine Endorsed by ACIP
+                  </h2>
+                  
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    CDC's Advisory Committee on Immunization Practices (ACIP) endorsed a new GSK pentavalent meningococcal vaccine (MenACWY-CRM/MenB-4C, Penmenvy) for use in people aged ≥10 years when both MenACWY and MenB are indicated.
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    <strong>Safety Profile:</strong> The paper is refreshingly transparent about the science, noting: <em>"Serious adverse events possibly related to vaccination were rare and occurred at similar frequencies in pentavalent and control groups."</em>
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    <strong>Health System Impact:</strong> On health system impact: <em>"Using pentavalent vaccine as an alternative to concomitant administration of MenACWY and MenB was the most cost-saving of the policy questions considered."</em>
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    <strong>Clinical Significance:</strong> For clinicians, researchers, and immunization program managers, this recommendation is less about novelty — and more about implementation efficiency, equity, and real-world feasibility.
+                  </p>
+
+                  <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(139, 115, 85, 0.2)'}}>
+                    <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '0.5rem'}}>
+                      <strong>Full Report:</strong>
+                    </p>
+                    <p style={{fontSize: '1rem', lineHeight: 1.7, color: '#40606D', marginBottom: '0.5rem'}}>
+                      <strong>Use of the GSK MenACWY-CRM/MenB-4C Pentavalent Meningococcal Vaccine Among Persons Aged ≥10 Years — ACIP Recommendations, United States, 2025</strong>
+                    </p>
+                    <p style={{fontSize: '0.9rem', color: '#8b7355', fontStyle: 'italic', margin: 0}}>
+                      Morbidity and Mortality Weekly Report, Vol. 75, No. 1 (Jan 8, 2026)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PDF Section */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+                Full MMWR Report
+              </h2>
+              <div style={{width: '100%', marginTop: '2rem'}}>
+                <iframe
+                  src="/updates/%20acwyb%20mmwr.pdf"
+                  width="100%"
+                  height="800px"
+                  style={{border: 'none', borderRadius: '8px'}}
+                  title="MMWR Pentavalent Meningococcal Vaccine PDF"
+                />
+                <div style={{marginTop: '1rem', textAlign: 'center'}}>
+                  <a href="/updates/%20acwyb%20mmwr.pdf" download style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}>Download PDF / تحميل PDF</a>
+                </div>
+                <p style={{marginTop: '1rem', textAlign: 'center', direction: 'rtl', color: '#40606D', lineHeight: 1.6}}>
+                  المصدر: Morbidity and Mortality Weekly Report (MMWR)<br />
+                  لا توجد علاقة مباشرة بين الموقع وهذه الشركات، والمحتوى لأغراض التوعية فقط. ولا يجوز استخدامها في أي أغراض تجارية
+                </p>
+              </div>
             </div>
           </div>
         </div>
