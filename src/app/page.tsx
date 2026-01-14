@@ -148,6 +148,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Latest News Section - Single Window */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}}>
+                Latest News / آخر الأخبار
+              </h2>
+              
+              <div className="news-window">
+                <div className="news-window-content">
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">January 8, 2026</span>
+                      <span className="news-category">Updates</span>
+                    </div>
+                    <h3 className="news-entry-title">New GSK Pentavalent Meningococcal Vaccine Endorsed by ACIP</h3>
+                    <p className="news-entry-text">CDC's Advisory Committee on Immunization Practices (ACIP) endorsed a new GSK pentavalent meningococcal vaccine (MenACWY-CRM/MenB-4C, Penmenvy) for use in people aged ≥10 years when both MenACWY and MenB are indicated. The recommendation highlights implementation efficiency, equity, and real-world feasibility. Serious adverse events were rare and occurred at similar frequencies in pentavalent and control groups. Using pentavalent vaccine as an alternative to concomitant administration was the most cost-saving option.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read More →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <div className="footer-top">
