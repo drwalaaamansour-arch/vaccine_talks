@@ -173,6 +173,16 @@ export default function Home() {
                     <p className="news-entry-text">CDC's Advisory Committee on Immunization Practices (ACIP) endorsed a new GSK pentavalent meningococcal vaccine (MenACWY-CRM/MenB-4C, Penmenvy) for use in people aged ≥10 years when both MenACWY and MenB are indicated. The recommendation highlights implementation efficiency, equity, and real-world feasibility. Serious adverse events were rare and occurred at similar frequencies in pentavalent and control groups. Using pentavalent vaccine as an alternative to concomitant administration was the most cost-saving option.</p>
                     <a href="/hcp-vaccine-updates" className="news-entry-link">Read More →</a>
                   </div>
+                  
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">December 2025</span>
+                      <span className="news-category">Updates</span>
+                    </div>
+                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>أعلنت شركة فايزر مصر عن طرح لقاح للوقاية من الإصابة بالفيروس المخلوي التنفسي (RSV)</h3>
+                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>أعلنت شركة فايزر مصر عن طرح لقاح للوقاية من الإصابة بالفيروس المخلوي التنفسي (RSV). هذا اللقاح يمثل تطورًا مهمًا في مجال الوقاية من الأمراض التنفسية في مصر.</p>
+                    <a href="/rsv" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>اقرأ المزيد ←</a>
+                  </div>
                 </div>
               </div>
             </div>

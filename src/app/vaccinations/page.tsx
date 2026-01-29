@@ -170,6 +170,12 @@ export default function Vaccinations() {
                 <span className="button-text">فيروس الورم الحليمي</span>
                 <span className="button-text-en">HPV</span>
               </a>
+              
+              <a href="/rsv" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
+                <span className="button-emoji">💉</span>
+                <span className="button-text">RSV الفيروس التنفسي المخلوي</span>
+                <span className="button-text-en">RSV</span>
+              </a>
             </div>
           </div>
         </div>

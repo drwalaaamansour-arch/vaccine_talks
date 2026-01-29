@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 
-export default function AdultVaccines() {
+export default function RSV() {
   return (
     <div className="min-h-screen">
       <Header />
@@ -23,7 +23,7 @@ export default function AdultVaccines() {
         </div>
       </main>
 
-      {/* Adult Vaccines Buttons Section */}
+      {/* Main Content Section */}
       <section className="about-section">
         <div className="about-elegant-card">
           {/* Decorative Corner Elements */}
@@ -33,82 +33,100 @@ export default function AdultVaccines() {
           <div className="card-corner card-corner-br"></div>
 
           {/* Content */}
-          <div className="buttons-container">
-            <h2 className="buttons-title">تطعيمات الكبار المتاحة</h2>
-            <h2 className="buttons-title english">Available Adult Vaccines</h2>
-            
-            <div className="vaccination-buttons-grid">
-              <a href="/hepatitis-a" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">كبدي (أ)</span>
-                <span className="button-text-en">Hepatitis A</span>
-              </a>
+          <div className="about-bilingual">
+            {/* Arabic Content */}
+            <div className="about-lang arabic">
+              <h2 className="about-lang-title">
+                RSV الفيروس التنفسي المخلوي
+              </h2>
               
-              <a href="/hepatitis-b" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">كبدي (ب)</span>
-                <span className="button-text-en">Hepatitis B</span>
-              </a>
+              <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
+                <img 
+                  src="/rsv v.png" 
+                  alt="RSV الفيروس التنفسي المخلوي" 
+                  className="section-image"
+                  style={{ width: '100%', maxWidth: '600px', height: 'auto', borderRadius: '16px', boxShadow: 'none', background: 'transparent', mixBlendMode: 'multiply' }}
+                />
+              </div>
               
-              <a href="/influenza" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">الإنفلونزا الفيروسية</span>
-                <span className="button-text-en">Viral Influenza</span>
-              </a>
+              <div className="about-lang-intro">
+                <p>
+                  الفيروس المخلوي التنفسي (RSV) هو فيروس يسبب التهابات في الجهاز التنفسي وبالأخص السفلي، و يتأثر به بشدة الأطفال الرضع وكبار السن.
+                </p>
+              </div>
+
+              <div className="about-features">
+                <div className="feature-item">
+                  <span className="feature-emoji">💉</span>
+                  <p>
+                    <strong>العمر:</strong> متوفر تطعيمات للوقاية من RSV للأطفال الرضع عن طريق تطعيم الأم الحامل خلال الفترة من الأسبوع ٢٨ إلى الأسبوع ٣٦ من الحمل.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">📅</span>
+                  <p>
+                    <strong>الجرعات:</strong> جرعة واحدة.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">💪</span>
+                  <p>
+                    <strong>مكان الحقن:</strong> التطعيم بيتحقن في عضلة الكتف.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">🛡️</span>
+                  <p>
+                    <strong>الوقاية:</strong> التطعيم بيحمي من الإصابة بالفيروس المخلوي التنفسي وبيقلل من شدة الأعراض في حالة الإصابة.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* English Content */}
+            <div className="about-lang">
+              <h2 className="about-lang-title">
+                RSV (Respiratory Syncytial Virus)
+              </h2>
               
-              <a href="/hepatitis-a-b" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">كبدي (أ+ب)</span>
-                <span className="button-text-en">Hepatitis A+B</span>
-              </a>
-              
-              <a href="/chickenpox" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">الجديري المائي</span>
-                <span className="button-text-en">Chickenpox</span>
-              </a>
-              
-              <a href="/pcv" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">المكورات الرئوية</span>
-                <span className="button-text-en">PCV</span>
-              </a>
-              
-              <a href="/herpes-zoster" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">الحزام الناري</span>
-                <span className="button-text-en">Herpes Zoster</span>
-              </a>
-              
-              <a href="/meningitis" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">التهاب سحائي (حمى شوكية)</span>
-                <span className="button-text-en">Meningitis</span>
-              </a>
-              
-              <a href="/hpv" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">فيروس الورم الحليمي</span>
-                <span className="button-text-en">HPV</span>
-              </a>
-              
-              <a href="/tetanus" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">التيتانوس</span>
-                <span className="button-text-en">Tetanus</span>
-              </a>
-              
-              <a href="/ppsv" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">التهاب رئوي متعدد السكريات</span>
-                <span className="button-text-en">PPSV</span>
-              </a>
-              
-              <a href="/rsv" className="vaccination-button" style={{minHeight: '220px', padding: '2.25rem 1.5rem'}}>
-                <span className="button-emoji">💉</span>
-                <span className="button-text">RSV الفيروس التنفسي المخلوي</span>
-                <span className="button-text-en">RSV</span>
-              </a>
+              <div className="about-lang-intro">
+                <p>
+                  Respiratory Syncytial Virus (RSV) is a virus that causes respiratory infections, especially in the lower respiratory tract, and severely affects infants and the elderly.
+                </p>
+              </div>
+
+              <div className="about-features">
+                <div className="feature-item">
+                  <span className="feature-emoji">💉</span>
+                  <p>
+                    <strong>Age:</strong> Vaccines are available for the prevention of RSV in infants through vaccination of the pregnant mother during the period from week 28 to week 36 of gestation.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">📅</span>
+                  <p>
+                    <strong>Doses:</strong> Single dose.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">💪</span>
+                  <p>
+                    <strong>Injection Site:</strong> The vaccine is injected into the deltoid.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">🛡️</span>
+                  <p>
+                    <strong>Protection:</strong> The vaccine protects against Respiratory Syncytial Virus infection and reduces the severity of symptoms in case of infection.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -172,3 +190,4 @@ export default function AdultVaccines() {
     </div>
   );
 }
+

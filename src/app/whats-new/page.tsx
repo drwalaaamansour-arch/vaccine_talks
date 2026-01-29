@@ -33,15 +33,25 @@ export default function WhatsNew() {
           <div className="card-corner card-corner-br"></div>
 
           {/* Content */}
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد قسم ما الجديد</span>
-                <span className="coming-soon-text">We're working on preparing the What's New section</span>
-              </p>
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}}>
+                What's New / ما الجديد
+              </h2>
+              
+              <div className="news-window">
+                <div className="news-window-content">
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">December 2025</span>
+                      <span className="news-category">Updates</span>
+                    </div>
+                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>فايزر مصر تطرح لقاح جديد مخصص للأمهات الحوامل بهدف الوقاية من اصابة المواليد بفيروس التنفسي المخلوي (RSV)</h3>
+                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>أعلنت شركة فايزر مصر عن طرح لقاح جديد مخصص للأمهات الحوامل بهدف الوقاية من إصابة المواليد بفيروس التنفسي المخلوي (RSV). هذا اللقاح يمثل تطورًا مهمًا في مجال الوقاية من الأمراض التنفسية في مصر.</p>
+                    <a href="/rsv" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>اقرأ المزيد ←</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
