@@ -226,6 +226,27 @@ export default function Home() {
                   </p>
                 </a>
 
+                <a 
+                  href="/hcp-special-populations/anaesthesia-surgery" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Before or after anaesthesia or surgery
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Guidance on vaccination timing in relation to surgery and anaesthesia, including recommendations for elective procedures and considerations for post-operative vaccination.
+                  </p>
+                </a>
+
                 <div 
                   className="newly-added-card"
                   style={{
@@ -244,7 +265,7 @@ export default function Home() {
                           RSV (الفيروس التنفسي المخلوي)
                         </h3>
                         <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
-                          معلومات جديدة عن تطعيم RSV للأمهات الحوامل لحماية الرضع من الإصابة بالفيروس المخلوي التنفسي.
+                          معلومات جديدة عن تطعيم RSV لحماية الرضع من الإصابة بالفيروس المخلوي التنفسي.
                         </p>
                       </a>
                     </div>
@@ -254,7 +275,7 @@ export default function Home() {
                           RSV (Respiratory Syncytial Virus)
                         </h3>
                         <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
-                          New information about RSV vaccination for pregnant mothers to protect infants from respiratory syncytial virus infection.
+                          New information about RSV vaccination to protect infants from respiratory syncytial virus infection.
                         </p>
                       </a>
                     </div>

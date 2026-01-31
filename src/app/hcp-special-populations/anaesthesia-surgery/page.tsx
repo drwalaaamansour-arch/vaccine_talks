@@ -23,7 +23,7 @@ export default function AnaesthesiaSurgery() {
         </div>
       </main>
 
-      {/* Coming Soon Section */}
+      {/* Content Section */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
@@ -31,16 +31,51 @@ export default function AnaesthesiaSurgery() {
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
 
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">قبل أو بعد التخدير أو الجراحة</h2>
-              <h2 className="coming-soon-title english">Before or after anaesthesia or surgery</h2>
-              <h2 className="coming-soon-title" style={{marginTop: '1rem'}}>قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد محتوى هذا القسم</span>
-                <span className="coming-soon-text">We're preparing the content for this section</span>
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', color: '#40606D'}}>
+                Before or after anaesthesia or surgery
+              </h2>
+
+              <h3 style={{textAlign:'left', fontSize:'1.5rem', fontWeight:600, color:'#40606D', marginTop:'2rem', marginBottom:'1rem', direction: 'ltr'}}>General principles</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Recent or upcoming surgery is not a contraindication to vaccination. Vaccination is also not a contraindication to surgery.
+              </p>
+
+              <h3 style={{textAlign:'left', fontSize:'1.5rem', fontWeight:600, color:'#40606D', marginTop:'2rem', marginBottom:'1rem', direction: 'ltr'}}>Post-vaccination considerations</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                There is no evidence of adverse outcomes related to anaesthesia and surgery in recently vaccinated children. However, the systemic effects of recent vaccination, such as fever and malaise, may be confused with similar symptoms that may arise in the post-operative period.
+              </p>
+
+              <h3 style={{textAlign:'left', fontSize:'1.5rem', fontWeight:600, color:'#40606D', marginTop:'2rem', marginBottom:'1rem', direction: 'ltr'}}>Vaccination during procedures</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                A person in a special risk group can receive vaccines as per the routine schedule, or electively during a procedure, if the appropriate vaccine delivery safety mechanisms are in place.
+              </p>
+
+              <h3 style={{textAlign:'left', fontSize:'1.5rem', fontWeight:600, color:'#40606D', marginTop:'2rem', marginBottom:'1rem', direction: 'ltr'}}>Timing recommendations</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                If elective surgery and anaesthesia are to be postponed after vaccination, some guidelines recommend waiting for <strong>1 week</strong> after receiving an inactive vaccine and for <strong>3 weeks</strong> after receiving a live attenuated viral vaccine in children. Defer routine vaccines for <strong>1 week</strong> after surgery.
+              </p>
+
+              <h3 style={{textAlign:'left', fontSize:'1.5rem', fontWeight:600, color:'#40606D', marginTop:'2rem', marginBottom:'1rem', direction: 'ltr'}}>Blood products during surgery</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                A person who receives any blood products during surgery will need to delay some vaccinations.
+              </p>
+
+              <h3 style={{textAlign:'left', fontSize:'1.3rem', fontWeight:600, color:'#40606D', marginTop:'2rem', marginBottom:'1rem', direction: 'ltr'}}>Reference</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                <a 
+                  href="https://immunisationhandbook.health.gov.au/contents/vaccination-for-special-risk-groups/vaccination-before-or-after-anaesthesia-or-surgery" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#40606D',
+                    textDecoration: 'underline',
+                    wordBreak: 'break-word'
+                  }}
+                >
+                  https://immunisationhandbook.health.gov.au/contents/vaccination-for-special-risk-groups/vaccination-before-or-after-anaesthesia-or-surgery
+                </a>
               </p>
             </div>
           </div>
