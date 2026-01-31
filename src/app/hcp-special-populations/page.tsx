@@ -23,23 +23,70 @@ export default function HCPSpecialPopulations() {
         </div>
       </main>
 
-      {/* Coming Soon Section (matches What's New design) */}
+      {/* Special Populations Blocks Section */}
       <section className="about-section">
         <div className="about-elegant-card">
+          {/* Decorative Corner Elements */}
           <div className="card-corner card-corner-tl"></div>
           <div className="card-corner card-corner-tr"></div>
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
 
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد قسم الفئات الخاصة</span>
-                <span className="coming-soon-text">We're preparing the Special Populations section</span>
+          {/* Content */}
+          <div className="buttons-container">
+            <h2 className="buttons-title english" style={{fontSize: '2.5rem', color: '#40606D', fontWeight: '700', marginBottom: '1rem'}}>Special Populations</h2>
+            
+            <div style={{marginBottom: '2.5rem', marginTop: '1.5rem', lineHeight: '1.8', fontSize: '1.05rem', color: '#5a4a3a', textAlign: 'left', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto'}}>
+              <p style={{marginBottom: '1rem'}}>
+                This section aims to provide a comprehensive resource for healthcare professionals, researchers, policymakers, and caregivers navigating the complex terrain of vaccination in diverse and specialized populations. From immunocompromised individuals to pregnant women, people on dialysis, preterm infants, and beyond, each chapter delves into the specific considerations, challenges, and recommendations for vaccination within these distinct groups.
               </p>
+              <p style={{marginBottom: '1rem'}}>
+                The journey through these pages is a testament to the evolving nature of vaccination science and practice. Drawing upon the latest evidence-based guidelines from esteemed health authorities and expert consensus.
+              </p>
+              <p>
+                As we embark on this journey through the intricacies of vaccination for special populations, it is our hope that this section serves as a trusted companion, guiding healthcare professionals in their mission to protect and promote health for all. Together, let us navigate the path towards optimal vaccination strategies, ensuring that no individual is left behind in the pursuit of a healthier, safer world.
+              </p>
+            </div>
+            
+            <p style={{fontSize: '1.2rem', color: '#40606D', fontWeight: '600', marginBottom: '1.5rem', marginTop: '2rem', textAlign: 'center'}}>
+              To read more, press the following buttons:
+            </p>
+            
+            <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%'}}>
+              <a href="/hcp-special-populations/altered-immunocompetence" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">🛡️</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Altered Immunocompetence vaccination</span>
+              </a>
+              
+              <a href="/hcp-special-populations/preterm-infants" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">👶</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Preterm infants</span>
+              </a>
+              
+              <a href="/hcp-special-populations/pregnancy-breastfeeding" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">🤱</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Pregnancy and breastfeeding</span>
+              </a>
+              
+              <a href="/hcp-special-populations/anaesthesia-surgery" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">🏥</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Before or after anaesthesia or surgery</span>
+              </a>
+              
+              <a href="/hcp-special-populations/occupational-risk" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">👷</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>People at occupational risk</span>
+              </a>
+              
+              <a href="/hcp-special-populations/international-travellers" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">✈️</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>International travellers</span>
+              </a>
+              
+              <a href="/hcp-special-populations/immunoglobulin-blood-products" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">💉</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>People who have recently received normal human immunoglobulin and other blood products</span>
+              </a>
             </div>
           </div>
         </div>

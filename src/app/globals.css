@@ -2775,6 +2775,12 @@ body {
   color: #40606D;
 }
 
+.newly-added-card:hover {
+  background: rgba(64, 96, 109, 0.1) !important;
+  border-color: rgba(64, 96, 109, 0.4) !important;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .news-window-content {
     padding: 1.25rem;

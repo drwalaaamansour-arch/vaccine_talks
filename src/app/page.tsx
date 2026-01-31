@@ -190,6 +190,82 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Newly Added Section */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem', color: '#40606D'}}>
+                Newly Added / أضيف حديثا
+              </h2>
+              
+              <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '900px', margin: '0 auto'}}>
+                <a 
+                  href="/hcp-special-populations/immunoglobulin-blood-products" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    People who have recently received normal human immunoglobulin and other blood products
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Information about vaccination considerations for people who have recently received normal human immunoglobulin and other blood products, including spacing requirements and recommendations for live and non-live vaccines.
+                  </p>
+                </a>
+
+                <div 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                    <div>
+                      <a href="/rsv" style={{textDecoration: 'none'}}>
+                        <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                          RSV (الفيروس التنفسي المخلوي)
+                        </h3>
+                        <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                          معلومات جديدة عن تطعيم RSV للأمهات الحوامل لحماية الرضع من الإصابة بالفيروس المخلوي التنفسي.
+                        </p>
+                      </a>
+                    </div>
+                    <div style={{borderTop: '1px solid rgba(64, 96, 109, 0.2)', paddingTop: '1rem'}}>
+                      <a href="/hcp/rsv" style={{textDecoration: 'none'}}>
+                        <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                          RSV (Respiratory Syncytial Virus)
+                        </h3>
+                        <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                          New information about RSV vaccination for pregnant mothers to protect infants from respiratory syncytial virus infection.
+                        </p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <div className="footer-top">
