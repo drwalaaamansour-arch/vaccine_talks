@@ -117,8 +117,8 @@ export default function HCPMeningococcal() {
         </div>
       </section>
 
-      {/* FAQ Buttons */}
-      <section className="about-section" style={{padding: '0.5rem 0', height: '5cm'}}>
+      {/* FAQ and Documents Buttons */}
+      <section className="about-section" style={{padding: '0.5rem 0', minHeight: '10cm'}}>
         <div className="about-elegant-card" style={{padding: '0.75rem 1.5rem', minHeight: 'auto', height: '100%'}}>
           <div className="card-corner card-corner-tl"></div>
           <div className="card-corner card-corner-tr"></div>
@@ -167,6 +167,46 @@ export default function HCPMeningococcal() {
                   }}
                 >
                   For FAQs press here (B)
+                </a>
+                <a
+                  href="/doc/meningococcal-acwy"
+                  style={{
+                    display: 'block',
+                    flex: '1',
+                    minWidth: '280px',
+                    maxWidth: '350px',
+                    textAlign: 'center',
+                    padding: '1rem 1.5rem',
+                    background: '#40606D',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  Documents (ACWY)
+                </a>
+                <a
+                  href="/doc/meningococcal-b"
+                  style={{
+                    display: 'block',
+                    flex: '1',
+                    minWidth: '280px',
+                    maxWidth: '350px',
+                    textAlign: 'center',
+                    padding: '1rem 1.5rem',
+                    background: '#40606D',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  Documents (B)
                 </a>
               </div>
             </div>

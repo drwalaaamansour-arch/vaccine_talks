@@ -208,6 +208,51 @@ export default function urotavirusDoc() {
         </div>
       </section>
 
+      {/* PDF: Cross protection of RotaTeq */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+                Cross protection of RotaTeq
+              </h2>
+              <div style={{width: '100%', marginTop: '2rem'}}>
+                <iframe
+                  src="/cross%20protection%20of%20rotateq.pdf"
+                  width="100%"
+                  height="800px"
+                  style={{border: 'none', borderRadius: '8px'}}
+                  title="Cross protection of RotaTeq PDF"
+                />
+                <div style={{marginTop: '1rem', textAlign: 'center'}}>
+                  <a
+                    href="/cross%20protection%20of%20rotateq.pdf"
+                    download
+                    style={{
+                      display: 'inline-block',
+                      padding: '0.75rem 2rem',
+                      background: '#40606D',
+                      color: 'white',
+                      textDecoration: 'none',
+                      borderRadius: '6px',
+                      fontWeight: '600',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Download PDF / تحميل PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="footer">
         <div className="footer-top">
           <div className="footer-content">

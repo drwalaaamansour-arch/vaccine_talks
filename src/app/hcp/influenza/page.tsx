@@ -116,6 +116,27 @@ export default function HCPInfluenza() {
                   For FAQs press here
                 </a>
               </div>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '0.75rem', marginBottom: '1.5rem'}}>
+                <a
+                  href="/doc/influenza"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    maxWidth: '720px',
+                    textAlign: 'center',
+                    padding: '1rem 1.5rem',
+                    background: '#40606D',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  Influenza documents
+                </a>
+              </div>
             </div>
           </div>
         </div>

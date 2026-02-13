@@ -102,7 +102,7 @@ export default function HCPRota() {
       </section>
 
       {/* FAQ Button */}
-      <section className="about-section" style={{padding: '0', height: '5cm', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <section className="about-section" style={{padding: '0', minHeight: '8cm', paddingTop: '1.5rem', paddingBottom: '1.5rem', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <div className="about-elegant-card" style={{padding: '0.5rem 1.5rem', minHeight: 'auto', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <div className="card-corner card-corner-tl"></div>
           <div className="card-corner card-corner-tr"></div>
@@ -110,7 +110,7 @@ export default function HCPRota() {
           <div className="card-corner card-corner-br"></div>
 
           <div className="about-bilingual" style={{padding: '0', margin: '0', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%', padding: '0', margin: '0', justifyContent: 'center'}}>
+            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%', padding: '0', margin: '0', justifyContent: 'center', gap: '1rem'}}>
               <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '0', marginBottom: '0'}}>
                 <a
                   href="/faq/rotavirus"
@@ -130,6 +130,27 @@ export default function HCPRota() {
                   }}
                 >
                   For FAQs press here
+                </a>
+              </div>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '0', marginBottom: '0'}}>
+                <a
+                  href="/doc/rotavirus"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    maxWidth: '720px',
+                    textAlign: 'center',
+                    padding: '1rem 1.5rem',
+                    background: '#40606D',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  Rotavirus documents
                 </a>
               </div>
             </div>
@@ -271,7 +292,7 @@ export default function HCPRota() {
         </div>
 
         <div className="footer-bottom">
-          <div className="footeropyright">
+          <div className="footer-copyright">
             <p className="copyright-text">
               © 2025 Vaccine Talk – All rights reserved.
             </p>
