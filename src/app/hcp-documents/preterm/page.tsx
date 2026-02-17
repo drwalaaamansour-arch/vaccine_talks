@@ -1,21 +1,21 @@
 import Header from '@/components/Header';
 
-export default function ummrDoc() {
+export default function HCPDocumentsPreterm() {
   return (
     <div className="min-h-screen">
       <Header />
-      
+
       <main className="hero">
         <h1 className="hero-title animate-fade-in-up">
           Vaccine
           <br />
           Talk
         </h1>
-        
+
         <p className="hero-subtitle animate-fade-in-up animate-delay-1">
           (Egyptian Edition)
         </p>
-        
+
         <div className="hero-quote animate-fade-in-up animate-delay-2">
           <p>"Everything you need to know about</p>
           <p>vaccines in Egypt"</p>
@@ -24,11 +24,10 @@ export default function ummrDoc() {
 
       <div style={{width: '100%', display: 'flex', justifyContent: 'center', margin: '0.5rem 0'}}>
         <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', margin: 0}}>
-          MMR
+          Preterm infants
         </h2>
       </div>
 
-      {/* PDF: WHO Global Market Study - Measles-Containing Vaccines */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
@@ -39,64 +38,19 @@ export default function ummrDoc() {
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
               <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
-                WHO Global Market Study - Measles-Containing Vaccines
+                Egyptian preterm consensus
               </h2>
               <div style={{width: '100%', marginTop: '2rem'}}>
                 <iframe
-                  src="/mmr/WHO%20GLOBAL%20MARKET%20STUDY%20MEASLES-CONTAINING%20VACCINES.pdf"
+                  src="/Egyptian%20preterm%20consensus%20%20.pdf"
                   width="100%"
-                  height="800px"
+                  height="800"
                   style={{border: 'none', borderRadius: '8px'}}
-                  title="WHO Global Market Study Measles-Containing Vaccines PDF"
+                  title="Egyptian preterm consensus PDF"
                 />
                 <div style={{marginTop: '1rem', textAlign: 'center'}}>
                   <a
-                    href="/mmr/WHO%20GLOBAL%20MARKET%20STUDY%20MEASLES-CONTAINING%20VACCINES.pdf"
-                    download
-                    style={{
-                      display: 'inline-block',
-                      padding: '0.75rem 2rem',
-                      background: '#40606D',
-                      color: 'white',
-                      textDecoration: 'none',
-                      borderRadius: '6px',
-                      fontWeight: '600',
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    Download PDF / تحميل PDF
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PDF: Mumps Vaccines (WHO) */}
-      <section className="about-section">
-        <div className="about-elegant-card">
-          <div className="card-corner card-corner-tl"></div>
-          <div className="card-corner card-corner-tr"></div>
-          <div className="card-corner card-corner-bl"></div>
-          <div className="card-corner card-corner-br"></div>
-
-          <div className="about-bilingual">
-            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
-                Mumps Vaccines (WHO)
-              </h2>
-              <div style={{width: '100%', marginTop: '2rem'}}>
-                <iframe
-                  src="/mmr/Mumps%20vaccines%20(WHO).pdf"
-                  width="100%"
-                  height="800px"
-                  style={{border: 'none', borderRadius: '8px'}}
-                  title="Mumps Vaccines WHO PDF"
-                />
-                <div style={{marginTop: '1rem', textAlign: 'center'}}>
-                  <a
-                    href="/mmr/Mumps%20vaccines%20(WHO).pdf"
+                    href="/Egyptian%20preterm%20consensus%20%20.pdf"
                     download
                     style={{
                       display: 'inline-block',
@@ -126,7 +80,7 @@ export default function ummrDoc() {
               <p className="footer-text">
                 I'm always looking for new and exciting opportunities. Let's connect.
               </p>
-              
+
               <div className="footer-social">
                 <a href="https://www.facebook.com/profile.php?id=100064747760120" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -176,4 +130,3 @@ export default function ummrDoc() {
     </div>
   );
 }
-

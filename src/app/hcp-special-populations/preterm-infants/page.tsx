@@ -23,7 +23,7 @@ export default function PretermInfants() {
         </div>
       </main>
 
-      {/* Coming Soon Section */}
+      {/* Content Section */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
@@ -31,17 +31,182 @@ export default function PretermInfants() {
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
 
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">الرضع المبتسرين</h2>
-              <h2 className="coming-soon-title english">Preterm infants</h2>
-              <h2 className="coming-soon-title" style={{marginTop: '1rem'}}>قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد محتوى هذا القسم</span>
-                <span className="coming-soon-text">We're preparing the content for this section</span>
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', color: '#40606D'}}>
+                Preterm infants
+              </h2>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '2rem', marginBottom: '0.75rem', direction: 'ltr'}}>Overview</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Vaccination is a cornerstone of preventive pediatric care, offering protection against infectious diseases that pose significant risks to infants, especially those born preterm. Preterm infants, due to their unique physiological and immunological profiles, face heightened vulnerability to infections and complications. Ensuring optimal immunization in this population requires a nuanced understanding of their needs, risk factors, and best practices. This article presents an evidence-based approach to vaccination in preterm infants, tailored for healthcare professionals and pediatricians in Egypt.
               </p>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Definitions and Epidemiology</h3>
+              <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box', marginBottom: '1rem'}}>
+                <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: 0, marginBottom: '0.75rem', direction: 'ltr'}}>WHO Classification of Preterm Birth</h4>
+                <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', marginBottom: '0.75rem'}}>
+                  The World Health Organization (WHO) defines preterm birth as any birth occurring before 37 completed weeks of gestation. Preterm births are further classified as:
+                </p>
+                <ul style={{direction: 'ltr', textAlign: 'left', marginLeft: '1.5rem', marginBottom: 0, lineHeight: 1.8}}>
+                  <li><strong>Extremely preterm:</strong> &lt;28 weeks gestation</li>
+                  <li><strong>Very preterm:</strong> 28 to &lt;32 weeks gestation</li>
+                  <li><strong>Moderate to late preterm:</strong> 32 to &lt;37 weeks gestation</li>
+                </ul>
+              </div>
+
+              <h4 style={{textAlign: 'center', fontSize: '1.5rem', fontWeight: 600, color: '#40606D', marginTop: '1.25rem', marginBottom: '0.5rem', direction: 'ltr', width: '100%'}}>Prevalence of Preterm Birth in Egypt</h4>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Preterm birth is a significant public health concern in Egypt, with prevalence rates estimated between 10–13% of live births, aligning with global trends. Contributing factors include maternal health conditions, socioeconomic challenges, and limited access to prenatal care. The high prevalence underscores the importance of tailored immunization strategies for this population.
+              </p>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Immunological Considerations in Preterm Infants</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Preterm infants exhibit immature immune systems, characterized by reduced transplacental transfer of maternal antibodies, impaired cellular and humoral responses, and increased susceptibility to infections. This immaturity necessitates timely and appropriate vaccination to mitigate risks of severe disease, hospitalization, and mortality. Evidence shows that while antibody responses may be lower compared to term infants, most preterm infants develop adequate protection following standard immunization schedules.
+              </p>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Vaccination Schedules and Timing</h3>
+              <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box', marginBottom: '1rem'}}>
+                <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', marginTop: 0, marginBottom: '1rem'}}>
+                  Current international guidelines, including those endorsed by WHO and national health authorities, recommend that vaccines be administered according to the infant&apos;s chronological age, not corrected gestational age. This approach maximizes early protection, particularly in environments with high infectious disease burden such as Egypt.
+                </p>
+                <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: '0.5rem', marginBottom: '0.5rem', direction: 'ltr'}}>Exceptions and Special Considerations</h4>
+                <ul style={{direction: 'ltr', textAlign: 'left', marginLeft: '1.5rem', marginBottom: 0, lineHeight: 1.8}}>
+                  <li><strong>Hepatitis B Vaccine (HBV):</strong> For preterm infants weighing &lt;2,000 grams born to HBsAg-negative mothers, the initial HBV dose is often delayed until one month of age or hospital discharge, due to reduced immunogenicity. If the mother is HBsAg-positive or status unknown, vaccination and immunoglobulin should be administered at birth regardless of birth weight.</li>
+                </ul>
+              </div>
+
+              <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: '1.25rem', marginBottom: '0.5rem', direction: 'ltr'}}>Birth Weight Considerations</h4>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Low birth weight (&lt;2,000 grams) may affect vaccine immunogenicity for certain antigens (notably HBV), but most other vaccines (DTaP, Hib, IPV, rotavirus, PCV, etc.) are effective and safe when given at chronological age, regardless of birth weight.
+              </p>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Risks and Adverse Events</h3>
+              <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box', marginBottom: '1rem'}}>
+                <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: 0, marginBottom: '0.5rem', direction: 'ltr'}}>Apnoea and Bradycardia</h4>
+                <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', marginBottom: '1rem'}}>
+                  Preterm infants, particularly those born &lt;32 weeks or with ongoing respiratory instability, are at increased risk for post-vaccination apnoea and bradycardia, especially following the first immunization series. These events are typically transient and resolve spontaneously, but may warrant monitoring for 48–72 hours post-vaccination in high-risk infants.
+                </p>
+                <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: '0.5rem', marginBottom: '0.5rem', direction: 'ltr'}}>SIDS and Pain Response</h4>
+                <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', marginBottom: '1rem'}}>
+                  Concerns about sudden infant death syndrome (SIDS) have not been substantiated by robust evidence; vaccination does not increase SIDS risk. Pain response may be heightened in preterm infants, necessitating appropriate pain management strategies or comfort measures during vaccination.
+                </p>
+                <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: '0.5rem', marginBottom: '0.5rem', direction: 'ltr'}}>Local and Systemic Reactions</h4>
+                <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', marginBottom: 0}}>
+                  Adverse events following immunization (AEFI) in preterm infants are generally comparable to those seen in term infants. Common reactions include mild fever, irritability, and local redness or swelling at the injection site. Severe reactions are rare. Careful documentation and prompt management of any adverse event are essential.
+                </p>
+              </div>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Management Strategies for Vaccination in Preterm Infants</h3>
+              <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: '1.25rem', marginBottom: '0.5rem', direction: 'ltr'}}>Monitoring and Postponement</h4>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Infants who are clinically unstable, experiencing significant respiratory or cardiovascular compromise, or receiving intensive care should have immunizations temporarily deferred until stabilization. For stable preterm infants, vaccination should proceed as scheduled, with post-vaccination monitoring for apnoea and bradycardia in those at risk.
+              </p>
+              <h4 style={{textAlign: 'left', fontSize: '1.2rem', fontWeight: 600, color: '#40606D', marginTop: '1.25rem', marginBottom: '0.5rem', direction: 'ltr'}}>Injection Site and Needle Length Recommendations</h4>
+              <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box', marginBottom: '1rem'}}>
+                <ul style={{direction: 'ltr', textAlign: 'left', marginLeft: '1.5rem', marginBottom: 0, lineHeight: 1.8, marginTop: 0, paddingTop: 0}}>
+                  <li><strong>Site:</strong> The anterolateral thigh (vastus lateralis muscle) is the preferred site for intramuscular injections in infants.</li>
+                  <li><strong>Needle Length:</strong> Use a 16 mm (5/8 inch) to 25 mm (1 inch) needle, depending on infant size and muscle mass. For extremely low birth weight infants, a 16 mm needle is generally adequate.</li>
+                  <li><strong>Avoiding Compromised Skin:</strong> Do not administer injections in areas with infection, inflammation, or tissue damage.</li>
+                </ul>
+              </div>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Evidence from Clinical Studies</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Randomized controlled trials and observational studies have demonstrated that routine immunizations are safe and effective in preterm infants. Although seroconversion rates may be lower for some vaccines in extremely preterm or low birth weight infants, protective immunity is achieved in the majority. Studies confirm no increased risk of severe adverse events, and transient apnoea/bradycardia episodes do not lead to long-term sequelae. Early vaccination reduces the incidence of vaccine-preventable diseases and associated hospitalizations.
+              </p>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Special Considerations</h3>
+              <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box', marginBottom: '1rem'}}>
+                <ul style={{direction: 'ltr', textAlign: 'left', marginLeft: '1.5rem', marginBottom: 0, lineHeight: 1.8, marginTop: 0}}>
+                  <li><strong>Bronchopulmonary Dysplasia (BPD):</strong> Infants with chronic lung disease should receive routine vaccinations; post-vaccination monitoring may be extended due to increased risk of respiratory events.</li>
+                  <li><strong>Hospitalized Infants:</strong> Vaccination should not be delayed solely due to hospitalization; stable infants can be immunized in the neonatal unit.</li>
+                  <li><strong>Chronic Conditions:</strong> Preterm infants with additional comorbidities (e.g., congenital heart disease, immunodeficiency) may require tailored vaccine schedules and closer follow-up.</li>
+                </ul>
+              </div>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Family and Caregiver Immunization</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Immunizing household contacts and caregivers is critical in protecting preterm infants, who are particularly susceptible to severe infections. Family members should be up-to-date on influenza, pertussis, and other recommended vaccines. The &quot;cocooning&quot; strategy reduces transmission risk and enhances community immunity, offering indirect protection to the infant.
+              </p>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Conclusion</h3>
+              <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
+                Vaccination of preterm infants is both safe and essential. Healthcare providers should adhere to chronological age-based schedules, monitor for transient adverse events, and prioritize early immunization. Individualized care for infants with respiratory instability or chronic conditions, combined with family immunization, optimizes protection and outcomes. Ongoing education and vigilance remain key to improving immunization coverage and safeguarding the health of Egypt&apos;s vulnerable preterm population.
+              </p>
+
+              <h3 style={{textAlign: 'left', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginTop: '1.5rem', marginBottom: '0.75rem', direction: 'ltr'}}>Practical Guidance for Healthcare Providers</h3>
+              <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box', marginBottom: '1.5rem'}}>
+                <ul style={{direction: 'ltr', textAlign: 'left', marginLeft: '1.5rem', marginBottom: 0, lineHeight: 1.8, marginTop: 0}}>
+                  <li>Follow chronological age for vaccine scheduling, except for HBV in select low birth weight cases.</li>
+                  <li>Monitor high-risk infants for 48–72 hours post-vaccination for apnoea/bradycardia.</li>
+                  <li>Use appropriate injection site and needle length; avoid compromised skin.</li>
+                  <li>Educate families on vaccine benefits and the importance of caregiver immunization.</li>
+                  <li>Document and manage any adverse events promptly.</li>
+                </ul>
+              </div>
+
+              <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box', fontSize: '0.875rem'}}>
+                <h4 style={{textAlign: 'left', fontSize: '1rem', fontWeight: 600, color: '#40606D', marginTop: 0, marginBottom: '0.75rem', direction: 'ltr'}}>References</h4>
+                <ul style={{direction: 'ltr', textAlign: 'left', marginLeft: '1.5rem', marginBottom: 0, lineHeight: 1.9, fontSize: '0.875rem'}}>
+                  <li>
+                    Australian Government – Vaccination for preterm infants.{' '}
+                    <a href="https://immunisationhandbook.health.gov.au/contents/vaccination-for-special-risk-groups/vaccination-for-preterm-infants" target="_blank" rel="noopener noreferrer" style={{color: '#40606D', fontWeight: 600, textDecoration: 'underline'}}>immunisationhandbook.health.gov.au</a>
+                  </li>
+                  <li>
+                    Egyptian experts&apos; consensus. <em>BMC Infect Dis</em> 26, 130 (2026). Springer.{' '}
+                    <a href="https://url.de.m.mimecastprotect.com/s/Ah1HC79EKVt1r3N0yH8f9Fo6Zu7?domain=link.springer.com" target="_blank" rel="noopener noreferrer" style={{color: '#40606D', fontWeight: 600, textDecoration: 'underline'}}>link.springer.com</a>
+                  </li>
+                  <li>
+                    CDC – Special Situations (Vaccination of Preterm Infants).{' '}
+                    <a href="https://www.cdc.gov/vaccines/hcp/imz-best-practices/special-situations.html" target="_blank" rel="noopener noreferrer" style={{color: '#40606D', fontWeight: 600, textDecoration: 'underline'}}>cdc.gov/vaccines/hcp/imz-best-practices/special-situations.html</a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Vaccines for preterm – end of page, before footer */}
+              <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '0.5rem'}}>
+                <a
+                  href="/doc/preterm-infants"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    maxWidth: '720px',
+                    textAlign: 'center',
+                    padding: '0.75rem 1.25rem',
+                    background: '#40606D',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  Vaccine-Specific Guidelines
+                </a>
+              </div>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '0.75rem', marginBottom: '0.5rem'}}>
+                <a
+                  href="/hcp-documents/preterm"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    maxWidth: '720px',
+                    textAlign: 'center',
+                    padding: '0.75rem 1.25rem',
+                    background: '#40606D',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  For documents press here
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -61,6 +226,11 @@ export default function PretermInfants() {
                 <a href="https://www.facebook.com/profile.php?id=100064747760120" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/walaa-adel-895009369" className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </a>
                 <a href="https://www.instagram.com/talkvaccine?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" className="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
