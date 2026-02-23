@@ -48,12 +48,12 @@ export default function HCPDocuments() {
                 <a href="/doc/meningococcal-b">Meningococcal B</a>
                 <a href="/doc/mmr">MMR</a>
                 <a href="/doc/pneumococcal">Pneumococcal</a>
-                <a href="/hcp-documents/preterm">Preterm infants</a>
                 <a href="/doc/rotavirus">Rotavirus</a>
                 <a href="/doc/rabies">Rabies</a>
                 <a href="/doc/rsv">RSV</a>
                 <a href="/doc/shingles">Shingles (HZ)</a>
                 <a href="/doc/varicella">Varicella</a>
+                <a href="/hcp-documents/preterm">Preterm infants</a>
               </div>
             </div>
           </div>
