@@ -23,23 +23,75 @@ export default function HCPSpecialPopulations() {
         </div>
       </main>
 
-      {/* Coming Soon Section (matches What's New design) */}
+      {/* Special Populations Blocks Section */}
       <section className="about-section">
         <div className="about-elegant-card">
+          {/* Decorative Corner Elements */}
           <div className="card-corner card-corner-tl"></div>
           <div className="card-corner card-corner-tr"></div>
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
 
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد قسم الفئات الخاصة</span>
-                <span className="coming-soon-text">We're preparing the Special Populations section</span>
+          {/* Content */}
+          <div className="buttons-container">
+            <h2 className="buttons-title english" style={{fontSize: '2.5rem', color: '#40606D', fontWeight: '700', marginBottom: '1rem'}}>Special Populations</h2>
+            
+            <div style={{marginBottom: '2.5rem', marginTop: '1.5rem', lineHeight: '1.8', fontSize: '1.05rem', color: '#5a4a3a', textAlign: 'left', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto'}}>
+              <p style={{marginBottom: '1rem'}}>
+                This section aims to provide a comprehensive resource for healthcare professionals, researchers, policymakers, and caregivers navigating the complex terrain of vaccination in diverse and specialized populations. From immunocompromised individuals to pregnant women, people on dialysis, preterm infants, and beyond, each chapter delves into the specific considerations, challenges, and recommendations for vaccination within these distinct groups.
               </p>
+              <p style={{marginBottom: '1rem'}}>
+                The journey through these pages is a testament to the evolving nature of vaccination science and practice. Drawing upon the latest evidence-based guidelines from esteemed health authorities and expert consensus.
+              </p>
+              <p>
+                As we embark on this journey through the intricacies of vaccination for special populations, it is our hope that this section serves as a trusted companion, guiding healthcare professionals in their mission to protect and promote health for all. Together, let us navigate the path towards optimal vaccination strategies, ensuring that no individual is left behind in the pursuit of a healthier, safer world.
+              </p>
+            </div>
+            
+            <p style={{fontSize: '1.2rem', color: '#40606D', fontWeight: '600', marginBottom: '1.5rem', marginTop: '2rem', textAlign: 'center'}}>
+              To read more, press the following buttons:
+            </p>
+            
+            <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%'}}>
+              <a href="/hcp-special-populations/altered-immunocompetence" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">🛡️</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Altered Immunocompetence vaccination</span>
+              </a>
+              
+              <a href="/hcp-special-populations/preterm-infants" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">👶</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Preterm infants</span>
+              </a>
+              
+              <a href="/hcp-special-populations/pregnancy-breastfeeding" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">🤱</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Pregnancy and breastfeeding</span>
+              </a>
+              
+              <a href="/hcp-special-populations/anaesthesia-surgery" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">🏥</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Before or after anaesthesia or surgery</span>
+              </a>
+              
+              <a href="/hcp-special-populations/occupational-risk" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">👷</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>People at occupational risk</span>
+              </a>
+              
+              <a href="/hcp-special-populations/international-travellers" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">✈️</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>International travellers</span>
+              </a>
+              
+              <a href="/hcp-special-populations/immunoglobulin-blood-products" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">💉</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>People who have recently received normal human immunoglobulin and other blood products</span>
+              </a>
+              
+              <a href="/hcp-special-populations/cochlear-implants" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">🦻</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Cochlear Implants and Vaccination Recommendations</span>
+              </a>
             </div>
           </div>
         </div>
@@ -59,6 +111,11 @@ export default function HCPSpecialPopulations() {
                 <a href="https://www.facebook.com/profile.php?id=100064747760120" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/walaa-adel-895009369" className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </a>
                 <a href="https://www.instagram.com/talkvaccine?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" className="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
