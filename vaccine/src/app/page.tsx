@@ -166,12 +166,172 @@ export default function Home() {
                 <div className="news-window-content">
                   <div className="news-entry">
                     <div className="news-entry-header">
+                      <span className="news-date">February 10–13, 2026</span>
+                      <span className="news-category">Campaign</span>
+                    </div>
+                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>حملة تطعيم ضد شلل الأطفال</h3>
+                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>حملة تطعيم ضد شلل الأطفال من يوم ١٠-١٣ فبراير. الحملة مجانية وتستهدف الأطفال من عمر يوم حتى ٥ سنوات. الحملة محدودة وفي بعض المناطق بمحافظة القاهرة.</p>
+                    <a href="/polio" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>لمعرفة معلومات أكتر عن التطعيم اضغط هنا ←</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
                       <span className="news-date">January 8, 2026</span>
                       <span className="news-category">Updates</span>
                     </div>
                     <h3 className="news-entry-title">New GSK Pentavalent Meningococcal Vaccine Endorsed by ACIP</h3>
                     <p className="news-entry-text">CDC's Advisory Committee on Immunization Practices (ACIP) endorsed a new GSK pentavalent meningococcal vaccine (MenACWY-CRM/MenB-4C, Penmenvy) for use in people aged ≥10 years when both MenACWY and MenB are indicated. The recommendation highlights implementation efficiency, equity, and real-world feasibility. Serious adverse events were rare and occurred at similar frequencies in pentavalent and control groups. Using pentavalent vaccine as an alternative to concomitant administration was the most cost-saving option.</p>
                     <a href="/hcp-vaccine-updates" className="news-entry-link">Read More →</a>
+                  </div>
+                  
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">December 2025</span>
+                      <span className="news-category">Updates</span>
+                    </div>
+                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>أعلنت شركة فايزر مصر عن طرح لقاح للوقاية من الإصابة بالفيروس المخلوي التنفسي (RSV)</h3>
+                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>أعلنت شركة فايزر مصر عن طرح لقاح للوقاية من الإصابة بالفيروس المخلوي التنفسي (RSV). هذا اللقاح يمثل تطورًا مهمًا في مجال الوقاية من الأمراض التنفسية في مصر.</p>
+                    <a href="/rsv" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>اقرأ المزيد ←</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newly Added Section */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem', color: '#40606D'}}>
+                Newly Added / أضيف حديثا
+              </h2>
+              
+              <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '900px', margin: '0 auto'}}>
+                <a 
+                  href="/hcp-special-populations/preterm-infants" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Preterm infant vaccination
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Evidence-based guidance on vaccination in preterm infants, including WHO classification, immunological considerations, vaccine-specific guidelines, and Egyptian preterm consensus documents.
+                  </p>
+                  <span style={{display: 'inline-block', marginTop: '0.5rem', color: '#40606D', fontWeight: 600, fontSize: '0.95rem'}}>Read more →</span>
+                </a>
+
+                <a 
+                  href="/hcp-special-populations/immunoglobulin-blood-products" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    People who have recently received normal human immunoglobulin and other blood products
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Information about vaccination considerations for people who have recently received normal human immunoglobulin and other blood products, including spacing requirements and recommendations for live and non-live vaccines.
+                  </p>
+                </a>
+
+                <a 
+                  href="/hcp-special-populations/anaesthesia-surgery" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Before or after anaesthesia or surgery
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Guidance on vaccination timing in relation to surgery and anaesthesia, including recommendations for elective procedures and considerations for post-operative vaccination.
+                  </p>
+                </a>
+
+                <a 
+                  href="/hcp-special-populations/cochlear-implants" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Cochlear Implants and Vaccination Recommendations
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    CDC guidance on pneumococcal, Hib, and meningococcal vaccination for people with cochlear implants to prevent bacterial meningitis.
+                  </p>
+                </a>
+
+                <div 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                    <div>
+                      <a href="/rsv" style={{textDecoration: 'none'}}>
+                        <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                          RSV (الفيروس التنفسي المخلوي)
+                        </h3>
+                        <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                          معلومات جديدة عن تطعيم RSV لحماية الرضع من الإصابة بالفيروس المخلوي التنفسي.
+                        </p>
+                      </a>
+                    </div>
+                    <div style={{borderTop: '1px solid rgba(64, 96, 109, 0.2)', paddingTop: '1rem'}}>
+                      <a href="/hcp/rsv" style={{textDecoration: 'none'}}>
+                        <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                          RSV (Respiratory Syncytial Virus)
+                        </h3>
+                        <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                          New information about RSV vaccination to protect infants from respiratory syncytial virus infection.
+                        </p>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -196,6 +356,11 @@ export default function Home() {
                 <a href="https://www.facebook.com/profile.php?id=100064747760120" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/walaa-adel-895009369" className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </a>
                 <a href="https://www.instagram.com/talkvaccine?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" className="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
