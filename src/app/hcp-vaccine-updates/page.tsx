@@ -36,6 +36,74 @@ export default function HCPVaccineUpdates() {
               <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}}>
                 Global Vaccine Updates
               </h2>
+
+              {/* AAFP 2026 schedules — first item under section title */}
+              <div style={{width: '100%', marginBottom: '2rem'}}>
+                <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem'}}>
+                    <span style={{fontSize: '0.9rem', color: '#8b7355', fontWeight: 600}}>March 1, 2026</span>
+                    <span style={{fontSize: '0.75rem', color: '#8b7355', background: 'rgba(139, 115, 85, 0.1)', padding: '0.25rem 0.75rem', borderRadius: '12px', fontWeight: 600, textTransform: 'uppercase'}}>Guidelines</span>
+                  </div>
+
+                  <h3 style={{fontSize: '2rem', fontWeight: 700, color: '#40606D', margin: '0 0 1rem 0', lineHeight: 1.3}}>
+                    American Academy of Family Physicians releases its 2026 recommended schedules for children and adolescents and for adults
+                  </h3>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: 0}}>
+                    On March 1, American Academy of Family Physicians (AAFP) released its 2026 immunization schedules. The AAFP&apos;s guidance aligns with the AAP&apos;s 2026 childhood schedule and carries forward the 2025 adult schedule with targeted updates. Both schedules provide clear, practical, evidence-based recommendations.
+                  </p>
+
+                  <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(139, 115, 85, 0.2)'}}>
+                    <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.25rem'}}>
+                      <strong>AAFP immunization schedules (PDF):</strong>
+                    </p>
+                    <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
+                      <div>
+                        <p style={{fontSize: '0.95rem', color: '#8b7355', fontWeight: 600, margin: '0 0 0.75rem 0'}}>
+                          Birth through 18 years
+                        </p>
+                        <iframe
+                          src="/adolescent-aafp-imm-schedule%20birth%20to%2018.pdf"
+                          width="100%"
+                          height="520px"
+                          style={{border: 'none', borderRadius: '8px'}}
+                          title="AAFP immunization schedule birth through 18 years"
+                        />
+                        <div style={{marginTop: '0.75rem', textAlign: 'center'}}>
+                          <a
+                            href="/adolescent-aafp-imm-schedule%20birth%20to%2018.pdf"
+                            download
+                            style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}
+                          >
+                            Download PDF / تحميل PDF
+                          </a>
+                        </div>
+                      </div>
+                      <div>
+                        <p style={{fontSize: '0.95rem', color: '#8b7355', fontWeight: 600, margin: '0 0 0.75rem 0'}}>
+                          Adult
+                        </p>
+                        <iframe
+                          src="/adult-aafp-imm-schedule.pdf"
+                          width="100%"
+                          height="520px"
+                          style={{border: 'none', borderRadius: '8px'}}
+                          title="AAFP adult immunization schedule"
+                        />
+                        <div style={{marginTop: '0.75rem', textAlign: 'center'}}>
+                          <a
+                            href="/adult-aafp-imm-schedule.pdf"
+                            download
+                            style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}
+                          >
+                            Download PDF / تحميل PDF
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               
               <div style={{width: '100%'}}>
                 <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>
@@ -44,9 +112,9 @@ export default function HCPVaccineUpdates() {
                     <span style={{fontSize: '0.75rem', color: '#8b7355', background: 'rgba(139, 115, 85, 0.1)', padding: '0.25rem 0.75rem', borderRadius: '12px', fontWeight: 600, textTransform: 'uppercase'}}>New Recommendation</span>
                   </div>
                   
-                  <h2 style={{fontSize: '2rem', fontWeight: 700, color: '#40606D', margin: '0 0 1.5rem 0', lineHeight: 1.3}}>
+                  <h3 style={{fontSize: '2rem', fontWeight: 700, color: '#40606D', margin: '0 0 1.5rem 0', lineHeight: 1.3}}>
                     GSK Pentavalent Meningococcal Vaccine Endorsed by ACIP
-                  </h2>
+                  </h3>
                   
                   <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
                     CDC's Advisory Committee on Immunization Practices (ACIP) endorsed a new GSK pentavalent meningococcal vaccine (MenACWY-CRM/MenB-4C, Penmenvy) for use in people aged ≥10 years when both MenACWY and MenB are indicated.

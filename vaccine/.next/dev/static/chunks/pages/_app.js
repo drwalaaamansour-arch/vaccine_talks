@@ -1,0 +1,13 @@
+__turbopack_load_page_chunks__("/_app", [
+  "static/chunks/f6014_next_dist_compiled_b8453f5c._.js",
+  "static/chunks/f6014_next_dist_shared_lib_61a2a24c._.js",
+  "static/chunks/f6014_next_dist_client_ce59ec55._.js",
+  "static/chunks/f6014_next_dist_8cf1e9cd._.js",
+  "static/chunks/f6014_next_app_c754f913.js",
+  "static/chunks/[next]_entry_page-loader_ts_c1ab2398._.js",
+  "static/chunks/f6014_react-dom_e296bc5f._.js",
+  "static/chunks/f6014_e5b401d0._.js",
+  "static/chunks/[root-of-the-server]__951ec113._.js",
+  "static/chunks/vaccine_pages__app_2da965e7._.js",
+  "static/chunks/turbopack-vaccine_pages__app_4781bdcb._.js"
+])

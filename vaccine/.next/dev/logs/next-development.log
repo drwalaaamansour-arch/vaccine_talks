@@ -1,0 +1,33 @@
+[00:00:01.426] Server  LOG     
+[00:00:01.426] Server  LOG       We detected TypeScript in your project and created a tsconfig.json file for you.
+[00:00:01.596] Server  LOG     ✓ Ready in 1074ms
+[00:00:01.597] Server  WARN    ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:02.524] Server  ERROR   ⨯ ./vaccine/src/app/page.tsx:1:1
+Module not found: Can't resolve '@/components/Header'
+> 1 | import Header from '@/components/Header';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Home() {
+  4 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:03.189] Server  LOG     ✓ Compiled in 627ms
+[00:00:04.382] Browser ERROR   uncaughtError: Error: ./vaccine/src/app/page.tsx:1:1
+Module not found: Can't resolve '@/components/Header'
+> 1 | import Header from '@/components/Header';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | export default function Home() {
+  4 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:04.890] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./vaccine/node_modules/next/dist/shared/lib/router/router.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
