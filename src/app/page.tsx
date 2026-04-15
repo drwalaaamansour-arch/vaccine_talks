@@ -166,6 +166,26 @@ export default function Home() {
                 <div className="news-window-content">
                   <div className="news-entry">
                     <div className="news-entry-header">
+                      <span className="news-date">March 30, 2026</span>
+                      <span className="news-category">Study</span>
+                    </div>
+                    <h3 className="news-entry-title">PCV13 study in pediatric IBD: 2-year prospective findings</h3>
+                    <p className="news-entry-text">A new Expert Review of Vaccines study reports that a single PCV13 dose was not associated with increased inflammatory bowel disease activity in children and adolescents over 24 months, with similar exacerbation rates versus controls. The full study PDF is now available on the HCP Vaccine Updates page.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">March 13, 2026</span>
+                      <span className="news-category">FDA Update</span>
+                    </div>
+                    <h3 className="news-entry-title">FDA expands GSK&apos;s Arexvy license to include high-risk adults 18 to 49 years</h3>
+                    <p className="news-entry-text">FDA expanded the indicated age range for Arexvy to include adults age 18 through 49 years at increased risk for RSV lower respiratory tract disease. The update notes Arexvy should not be used during pregnancy, and that RSV vaccine recommendations are pending due to the stay of ACIP activities.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
                       <span className="news-date">March 1, 2026</span>
                       <span className="news-category">Guidelines</span>
                     </div>

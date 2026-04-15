@@ -37,6 +37,115 @@ export default function HCPVaccineUpdates() {
                 Global Vaccine Updates
               </h2>
 
+              {/* PCV13 in pediatric IBD study */}
+              <div style={{width: '100%', marginBottom: '2rem'}}>
+                <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem'}}>
+                    <span style={{fontSize: '0.9rem', color: '#8b7355', fontWeight: 600}}>March 30, 2026</span>
+                    <span style={{fontSize: '0.75rem', color: '#8b7355', background: 'rgba(139, 115, 85, 0.1)', padding: '0.25rem 0.75rem', borderRadius: '12px', fontWeight: 600, textTransform: 'uppercase'}}>Study</span>
+                  </div>
+
+                  <h3 style={{fontSize: '2rem', fontWeight: 700, color: '#40606D', margin: '0 0 1rem 0', lineHeight: 1.3}}>
+                    “The Impact of a Pneumococcal Vaccination on Disease Activity in Children and Adolescents with Inflammatory Bowel Disease: A 2-Year Prospective Study” published in Expert Review of Vaccines
+                  </h3>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    In its March 30 issue, Expert Review of Vaccines published The Impact of a Pneumococcal Vaccination on Disease Activity in Children and Adolescents with Inflammatory Bowel Disease: A 2-Year Prospective Study. The study was designed to evaluate whether PCV13 administration was associated with flare ups in pediatric inflammatory bowel disease (IBD) patients. The study concluded that a single dose of PCV13 does not increase inflammatory bowel disease activity in pediatric IBD patients during the 24 months following vaccination. A portion of the abstract appears below.
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    Infectious diseases are known triggers for inflammatory bowel disease (IBD) exacerbations. Although vaccines can prevent many such infections, hesitancy persists among pediatric IBD patients and their caregivers due to concerns about vaccine-induced disease flare-ups. The aim of the study was to evaluate the impact of the 13-valent pneumococcal conjugate vaccine (PCV13) on disease activity in children and adolescents with IBD over a 24-month period post-vaccination. . . .
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    This prospective, multicenter cohort study included IBD patients aged 4-18 years. Participants were assigned to a vaccinated group (single PCV13 dose) or an unvaccinated control group. Disease activity was monitored using PUCAI/PCDAI [Pediatric Ulcerative Colitis Activity Index/ Pediatric Crohn&apos;s Disease Activity Index] scores, and exacerbation rates were recorded at 6, 12, 18, and 24 months. . . .
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    A total of 279 patients (52.3% male; median age, 167 months) were enrolled, of whom 93 (33.3%) received PCV13. The control group showed higher, but not statistically significant, disease activity at any time point (p = 0.06 . . .) and exacerbation rates (p = 0.47 . . .). . . .
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: 0}}>
+                    A single dose of PCV13 does not increase disease activity in pediatric IBD patients during the 24 months following vaccination.
+                  </p>
+
+                  <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(139, 115, 85, 0.2)'}}>
+                    <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1rem'}}>
+                      <strong>Full study (PDF):</strong>
+                    </p>
+                    <iframe
+                      src="/The%20impact%20of%20a%20pneumococcal%20vaccination%20on%20disease%20activity%20in%20children%20and%20adolescents%20with%20inflammatory%20bowel%20disease%20%20a%202-year%20prospective%20study.pdf"
+                      width="100%"
+                      height="520px"
+                      style={{border: 'none', borderRadius: '8px'}}
+                      title="Pneumococcal vaccination in pediatric IBD study PDF"
+                    />
+                    <div style={{marginTop: '0.75rem', textAlign: 'center'}}>
+                      <a
+                        href="/The%20impact%20of%20a%20pneumococcal%20vaccination%20on%20disease%20activity%20in%20children%20and%20adolescents%20with%20inflammatory%20bowel%20disease%20%20a%202-year%20prospective%20study.pdf"
+                        download
+                        style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}
+                      >
+                        Download PDF / تحميل PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* FDA expands Arexvy license */}
+              <div style={{width: '100%', marginBottom: '2rem'}}>
+                <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem'}}>
+                    <span style={{fontSize: '0.9rem', color: '#8b7355', fontWeight: 600}}>March 13, 2026</span>
+                    <span style={{fontSize: '0.75rem', color: '#8b7355', background: 'rgba(139, 115, 85, 0.1)', padding: '0.25rem 0.75rem', borderRadius: '12px', fontWeight: 600, textTransform: 'uppercase'}}>FDA Update</span>
+                  </div>
+
+                  <h3 style={{fontSize: '2rem', fontWeight: 700, color: '#40606D', margin: '0 0 1rem 0', lineHeight: 1.3}}>
+                    FDA expands license for GSK&apos;s RSV vaccine (Arexvy) to include high-risk adults age 18 to 49 years
+                  </h3>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    On March 13, FDA expanded the indicated age range for Arexvy (RSV vaccine, GSK). This approval expands the indication to include adults age 18 through 49 years who are at increased risk for lower respiratory tract disease (LRTD) due to RSV. Arexvy should not be used during pregnancy. Arexvy&apos;s license continues to include adults age 60 years or older and adults age 50 through 59 years with high-risk conditions for severe RSV disease.
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    Due to the stay of ACIP activities, it is not known when CDC recommendations for use of this product will be considered.
+                  </p>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '0.75rem'}}>
+                    Three RSV vaccines are now licensed for all adults age 60 years or older AND adults age 18 through 59 years with high-risk conditions for severe RSV disease:
+                  </p>
+                  <ul style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', margin: 0, paddingLeft: '1.5rem'}}>
+                    <li>Arexvy (RSVpreF3, GSK)</li>
+                    <li>Abrysvo (RSVpreF, Pfizer)</li>
+                    <li>mResvia (mRNA RSV, Moderna)</li>
+                  </ul>
+
+                  <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(139, 115, 85, 0.2)'}}>
+                    <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1rem'}}>
+                      <strong>FDA approval letter (PDF):</strong>
+                    </p>
+                    <iframe
+                      src="/march-12-2026-approval-letter-arexvy.pdf"
+                      width="100%"
+                      height="520px"
+                      style={{border: 'none', borderRadius: '8px'}}
+                      title="FDA approval letter for Arexvy"
+                    />
+                    <div style={{marginTop: '0.75rem', textAlign: 'center'}}>
+                      <a
+                        href="/march-12-2026-approval-letter-arexvy.pdf"
+                        download
+                        style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}
+                      >
+                        Download PDF / تحميل PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* AAFP 2026 schedules — first item under section title */}
               <div style={{width: '100%', marginBottom: '2rem'}}>
                 <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>
