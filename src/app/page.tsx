@@ -166,6 +166,18 @@ export default function Home() {
                 <div className="news-window-content">
                   <div className="news-entry">
                     <div className="news-entry-header">
+                      <span className="news-date">April 19–22, 2026</span>
+                      <span className="news-category">Campaign</span>
+                    </div>
+                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>حملة تطعيم ضد شلل الأطفال</h3>
+                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                      حملة تطعيم ضد شلل الأطفال من يوم ١٩ أبريل ولمدة ٤ أيام. الحملة مجانية وتستهدف الأطفال من عمر يوم حتى ٥ سنوات. الحملة محدودة وفي السادس من أكتوبر والشيخ زايد بمحافظة الجيزة.
+                    </p>
+                    <a href="/polio" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>لمعرفة معلومات أكثر عن التطعيم اضغط هنا ←</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
                       <span className="news-date">March 30, 2026</span>
                       <span className="news-category">Study</span>
                     </div>
@@ -192,16 +204,6 @@ export default function Home() {
                     <h3 className="news-entry-title">American Academy of Family Physicians: 2026 immunization schedules</h3>
                     <p className="news-entry-text">The AAFP has published its 2026 recommended immunization schedules for birth through 18 years and for adults—aligned with the AAP childhood schedule and with targeted updates to the adult schedule. On our HCP Vaccine Updates page you can read the summary and open or download the official AAFP schedule PDFs.</p>
                     <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
-                  </div>
-
-                  <div className="news-entry">
-                    <div className="news-entry-header">
-                      <span className="news-date">February 10–13, 2026</span>
-                      <span className="news-category">Campaign</span>
-                    </div>
-                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>حملة تطعيم ضد شلل الأطفال</h3>
-                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>حملة تطعيم ضد شلل الأطفال من يوم ١٠-١٣ فبراير. الحملة مجانية وتستهدف الأطفال من عمر يوم حتى ٥ سنوات. الحملة محدودة وفي بعض المناطق بمحافظة القاهرة.</p>
-                    <a href="/polio" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>لمعرفة معلومات أكتر عن التطعيم اضغط هنا ←</a>
                   </div>
 
                   <div className="news-entry">
