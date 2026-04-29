@@ -39,6 +39,27 @@ export default function HCPDT() {
               <p className="about-lang-intro" style={{maxWidth: '900px', marginTop: '0.5rem'}}>
                 This section provides healthcare professionals with resources and references related to diphtheria and tetanus (DT) containing vaccines used in Egypt. More detailed product information will be added here.
               </p>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '1rem', marginBottom: '0.5rem'}}>
+                <a
+                  href="/faq/dt"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    maxWidth: '720px',
+                    textAlign: 'center',
+                    padding: '1rem 1.5rem',
+                    background: '#40606D',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '1.1rem',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                  }}
+                >
+                  For FAQs press here
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -339,6 +360,40 @@ export default function HCPDT() {
                 />
                 <div style={{marginTop: '1rem', textAlign: 'center'}}>
                   <a href="/dt/Hexaxim.pdf" download style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}>Download PDF / تحميل PDF</a>
+                </div>
+                <p style={{marginTop: '1rem', textAlign: 'center', direction: 'rtl', color: '#40606D', lineHeight: 1.6}}>
+                  المصدر: الهيئة المصرية للدواء / وزارة الصحة<br />
+                  لا توجد علاقة مباشرة بين الموقع وهذه الشركات، والمحتوى لأغراض التوعية فقط. ولا يجوز استخدامها في أي أغراض تجارية
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PDF: Product Monograph Adacel-polio */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+                Product Monograph Adacel-polio
+              </h2>
+              <div style={{width: '100%', marginTop: '2rem'}}>
+                <iframe
+                  src="/Product%20Monograph%20Adacel-polio.pdf"
+                  width="100%"
+                  height="800px"
+                  style={{border: 'none', borderRadius: '8px'}}
+                  title="Product Monograph Adacel-polio PDF"
+                />
+                <div style={{marginTop: '1rem', textAlign: 'center'}}>
+                  <a href="/Product%20Monograph%20Adacel-polio.pdf" download style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}>Download PDF / تحميل PDF</a>
                 </div>
                 <p style={{marginTop: '1rem', textAlign: 'center', direction: 'rtl', color: '#40606D', lineHeight: 1.6}}>
                   المصدر: الهيئة المصرية للدواء / وزارة الصحة<br />

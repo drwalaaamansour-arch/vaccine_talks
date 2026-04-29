@@ -37,6 +37,109 @@ export default function HCPVaccineUpdates() {
                 Global Vaccine Updates
               </h2>
 
+              {/* Immunize.org and Autism Science Foundation update */}
+              <div style={{width: '100%', marginBottom: '2rem'}}>
+                <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>
+                  <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem'}}>
+                    <span style={{fontSize: '0.9rem', color: '#8b7355', fontWeight: 600}}>April 2026</span>
+                    <span style={{fontSize: '0.75rem', color: '#8b7355', background: 'rgba(139, 115, 85, 0.1)', padding: '0.25rem 0.75rem', borderRadius: '12px', fontWeight: 600, textTransform: 'uppercase'}}>Evidence Update</span>
+                  </div>
+
+                  <h3 style={{fontSize: '2rem', fontWeight: 700, color: '#40606D', margin: '0 0 1rem 0', lineHeight: 1.3}}>
+                    Immunize.org and the Autism Science Foundation updated their Evidence Shows Vaccines Unrelated to Autism resource.
+                  </h3>
+
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1.5rem'}}>
+                    Extensive scientific research and reviews by global medical authorities confirm that vaccines are unrelated to the development of autism. Multiple large-scale studies have refuted links between autism and the MMR vaccine, thimerosal-containing vaccines, or the total number of vaccines administered to children.
+                  </p>
+
+                  <h4 style={{fontSize: '1.2rem', fontWeight: 700, color: '#40606D', margin: '0 0 0.75rem 0'}}>
+                    Scientific Consensus on MMR and Autism
+                  </h4>
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '0.75rem'}}>
+                    Independent groups of experts, including the National Academy of Medicine, have reviewed the evidence and concluded that the MMR vaccine does not cause autism.
+                  </p>
+                  <ul style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginTop: 0, marginBottom: '1.5rem', paddingLeft: '1.5rem'}}>
+                    <li><strong>Study Scale:</strong> Research includes massive population studies, such as a Danish cohort of over 650,000 children, which found no increased risk for autism following vaccination.</li>
+                    <li><strong>High-Risk Groups:</strong> Studies specifically looking at children with older siblings who have autism (a higher-risk group) found no association between the MMR vaccine and the development of ASD.</li>
+                    <li><strong>Retracted Research:</strong> The original 1998 claim of a link between MMR and autism was found to be based on falsified data and "dishonest and irresponsible research". The study was fully retracted, and the doctor&apos;s medical license was revoked.</li>
+                  </ul>
+
+                  <h4 style={{fontSize: '1.2rem', fontWeight: 700, color: '#40606D', margin: '0 0 0.75rem 0'}}>
+                    Thimerosal and Immune System Capacity
+                  </h4>
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '0.75rem'}}>
+                    Concerns regarding vaccine ingredients or "overwhelming" a baby&apos;s immune system are not supported by clinical evidence.
+                  </p>
+                  <ul style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginTop: 0, marginBottom: '1.5rem', paddingLeft: '1.5rem'}}>
+                    <li><strong>Thimerosal:</strong> This mercury-based preservative (ethylmercury) is cleared from the body quickly and is not linked to autism. Even after its removal from most childhood vaccines in 2001, autism rates continued to rise, further proving no correlation.</li>
+                    <li><strong>Antigens:</strong> A baby&apos;s immune system encounters significantly more antigens daily from common bacteria and viruses than those found in the entire childhood vaccination schedule.</li>
+                  </ul>
+
+                  <h4 style={{fontSize: '1.2rem', fontWeight: 700, color: '#40606D', margin: '0 0 0.75rem 0'}}>
+                    Known Risk Factors for Autism
+                  </h4>
+                  <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '0.75rem'}}>
+                    While the exact causes of autism are still being studied, current research emphasizes genetic and environmental factors rather than vaccines.
+                  </p>
+                  <ul style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginTop: 0, marginBottom: 0, paddingLeft: '1.5rem'}}>
+                    <li><strong>Genetics:</strong> Over 100 genes associated with brain development have been identified as risk factors. Brain differences in children with ASD can be detected as early as six months of age, often before vaccines are administered.</li>
+                    <li><strong>Environmental Factors:</strong> Factors linked to increased ASD risk include maternal infections with fever during pregnancy, high levels of air pollution, and certain medications like valproic acid.</li>
+                    <li><strong>Prevalence:</strong> The rising number of autism diagnoses is largely attributed to increased awareness, better diagnostic practices, and expanded access to services.</li>
+                  </ul>
+
+                  <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(139, 115, 85, 0.2)'}}>
+                    <p style={{fontSize: '1.05rem', lineHeight: 1.8, color: '#40606D', marginBottom: '1rem'}}>
+                      <strong>Supporting resources (PDF):</strong>
+                    </p>
+                    <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
+                      <div>
+                        <p style={{fontSize: '0.95rem', color: '#8b7355', fontWeight: 600, margin: '0 0 0.75rem 0'}}>
+                          Autism
+                        </p>
+                        <iframe
+                          src="/Autism%20.pdf"
+                          width="100%"
+                          height="520px"
+                          style={{border: 'none', borderRadius: '8px'}}
+                          title="Autism evidence PDF"
+                        />
+                        <div style={{marginTop: '0.75rem', textAlign: 'center'}}>
+                          <a
+                            href="/Autism%20.pdf"
+                            download
+                            style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}
+                          >
+                            Download PDF / تحميل PDF
+                          </a>
+                        </div>
+                      </div>
+                      <div>
+                        <p style={{fontSize: '0.95rem', color: '#8b7355', fontWeight: 600, margin: '0 0 0.75rem 0'}}>
+                          MMR and autism
+                        </p>
+                        <iframe
+                          src="/Mmr%20and%20autism%20.pdf"
+                          width="100%"
+                          height="520px"
+                          style={{border: 'none', borderRadius: '8px'}}
+                          title="MMR and autism evidence PDF"
+                        />
+                        <div style={{marginTop: '0.75rem', textAlign: 'center'}}>
+                          <a
+                            href="/Mmr%20and%20autism%20.pdf"
+                            download
+                            style={{display: 'inline-block', padding: '0.75rem 2rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '6px', fontWeight: '600', transition: 'all 0.3s ease'}}
+                          >
+                            Download PDF / تحميل PDF
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* PCV13 in pediatric IBD study */}
               <div style={{width: '100%', marginBottom: '2rem'}}>
                 <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', padding: '2rem', background: 'rgba(255, 255, 255, 0.6)', borderRadius: '16px', border: '2px solid rgba(139, 115, 85, 0.2)'}}>

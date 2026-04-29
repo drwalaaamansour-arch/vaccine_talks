@@ -166,6 +166,16 @@ export default function Home() {
                 <div className="news-window-content">
                   <div className="news-entry">
                     <div className="news-entry-header">
+                      <span className="news-date">April 2026</span>
+                      <span className="news-category">Evidence Update</span>
+                    </div>
+                    <h3 className="news-entry-title">Immunize.org and Autism Science Foundation: vaccines are not linked to autism</h3>
+                    <p className="news-entry-text">Immunize.org and the Autism Science Foundation updated their evidence resource confirming no causal link between autism and vaccines, including MMR and thimerosal-containing vaccines. The update also covers immune system capacity, known genetic/environmental risk factors, and includes supporting PDFs now available on HCP Vaccine Updates.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
                       <span className="news-date">April 19–22, 2026</span>
                       <span className="news-category">Campaign</span>
                     </div>
