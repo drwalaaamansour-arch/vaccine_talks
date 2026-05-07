@@ -33,15 +33,18 @@ export default function AlteredImmunocompetence() {
 
           <div className="coming-soon-container">
             <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
-              <h2 className="coming-soon-title">تطعيم الأشخاص ذوي المناعة المتغيرة</h2>
-              <h2 className="coming-soon-title english">Altered Immunocompetence vaccination</h2>
-              <h2 className="coming-soon-title" style={{marginTop: '1rem'}}>قريباً</h2>
-              <h2 className="coming-soon-title english">Coming Soon</h2>
-              <p className="coming-soon-message">
-                <span className="coming-soon-text arabic">نعمل على إعداد محتوى هذا القسم</span>
-                <span className="coming-soon-text">We're preparing the content for this section</span>
-              </p>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.25rem', marginBottom: '1rem', color: '#40606D'}}>
+                Altered Immunocompetence Vaccination
+              </h2>
+              <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '1.5rem'}}>
+                <div style={{display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%', maxWidth: '900px'}}>
+                  <a href="/hcp-special-populations/altered-immunocompetence/general-principles" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>General principles</a>
+                  <a href="/hcp-special-populations/altered-immunocompetence/vaccination-of-contacts" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Vaccination of Contacts of Persons with Altered Immunocompetence</a>
+                  <a href="/hcp-special-populations/altered-immunocompetence/safety-and-effectiveness" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Safety and effectiveness</a>
+                  <a href="/hcp-special-populations/altered-immunocompetence/hematopoietic-cell-transplants" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Hematopoietic Cell Transplants</a>
+                  <a href="/hcp-special-populations/altered-immunocompetence/corticosteroids-and-immunosuppressive-drugs" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Corticosteroids and Immunosuppressive Drugs</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -57,6 +57,11 @@ export default function HCPSpecialPopulations() {
                 <span className="button-emoji">🛡️</span>
                 <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Altered Immunocompetence vaccination</span>
               </a>
+
+              <a href="/hcp-special-populations/altered-immunocompetence/anatomic-or-functional-asplenia" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+                <span className="button-emoji">⚕️</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Anatomic or Functional Asplenia</span>
+              </a>
               
               <a href="/hcp-special-populations/preterm-infants" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
                 <span className="button-emoji">👶</span>

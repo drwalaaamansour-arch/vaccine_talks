@@ -253,7 +253,7 @@ export default function upneumococcalDoc() {
         </div>
       </section>
 
-      {/* PDF: PCV 20 (EMA) */}
+      {/* PDF: CDC recommendation for Pneumococcal vaccination update 2025 */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
@@ -264,19 +264,19 @@ export default function upneumococcalDoc() {
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
               <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
-                PCV 20 (EMA)
+                CDC recommendation for Pneumococcal vaccination update 2025
               </h2>
               <div style={{width: '100%', marginTop: '2rem'}}>
                 <iframe
-                  src="/pneumo/PCV%2020%20EMA.pdf"
+                  src="/CDC%20recommendation%20for%20Pneumococcal%20vaccination%20update%202025.pdf"
                   width="100%"
                   height="800px"
                   style={{border: 'none', borderRadius: '8px'}}
-                  title="PCV 20 EMA PDF"
+                  title="CDC recommendation for Pneumococcal vaccination update 2025 PDF"
                 />
                 <div style={{marginTop: '1rem', textAlign: 'center'}}>
                   <a
-                    href="/pneumo/PCV%2020%20EMA.pdf"
+                    href="/CDC%20recommendation%20for%20Pneumococcal%20vaccination%20update%202025.pdf"
                     download
                     style={{
                       display: 'inline-block',
