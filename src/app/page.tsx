@@ -280,6 +280,28 @@ export default function Home() {
                 </a>
 
                 <a 
+                  href="/hcp-special-populations/altered-immunocompetence/anatomic-or-functional-asplenia" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Anatomic and Functional Asplenia
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Dedicated guidance for anatomic and functional asplenia, including pneumococcal, meningococcal, and Hib recommendations with references and linked PDF resources.
+                  </p>
+                  <span style={{display: 'inline-block', marginTop: '0.5rem', color: '#40606D', fontWeight: 600, fontSize: '0.95rem'}}>Read more →</span>
+                </a>
+
+                <a 
                   href="/hcp-special-populations/immunoglobulin-blood-products" 
                   className="newly-added-card"
                   style={{
