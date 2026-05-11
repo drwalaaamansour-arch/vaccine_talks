@@ -50,6 +50,7 @@ export default function Header() {
         { href: '/important-info', label: 'معلومات تهمك' },
         { href: '/whats-new', label: 'ما الجديد' },
         { href: '/non-hcp/common-questions', label: 'أسئلة شائعة' },
+        { href: '/non-hcp/special-cases-vaccines', label: 'تطعيمات الحالات الخاصة' },
       ]
     },
     { 

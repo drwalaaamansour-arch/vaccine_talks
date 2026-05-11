@@ -36,15 +36,9 @@ export default function AlteredImmunocompetence() {
               <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.25rem', marginBottom: '1rem', color: '#40606D'}}>
                 Altered Immunocompetence Vaccination
               </h2>
-              <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: '1.5rem'}}>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%', maxWidth: '900px'}}>
-                  <a href="/hcp-special-populations/altered-immunocompetence/general-principles" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>General principles</a>
-                  <a href="/hcp-special-populations/altered-immunocompetence/vaccination-of-contacts" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Vaccination of Contacts of Persons with Altered Immunocompetence</a>
-                  <a href="/hcp-special-populations/altered-immunocompetence/safety-and-effectiveness" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Safety and effectiveness</a>
-                  <a href="/hcp-special-populations/altered-immunocompetence/hematopoietic-cell-transplants" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Hematopoietic Cell Transplants</a>
-                  <a href="/hcp-special-populations/altered-immunocompetence/corticosteroids-and-immunosuppressive-drugs" style={{display: 'block', width: '100%', textAlign: 'center', padding: '0.9rem 1.25rem', background: '#40606D', color: 'white', textDecoration: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.08)'}}>Corticosteroids and Immunosuppressive Drugs</a>
-                </div>
-              </div>
+              <p className="about-lang-intro" style={{textAlign: 'center', direction: 'ltr', maxWidth: '700px', margin: '0 auto'}}>
+                Coming soon.
+              </p>
             </div>
           </div>
         </div>

@@ -194,6 +194,12 @@ export default function NonHCP() {
                 <span className="button-text">أسئلة شائعة</span>
                 <span className="button-text-en">FAQ</span>
               </a>
+
+              <a href="/non-hcp/special-cases-vaccines" className="section-button">
+                <span className="button-emoji">🛡️</span>
+                <span className="button-text">تطعيمات الحالات الخاصة</span>
+                <span className="button-text-en">Special Cases Vaccination</span>
+              </a>
             </div>
           </div>
         </div>

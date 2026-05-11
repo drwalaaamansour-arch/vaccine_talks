@@ -193,6 +193,8 @@ export default function PretermInfants() {
                 </a>
                 <a
                   href="/hcp-special-populations/preterm-infants/vaccine-specific-guidelines"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     display: 'block',
                     width: '100%',
