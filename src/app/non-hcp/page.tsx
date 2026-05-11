@@ -158,7 +158,7 @@ export default function NonHCP() {
             <h2 className="buttons-title">اختر ما تحتاجه</h2>
             <h2 className="buttons-title english">Choose What You Need</h2>
             
-            <div className="buttons-grid">
+            <div className="buttons-grid non-hcp-buttons-grid-rtl" dir="rtl">
               <a href="/children-vaccines" className="section-button">
                 <span className="button-emoji">👶</span>
                 <span className="button-text">تطعيمات الأطفال</span>

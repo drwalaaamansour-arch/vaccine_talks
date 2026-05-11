@@ -11,7 +11,7 @@ const specialCasesMap: Record<string, { ar: string; en: string }> = {
     en: 'Vaccinations for Pregnant and Breastfeeding Women',
   },
   'post-cochlear-implant': {
-    ar: 'تطعيمات ما بعد عمليات زرع القوقعة',
+    ar: 'تطعيمات زراعة القوقعة',
     en: 'Post-Cochlear Implant Vaccinations',
   },
   splenectomy: {
