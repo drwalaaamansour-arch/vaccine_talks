@@ -53,9 +53,22 @@ export default function HCPSpecialPopulations() {
             </p>
             
             <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%'}}>
-              <a href="/hcp-special-populations/altered-immunocompetence" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
+              <a href="/hcp-special-populations/altered-immunocompetence/general-principles" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
                 <span className="button-emoji">🛡️</span>
-                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Altered Immunocompetence vaccination</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>
+                  Altered Immunocompetence vaccination (General principles)
+                </span>
+              </a>
+
+              <a
+                href="/hcp-special-populations/altered-immunocompetence/vaccination-of-contacts"
+                className="vaccination-button"
+                style={{ minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none' }}
+              >
+                <span className="button-emoji">🤝</span>
+                <span className="button-text-en" style={{ fontSize: '1.25rem', fontWeight: '600' }}>
+                  Vaccination of Contacts of Persons with Altered Immunocompetence
+                </span>
               </a>
 
               <a href="/hcp-special-populations/altered-immunocompetence/anatomic-or-functional-asplenia" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
