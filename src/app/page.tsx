@@ -4,49 +4,418 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
-
+      
+      {/* Hero Section */}
       <main className="hero">
         <h1 className="hero-title animate-fade-in-up">
           Vaccine
           <br />
           Talk
-        </h1>
+          </h1>
+        
         <p className="hero-subtitle animate-fade-in-up animate-delay-1">
           (Egyptian Edition)
         </p>
+        
         <div className="hero-quote animate-fade-in-up animate-delay-2">
           <p>"Everything you need to know about</p>
           <p>vaccines in Egypt"</p>
         </div>
       </main>
 
+      {/* About Section - Elegant Card */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          {/* Decorative Corner Elements */}
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          {/* Content */}
+          <div className="about-bilingual">
+            {/* Arabic Content */}
+            <div className="about-lang arabic">
+              <h2 className="about-lang-title">
+                Vaccine Talk <span className="edition-badge">(النسخة المصرية)</span>
+              </h2>
+              <p className="about-lang-intro">
+                موقع مصري بيخاطب كل فئات المجتمع، بأسلوب بسيط وواضح.
+              </p>
+
+              <div className="about-features">
+                <div className="feature-item">
+                  <span className="feature-emoji">👨‍👩‍👧</span>
+                  <p>
+                    لو أم أو أب أو من غير العاملين بالمجال الطبي، هتلاقي كل المعلومات الخاصة بالتطعيمات الموجودة حاليًا في مصر، بأسلوب سهل، وبالعامية المصرية علشان تكون المعلومة قريبة منك.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">🩺</span>
+                  <p>
+                    ولو أنت طالب، طبيب، صيدلي أو مهتم بالمجال الطبي، هتلاقي هنا كل المواد العلمية اللي ممكن تعزّز بيها معلوماتك: من نشرات التطعيمات المعتمدة، لحد الأسئلة اللي ممكن تواجهها في شغلك، وكمان آخر التطورات وجهود الدولة للوقاية من الأمراض والحد من انتشارها، وكل ده بطريقة منظمة وباللغة الإنجليزية.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">⚖️</span>
+                  <p>
+                    Vaccine Talk مش تابع لأي شركة أو جهة، هدفه التوعية فقط — وبصبغة مصرية خالصة.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Vertical Divider */}
+            <div className="lang-divider"></div>
+
+            {/* English Content */}
+            <div className="about-lang">
+              <h2 className="about-lang-title">
+                Vaccine Talk <span className="edition-badge">(Egyptian Edition)</span>
+              </h2>
+              <p className="about-lang-intro">
+                A trusted Egyptian platform that speaks to everyone — in a simple, clear, and friendly way.
+              </p>
+
+              <div className="about-features">
+                <div className="feature-item">
+                  <span className="feature-emoji">👨‍👩‍👧</span>
+                  <p>
+                    If you're a parent or not working in the medical field, you'll find everything you need to know about the vaccines currently available in Egypt — explained in plain, everyday Egyptian Arabic, so the information feels familiar and easy to understand.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">🩺</span>
+                  <p>
+                    If you're a student, doctor, pharmacist, or simply passionate about vaccines, you'll find scientific materials that strengthen your knowledge: official vaccine leaflets, real-life questions you may face in your work, and updates on Egypt's efforts to prevent and eliminate infectious diseases — all organized clearly and presented in English.
+                  </p>
+                </div>
+
+                <div className="feature-item">
+                  <span className="feature-emoji">⚖️</span>
+                  <p>
+                    Vaccine Talk is not affiliated with any company or organization. It's a purely educational platform — with a proudly Egyptian spirit.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Section - Image Cards */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          {/* Decorative Corner Elements */}
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          {/* Content */}
+          <div className="about-bilingual">
+            {/* Arabic Side - Non-HCP */}
+            <div className="about-lang arabic">
+              <div className="image-wrapper">
+                <img 
+                  src="/nondoctors.png" 
+                  alt="غير العاملين بالمجال الطبي" 
+                  className="section-image"
+                />
+              </div>
+              <a href="/non-hcp" className="start-button">Non-HCP (غير العاملين بالمجال الطبي)</a>
+            </div>
+
+            {/* Vertical Divider */}
+            <div className="lang-divider"></div>
+
+            {/* English Side - HCP */}
+            <div className="about-lang">
+              <div className="image-wrapper">
+                <img 
+                  src="/doctors.png" 
+                  alt="Healthcare Professionals" 
+                  className="section-image"
+                />
+              </div>
+              <a href="/hcp-resources" className="start-button">HCP Resources (العاملين بالمجال الطبي)</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest News Section - Single Window */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
           <div className="card-corner card-corner-tr"></div>
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
-          <div className="coming-soon-container">
-            <div className="coming-soon-content">
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.25rem', marginBottom: '1rem', color: '#40606D'}}>
-                Coming Soon
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}}>
+                Latest News / آخر الأخبار
               </h2>
-              <p className="about-lang-intro" style={{textAlign: 'center', direction: 'ltr', maxWidth: '700px', margin: '0 auto'}}>
-                We are preparing this page and will publish the full content soon.
-              </p>
+              
+              <div className="news-window">
+                <div className="news-window-content">
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">April 2026</span>
+                      <span className="news-category">Evidence Update</span>
+                    </div>
+                    <h3 className="news-entry-title">Immunize.org and Autism Science Foundation: vaccines are not linked to autism</h3>
+                    <p className="news-entry-text">Immunize.org and the Autism Science Foundation updated their evidence resource confirming no causal link between autism and vaccines, including MMR and thimerosal-containing vaccines. The update also covers immune system capacity, known genetic/environmental risk factors, and includes supporting PDFs now available on HCP Vaccine Updates.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">April 19–22, 2026</span>
+                      <span className="news-category">Campaign</span>
+                    </div>
+                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>حملة تطعيم ضد شلل الأطفال</h3>
+                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                      حملة تطعيم ضد شلل الأطفال من يوم ١٩ أبريل ولمدة ٤ أيام. الحملة مجانية وتستهدف الأطفال من عمر يوم حتى ٥ سنوات. الحملة محدودة وفي السادس من أكتوبر والشيخ زايد بمحافظة الجيزة.
+                    </p>
+                    <a href="/polio" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>لمعرفة معلومات أكثر عن التطعيم اضغط هنا ←</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">March 30, 2026</span>
+                      <span className="news-category">Study</span>
+                    </div>
+                    <h3 className="news-entry-title">PCV13 study in pediatric IBD: 2-year prospective findings</h3>
+                    <p className="news-entry-text">A new Expert Review of Vaccines study reports that a single PCV13 dose was not associated with increased inflammatory bowel disease activity in children and adolescents over 24 months, with similar exacerbation rates versus controls. The full study PDF is now available on the HCP Vaccine Updates page.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">March 13, 2026</span>
+                      <span className="news-category">FDA Update</span>
+                    </div>
+                    <h3 className="news-entry-title">FDA expands GSK&apos;s Arexvy license to include high-risk adults 18 to 49 years</h3>
+                    <p className="news-entry-text">FDA expanded the indicated age range for Arexvy to include adults age 18 through 49 years at increased risk for RSV lower respiratory tract disease. The update notes Arexvy should not be used during pregnancy, and that RSV vaccine recommendations are pending due to the stay of ACIP activities.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">March 1, 2026</span>
+                      <span className="news-category">Guidelines</span>
+                    </div>
+                    <h3 className="news-entry-title">American Academy of Family Physicians: 2026 immunization schedules</h3>
+                    <p className="news-entry-text">The AAFP has published its 2026 recommended immunization schedules for birth through 18 years and for adults—aligned with the AAP childhood schedule and with targeted updates to the adult schedule. On our HCP Vaccine Updates page you can read the summary and open or download the official AAFP schedule PDFs.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read more on Vaccine Updates →</a>
+                  </div>
+
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">January 8, 2026</span>
+                      <span className="news-category">Updates</span>
+                    </div>
+                    <h3 className="news-entry-title">New GSK Pentavalent Meningococcal Vaccine Endorsed by ACIP</h3>
+                    <p className="news-entry-text">CDC's Advisory Committee on Immunization Practices (ACIP) endorsed a new GSK pentavalent meningococcal vaccine (MenACWY-CRM/MenB-4C, Penmenvy) for use in people aged ≥10 years when both MenACWY and MenB are indicated. The recommendation highlights implementation efficiency, equity, and real-world feasibility. Serious adverse events were rare and occurred at similar frequencies in pentavalent and control groups. Using pentavalent vaccine as an alternative to concomitant administration was the most cost-saving option.</p>
+                    <a href="/hcp-vaccine-updates" className="news-entry-link">Read More →</a>
+                  </div>
+                  
+                  <div className="news-entry">
+                    <div className="news-entry-header">
+                      <span className="news-date">December 2025</span>
+                      <span className="news-category">Updates</span>
+                    </div>
+                    <h3 className="news-entry-title" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>أعلنت شركة فايزر مصر عن طرح لقاح للوقاية من الإصابة بالفيروس المخلوي التنفسي (RSV)</h3>
+                    <p className="news-entry-text" style={{direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>أعلنت شركة فايزر مصر عن طرح لقاح للوقاية من الإصابة بالفيروس المخلوي التنفسي (RSV). هذا اللقاح يمثل تطورًا مهمًا في مجال الوقاية من الأمراض التنفسية في مصر.</p>
+                    <a href="/rsv" className="news-entry-link" style={{direction: 'rtl', textAlign: 'right'}}>اقرأ المزيد ←</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Newly Added Section */}
+      <section className="about-section">
+        <div className="about-elegant-card">
+          <div className="card-corner card-corner-tl"></div>
+          <div className="card-corner card-corner-tr"></div>
+          <div className="card-corner card-corner-bl"></div>
+          <div className="card-corner card-corner-br"></div>
+
+          <div className="about-bilingual">
+            <div className="about-lang" style={{alignItems: 'flex-start', width: '100%'}}>
+              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem', color: '#40606D'}}>
+                Newly Added / أضيف حديثا
+              </h2>
+              
+              <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%', maxWidth: '900px', margin: '0 auto'}}>
+                <a 
+                  href="/hcp-special-populations/preterm-infants" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Preterm infant vaccination
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Evidence-based guidance on vaccination in preterm infants, including WHO classification, immunological considerations, vaccine-specific guidelines, and Egyptian preterm consensus documents.
+                  </p>
+                  <span style={{display: 'inline-block', marginTop: '0.5rem', color: '#40606D', fontWeight: 600, fontSize: '0.95rem'}}>Read more →</span>
+                </a>
+
+                <a 
+                  href="/hcp-special-populations/altered-immunocompetence/anatomic-or-functional-asplenia" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Anatomic and Functional Asplenia
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Dedicated guidance for anatomic and functional asplenia, including pneumococcal, meningococcal, and Hib recommendations with references and linked PDF resources.
+                  </p>
+                  <span style={{display: 'inline-block', marginTop: '0.5rem', color: '#40606D', fontWeight: 600, fontSize: '0.95rem'}}>Read more →</span>
+                </a>
+
+                <a 
+                  href="/hcp-special-populations/immunoglobulin-blood-products" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    People who have recently received normal human immunoglobulin and other blood products
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Information about vaccination considerations for people who have recently received normal human immunoglobulin and other blood products, including spacing requirements and recommendations for live and non-live vaccines.
+                  </p>
+                </a>
+
+                <a 
+                  href="/hcp-special-populations/anaesthesia-surgery" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Before or after anaesthesia or surgery
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    Guidance on vaccination timing in relation to surgery and anaesthesia, including recommendations for elective procedures and considerations for post-operative vaccination.
+                  </p>
+                </a>
+
+                <a 
+                  href="/hcp-special-populations/cochlear-implants" 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                    Cochlear Implants and Vaccination Recommendations
+                  </h3>
+                  <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                    CDC guidance on pneumococcal, Hib, and meningococcal vaccination for people with cochlear implants to prevent bacterial meningitis.
+                  </p>
+                </a>
+
+                <div 
+                  className="newly-added-card"
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem',
+                    background: 'rgba(64, 96, 109, 0.05)',
+                    borderRadius: '12px',
+                    border: '2px solid rgba(64, 96, 109, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                    <div>
+                      <a href="/rsv" style={{textDecoration: 'none'}}>
+                        <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                          RSV (الفيروس التنفسي المخلوي)
+                        </h3>
+                        <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'rtl', textAlign: 'right', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
+                          معلومات جديدة عن تطعيم RSV لحماية الرضع من الإصابة بالفيروس المخلوي التنفسي.
+                        </p>
+                      </a>
+                    </div>
+                    <div style={{borderTop: '1px solid rgba(64, 96, 109, 0.2)', paddingTop: '1rem'}}>
+                      <a href="/hcp/rsv" style={{textDecoration: 'none'}}>
+                        <h3 style={{fontSize: '1.5rem', fontWeight: '600', color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
+                          RSV (Respiratory Syncytial Virus)
+                        </h3>
+                        <p style={{color: '#5a4a3a', lineHeight: '1.6', direction: 'ltr', textAlign: 'left'}}>
+                          New information about RSV vaccination to protect infants from respiratory syncytial virus infection.
+                        </p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-top">
           <div className="footer-content">
+            {/* Contact Section */}
             <div className="footer-section">
               <h3 className="footer-title">Contact</h3>
               <p className="footer-text">
                 I'm always looking for new and exciting opportunities. Let's connect.
               </p>
+              
+              {/* Social Links */}
               <div className="footer-social">
                 <a href="https://www.facebook.com/profile.php?id=100064747760120" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -72,12 +441,14 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Disclaimer Button */}
             <div className="footer-section">
               <a href="/disclaimer" className="disclaimer-btn" style={{textDecoration: "none", display: "inline-block"}}>Disclaimer</a>
             </div>
           </div>
         </div>
 
+        {/* Copyright Bar */}
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p className="copyright-text">
