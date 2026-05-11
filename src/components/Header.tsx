@@ -6,6 +6,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import SearchModal from './SearchModal';
 
+type NavSubLink = { href: string; label: string };
+
+type NavLinkItem = {
+  href: string;
+  label: string;
+  submenu?: NavSubLink[];
+  submenuTabs?: boolean;
+};
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,7 +47,7 @@ export default function Header() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isSearchOpen]);
 
-  const navLinks = [
+  const navLinks: NavLinkItem[] = [
     { href: '/', label: 'Home' },
     { 
       href: '/non-hcp', 
@@ -65,26 +74,44 @@ export default function Header() {
         { href: '/hcp-faq', label: 'FAQ' },
       ]
     },
-    { href: '/gallery', label: 'Gallery' },
+    {
+      href: '/gallery',
+      label: 'Gallery',
+      submenuTabs: true,
+      submenu: [
+        { href: '/gallery', label: 'Gallery' },
+        { href: '/about', label: 'About us' },
+      ],
+    },
   ];
 
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="header-container">
-        {/* Logo */}
-        <Link href="/" className="logo-link">
-          <div className="logo-box">
-            <Image
-              src="/logonew.jpeg"
-              alt="Vaccine Talk"
-              width={180}
-              height={80}
-              priority
-              className="logo-image"
-              style={{ width: 'auto', height: '60px' }}
-            />
-          </div>
-        </Link>
+        <div className="header-brand-row">
+          <Link href="/" className="logo-link">
+            <div className="logo-box">
+              <Image
+                src="/logonew.jpeg"
+                alt="Vaccine Talk"
+                width={180}
+                height={80}
+                priority
+                className="logo-image"
+                style={{ width: 'auto', height: '60px' }}
+              />
+            </div>
+          </Link>
+
+          <Link
+            href="/about"
+            className="header-about-link"
+            title="About us · من نحن"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            About us
+          </Link>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="desktop-nav">
@@ -103,12 +130,14 @@ export default function Header() {
                   {link.label}
                 </Link>
                 {link.submenu && isDropdownOpen && (
-                  <div className="dropdown-menu">
+                  <div
+                    className={`dropdown-menu${link.submenuTabs ? ' dropdown-menu--tabs' : ''}`}
+                  >
                     {link.submenu.map((subLink) => (
                       <Link
-                        key={subLink.href}
+                        key={`${link.href}-${subLink.href}`}
                         href={subLink.href}
-                        className={`dropdown-link ${pathname === subLink.href ? 'dropdown-link-active' : ''}`}
+                        className={`dropdown-link${link.submenuTabs ? ' dropdown-link--tab' : ''} ${pathname === subLink.href ? 'dropdown-link-active' : ''}`}
                       >
                         {subLink.label}
                       </Link>
@@ -205,7 +234,7 @@ export default function Header() {
                         <div className="mobile-submenu">
                           {link.submenu.map((subLink) => (
                             <Link
-                              key={subLink.href}
+                              key={`${link.href}-${subLink.href}`}
                               href={subLink.href}
                               className={`mobile-submenu-link ${pathname === subLink.href ? 'mobile-submenu-link-active' : ''}`}
                               onClick={() => {

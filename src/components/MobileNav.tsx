@@ -86,6 +86,11 @@ export default function MobileNav() {
             <span className="modern-mobile-link-icon">🖼️</span>
             Gallery
           </NavLink>
+
+          <NavLink href="/about" className="modern-mobile-link" onClick={closeMenu}>
+            <span className="modern-mobile-link-icon">ℹ️</span>
+            About us
+          </NavLink>
         </nav>
 
         {/* Footer info */}
