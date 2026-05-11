@@ -111,6 +111,29 @@ function PretermNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   );
 }
 
+function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/non-hcp/special-cases-vaccines/post-cochlear-implant"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+      lang="ar"
+    >
+      <h3 className="home-newly-card-title home-newly-card-title--rtl">
+        تطعيمات زراعة القوقعة — لغير العاملين بالمجال الطبي
+      </h3>
+      <p className="home-newly-card-body home-newly-card-body--rtl">
+        شرح بسيط بالعامية عن ليه التطعيمات مهمة قبل وبعد زراعة القوقعة، وأهم اللقاحات: المكورات الرئوية والهيموفيلس
+        والالتهاب السحائي.
+      </p>
+      <span className="home-newly-card-more" dir="rtl">
+        اقرأ المزيد ←
+      </span>
+    </a>
+  );
+}
+
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
@@ -122,6 +145,7 @@ function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
         showReadMore
       />
       <PretermNonHcpSpotlightCard duplicate={duplicate} />
+      <CochlearNonHcpSpotlightCard duplicate={duplicate} />
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/altered-immunocompetence/anatomic-or-functional-asplenia"
