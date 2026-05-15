@@ -84,8 +84,8 @@ export default function SpecialCasesVaccinesPage() {
 
               <a href="/non-hcp/special-cases-vaccines/pregnancy-and-breastfeeding" className="section-button">
                 <span className="button-emoji">🤰</span>
-                <span className="button-text">تطعيمات الحوامل والمرضعات</span>
-                <span className="button-text-en">Vaccinations for Pregnant and Breastfeeding Women</span>
+                <span className="button-text">تطعيمات الحوامل</span>
+                <span className="button-text-en">Vaccinations for Pregnant Women</span>
               </a>
 
               <a href="/non-hcp/special-cases-vaccines/post-cochlear-implant" className="section-button">

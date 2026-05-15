@@ -7,8 +7,8 @@ const specialCasesMap: Record<string, { ar: string; en: string }> = {
     en: 'Preterm Infant Vaccinations',
   },
   'pregnancy-and-breastfeeding': {
-    ar: 'تطعيمات الحوامل والمرضعات',
-    en: 'Vaccinations for Pregnant and Breastfeeding Women',
+    ar: 'تطعيمات الحوامل',
+    en: 'Vaccinations for Pregnant Women',
   },
   'post-cochlear-implant': {
     ar: 'تطعيمات زراعة القوقعة',
