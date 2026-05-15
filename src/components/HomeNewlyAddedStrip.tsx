@@ -111,6 +111,29 @@ function PretermNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   );
 }
 
+function PregnancyNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/non-hcp/special-cases-vaccines/pregnancy-and-breastfeeding"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+      lang="ar"
+    >
+      <h3 className="home-newly-card-title home-newly-card-title--rtl">
+        التطعيمات أثناء الحمل — لغير العاملين بالمجال الطبي
+      </h3>
+      <p className="home-newly-card-body home-newly-card-body--rtl">
+        حماية ليكي ولطفلك: شرح بسيط عن تطعيمات الإنفلونزا وTdap وRSV أثناء الحمل، والتطعيمات الحية، بالعربي
+        والإنجليزي — مع PDF للتحميل.
+      </p>
+      <span className="home-newly-card-more" dir="rtl">
+        اقرأ المزيد ←
+      </span>
+    </a>
+  );
+}
+
 function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -137,6 +160,14 @@ function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <SpotlightLinkCard
+        duplicate={duplicate}
+        href="/hcp-special-populations/pregnancy-breastfeeding"
+        title="Pregnancy"
+        body="Guidance on vaccines before, during, and after pregnancy—including flu, Tdap, and RSV; live-vaccine precautions for contacts; MMR and varicella counseling; references and a downloadable PDF."
+        showReadMore
+      />
+      <PregnancyNonHcpSpotlightCard duplicate={duplicate} />
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/preterm-infants"

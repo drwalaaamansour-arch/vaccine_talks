@@ -83,22 +83,12 @@ export default function HCPSpecialPopulations() {
               
               <a href="/hcp-special-populations/pregnancy-breastfeeding" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
                 <span className="button-emoji">🤱</span>
-                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Pregnancy and breastfeeding</span>
+                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Pregnancy</span>
               </a>
               
               <a href="/hcp-special-populations/anaesthesia-surgery" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
                 <span className="button-emoji">🏥</span>
                 <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Before or after anaesthesia or surgery</span>
-              </a>
-              
-              <a href="/hcp-special-populations/occupational-risk" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
-                <span className="button-emoji">👷</span>
-                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>People at occupational risk</span>
-              </a>
-              
-              <a href="/hcp-special-populations/international-travellers" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
-                <span className="button-emoji">✈️</span>
-                <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>International travellers</span>
               </a>
               
               <a href="/hcp-special-populations/immunoglobulin-blood-products" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>

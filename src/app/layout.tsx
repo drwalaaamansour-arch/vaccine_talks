@@ -3,6 +3,7 @@ import { Inter, Cairo } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import ChatButton from "@/components/ChatButton";
+import AuthSessionProvider from "@/components/AuthSessionProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -141,8 +142,10 @@ export default function RootLayout({
           `}
         </Script>
         
-        {children}
-        <ChatButton />
+        <AuthSessionProvider>
+          {children}
+          <ChatButton />
+        </AuthSessionProvider>
       </body>
     </html>
   );

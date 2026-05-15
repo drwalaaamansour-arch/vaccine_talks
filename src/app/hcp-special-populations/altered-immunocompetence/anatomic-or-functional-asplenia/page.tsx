@@ -92,6 +92,45 @@ export default function AnatomicOrFunctionalAspleniaPage() {
                   </a>
                 </li>
               </ul>
+
+              <div style={{ marginTop: '2rem', width: '100%' }}>
+                <h3
+                  style={{
+                    textAlign: 'center',
+                    fontSize: '1.35rem',
+                    fontWeight: 700,
+                    color: '#40606D',
+                    margin: '0 0 1rem',
+                    direction: 'ltr',
+                  }}
+                >
+                  Anatomic or Functional Asplenia — PDF
+                </h3>
+                <iframe
+                  src="/spleen.pdf"
+                  width="100%"
+                  height="720px"
+                  style={{ border: 'none', borderRadius: '8px', display: 'block' }}
+                  title="Anatomic or functional asplenia vaccinations PDF"
+                />
+                <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                  <a
+                    href="/spleen.pdf"
+                    download
+                    style={{
+                      display: 'inline-block',
+                      padding: '0.75rem 2rem',
+                      background: '#40606D',
+                      color: 'white',
+                      textDecoration: 'none',
+                      borderRadius: '6px',
+                      fontWeight: 600,
+                    }}
+                  >
+                    Download PDF / تحميل PDF
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

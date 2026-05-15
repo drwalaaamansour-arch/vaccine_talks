@@ -83,7 +83,7 @@ export default function GeneralPrinciplesPage() {
           <div className="card-corner card-corner-br"></div>
 
           <div className="about-bilingual">
-            <div className="about-lang" style={{ alignItems: 'flex-start', maxWidth: '920px', margin: '0 auto', width: '100%' }}>
+            <div className="about-lang hcp-content-column">
               <h2
                 className="about-lang-title"
                 style={{ textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '1.5rem' }}

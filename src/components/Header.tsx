@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { signOut, useSession } from 'next-auth/react';
 import SearchModal from './SearchModal';
 
 type NavSubLink = { href: string; label: string };
@@ -15,6 +16,9 @@ type NavLinkItem = {
   submenuTabs?: boolean;
 };
 
+/** Re-enable when Google/Apple OAuth is configured for production. */
+const SHOW_AUTH_LINKS = false;
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,6 +26,7 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -151,6 +156,46 @@ export default function Header() {
 
         {/* Action Buttons */}
         <div className="header-actions">
+          {status === 'authenticated' && session?.user ? (
+            <div className="header-auth-user">
+              {session.user.image ? (
+                <img
+                  src={session.user.image}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="rounded-full border border-[rgba(139,115,85,0.25)] object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              ) : null}
+              <span
+                className="header-auth-user-name"
+                title={session.user.email ?? undefined}
+              >
+                {session.user.name ?? session.user.email ?? 'Account'}
+              </span>
+              <button
+                type="button"
+                className="header-auth-signout"
+                onClick={() => signOut({ callbackUrl: '/' })}
+              >
+                Sign out
+              </button>
+            </div>
+          ) : SHOW_AUTH_LINKS ? (
+            <div className="header-auth-links">
+              <Link href="/auth/signin" className="header-auth-link">
+                Sign in
+              </Link>
+              <Link
+                href="/auth/signup"
+                className="header-auth-link header-auth-link--primary"
+              >
+                Sign up
+              </Link>
+            </div>
+          ) : null}
+
           <div className="search-container">
             <input
               type="text"
@@ -207,6 +252,48 @@ export default function Header() {
           }} />
           <div className="mobile-menu">
             <nav style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+              {(SHOW_AUTH_LINKS || (status === 'authenticated' && session?.user)) && (
+                <div className="mobile-auth-block">
+                  {status === 'authenticated' && session?.user ? (
+                    <>
+                      <span
+                        className="mobile-link"
+                        style={{ cursor: 'default', opacity: 0.9 }}
+                      >
+                        {session.user.name ?? session.user.email ?? 'Signed in'}
+                      </span>
+                      <button
+                        type="button"
+                        className="header-auth-signout"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          signOut({ callbackUrl: '/' });
+                        }}
+                      >
+                        Sign out
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/auth/signin"
+                        className="header-auth-link"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Sign in
+                      </Link>
+                      <Link
+                        href="/auth/signup"
+                        className="header-auth-link header-auth-link--primary"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Sign up
+                      </Link>
+                    </>
+                  )}
+                </div>
+              )}
+
               {navLinks.map((link) => (
                 <div key={link.href} className="mobile-menu-item">
                   {link.submenu ? (
