@@ -18,6 +18,50 @@ const listStyle: React.CSSProperties = {
 
 const listItemStyle: React.CSSProperties = { marginBottom: '0.35rem' };
 
+const PREGNANCY_PDF = '/pregnancy.pdf';
+const ABRYSVO_PREGNANCY_PDF = encodeURI('/abrysvo during pregnancy.pdf');
+const TDAP_PREGNANCY_PDF = encodeURI('/dtap during pregnancy.pdf');
+
+const pdfDownloadBtn: React.CSSProperties = {
+  display: 'inline-block',
+  padding: '0.75rem 2rem',
+  background: '#40606D',
+  color: 'white',
+  textDecoration: 'none',
+  borderRadius: '6px',
+  fontWeight: 600,
+};
+
+function PregnancyPdfEmbed({ title, src }: { title: string; src: string }) {
+  return (
+    <div style={{ marginTop: '2rem', width: '100%' }}>
+      <h3
+        style={{
+          textAlign: 'center',
+          fontSize: '1.35rem',
+          fontWeight: 700,
+          color: '#40606D',
+          margin: '0 0 1rem',
+        }}
+      >
+        {title}
+      </h3>
+      <iframe
+        src={src}
+        width="100%"
+        height="800px"
+        style={{ border: 'none', borderRadius: '8px', display: 'block' }}
+        title={title}
+      />
+      <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+        <a href={src} download style={pdfDownloadBtn}>
+          Download PDF / تحميل PDF
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function ContentChunk({
   title,
   accent,
@@ -322,48 +366,9 @@ export default function PregnancyBreastfeeding() {
                 </ul>
               </aside>
 
-              <div
-                style={{
-                  marginTop: '2rem',
-                  width: '100%',
-                }}
-              >
-                <h3
-                  style={{
-                    textAlign: 'center',
-                    fontSize: '1.35rem',
-                    fontWeight: 700,
-                    color: '#40606D',
-                    margin: '0 0 1rem',
-                  }}
-                >
-                  Pregnancy — PDF
-                </h3>
-                <iframe
-                  src="/pregnancy.pdf"
-                  width="100%"
-                  height="720px"
-                  style={{ border: 'none', borderRadius: '8px', display: 'block' }}
-                  title="Pregnancy vaccinations PDF"
-                />
-                <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-                  <a
-                    href="/pregnancy.pdf"
-                    download
-                    style={{
-                      display: 'inline-block',
-                      padding: '0.75rem 2rem',
-                      background: '#40606D',
-                      color: 'white',
-                      textDecoration: 'none',
-                      borderRadius: '6px',
-                      fontWeight: 600,
-                    }}
-                  >
-                    Download PDF / تحميل PDF
-                  </a>
-                </div>
-              </div>
+              <PregnancyPdfEmbed title="Pregnancy — PDF" src={PREGNANCY_PDF} />
+              <PregnancyPdfEmbed title="Abrysvo during pregnancy — PDF" src={ABRYSVO_PREGNANCY_PDF} />
+              <PregnancyPdfEmbed title="Tdap during pregnancy — PDF" src={TDAP_PREGNANCY_PDF} />
             </div>
           </div>
         </div>
