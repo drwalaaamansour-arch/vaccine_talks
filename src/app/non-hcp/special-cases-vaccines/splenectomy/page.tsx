@@ -47,9 +47,6 @@ export default function SplenectomyPage() {
                   غياب أو ضعف الطحال
                 </h2>
                 <p className="spleen-subtitle-secondary">(تطعيمات استئصال الطحال)</p>
-                <p className="spleen-subtitle-en" dir="ltr">
-                  Asplenia and splenectomy vaccinations
-                </p>
               </div>
 
               <div className="bubble-container spleen-bubble-wrap spleen-bubble-wrap--ar" dir="rtl">
@@ -513,12 +510,6 @@ export default function SplenectomyPage() {
           font-size: 1.08rem;
           font-weight: 700;
           color: #5c4d3d;
-        }
-        .spleen-subtitle-en {
-          margin: 0;
-          color: #6b8a96;
-          font-size: 1rem;
-          font-style: italic;
         }
         .spleen-bubble-wrap {
           margin-top: 0.25rem;
