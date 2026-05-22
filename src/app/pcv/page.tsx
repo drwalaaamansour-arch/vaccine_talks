@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function PCV() {
   return (
@@ -124,6 +125,12 @@ export default function PCV() {
             </div>
           </div>
         </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_pcv.pdf"
+        titleAr="تطعيم المكورات الرئوية المقترن — CDC"
+        titleEn="PCV vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Rabies() {
   return (
@@ -146,6 +147,12 @@ export default function Rabies() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_rabies.pdf"
+        titleAr="تطعيم السعار — CDC"
+        titleEn="Rabies vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

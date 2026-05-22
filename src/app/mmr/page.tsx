@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function MMR() {
   return (
@@ -131,6 +132,12 @@ export default function MMR() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_mmr.pdf"
+        titleAr="تطعيم الحصبة والنكاف والحصبة الألمانية — CDC"
+        titleEn="MMR vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

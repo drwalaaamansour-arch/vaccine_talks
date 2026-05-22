@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Diphtheria() {
   return (
@@ -119,6 +120,12 @@ export default function Diphtheria() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_dtap.pdf"
+        titleAr="تطعيم الدفتيريا والتيتانوس والسعال الديكي — CDC"
+        titleEn="DTaP vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

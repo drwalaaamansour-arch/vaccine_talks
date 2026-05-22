@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function HepatitisB() {
   return (
@@ -131,6 +132,12 @@ export default function HepatitisB() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_hepatitis_b.pdf"
+        titleAr="تطعيم التهاب الكبد ب — CDC"
+        titleEn="Hepatitis B vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

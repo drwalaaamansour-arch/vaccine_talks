@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function HIB() {
   return (
@@ -113,6 +114,12 @@ export default function HIB() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_hib.pdf"
+        titleAr="تطعيم المستدمية النزلية ب — CDC"
+        titleEn="Hib vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Rotavirus() {
   return (
@@ -117,6 +118,12 @@ export default function Rotavirus() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_rotavirus.pdf"
+        titleAr="تطعيم الفيروس العجلي — CDC"
+        titleEn="Rotavirus vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

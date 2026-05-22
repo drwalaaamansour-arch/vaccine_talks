@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function HerpesZoster() {
   return (
@@ -134,6 +135,13 @@ export default function HerpesZoster() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_zoster_recombinant.pdf"
+        titleAr="تطعيم الحزام الناري (مُوصى به)"
+        titleEn="Recombinant zoster vaccine — CDC (Arabic)"
+        introAr="تطعيم الحزام الناري في مصر ممكن من سن ١٨ سنه لضعاف المناعة."
+      />
 
       {/* Footer */}
       <footer className="footer">

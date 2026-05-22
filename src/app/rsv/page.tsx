@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function RSV() {
   return (
@@ -131,6 +132,12 @@ export default function RSV() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_rsv.pdf"
+        titleAr="تطعيم الفيروس المخلوي التنفسي — CDC"
+        titleEn="RSV vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

@@ -134,6 +134,52 @@ function PregnancyNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   );
 }
 
+function CdcArabicPdfsSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/vaccinations"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+      lang="ar"
+    >
+      <h3 className="home-newly-card-title home-newly-card-title--rtl">
+        ملفات CDC للتطعيمات بالعربي — جديد
+      </h3>
+      <p className="home-newly-card-body home-newly-card-body--rtl">
+        أضفنا أوراق معلومات CDC العربية على صفحات التطعيمات لغير العاملين بالمجال الطبي (إنفلونزا، المكورات الرئوية،
+        الحزام الناري، السعار، وغيرها) — للعرض والتحميل في أسفل كل صفحة.
+      </p>
+      <span className="home-newly-card-more" dir="rtl">
+        تصفّح التطعيمات ←
+      </span>
+    </a>
+  );
+}
+
+function AspleniaNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/non-hcp/special-cases-vaccines/splenectomy"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+      lang="ar"
+    >
+      <h3 className="home-newly-card-title home-newly-card-title--rtl">
+        غياب أو ضعف الطحال — لغير العاملين بالمجال الطبي
+      </h3>
+      <p className="home-newly-card-body home-newly-card-body--rtl">
+        صفحة جديدة بالعربي عن تطعيمات استئصال الطحال وضعف وظيفته: أهم اللقاحات، التوقيت قبل وبعد العملية، وروابط
+        للمكورات الرئوية والهيموفيلس والالتهاب السحائي والإنفلونزا — مع PDF.
+      </p>
+      <span className="home-newly-card-more" dir="rtl">
+        اقرأ المزيد ←
+      </span>
+    </a>
+  );
+}
+
 function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -160,6 +206,8 @@ function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <AspleniaNonHcpSpotlightCard duplicate={duplicate} />
+      <CdcArabicPdfsSpotlightCard duplicate={duplicate} />
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/pregnancy-breastfeeding"

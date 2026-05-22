@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Influenza() {
   return (
@@ -111,6 +112,12 @@ export default function Influenza() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_flu_inactive.pdf"
+        titleAr="تطعيم الإنفلونزا — CDC"
+        titleEn="Influenza (inactivated) vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

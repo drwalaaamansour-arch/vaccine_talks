@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Chickenpox() {
   return (
@@ -113,6 +114,12 @@ export default function Chickenpox() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_varicella.pdf"
+        titleAr="تطعيم الجديري المائي — CDC"
+        titleEn="Varicella (chickenpox) vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

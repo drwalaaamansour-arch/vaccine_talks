@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Meningitis() {
   return (
@@ -137,6 +138,18 @@ export default function Meningitis() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_meningococcal.pdf"
+        titleAr="تطعيم المكورات السحائية"
+        titleEn="Meningococcal vaccine — CDC (Arabic)"
+        introAr="تطعيم الحمى الشوكية الرباعي المقترن في مصر بيتاخد من سن ست أسابيع، والنمط ب من سن شهرين."
+      />
+      <CdcArabicPdfSection
+        fileName="arabic_meningococcal_b.pdf"
+        titleAr="تطعيم المكورات السحائية نوع ب — CDC"
+        titleEn="Meningococcal B vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">

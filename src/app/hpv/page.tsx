@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function HPV() {
   return (
@@ -165,6 +166,12 @@ export default function HPV() {
           </div>
         </div>
       </section>
+
+      <CdcArabicPdfSection
+        fileName="arabic_hpv.pdf"
+        titleAr="تطعيم فيروس الورم الحليمي البشري — CDC"
+        titleEn="HPV vaccine — CDC (Arabic)"
+      />
 
       {/* Footer */}
       <footer className="footer">
