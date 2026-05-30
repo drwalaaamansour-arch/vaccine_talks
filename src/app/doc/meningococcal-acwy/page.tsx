@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function umeningococcaluacwyDoc() {
   return (
@@ -23,9 +25,9 @@ export default function umeningococcaluacwyDoc() {
       </main>
 
       <div style={{width: '100%', display: 'flex', justifyContent: 'center', margin: '0.5rem 0'}}>
-        <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', margin: 0}}>
+        <ArticlePageTitle {...ARTICLE_META.docMeningococcalAcwy} titleStyle={{textAlign: 'center', fontSize: '2.5rem', margin: 0}} locale="en">
           Meningococcal ACWY
-        </h2>
+        </ArticlePageTitle>
       </div>
 
       {/* PDF: MMWR Meningococcal Vaccination */}

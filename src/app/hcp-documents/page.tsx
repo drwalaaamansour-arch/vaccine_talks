@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPDocuments() {
   return (
@@ -33,9 +35,9 @@ export default function HCPDocuments() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpDocuments} titleStyle={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Documents
-              </h2>
+              </ArticlePageTitle>
               
               <div className="documents-grid">
                 <a href="/doc/storage">Storage</a>

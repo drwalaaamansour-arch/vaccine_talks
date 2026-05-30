@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPVaccinationBasics() {
   return (
@@ -33,9 +35,9 @@ export default function HCPVaccinationBasics() {
 
           <div className="about-bilingual">
             <div className="about-lang">
-              <h2 className="about-lang-title">
+              <ArticlePageTitle {...ARTICLE_META.hcpVaccinationBasics} locale="en">
                 Vaccination Basics
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro">
                 Vaccines are one of the most effective tools in modern medicine. They have helped preventing millions of deaths and protect communities from dangerous infectious diseases. Understanding how vaccines work and why they are important can empower individuals, parents, and healthcare professionals to make informed decisions.
               </p>

@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function DisclaimerPage() {
   return (
@@ -34,9 +36,9 @@ export default function DisclaimerPage() {
           <div className="about-bilingual">
             {/* Arabic Content */}
             <div className="about-lang" style={{alignItems: 'flex-start', direction: 'rtl', textAlign: 'right'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.2rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.disclaimer} titleStyle={{textAlign: 'center', fontSize: '2.2rem', alignSelf: 'center'}} locale="ar">
                 إخلاء المسؤولية
-              </h2>
+              </ArticlePageTitle>
 
               <p className="about-lang-intro"><strong>عن الموقع:</strong><br/>هذا الموقع هو منصة توعوية تهدف إلى تقديم معلومات طبية مبسطة تتعلق بالتطعيمات والوقاية من الأمراض المعدية.</p>
 
@@ -69,9 +71,9 @@ export default function DisclaimerPage() {
           <div className="about-bilingual">
             {/* English Content */}
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.2rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.disclaimer} titleStyle={{textAlign: 'center', fontSize: '2.2rem', alignSelf: 'center'}} locale="en">
                 Disclaimer
-              </h2>
+              </ArticlePageTitle>
 
               <p className="about-lang-intro"><strong>About the Website:</strong><br/>This website is an educational platform that provides simplified medical information related to vaccines and the prevention of infectious diseases.</p>
 

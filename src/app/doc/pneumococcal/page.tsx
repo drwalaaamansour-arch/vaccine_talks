@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function upneumococcalDoc() {
   return (
@@ -23,9 +25,9 @@ export default function upneumococcalDoc() {
       </main>
 
       <div style={{width: '100%', display: 'flex', justifyContent: 'center', margin: '0.5rem 0'}}>
-        <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', margin: 0}}>
+        <ArticlePageTitle {...ARTICLE_META.docPneumococcal} titleStyle={{textAlign: 'center', fontSize: '2.5rem', margin: 0}} locale="en">
           Pneumococcal
-        </h2>
+        </ArticlePageTitle>
       </div>
 
       {/* PDF: Recommendations for Pneumococcal Vaccines Use in Children and Teens */}

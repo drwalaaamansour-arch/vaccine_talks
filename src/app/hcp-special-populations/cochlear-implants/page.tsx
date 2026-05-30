@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function CochlearImplants() {
   return (
@@ -33,9 +35,9 @@ export default function CochlearImplants() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start', display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', color: '#40606D'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpCochlearImplants} locale="en">
                 Cochlear Implants and Vaccination Recommendations
-              </h2>
+              </ArticlePageTitle>
               <h3 style={{textAlign: 'center', fontSize: '1.35rem', fontWeight: 600, color: '#40606D', marginBottom: '0.5rem', direction: 'ltr'}}>
                 Summary of CDC Guidance on Preventing Meningitis in Cochlear Implant Users
               </h3>

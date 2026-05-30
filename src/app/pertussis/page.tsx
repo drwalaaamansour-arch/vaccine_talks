@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Pertussis() {
@@ -37,9 +39,9 @@ export default function Pertussis() {
           <div className="about-bilingual">
             {/* Arabic Content */}
             <div className="about-lang arabic">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.pertussis} locale="ar">
                 السعال الديكي
-              </h2>
+              </VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 
@@ -68,9 +70,9 @@ export default function Pertussis() {
 
             {/* English Content */}
             <div className="about-lang">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.pertussis} locale="en">
                 Pertussis (Whooping Cough)
-              </h2>
+              </VaccineLangTitle>
               
               <div className="about-lang-intro">
                 <p>

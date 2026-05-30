@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPVaccinesSera() {
   return (
@@ -33,9 +35,9 @@ export default function HCPVaccinesSera() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpVaccinesSera} titleStyle={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Vaccines and Sera in Egypt
-              </h2>
+              </ArticlePageTitle>
               <div className="vaccines-sera-grid">
                 <a href="/anti-scorpion" style={{background: '#40606D', color: 'white'}}>Anti-scorpion</a>
                 <a href="/anti-snake" style={{background: 'rgba(255, 255, 255, 0.6)', color: '#333'}}>Anti-snake</a>

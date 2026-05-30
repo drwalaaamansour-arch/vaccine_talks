@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function PPSV() {
@@ -32,7 +34,7 @@ export default function PPSV() {
             {/* Content */}
             <div className="about-bilingual">
               <div className="about-lang arabic">
-                <h2 className="about-lang-title">التهاب رئوي متعدد السكريات (PPSV)</h2>
+                <VaccineLangTitle {...ARTICLE_META.ppsv} locale="ar">التهاب رئوي متعدد السكريات (PPSV)</VaccineLangTitle>
                 
                 <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                   <img 
@@ -77,7 +79,7 @@ export default function PPSV() {
               </div>
               <div className="lang-divider"></div>
               <div className="about-lang">
-                <h2 className="about-lang-title">Pneumococcal Polysaccharide Vaccine (PPSV)</h2>
+                <VaccineLangTitle {...ARTICLE_META.ppsv} locale="en">Pneumococcal Polysaccharide Vaccine (PPSV)</VaccineLangTitle>
                 <div className="about-lang-intro">
                   <p>
                     This is a vaccine for the prevention of diseases caused by Streptococcus pneumoniae bacteria, with pneumonia being the most common one.

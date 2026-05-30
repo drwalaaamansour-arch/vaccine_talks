@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Rabies() {
@@ -30,7 +32,7 @@ export default function Rabies() {
           {/* Content */}
           <div className="about-bilingual">
             <div className="about-lang arabic">
-              <h2 className="about-lang-title">السعار (داء الكلب)</h2>
+              <VaccineLangTitle {...ARTICLE_META.rabies} locale="ar">السعار (داء الكلب)</VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 
@@ -93,7 +95,7 @@ export default function Rabies() {
             </div>
             <div className="lang-divider"></div>
             <div className="about-lang">
-              <h2 className="about-lang-title">Rabies (Lyssavirus)</h2>
+              <VaccineLangTitle {...ARTICLE_META.rabies} locale="en">Rabies (Lyssavirus)</VaccineLangTitle>
               <div className="about-lang-intro">
                 <p>
                   A deadly viral disease transmitted from animals to humans, affecting the central nervous system. The virus is usually transmitted through a bite or scratch from an infected animal.

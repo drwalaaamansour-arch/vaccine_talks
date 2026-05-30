@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function PretermInfants() {
   return (
@@ -31,9 +33,7 @@ export default function PretermInfants() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start', display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', color: '#40606D'}}>
-                Preterm infants
-              </h2>
+              <ArticlePageTitle {...ARTICLE_META.hcpPretermInfants} locale="en">Preterm infants</ArticlePageTitle>
 
               <div style={{padding: '1.5rem 2rem', borderRadius: '24px', background: 'rgba(255, 255, 255, 0.75)', border: '2px solid rgba(64, 96, 109, 0.15)', boxShadow: '0 4px 20px rgba(64, 96, 109, 0.08)', width: '100%', boxSizing: 'border-box'}}>
                 <h4 style={{textAlign: 'left', fontSize: '1.25rem', fontWeight: 600, color: '#40606D', marginTop: 0, marginBottom: '0.75rem', direction: 'ltr'}}>Overview</h4>

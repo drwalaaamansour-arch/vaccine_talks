@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import Header from '@/components/Header';
 import PretermVaccineGuidelinesTabs, { PretermVaccineGuidelinesTabsEnglish } from './PretermVaccineGuidelinesTabs';
 
@@ -35,18 +37,15 @@ export default function NonHcpPretermVaccineSpecificGuidelinesPage() {
           <div className="card-corner card-corner-br"></div>
           <div className="coming-soon-container" style={{ width: '100%' }}>
             <div className="coming-soon-content" style={{ width: '100%', maxWidth: '100%' }}>
-              <h2
-                className="about-lang-title"
-                style={{
+              <ArticlePageTitle {...ARTICLE_META.nonHcpPretermGuidelines} titleStyle={{
                   textAlign: 'center',
                   fontSize: '2.25rem',
                   marginBottom: '0.75rem',
                   color: '#40606D',
                   direction: 'rtl',
-                }}
-              >
+                }} locale="en">
                 إرشادات خاصة بالتطعيمات للأطفال المبتسرين
-              </h2>
+              </ArticlePageTitle>
               <p
                 className="about-lang-title"
                 style={{

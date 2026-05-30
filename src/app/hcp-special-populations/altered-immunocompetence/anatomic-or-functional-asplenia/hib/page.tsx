@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function AspleniaHibPage() {
   return (
@@ -24,9 +26,9 @@ export default function AspleniaHibPage() {
         <div className="about-elegant-card">
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpAspleniaHib} titleStyle={{ fontSize: '2rem' }} locale="en">
                 Hib
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
                 Hib conjugate vaccines are available in single or combined antigen preparations. Hib vaccine is recommended routinely for all children through age 59 months.
               </p>

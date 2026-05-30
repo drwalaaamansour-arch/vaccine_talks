@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function AnatomicOrFunctionalAspleniaPage() {
   return (
@@ -24,9 +26,9 @@ export default function AnatomicOrFunctionalAspleniaPage() {
         <div className="about-elegant-card">
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpAsplenia} titleStyle={{ fontSize: '2rem' }} locale="en">
                 Anatomic or Functional Asplenia
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>
                 Asplenia, whether anatomical or functional, significantly increases susceptibility to infections from encapsulated bacteria. Without proper splenic function, the body struggles to clear these pathogens, making prompt vaccination and preventive measures essential.
               </p>

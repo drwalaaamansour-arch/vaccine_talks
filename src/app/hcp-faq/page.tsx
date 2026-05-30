@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPFAQ() {
   return (
@@ -35,7 +37,7 @@ export default function HCPFAQ() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign:'center', fontSize:'2rem', alignSelf:'center'}}>Frequently Asked Questions</h2>
+              <ArticlePageTitle {...ARTICLE_META.hcpFaq} titleStyle={{textAlign:'center', fontSize:'2rem', alignSelf:'center'}} locale="en">Frequently Asked Questions</ArticlePageTitle>
               <div style={{marginTop:'0.25rem'}}>
                 <h3 style={{textAlign:'left', fontSize:'1.05rem', fontWeight:700, color:'#40606D', margin:0}}>Note</h3>
                 <p className="about-lang-intro" style={{marginTop:'0.25rem'}}>

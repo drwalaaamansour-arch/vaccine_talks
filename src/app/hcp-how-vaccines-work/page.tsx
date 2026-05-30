@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPHowVaccinesWork() {
   return (
@@ -33,9 +35,9 @@ export default function HCPHowVaccinesWork() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{direction: 'ltr', textAlign: 'left'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'left'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpHowVaccinesWork} titleStyle={{textAlign: 'left'}} locale="en">
                 How do vaccines work?
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro" style={{textAlign: 'left', direction: 'ltr'}}>
                 To understand how vaccines work, it helps to first look at how the body fights illness. When germs, such as bacteria or viruses, invade the body, they attack and multiply. This invasion, called an infection, is what causes disease. The body has many ways of defending itself against pathogens. A pathogen is a bacterium, virus, parasite or fungus that can cause disease within the body. Each pathogen is made up of several subparts, usually unique to that specific pathogen and the disease it causes Skin, mucus, and cilia (microscopic hairs that move debris away from the lungs) all work as physical barriers to prevent pathogens from entering the body in the first place.
               </p>

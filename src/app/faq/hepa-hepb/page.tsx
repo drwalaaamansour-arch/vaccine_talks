@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function FAQHepAHebB() {
   return (
@@ -25,7 +27,7 @@ export default function FAQHepAHebB() {
       
       {/* Simple centered title */}
       <section style={{padding:'0.5rem 1rem 0'}}>
-        <h2 className="about-lang-title" style={{textAlign:'center', fontSize:'2rem', margin:'0'}}>FAQ – Hepatitis A & B (Twinrix)</h2>
+        <ArticlePageTitle {...ARTICLE_META.faqHepaHepb} titleStyle={{textAlign:'center', fontSize:'2rem', margin:'0'}} locale="en">FAQ – Hepatitis A & B (Twinrix)</ArticlePageTitle>
       </section>
 
       {/* HepA-HepB FAQ content */}

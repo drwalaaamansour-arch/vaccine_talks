@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function Rotavirus() {
@@ -37,9 +39,9 @@ export default function Rotavirus() {
           <div className="about-bilingual">
             {/* Arabic Content */}
             <div className="about-lang arabic">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.rotavirus} locale="ar">
                 الروتا
-              </h2>
+              </VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 
@@ -82,9 +84,9 @@ export default function Rotavirus() {
 
             {/* English Content */}
             <div className="about-lang">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.rotavirus} locale="en">
                 Rota
-              </h2>
+              </VaccineLangTitle>
               
               <div className="about-lang-intro">
                 <p>

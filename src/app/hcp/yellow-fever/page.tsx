@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPYellowFever() {
   return (
@@ -33,9 +35,9 @@ export default function HCPYellowFever() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <VaccineLangTitle {...ARTICLE_META.hcpYellowFever} style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Yellow fever
-              </h2>
+              </VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img

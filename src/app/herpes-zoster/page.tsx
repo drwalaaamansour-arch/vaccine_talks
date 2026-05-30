@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function HerpesZoster() {
@@ -30,7 +32,7 @@ export default function HerpesZoster() {
           {/* Content */}
           <div className="about-bilingual">
             <div className="about-lang arabic">
-              <h2 className="about-lang-title">الحزام الناري (الهربس النطاقي)</h2>
+              <VaccineLangTitle {...ARTICLE_META.herpesZoster} locale="ar">الحزام الناري (الهربس النطاقي)</VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 
@@ -87,7 +89,7 @@ export default function HerpesZoster() {
             </div>
             <div className="lang-divider"></div>
             <div className="about-lang">
-              <h2 className="about-lang-title">Herpes Zoster (Shingles)</h2>
+              <VaccineLangTitle {...ARTICLE_META.herpesZoster} locale="en">Herpes Zoster (Shingles)</VaccineLangTitle>
               <div className="about-lang-intro">
                 <p>
                   A disease caused by the varicella-zoster virus (the same virus that causes chickenpox), which appears as a painful rash in a band-like pattern on one side of the body.

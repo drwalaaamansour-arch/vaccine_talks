@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function AntiViper() {
   return (
@@ -33,9 +35,9 @@ export default function AntiViper() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <VaccineLangTitle {...ARTICLE_META.antiViper} style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="ar">
                 Anti-viper
-              </h2>
+              </VaccineLangTitle>
               <div style={{width: '100%', marginTop: '2rem'}}>
                 <iframe 
                   src="/viper.pdf" 

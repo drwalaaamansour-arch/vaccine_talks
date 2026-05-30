@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HBImmunoglobulin() {
   return (
@@ -33,9 +35,9 @@ export default function HBImmunoglobulin() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <VaccineLangTitle {...ARTICLE_META.hbImmunoglobulin} style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="ar">
                 ImmunoHBs – Product Information
-              </h2>
+              </VaccineLangTitle>
               <div style={{width: '100%', marginTop: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px'}}>
                 <div style={{transform: 'rotate(180deg)', transformOrigin: 'center', width: 'min(100%, 800px)', height: 'min(75vh, 600px)'}}>
                   <iframe

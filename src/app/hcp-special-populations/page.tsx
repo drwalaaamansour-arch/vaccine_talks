@@ -85,6 +85,17 @@ export default function HCPSpecialPopulations() {
                 <span className="button-emoji">🤱</span>
                 <span className="button-text-en" style={{fontSize: '1.25rem', fontWeight: '600'}}>Pregnancy</span>
               </a>
+
+              <a
+                href="/hcp-special-populations/breastfeeding"
+                className="vaccination-button"
+                style={{ minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none' }}
+              >
+                <span className="button-emoji">🍼</span>
+                <span className="button-text-en" style={{ fontSize: '1.25rem', fontWeight: '600' }}>
+                  Women who are breastfeeding
+                </span>
+              </a>
               
               <a href="/hcp-special-populations/anaesthesia-surgery" className="vaccination-button" style={{minHeight: '280px', padding: '2.5rem 1.75rem', width: '100%', textDecoration: 'none'}}>
                 <span className="button-emoji">🏥</span>

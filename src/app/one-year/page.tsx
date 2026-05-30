@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function OneYear() {
   return (
@@ -36,9 +38,9 @@ export default function OneYear() {
           <div className="about-bilingual">
             {/* Arabic Content */}
             <div className="about-lang arabic">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.oneYear} locale="ar">
                 سنة
-              </h2>
+              </VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 
@@ -94,9 +96,9 @@ export default function OneYear() {
 
             {/* English Content */}
             <div className="about-lang">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.oneYear} locale="en">
                 One Year
-              </h2>
+              </VaccineLangTitle>
               
               <div className="about-lang-intro">
                 <p>

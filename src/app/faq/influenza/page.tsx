@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function FAQInfluenza() {
   return (
@@ -26,7 +28,7 @@ export default function FAQInfluenza() {
 
       {/* Simple centered title */}
       <section style={{padding:'0.5rem 1rem 0'}}>
-        <h2 className="about-lang-title" style={{textAlign:'center', fontSize:'2rem', margin:'0'}}>FAQ – Influenza</h2>
+        <ArticlePageTitle {...ARTICLE_META.faqInfluenza} titleStyle={{textAlign:'center', fontSize:'2rem', margin:'0'}} locale="en">FAQ – Influenza</ArticlePageTitle>
       </section>
 
       {/* Influenza FAQ content */}

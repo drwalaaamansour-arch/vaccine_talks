@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function AnaesthesiaSurgery() {
   return (
@@ -33,9 +35,9 @@ export default function AnaesthesiaSurgery() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', color: '#40606D'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpAnaesthesiaSurgery} locale="en">
                 Before or after anaesthesia or surgery
-              </h2>
+              </ArticlePageTitle>
 
               <h3 style={{textAlign:'left', fontSize:'1.5rem', fontWeight:600, color:'#40606D', marginTop:'2rem', marginBottom:'1rem', direction: 'ltr'}}>General principles</h3>
               <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>

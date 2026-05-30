@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPTypesOfVaccines() {
   return (
@@ -33,9 +35,9 @@ export default function HCPTypesOfVaccines() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start', direction: 'ltr', textAlign: 'left'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpTypesOfVaccines} titleStyle={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Types of vaccines
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro" style={{textAlign: 'left', direction: 'ltr'}}>
                 Ever since the first vaccine was developed in 1796 to treat smallpox, several different methods have been created to develop successful vaccines. Today, those methods, known as vaccine technologies, are more advanced and use the latest technology to help protect the world from preventable diseases. Depending on the pathogen (a bacteria or virus) that is being targeted, different vaccine technologies are used to generate an effective vaccine. Just like there are multiple ways to develop a vaccine, they can also take on multiple forms—from needle injections and nasal sprays to oral doses, a more recent innovation.
               </p>

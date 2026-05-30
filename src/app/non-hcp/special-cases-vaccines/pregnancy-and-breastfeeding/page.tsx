@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import Header from '@/components/Header';
+import ArticleMetaDate from '@/components/ArticleMetaDate';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 const PREGNANCY_AR_PDF = encodeURI('/التطعيمات اثناء الحمل.pdf');
 const PREGNANCY_AR_PDF_EMBED = `${PREGNANCY_AR_PDF}#view=FitH&toolbar=1`;
@@ -46,6 +48,7 @@ export default function PregnancyBreastfeedingPage() {
                 <h2 className="about-lang-title pregnancy-hero-title">
                   التطعيمات أثناء الحمل.. حماية ليكي ولطفلك
                 </h2>
+                <ArticleMetaDate {...ARTICLE_META.nonHcpPregnancy} locale="ar" compact />
               </div>
 
               <div className="bubble-container pregnancy-bubble-wrap pregnancy-bubble-wrap--ar" dir="rtl">
@@ -243,6 +246,7 @@ export default function PregnancyBreastfeedingPage() {
                 <p className="pregnancy-subtitle-ar" lang="ar" dir="rtl">
                   التطعيمات أثناء الحمل.. حماية ليكي ولطفلك
                 </p>
+                <ArticleMetaDate {...ARTICLE_META.nonHcpPregnancy} locale="en" compact />
               </div>
 
               <div className="bubble-container pregnancy-bubble-wrap pregnancy-bubble-wrap--en" dir="ltr">

@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function ImmunoglobulinBloodProducts() {
   return (
@@ -33,9 +35,9 @@ export default function ImmunoglobulinBloodProducts() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', color: '#40606D'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpImmunoglobulinBloodProducts} locale="en">
                 People who have recently received normal human immunoglobulin and other blood products
-              </h2>
+              </ArticlePageTitle>
               
               <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', marginTop: '1.5rem'}}>
                 Immunoglobulins may inhibit the immune response to some vaccines. Delay giving some vaccines for a certain time after receiving blood products.

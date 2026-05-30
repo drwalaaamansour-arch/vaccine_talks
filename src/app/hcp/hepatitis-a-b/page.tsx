@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPHepatitisAB() {
   return (
@@ -33,9 +35,9 @@ export default function HCPHepatitisAB() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <VaccineLangTitle {...ARTICLE_META.hcpHepatitisAB} style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Hepatitis A&B
-              </h2>
+              </VaccineLangTitle>
               <p className="about-lang-intro">
                 Hepatitis A+B vaccine contains <strong>paediatric dose of Hepatitis A</strong> and <strong>adult dose of Hepatitis B</strong>.
               </p>

@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPVaccineComposition() {
   return (
@@ -33,9 +35,9 @@ export default function HCPVaccineComposition() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpVaccineComposition} titleStyle={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Vaccine composition
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro">
                 Vaccines contain tiny fragments of the disease-causing organism or the blueprints for making the tiny fragments. They also contain other ingredients to keep the vaccine safe and effective. These latter ingredients are included in most vaccines and have been used for decades in billions of doses of vaccine. Each vaccine component serves a specific purpose, and each ingredient is tested in the manufacturing process. All ingredients are tested for safety.
               </p>

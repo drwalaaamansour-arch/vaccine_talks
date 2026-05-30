@@ -1,5 +1,7 @@
 'use client';
 
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import { useState } from 'react';
 import Header from '@/components/Header';
 
@@ -38,9 +40,9 @@ export default function HCPMMR() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <VaccineLangTitle {...ARTICLE_META.hcpMmr} style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 MMR
-              </h2>
+              </VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img

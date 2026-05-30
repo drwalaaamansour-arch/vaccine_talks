@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import Header from '@/components/Header';
+import ArticleMetaDate from '@/components/ArticleMetaDate';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function PostCochlearImplantPage() {
   return (
@@ -44,6 +46,7 @@ export default function PostCochlearImplantPage() {
                 <p className="cochlear-subtitle-en" dir="ltr">
                   Cochlear implant vaccinations
                 </p>
+                <ArticleMetaDate {...ARTICLE_META.nonHcpCochlear} locale="ar" compact />
               </div>
 
               <div className="bubble-container">
@@ -187,6 +190,7 @@ export default function PostCochlearImplantPage() {
                 <p className="cochlear-subtitle-ar" lang="ar" dir="rtl">
                   تطعيمات زراعة القوقعة
                 </p>
+                <ArticleMetaDate {...ARTICLE_META.nonHcpCochlear} locale="en" compact />
               </div>
 
               <div className="bubble-container">

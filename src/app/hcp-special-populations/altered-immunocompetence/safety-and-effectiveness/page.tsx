@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function SafetyAndEffectivenessPage() {
   return (
@@ -24,9 +26,9 @@ export default function SafetyAndEffectivenessPage() {
         <div className="about-elegant-card">
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpSafetyEffectiveness} titleStyle={{ fontSize: '2rem' }} locale="en">
                 Safety and Effectiveness
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left'}}>Content coming soon...</p>
             </div>
           </div>

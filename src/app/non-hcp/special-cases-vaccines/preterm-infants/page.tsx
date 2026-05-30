@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import Header from '@/components/Header';
+import ArticleMetaDate from '@/components/ArticleMetaDate';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 const PRETERM_IMAGE_SRC = '/preterm image.jpeg';
 const PRETERM_IMAGE_WIDTH = 225;
@@ -60,6 +62,7 @@ export default function PretermInfantsSpecialCasesPage() {
                 <br />
                 مهمة وآمنة جدًا
               </h2>
+              <ArticleMetaDate {...ARTICLE_META.nonHcpPreterm} locale="ar" compact />
               <div className="about-lang-intro bubble-container" style={{ direction: 'rtl', textAlign: 'right', width: '100%', lineHeight: 1.9 }}>
                 <div className="answer-bubble">
                   <p>
@@ -201,6 +204,7 @@ export default function PretermInfantsSpecialCasesPage() {
                 <br />
                 Very Important and Very Safe
               </h2>
+              <ArticleMetaDate {...ARTICLE_META.nonHcpPreterm} locale="en" compact />
               <div className="about-lang-intro bubble-container" style={{ direction: 'ltr', textAlign: 'left', width: '100%', lineHeight: 1.8 }}>
                 <div className="answer-bubble">
                   <p>

@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 const prose: React.CSSProperties = {
   direction: 'ltr',
@@ -86,17 +88,12 @@ export default function VaccinationOfContactsPage() {
 
           <div className="about-bilingual">
             <div className="about-lang hcp-content-column">
-              <h2
-                className="about-lang-title"
-                style={{
-                  textAlign: 'center',
-                  fontSize: '2rem',
-                  alignSelf: 'center',
-                  marginBottom: '1.5rem',
-                }}
-              >
+              <ArticlePageTitle
+                {...ARTICLE_META.hcpVaccinationOfContacts}
+                titleStyle={{ fontSize: '2rem' }}
+               locale="en">
                 Vaccination of Contacts of Persons with Altered Immunocompetence
-              </h2>
+              </ArticlePageTitle>
 
               <div
                 style={{

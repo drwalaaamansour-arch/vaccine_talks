@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HepatitisAB() {
   return (
@@ -29,7 +31,7 @@ export default function HepatitisAB() {
           {/* Content */}
           <div className="about-bilingual">
             <div className="about-lang arabic">
-              <h2 className="about-lang-title">التطعيم المشترك لكبدي أ+ب</h2>
+              <VaccineLangTitle {...ARTICLE_META.hepatitisAB} locale="ar">التطعيم المشترك لكبدي أ+ب</VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 
@@ -74,7 +76,7 @@ export default function HepatitisAB() {
             </div>
             <div className="lang-divider"></div>
             <div className="about-lang">
-              <h2 className="about-lang-title">Combined Hepatitis A+B Vaccine</h2>
+              <VaccineLangTitle {...ARTICLE_META.hepatitisAB} locale="en">Combined Hepatitis A+B Vaccine</VaccineLangTitle>
               <div className="about-lang-intro">
                 <p>
                   A combined vaccine for the prevention of hepatitis A and hepatitis B in a single injection, providing comprehensive protection against both types of hepatitis.

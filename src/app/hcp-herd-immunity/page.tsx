@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPHerdImmunity() {
   return (
@@ -33,9 +35,9 @@ export default function HCPHerdImmunity() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{direction: 'ltr', textAlign: 'left'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'left'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpHerdImmunity} titleStyle={{textAlign: 'left'}} locale="en">
                 Herd immunity
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro" style={{textAlign: 'left', direction: 'ltr'}}>
                 When someone is vaccinated, they are very likely to be protected against the targeted disease. But not everyone can be vaccinated. People with underlying health conditions that weaken their immune systems (such as cancer or HIV) or who have severe allergies to some vaccine components may not be able to get vaccinated with certain vaccines. These people can still be protected if they live in and amongst others who are vaccinated.
               </p>

@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPResources() {
   return (
@@ -36,9 +38,9 @@ export default function HCPResources() {
           <div className="about-bilingual">
             {/* English Content */}
             <div className="about-lang">
-              <h2 className="about-lang-title">
+              <ArticlePageTitle {...ARTICLE_META.hcpResources} locale="en">
                 Welcome Healthcare Heroes!
-              </h2>
+              </ArticlePageTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 

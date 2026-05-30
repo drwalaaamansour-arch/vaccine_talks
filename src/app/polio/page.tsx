@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function Polio() {
   return (
@@ -36,9 +38,9 @@ export default function Polio() {
           <div className="about-bilingual">
             {/* Arabic Content */}
             <div className="about-lang arabic">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.polio} locale="ar">
                 شلل الأطفال
-              </h2>
+              </VaccineLangTitle>
               
               <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                 <img 
@@ -88,9 +90,9 @@ export default function Polio() {
 
             {/* English Content */}
             <div className="about-lang">
-              <h2 className="about-lang-title">
+              <VaccineLangTitle {...ARTICLE_META.polio} locale="en">
                 Polio
-              </h2>
+              </VaccineLangTitle>
               
               <div className="about-lang-intro">
                 <p>

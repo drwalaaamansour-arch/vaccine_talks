@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPVaccineAdministration() {
   return (
@@ -33,9 +35,9 @@ export default function HCPVaccineAdministration() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start', direction: 'ltr', textAlign: 'left'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpVaccineAdministration} titleStyle={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Vaccine administration
-              </h2>
+              </ArticlePageTitle>
               
               <h3 style={{fontSize: '1.3rem', fontWeight: '700', marginTop: '1.5rem', marginBottom: '0.5rem', color: '#40606D', textAlign: 'center', width: '100%', alignSelf: 'center'}}>Oral Route</h3>
               <p className="about-lang-intro" style={{textAlign: 'left', direction: 'ltr'}}>

@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 const prose: React.CSSProperties = {
   direction: 'ltr',
@@ -142,17 +144,7 @@ export default function PregnancyBreastfeeding() {
 
           <div className="about-bilingual">
             <div className="about-lang hcp-content-column">
-              <h2
-                className="about-lang-title"
-                style={{
-                  textAlign: 'center',
-                  fontSize: '2.5rem',
-                  alignSelf: 'center',
-                  marginBottom: '1.5rem',
-                }}
-              >
-                Pregnancy
-              </h2>
+              <ArticlePageTitle {...ARTICLE_META.hcpPregnancy} locale="en">Pregnancy</ArticlePageTitle>
 
               <div
                 style={{

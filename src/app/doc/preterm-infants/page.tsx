@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function PretermInfantsDoc() {
   return (
@@ -23,9 +25,9 @@ export default function PretermInfantsDoc() {
       </main>
 
       <div style={{width: '100%', display: 'flex', justifyContent: 'center', margin: '0.5rem 0'}}>
-        <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', margin: 0}}>
+        <ArticlePageTitle {...ARTICLE_META.docPretermInfants} titleStyle={{textAlign: 'center', fontSize: '2.5rem', margin: 0}} locale="en">
           Preterm infants
-        </h2>
+        </ArticlePageTitle>
       </div>
 
       <section className="about-section">

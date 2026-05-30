@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
 
 export default function PCV() {
@@ -32,7 +34,7 @@ export default function PCV() {
             {/* Content */}
             <div className="about-bilingual">
               <div className="about-lang arabic">
-                <h2 className="about-lang-title">المكورات الرئوية</h2>
+                <VaccineLangTitle {...ARTICLE_META.pcv} locale="ar">المكورات الرئوية</VaccineLangTitle>
                 
                 <div className="image-wrapper" style={{ marginBottom: '2rem', width: '100%', display: 'flex', justifyContent: 'center', background: 'transparent' }}>
                   <img 
@@ -83,7 +85,7 @@ export default function PCV() {
               </div>
               <div className="lang-divider"></div>
               <div className="about-lang">
-                <h2 className="about-lang-title">Pneumococcal Conjugate Vaccine (PCV)</h2>
+                <VaccineLangTitle {...ARTICLE_META.pcv} locale="en">Pneumococcal Conjugate Vaccine (PCV)</VaccineLangTitle>
                 <div className="about-lang-intro">
                   <p>
                     Not only for the prevention of pneumonia, but also from bacteremia, otitis media, and meningitis caused by "Streptococcus pneumoniae" bacteria.

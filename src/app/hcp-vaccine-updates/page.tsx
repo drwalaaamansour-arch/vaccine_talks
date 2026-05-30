@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPVaccineUpdates() {
   return (
@@ -33,9 +35,9 @@ export default function HCPVaccineUpdates() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start', direction: 'ltr', textAlign: 'left'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpVaccineUpdates} titleStyle={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}} locale="en">
                 Global Vaccine Updates
-              </h2>
+              </ArticlePageTitle>
 
               {/* Immunize.org and Autism Science Foundation update */}
               <div style={{width: '100%', marginBottom: '2rem'}}>

@@ -1,5 +1,7 @@
 'use client';
 
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import { useState } from 'react';
 import Header from '@/components/Header';
 
@@ -34,9 +36,9 @@ export default function urabiesDoc() {
       </main>
 
       <div style={{width: '100%', display: 'flex', justifyContent: 'center', margin: '0.5rem 0'}}>
-        <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', margin: 0}}>
+        <ArticlePageTitle {...ARTICLE_META.docRabies} titleStyle={{textAlign: 'center', fontSize: '2.5rem', margin: 0}} locale="en">
           Rabies
-        </h2>
+        </ArticlePageTitle>
       </div>
 
       {/* PDF: Rabies Protocol (August 2025) */}

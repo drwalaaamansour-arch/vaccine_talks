@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import Header from '@/components/Header';
+import ArticleMetaDate from '@/components/ArticleMetaDate';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 const SPLEEN_PDF = '/spleen.pdf';
 const SPLEEN_PDF_EMBED = `${SPLEEN_PDF}#view=FitH&toolbar=1`;
@@ -47,6 +49,7 @@ export default function SplenectomyPage() {
                   غياب أو ضعف الطحال
                 </h2>
                 <p className="spleen-subtitle-secondary">(تطعيمات استئصال الطحال)</p>
+                <ArticleMetaDate {...ARTICLE_META.nonHcpSplenectomy} locale="ar" compact />
               </div>
 
               <div className="bubble-container spleen-bubble-wrap spleen-bubble-wrap--ar" dir="rtl">
@@ -212,6 +215,7 @@ export default function SplenectomyPage() {
                 <p className="spleen-subtitle-ar" lang="ar" dir="rtl">
                   غياب أو ضعف الطحال
                 </p>
+                <ArticleMetaDate {...ARTICLE_META.nonHcpSplenectomy} locale="en" compact />
               </div>
 
               <div className="bubble-container spleen-bubble-wrap spleen-bubble-wrap--en" dir="ltr">

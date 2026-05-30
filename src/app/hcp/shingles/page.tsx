@@ -1,5 +1,7 @@
 'use client';
 
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 
@@ -58,9 +60,9 @@ export default function HCPShingles() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <VaccineLangTitle {...ARTICLE_META.hcpShingles} style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Shingles (HCP)
-              </h2>
+              </VaccineLangTitle>
               
               <div style={{display: 'flex', flexDirection: 'column', gap: '2rem', justifyContent: 'center', alignItems: 'center', marginBottom: '2rem', width: '100%'}}>
                 <div className="image-wrapper" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'transparent' }}>

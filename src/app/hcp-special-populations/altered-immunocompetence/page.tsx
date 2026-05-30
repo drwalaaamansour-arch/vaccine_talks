@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function AlteredImmunocompetence() {
   return (
@@ -33,9 +35,9 @@ export default function AlteredImmunocompetence() {
 
           <div className="coming-soon-container">
             <div className="coming-soon-content">
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.25rem', marginBottom: '1rem', color: '#40606D'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpAlteredImmunocompetenceHub} titleStyle={{textAlign: 'center', fontSize: '2.25rem', marginBottom: '1rem', color: '#40606D'}} locale="en">
                 Altered Immunocompetence Vaccination
-              </h2>
+              </ArticlePageTitle>
               <p className="about-lang-intro" style={{textAlign: 'center', direction: 'ltr', maxWidth: '700px', margin: '0 auto'}}>
                 Coming soon.
               </p>

@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import VaccineLangTitle from '@/components/VaccineLangTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPDT() {
   return (
@@ -33,9 +35,9 @@ export default function HCPDT() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', marginBottom: '0.5rem'}}>
+              <VaccineLangTitle {...ARTICLE_META.hcpDt} style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center', marginBottom: '0.5rem'}} locale="en">
                 DT containing vaccines
-              </h2>
+              </VaccineLangTitle>
               <p className="about-lang-intro" style={{maxWidth: '900px', marginTop: '0.5rem'}}>
                 This section provides healthcare professionals with resources and references related to diphtheria and tetanus (DT) containing vaccines used in Egypt. More detailed product information will be added here.
               </p>

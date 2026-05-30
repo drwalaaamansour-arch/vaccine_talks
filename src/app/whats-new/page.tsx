@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function WhatsNew() {
   return (
@@ -35,9 +37,9 @@ export default function WhatsNew() {
           {/* Content */}
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'flex-start', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}}>
+              <ArticlePageTitle {...ARTICLE_META.whatsNew} titleStyle={{textAlign: 'center', fontSize: '2rem', alignSelf: 'center', marginBottom: '2rem'}} locale="en">
                 What's New / ما الجديد
-              </h2>
+              </ArticlePageTitle>
               
               <div className="news-window">
                 <div className="news-window-content">

@@ -1,4 +1,6 @@
 import Header from '@/components/Header';
+import ArticlePageTitle from '@/components/ArticlePageTitle';
+import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HCPDocumentsPreterm() {
   return (
@@ -32,9 +34,9 @@ export default function HCPDocumentsPreterm() {
 
           <div className="about-bilingual">
             <div className="about-lang" style={{alignItems: 'center', display: 'flex', flexDirection: 'column', width: '100%'}}>
-              <h2 className="about-lang-title" style={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}}>
+              <ArticlePageTitle {...ARTICLE_META.hcpDocumentsPreterm} titleStyle={{textAlign: 'center', fontSize: '2.5rem', alignSelf: 'center'}} locale="en">
                 Egyptian preterm consensus
-              </h2>
+              </ArticlePageTitle>
               <div style={{width: '100%', marginTop: '2rem'}}>
                 <div style={{marginBottom: '1rem', textAlign: 'center'}}>
                   <a
