@@ -47,7 +47,7 @@ const subTitleFeatured: CSSProperties = {
   marginTop: '0.25rem',
 };
 
-const para = (mb = '0.75rem'): CSSProperties => ({
+const para = (mb: string | number = '0.75rem'): CSSProperties => ({
   direction: 'ltr',
   textAlign: 'left',
   marginBottom: mb,

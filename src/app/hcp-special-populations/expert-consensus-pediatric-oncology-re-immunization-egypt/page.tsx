@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import ArticlePageTitle from '@/components/ArticlePageTitle';
 import { ARTICLE_META } from '@/lib/article-meta';
 
-const para = (mb = '0.75rem'): CSSProperties => ({
+const para = (mb: string | number = '0.75rem'): CSSProperties => ({
   direction: 'ltr',
   textAlign: 'left',
   marginBottom: mb,
