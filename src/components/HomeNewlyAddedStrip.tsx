@@ -203,9 +203,29 @@ function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   );
 }
 
+function HsctSpecialPopulationsSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/haematopoietic-stem-cell-transplant-recipients"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">Haematopoietic stem cell transplant recipients</h3>
+      <p className="home-newly-card-body">
+        New HCP section on revaccination after HSCT: pneumococcal, Hib, DTaP/Tdap, influenza, live vaccines, serology,
+        travel vaccines, references, PDFs, infographic—and expert consensus on re-immunization for pediatric oncology
+        patients in Egypt.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <HsctSpecialPopulationsSpotlightCard duplicate={duplicate} />
       <AspleniaNonHcpSpotlightCard duplicate={duplicate} />
       <CdcArabicPdfsSpotlightCard duplicate={duplicate} />
       <SpotlightLinkCard

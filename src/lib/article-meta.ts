@@ -23,10 +23,11 @@ export const ARTICLE_META = {
   hcpAspleniaHib: { added: 'MAY 07, 2026', lastUpdated: 'MAY 07, 2026' },
   hcpAspleniaPneumococcal: { added: 'MAY 07, 2026', lastUpdated: 'MAY 07, 2026' },
   hcpCorticosteroids: { added: 'MAY 07, 2026', lastUpdated: 'MAY 07, 2026' },
-  hcpHematopoieticTransplants: { added: 'MAY 07, 2026', lastUpdated: 'MAY 07, 2026' },
+  hcpHematopoieticTransplants: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 01, 2026' },
+  hcpPediatricOncologyReimmunizationEgypt: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 02, 2026' },
   hcpSafetyEffectiveness: { added: 'MAY 07, 2026', lastUpdated: 'MAY 07, 2026' },
   hcpAlteredImmunocompetenceHub: { added: 'JANUARY 31, 2026', lastUpdated: 'MAY 11, 2026' },
-  hcpSpecialPopulationsHub: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MAY 15, 2026' },
+  hcpSpecialPopulationsHub: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 01, 2026' },
 
   // Non-HCP special cases
   nonHcpPregnancy: { added: 'MAY 15, 2026', lastUpdated: 'MAY 15, 2026' },

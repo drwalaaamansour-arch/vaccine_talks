@@ -33,7 +33,9 @@ const ROUTES = {
   hcpCorticosteroids:
     'src/app/hcp-special-populations/altered-immunocompetence/corticosteroids-and-immunosuppressive-drugs/page.tsx',
   hcpHematopoieticTransplants:
-    'src/app/hcp-special-populations/altered-immunocompetence/hematopoietic-cell-transplants/page.tsx',
+    'src/app/hcp-special-populations/haematopoietic-stem-cell-transplant-recipients/page.tsx',
+  hcpPediatricOncologyReimmunizationEgypt:
+    'src/app/hcp-special-populations/expert-consensus-pediatric-oncology-re-immunization-egypt/page.tsx',
   hcpSafetyEffectiveness:
     'src/app/hcp-special-populations/altered-immunocompetence/safety-and-effectiveness/page.tsx',
   hcpAlteredImmunocompetenceHub:
@@ -172,6 +174,8 @@ const MANUAL = {
   hcpAlteredImmunocompetenceGeneral: { added: 'MAY 11, 2026', lastUpdated: 'MAY 15, 2026' },
   hcpAsplenia: { added: 'MAY 07, 2026', lastUpdated: 'MAY 15, 2026' },
   hcpCochlearImplants: { added: 'FEBRUARY 13, 2026', lastUpdated: 'MARCH 28, 2026' },
+  hcpHematopoieticTransplants: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 01, 2026' },
+  hcpPediatricOncologyReimmunizationEgypt: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 02, 2026' },
 };
 
 function gitDate(relPath, reverse) {
@@ -205,6 +209,7 @@ const sections = {
     'hcpAspleniaPneumococcal',
     'hcpCorticosteroids',
     'hcpHematopoieticTransplants',
+    'hcpPediatricOncologyReimmunizationEgypt',
     'hcpSafetyEffectiveness',
     'hcpAlteredImmunocompetenceHub',
     'hcpSpecialPopulationsHub',
