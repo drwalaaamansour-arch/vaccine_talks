@@ -1,7 +1,21 @@
+import Link from 'next/link';
 import Header from '@/components/Header';
 import VaccineLangTitle from '@/components/VaccineLangTitle';
 import { ARTICLE_META } from '@/lib/article-meta';
 import CdcArabicPdfSection from '@/components/CdcArabicPdfSection';
+
+const faqButtonStyle = {
+  display: 'inline-block',
+  padding: '1rem 2.25rem',
+  background: '#40606D',
+  color: '#ffffff',
+  fontSize: '1.05rem',
+  fontWeight: 600,
+  textDecoration: 'none',
+  borderRadius: '100px',
+  boxShadow: '0 4px 14px rgba(64, 96, 109, 0.35)',
+  transition: 'background 0.3s ease, transform 0.3s ease',
+} as const;
 
 export default function MMR() {
   return (
@@ -87,6 +101,26 @@ export default function MMR() {
                   </p>
                 </div>
               </div>
+
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '2rem',
+                }}
+              >
+                <Link
+                  href="/non-hcp/common-questions/mmr"
+                  style={{
+                    ...faqButtonStyle,
+                    direction: 'rtl',
+                    fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif",
+                  }}
+                >
+                  للأسئلة الشائعة اضغط هنا
+                </Link>
+              </div>
             </div>
 
             {/* English Content */}
@@ -129,6 +163,19 @@ export default function MMR() {
                     <strong>Contraindications:</strong> High fever in the recipient, and we should note that since it's a live vaccine, it cannot be given to anyone with immune system problems or taking immunosuppressants, and women should not be pregnant for one month after vaccination.
                   </p>
                 </div>
+              </div>
+
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '2rem',
+                }}
+              >
+                <Link href="/non-hcp/common-questions/mmr" style={faqButtonStyle}>
+                  For common questions, click here
+                </Link>
               </div>
             </div>
           </div>

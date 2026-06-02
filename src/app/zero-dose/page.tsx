@@ -1,6 +1,20 @@
+import Link from 'next/link';
 import Header from '@/components/Header';
 import VaccineLangTitle from '@/components/VaccineLangTitle';
 import { ARTICLE_META } from '@/lib/article-meta';
+
+const faqButtonStyle = {
+  display: 'inline-block',
+  padding: '1rem 2.25rem',
+  background: '#40606D',
+  color: '#ffffff',
+  fontSize: '1.05rem',
+  fontWeight: 600,
+  textDecoration: 'none',
+  borderRadius: '100px',
+  boxShadow: '0 4px 14px rgba(64, 96, 109, 0.35)',
+  transition: 'background 0.3s ease, transform 0.3s ease',
+} as const;
 
 export default function ZeroDose() {
   return (
@@ -65,6 +79,26 @@ export default function ZeroDose() {
                   </p>
                 </div>
               </div>
+
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '2rem',
+                }}
+              >
+                <Link
+                  href="/non-hcp/common-questions/hepatitis-b"
+                  style={{
+                    ...faqButtonStyle,
+                    direction: 'rtl',
+                    fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif",
+                  }}
+                >
+                  للأسئلة الشائعة اضغط هنا
+                </Link>
+              </div>
             </div>
 
             {/* English Content */}
@@ -86,6 +120,19 @@ export default function ZeroDose() {
                     <strong>Very Important:</strong> However, we should note that if the mother is infected with the virus, the child must also receive hepatitis B immunoglobulin immediately after birth along with the vaccine, and the vaccine is injected in the thigh muscle, while the hepatitis B immunoglobulin is injected in the thigh muscle of the other leg.
                   </p>
                 </div>
+              </div>
+
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '2rem',
+                }}
+              >
+                <Link href="/non-hcp/common-questions/hepatitis-b" style={faqButtonStyle}>
+                  For common questions, click here
+                </Link>
               </div>
             </div>
           </div>

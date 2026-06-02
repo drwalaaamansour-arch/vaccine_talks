@@ -1,6 +1,20 @@
+import Link from 'next/link';
 import Header from '@/components/Header';
 import VaccineLangTitle from '@/components/VaccineLangTitle';
 import { ARTICLE_META } from '@/lib/article-meta';
+
+const faqButtonStyle = {
+  display: 'inline-block',
+  padding: '1rem 2.25rem',
+  background: '#40606D',
+  color: '#ffffff',
+  fontSize: '1.05rem',
+  fontWeight: 600,
+  textDecoration: 'none',
+  borderRadius: '100px',
+  boxShadow: '0 4px 14px rgba(64, 96, 109, 0.35)',
+  transition: 'background 0.3s ease, transform 0.3s ease',
+} as const;
 
 export default function HepatitisAB() {
   return (
@@ -73,6 +87,26 @@ export default function HepatitisAB() {
                   </p>
                 </div>
               </div>
+
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '2rem',
+                }}
+              >
+                <Link
+                  href="/non-hcp/common-questions/hepatitis-a-b"
+                  style={{
+                    ...faqButtonStyle,
+                    direction: 'rtl',
+                    fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif",
+                  }}
+                >
+                  للأسئلة الشائعة اضغط هنا
+                </Link>
+              </div>
             </div>
             <div className="lang-divider"></div>
             <div className="about-lang">
@@ -107,6 +141,19 @@ export default function HepatitisAB() {
                     <strong>Contraindications:</strong> High fever, allergy to any component of the vaccine.
                   </p>
                 </div>
+              </div>
+
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: '2rem',
+                }}
+              >
+                <Link href="/non-hcp/common-questions/hepatitis-a-b" style={faqButtonStyle}>
+                  For common questions, click here
+                </Link>
               </div>
             </div>
           </div>

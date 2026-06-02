@@ -1,84 +1,25 @@
-'use client';
-
 import Header from '@/components/Header';
-import { useState } from 'react';
 
-export default function CommonQuestions() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const questions = [
-    {
-      question: "إيه هي التطعيمات الأساسية للأطفال في مصر؟",
-      answer: "التطعيمات الأساسية للأطفال في مصر بتشمل: لقاح التهاب الكبد الوبائي ب، لقاح شلل الأطفال، لقاح الثلاثي البكتيري (الدفتيريا، السعال الديكي، التيتانوس)، لقاح الحصبة والنكاف والحصبة الألمانية، لقاح الإنفلونزا البكتيرية، ولقاح الدرن."
-    },
-    {
-      question: "ممكن أطعّم طفلي لو كان مريض؟",
-      answer: "في معظم الحالات، ممكن تطعّم طفلك حتى لو كان عنده نزلة برد خفيفة أو حمى منخفضة. لكن لازم تستشير الطبيب لو الطفل عنده مرض شديد أو حمى عالية. الطبيب هيفحص الحالة ويقرر لو آمن نكمل التطعيم ولا لأ."
-    },
-    {
-      question: "إيه هي الآثار الجانبية الشائعة للتطعيمات؟",
-      answer: "الآثار الجانبية الشائعة للتطعيمات عادة بتكون خفيفة وبتشمل: احمرار أو تورم في مكان الحقن، حمى خفيفة، أو تهيج. الأعراض دي عادة بتروح في خلال يوم أو يومين. الآثار الجانبية الخطيرة نادرة جداً."
-    },
-    {
-      question: "التطعيمات آمنة؟",
-      answer: "آه، التطعيمات آمنة جداً وبتتختبر بدقة قبل ما تتنزل. الفوايد الصحية للتطعيمات أكتر بكتير من المخاطر المحتملة. التطعيمات بتحمي من أمراض خطيرة ممكن تسبب مضاعفات شديدة أو حتى الوفاة."
-    },
-    {
-      question: "أعمل إيه لو فات موعد تطعيم طفلي؟",
-      answer: "لو فات موعد تطعيم طفلك، لازم تتصل بالطبيب في أقرب وقت ممكن. مش هنبدأ الجدول من جديد لكن هنكمل. المهم إنك تكمل جدول التطعيمات بأسرع ما يمكن."
-    },
-    {
-      question: "ممكن أعطي أكتر من تطعيم في نفس الوقت؟",
-      answer: "آه، ممكن تعطي أكتر من تطعيم في نفس الوقت بأمان. ده مش هيأثر على فعالية التطعيمات ومش هيزيد الآثار الجانبية. في الواقع، إنك تعطي أكتر من تطعيم مع بعض بيوفر الوقت ويضمن حماية الطفل في أقرب وقت ممكن."
-    },
-    {
-      question: "إيه هي التطعيمات الموصى بيها للكبار؟",
-      answer: "التطعيمات الموصى بيها للكبار بتشمل: لقاح الإنفلونزا السنوي، لقاح التيتانوس والدفتيريا كل 10 سنين، لقاح التهاب الكبد الوبائي ب، ولقاح المكورات الرئوية للفئات المعرضة للخطر. ممكن يكون فيه تطعيمات إضافية حسب الحالة الصحية والعمر."
-    },
-    {
-      question: "ينفع الحوامل تتطعّم؟",
-      answer: "آه، بعض التطعيمات آمنة ومهمة للحوامل. لقاح الإنفلونزا واللقاح الثلاثي (Tdap) ولقاح RSV آمنين ومهمين أثناء الحمل. لكن لازم تتجنب التطعيمات الحية زي MMR أثناء الحمل. لازم تستشير الطبيب قبل أي تطعيم أثناء الحمل."
-    },
-    {
-      question: "هو في وقت محدد ناخد فيه تطعيم الإنفلونزا؟",
-      answer: "ممكن ناخد التطعيم أي وقت طول فترة صلاحيته مش لازم بس في شهر أكتوبر والتطعيم بيشتغل بعد الحقن بحوالي أسبوعين"
-    }
-  ];
-
-  const toggleQuestion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
+export default function CommonQuestionsPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      
-      {/* Hero Section */}
+
       <main className="hero">
         <h1 className="hero-title animate-fade-in-up">
           Vaccine
           <br />
           Talk
         </h1>
-        
         <p className="hero-subtitle animate-fade-in-up animate-delay-1">
           (Egyptian Edition)
         </p>
-        
         <div className="hero-quote animate-fade-in-up animate-delay-2">
-          <p>"Everything you need to know about</p>
-          <p>vaccines in Egypt"</p>
+          <p>&quot;Everything you need to know about</p>
+          <p>vaccines in Egypt&quot;</p>
         </div>
       </main>
 
-      {/* Title Section */}
-      <section style={{padding:'0.5rem 1rem 0'}}>
-        <h2 className="about-lang-title" style={{textAlign:'center', fontSize:'2rem', margin:'0', direction: 'rtl', fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"}}>
-          الأسئلة الشائعة
-        </h2>
-      </section>
-
-      {/* Q&A Section */}
       <section className="about-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
@@ -86,90 +27,158 @@ export default function CommonQuestions() {
           <div className="card-corner card-corner-bl"></div>
           <div className="card-corner card-corner-br"></div>
 
-          <div className="about-bilingual">
-            <div className="about-lang arabic" style={{alignItems: 'flex-start', direction: 'rtl', textAlign: 'right', width: '100%'}}>
-              <div style={{width: '100%'}}>
-                {questions.map((item, index) => (
-                  <div 
-                    key={index} 
-                    style={{
-                      marginBottom: '1.5rem',
-                      borderBottom: index < questions.length - 1 ? '1px solid rgba(139, 115, 85, 0.2)' : 'none',
-                      paddingBottom: index < questions.length - 1 ? '1.5rem' : '0'
-                    }}
-                  >
-                    <button
-                      onClick={() => toggleQuestion(index)}
-                      style={{
-                        width: '100%',
-                        textAlign: 'right',
-                        background: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                        padding: '1rem 0',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        gap: '1rem'
-                      }}
-                    >
-                      <h3 style={{
-                        textAlign: 'right',
-                        fontSize: '1.15rem',
-                        fontWeight: 700,
-                        color: '#40606D',
-                        margin: 0,
-                        flex: 1,
-                        fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif"
-                      }}>
-                        {item.question}
-                      </h3>
-                      <span style={{
-                        fontSize: '1.5rem',
-                        color: '#8b7355',
-                        transition: 'transform 0.3s ease',
-                        transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
-                        flexShrink: 0
-                      }}>
-                        ▼
-                      </span>
-                    </button>
-                    {openIndex === index && (
-                      <div style={{
-                        padding: '0 0 1rem 0',
-                        animation: 'fadeIn 0.3s ease'
-                      }}>
-                        <p className="about-lang-intro" style={{
-                          direction: 'rtl',
-                          textAlign: 'right',
-                          marginTop: '0.5rem',
-                          fontFamily: "'Cairo', 'Noto Sans Arabic', sans-serif",
-                          lineHeight: '1.8'
-                        }}>
-                          {item.answer}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+          <div className="buttons-container" style={{ direction: 'rtl', textAlign: 'right' }}>
+            <h2 className="buttons-title" style={{ direction: 'rtl' }}>
+              الأسئلة الشائعة
+            </h2>
+            <h2 className="buttons-title english" style={{ direction: 'ltr', textAlign: 'center' }}>
+              Common Questions
+            </h2>
+            <div
+              className="about-lang-intro"
+              style={{
+                direction: 'rtl',
+                textAlign: 'right',
+                maxWidth: '900px',
+                margin: '0 auto 1.5rem auto',
+                lineHeight: 1.9,
+              }}
+            >
+              <p style={{ marginBottom: '0.9rem' }}>
+                عندك سؤال عن التطعيمات؟ هنا هتلاقي إجابات بسيطة وواضحة بالعامية المصرية.
+              </p>
+              <p>
+                اختار الموضوع اللي عايز تعرف عنه أكتر، وكل قسم فيه أسئلة وأجوبة مخصصة ليه.
+              </p>
+            </div>
+            <div
+              className="about-lang-intro"
+              style={{
+                direction: 'ltr',
+                textAlign: 'left',
+                maxWidth: '900px',
+                margin: '0 auto 1.8rem auto',
+                lineHeight: 1.9,
+              }}
+            >
+              <p style={{ marginBottom: '0.9rem' }}>
+                Have a question about vaccines? Here you&apos;ll find simple, clear answers in everyday Egyptian Arabic.
+              </p>
+              <p>
+                Choose the topic you want to learn more about — each section has its own dedicated Q&amp;A.
+              </p>
+            </div>
+
+            <div className="buttons-grid">
+              <a href="/non-hcp/common-questions/general-questions" className="section-button">
+                <span className="button-emoji">💬</span>
+                <span className="button-text">أسئلة عامة</span>
+                <span className="button-text-en">General Questions</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/hepatitis-a" className="section-button">
+                <span className="button-emoji">🟡</span>
+                <span className="button-text">التهاب الكبد الوبائي A (فيروس الكبد A)</span>
+                <span className="button-text-en">Hepatitis A (HAV)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/hepatitis-b" className="section-button">
+                <span className="button-emoji">🩸</span>
+                <span className="button-text">التهاب الكبد الوبائي B (فيروس الكبد B)</span>
+                <span className="button-text-en">Hepatitis B (HBV)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/hepatitis-a-b" className="section-button">
+                <span className="button-emoji">💉</span>
+                <span className="button-text">التطعيم المشترك لكبد A+B</span>
+                <span className="button-text-en">Hepatitis A+B (Combined)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/hib" className="section-button">
+                <span className="button-emoji">👶</span>
+                <span className="button-text">الإنفلونزا البكتيري (HIB)</span>
+                <span className="button-text-en">Haemophilus Influenzae Type B (HIB)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/hpv" className="section-button">
+                <span className="button-emoji">🛡️</span>
+                <span className="button-text">فيروس الورم الحليمي البشري (HPV)</span>
+                <span className="button-text-en">Human Papillomavirus (HPV)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/influenza" className="section-button">
+                <span className="button-emoji">🤧</span>
+                <span className="button-text">الإنفلونزا الفيروسية</span>
+                <span className="button-text-en">Influenza (Flu)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/mmr" className="section-button">
+                <span className="button-emoji">📋</span>
+                <span className="button-text">الثلاثي الفيروسي (MMR)</span>
+                <span className="button-text-en">MMR (Measles, Mumps, Rubella)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/men-acwy" className="section-button">
+                <span className="button-emoji">🧠</span>
+                <span className="button-text">تطعيم MenACWY (الحمى الشوكية ACWY)</span>
+                <span className="button-text-en">MenACWY (Meningococcal ACWY)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/men-b" className="section-button">
+                <span className="button-emoji">🛡️</span>
+                <span className="button-text">تطعيم MenB (الحمى الشوكية النمط B)</span>
+                <span className="button-text-en">MenB (Meningococcal B)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/pneumococcal" className="section-button">
+                <span className="button-emoji">🫁</span>
+                <span className="button-text">تطعيم المكورات الرئوية</span>
+                <span className="button-text-en">Pneumococcal (PCV / PPSV)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/rabies" className="section-button">
+                <span className="button-emoji">🐕</span>
+                <span className="button-text">تطعيم السعار (داء الكلب)</span>
+                <span className="button-text-en">Rabies</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/rota" className="section-button">
+                <span className="button-emoji">💊</span>
+                <span className="button-text">تطعيم الروتا (Rotavirus)</span>
+                <span className="button-text-en">Rotavirus (Rota)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/rsv" className="section-button">
+                <span className="button-emoji">🫁</span>
+                <span className="button-text">تطعيم RSV (الفيروس التنفسي المخلوي)</span>
+                <span className="button-text-en">RSV (Respiratory Syncytial Virus)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/varicella" className="section-button">
+                <span className="button-emoji">🔴</span>
+                <span className="button-text">تطعيم الجديري المائي (Varicella)</span>
+                <span className="button-text-en">Varicella (Chickenpox)</span>
+              </a>
+
+              <a href="/non-hcp/common-questions/herpes-zoster" className="section-button">
+                <span className="button-emoji">🟠</span>
+                <span className="button-text">تطعيم الحزام الناري (Herpes Zoster)</span>
+                <span className="button-text-en">Herpes Zoster (Shingles)</span>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-top">
           <div className="footer-content">
-            {/* Contact Section */}
             <div className="footer-section">
               <h3 className="footer-title">Contact</h3>
               <p className="footer-text">
-                I'm always looking for new and exciting opportunities. Let's connect.
+                I&apos;m always looking for new and exciting opportunities. Let&apos;s connect.
               </p>
-              
-              {/* Social Links */}
+
               <div className="footer-social">
                 <a href="https://www.facebook.com/profile.php?id=100064747760120" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -195,22 +204,18 @@ export default function CommonQuestions() {
               </div>
             </div>
 
-            {/* Disclaimer Button */}
             <div className="footer-section">
-              <a href="/disclaimer" className="disclaimer-btn" style={{textDecoration: "none", display: "inline-block"}}>Disclaimer</a>
+              <a href="/disclaimer" className="disclaimer-btn" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                Disclaimer
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Copyright Bar */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p className="copyright-text">
-              © 2025 Vaccine Talk – All rights reserved.
-            </p>
-            <p className="copyright-text">
-              Content is original and may not be copied without permission.
-            </p>
+            <p className="copyright-text">© 2025 Vaccine Talk – All rights reserved.</p>
+            <p className="copyright-text">Content is original and may not be copied without permission.</p>
           </div>
           <div className="footer-policy">
             <a href="/copy" className="policy-link">Copyright & Content Policy</a>
@@ -222,4 +227,3 @@ export default function CommonQuestions() {
     </div>
   );
 }
-
