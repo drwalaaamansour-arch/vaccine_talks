@@ -3730,10 +3730,12 @@ body {
 /* Vaccines and Sera Grid */
 .vaccines-sera-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 1.25rem;
   margin-top: 2rem;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .vaccines-sera-grid > a {
@@ -3784,9 +3786,11 @@ body {
 /* FAQ Grid */
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 1rem;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .faq-grid > a {
@@ -5311,6 +5315,8 @@ body {
   display: grid;
   gap: 1.5rem;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 @media (min-width: 920px) {
@@ -5332,8 +5338,8 @@ body {
     position: sticky;
     top: 0;
     z-index: 5;
-    margin: 0 -0.25rem;
-    padding: 0.65rem 0.25rem 0.85rem;
+    margin: 0;
+    padding: 0.65rem 0 0.85rem;
     background: linear-gradient(180deg, rgba(248, 244, 238, 0.98) 75%, transparent);
   }
 }
@@ -6061,6 +6067,334 @@ body {
   color: #40606d;
 }
 
+/* =====================================================
+   Site-wide mobile layout & overflow containment
+   ===================================================== */
+
+.min-h-screen,
+.home-page {
+  overflow-x: clip;
+}
+
+.min-h-screen:not(.home-page) main.hero {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+.min-h-screen:not(.home-page) main.hero .hero-title {
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  margin-bottom: 0.35rem;
+}
+
+.min-h-screen:not(.home-page) main.hero .hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 0;
+}
+
+.min-h-screen:not(.home-page) main.hero .hero-quote {
+  display: none;
+}
+
+.min-h-screen:not(.home-page) .about-section {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1rem);
+  align-items: stretch;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+}
+
+.min-h-screen:not(.home-page) .about-elegant-card {
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+  width: 100%;
+  overflow-x: clip;
+  box-sizing: border-box;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.25rem) !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.home-page .about-section {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+}
+
+.home-page .about-elegant-card {
+  max-width: min(1180px, 100%);
+  width: 100%;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+.about-bilingual,
+.about-lang,
+.bubble-container,
+.vax-hub-inner,
+.vax-hub-search-wrap,
+.vax-hub-categories,
+.vax-hub-category,
+[class*="-hub-inner"],
+[class*="-inner"]:not(.card-corner):not(.hero-inner),
+[class*="-grid"],
+[class*="-panel"],
+[class*="-welcome"],
+[class*="-groups"],
+[class*="-items"],
+[class*="-items-grid"],
+[class*="-alpha-panel"],
+[class*="-topics-list"],
+[class*="-index-grid"],
+.hcp-cancer-body,
+.hcp-cancer-main,
+.hcp-guide-main,
+.hcp-guide-main--full,
+.hcp-vax-product-visual,
+.gallery-grid,
+.gallery-toolbar,
+.bmt-page-bilingual,
+.bmt-title-square,
+.bmt-bubble-wrap,
+.news-window,
+.vax-article-inner,
+.faq-topic-inner,
+.non-hcp-intro,
+.non-hcp-nav-grid,
+.info-hub-inner,
+.auth-shell,
+.auth-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.min-h-screen:not(.home-page) .about-elegant-card table,
+.min-h-screen:not(.home-page) .about-elegant-card pre,
+.min-h-screen:not(.home-page) .about-elegant-card iframe {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.hcp-cancer-section-body p,
+.hcp-cancer-section-body li,
+.hcp-cancer-section-body a,
+.hcp-cancer-ref-list a,
+.hcp-guide-hsct,
+.hcp-guide-hsct p,
+.hcp-guide-hsct li,
+.hcp-guide-hsct h4,
+.hcp-guide-hsct h5,
+.hcp-vax-product-subhead,
+.hcp-res-item-title,
+.hcp-res-item-desc,
+.hcp-res-btn,
+.hcp-guide-related-link,
+.vax-hub-tile-ar,
+.vax-hub-tile-en,
+.vax-article-intro-ar,
+.vax-article-intro-en,
+.faq-topic-question,
+.faq-topic-answer,
+.bmt-page-bilingual p,
+.bmt-page-bilingual li,
+.bmt-page-bilingual a,
+.non-hcp-feature-text,
+.info-hub-tip-text {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.hcp-cancer-pdf-frame {
+  display: block;
+  max-width: 100%;
+}
+
+.hcp-guide-schedule-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.1rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hcp-guide-schedule-card {
+  flex: 1 1 min(100%, 280px);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 919px) {
+  .hcp-cancer-body > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hcp-cancer-nav {
+    margin: 0;
+    padding: 0.65rem 0 0.85rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hcp-cancer-nav-panel {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hcp-cancer-nav-scroll {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hcp-cancer-nav-scroll li {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .hcp-cancer-section-head {
+    padding: 0.85rem 1rem;
+    gap: 0.55rem;
+  }
+
+  .hcp-cancer-section-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.25rem;
+  }
+
+  .hcp-cancer-section-body {
+    padding: 1rem 0.95rem 1.15rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .hcp-cancer-pdfs {
+    padding: 1rem 0.85rem 1.15rem;
+  }
+
+  .hcp-cancer-pdf-frame {
+    height: min(70vh, 520px);
+  }
+
+  .hcp-cancer-pdf-download {
+    font-size: 0.95rem;
+    padding: 0.65rem 1.25rem;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hcp-guide-hsct > div {
+    padding: 1rem 0.95rem !important;
+    border-radius: 18px !important;
+  }
+
+  .hcp-guide-hsct .hcp-content-chunk-bubble {
+    padding: 1rem 0.85rem 1rem 1rem !important;
+  }
+
+  .hcp-vs-items-grid {
+    grid-template-columns: 1fr;
+    padding: 0.85rem;
+    gap: 0.85rem;
+  }
+
+  .hcp-vs-items-grid .hcp-res-btn {
+    font-size: 0.88rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .hcp-vs-item-emoji {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.35rem;
+  }
+
+  .hcp-vax-product-page .hcp-guide-related-link {
+    max-width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .vax-hub-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .vax-hub-tile {
+    min-height: auto;
+    padding: 1.25rem 1rem 1.15rem;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vaccination-basics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hcp-res-items {
+    padding: 0.85rem;
+  }
+
+  .hcp-res-group-head {
+    flex-wrap: wrap;
+    padding: 0.95rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .hcp-res-btn {
+    font-size: 0.92rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .vax-article-faq-btn {
+    padding: 0.85rem 1.25rem;
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .card-corner {
+    width: 32px;
+    height: 32px;
+  }
+
+  .card-corner-tl,
+  .card-corner-tr {
+    top: 8px;
+  }
+
+  .card-corner-bl,
+  .card-corner-br {
+    bottom: 8px;
+  }
+
+  .card-corner-tl,
+  .card-corner-bl {
+    left: 8px;
+  }
+
+  .card-corner-tr,
+  .card-corner-br {
+    right: 8px;
+  }
+
+  .home-newly-marquee-shell {
+    padding: 0.35rem 0.2rem;
+    gap: 0.2rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem 1.15rem;
+  }
+}
+
 /* HCP Resources hub — /hcp-resources */
 .hcp-res-hub-page {
   background:
@@ -6340,6 +6674,8 @@ body {
   font-weight: 800;
   color: #355a63;
   line-height: 1.35;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .hcp-res-item-tag {
@@ -6356,6 +6692,8 @@ body {
   font-size: 0.94rem;
   line-height: 1.6;
   color: rgba(45, 42, 38, 0.88);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .hcp-res-btn {
@@ -6797,11 +7135,25 @@ body {
   text-align: left;
 }
 
+.hcp-vs-hub-page .vax-hub-search-wrap {
+  min-width: 0;
+  max-width: 100%;
+  direction: ltr;
+}
+
+.hcp-vs-hub-page .vax-hub-search {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .hcp-vs-items-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   padding: 1rem 1.15rem 1.2rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .hcp-vs-items-grid .hcp-res-btn {
@@ -7535,7 +7887,7 @@ body {
 }
 
 .hcp-vax-product-elegant {
-  overflow: visible;
+  overflow-x: clip;
 }
 
 .hcp-vax-product-visual {
@@ -7630,10 +7982,11 @@ body {
 .hcp-guide-related-link {
   display: block;
   width: 100%;
-  max-width: 720px;
+  max-width: min(720px, 100%);
   margin: 0 auto;
   text-align: center;
   padding: 1rem 1.5rem;
+  box-sizing: border-box;
   background: linear-gradient(135deg, #355a63, #40606d);
   color: #fff;
   text-decoration: none;
@@ -9438,10 +9791,12 @@ body {
 
 .vax-hub-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
   gap: 1.15rem;
   direction: rtl;
   margin-top: 0.25rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .vax-hub-stat {
@@ -9475,6 +9830,8 @@ body {
   position: relative;
   margin-bottom: 0.75rem;
   direction: rtl;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .vax-hub-search-icon {
@@ -9488,6 +9845,8 @@ body {
 
 .vax-hub-search {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 0.9rem 2.75rem;
   border-radius: 999px;
   border: 2px solid rgba(64, 96, 109, 0.16);
@@ -9685,16 +10044,6 @@ body {
 @media (max-width: 640px) {
   .vax-hub-stats {
     grid-template-columns: 1fr;
-  }
-
-  .vax-hub-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.85rem;
-  }
-
-  .vax-hub-tile {
-    min-height: 190px;
-    padding: 1.65rem 1.1rem 1.5rem;
   }
 
   .vax-hub-category-head {
@@ -10629,5 +10978,27 @@ body {
   .vax-article-schedules,
   .vax-article-highlights {
     grid-template-columns: 1fr;
+  }
+
+  .non-hcp-intro,
+  .non-hcp-features {
+    grid-template-columns: 1fr;
+  }
+
+  .info-hub-tips {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .home-audience-bilingual {
+    gap: 1.25rem;
+  }
+
+  .home-newly-marquee-viewport,
+  .home-news-marquee-viewport {
+    max-width: 100%;
   }
 }

@@ -124,15 +124,7 @@ function ContentBubble({ title, children }: { title: string; children: ReactNode
   );
 }
 
-const scheduleGrid: CSSProperties = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '1rem',
-  marginTop: '1.1rem',
-};
-
 const scheduleCard: CSSProperties = {
-  flex: '1 1 280px',
   border: '2px solid rgba(64, 96, 109, 0.22)',
   borderRadius: '16px',
   padding: '1.15rem 1.25rem',
@@ -224,7 +216,7 @@ function ScheduleCard({
   children: ReactNode;
 }) {
   return (
-    <div style={scheduleCard}>
+    <div className="hcp-guide-schedule-card" style={scheduleCard}>
       <p style={scheduleLabel}>{label}</p>
       <p style={scheduleVaccine}>{vaccine}</p>
       {children}
@@ -244,7 +236,7 @@ function PneumococcalSchedules() {
         </p>
       </div>
 
-      <div style={scheduleGrid}>
+      <div className="hcp-guide-schedule-grid">
         <ScheduleCard label="Preferred Schedule" vaccine="PCV20">
           <span style={timingBadge}>Start 3–6 months after HSCT</span>
           <p
@@ -386,7 +378,7 @@ function MeningococcalSchedules() {
         </ul>
       </div>
 
-      <div style={{ ...scheduleGrid, marginTop: '1rem' }}>
+      <div className="hcp-guide-schedule-grid" style={{ marginTop: '1rem' }}>
         <ScheduleCard label="Vaccine types" vaccine="MenACWY & MenB">
           <p style={subheadingInCard}>This includes both:</p>
           <ul style={stepList}>
@@ -502,7 +494,7 @@ function PediatricOncologyConsensusCta() {
 function DtapSchedules() {
   return (
     <div className="hcp-content-chunk-bubble" style={innerBubble}>
-      <div style={scheduleGrid}>
+      <div className="hcp-guide-schedule-grid">
         <ScheduleCard label="Children &lt;7 Years" vaccine="DTaP">
           <p className="about-lang-intro" style={{ ...para(0), fontSize: '0.95rem' }}>
             Three-dose DTaP series
