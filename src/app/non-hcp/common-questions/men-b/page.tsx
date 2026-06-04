@@ -1,14 +1,4 @@
-import NonHcpCommonQuestionsSubpage from '@/components/NonHcpCommonQuestionsSubpage';
-import { ARTICLE_META } from '@/lib/article-meta';
-import { menBQuestions } from '@/data/non-hcp-men-b-questions';
+import { createNonHcpCommonQuestionsTopicPage } from '@/components/non-hcp-common-questions/createNonHcpCommonQuestionsTopicPage';
+import { NCQ_TOPICS } from '@/data/non-hcp-common-questions-topics';
 
-export default function MenBQuestionsPage() {
-  return (
-    <NonHcpCommonQuestionsSubpage
-      meta={ARTICLE_META.nonHcpCqMenB}
-      titleAr="تطعيم MenB (الحمى الشوكية النمط B)"
-      titleEn="MenB (Meningococcal B)"
-      questions={menBQuestions}
-    />
-  );
-}
+export default createNonHcpCommonQuestionsTopicPage(NCQ_TOPICS.menB);

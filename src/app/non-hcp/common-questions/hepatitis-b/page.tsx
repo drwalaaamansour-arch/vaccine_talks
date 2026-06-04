@@ -1,14 +1,4 @@
-import NonHcpCommonQuestionsSubpage from '@/components/NonHcpCommonQuestionsSubpage';
-import { ARTICLE_META } from '@/lib/article-meta';
-import { hepatitisBQuestions } from '@/data/non-hcp-hepatitis-b-questions';
+import { createNonHcpCommonQuestionsTopicPage } from '@/components/non-hcp-common-questions/createNonHcpCommonQuestionsTopicPage';
+import { NCQ_TOPICS } from '@/data/non-hcp-common-questions-topics';
 
-export default function HepatitisBQuestionsPage() {
-  return (
-    <NonHcpCommonQuestionsSubpage
-      meta={ARTICLE_META.nonHcpCqHepB}
-      titleAr="التهاب الكبد الوبائي B (فيروس الكبد B)"
-      titleEn="Hepatitis B (HBV)"
-      questions={hepatitisBQuestions}
-    />
-  );
-}
+export default createNonHcpCommonQuestionsTopicPage(NCQ_TOPICS.hepatitisB);

@@ -1,14 +1,4 @@
-import NonHcpCommonQuestionsSubpage from '@/components/NonHcpCommonQuestionsSubpage';
-import { ARTICLE_META } from '@/lib/article-meta';
-import { varicellaQuestions } from '@/data/non-hcp-varicella-questions';
+import { createNonHcpCommonQuestionsTopicPage } from '@/components/non-hcp-common-questions/createNonHcpCommonQuestionsTopicPage';
+import { NCQ_TOPICS } from '@/data/non-hcp-common-questions-topics';
 
-export default function VaricellaQuestionsPage() {
-  return (
-    <NonHcpCommonQuestionsSubpage
-      meta={ARTICLE_META.nonHcpCqVaricella}
-      titleAr="تطعيم الجديري المائي (Varicella)"
-      titleEn="Varicella (Chickenpox)"
-      questions={varicellaQuestions}
-    />
-  );
-}
+export default createNonHcpCommonQuestionsTopicPage(NCQ_TOPICS.varicella);

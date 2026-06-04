@@ -102,8 +102,8 @@ export default function SpecialCasesVaccinesPage() {
 
               <a href="/non-hcp/special-cases-vaccines/during-and-after-chemotherapy" className="section-button">
                 <span className="button-emoji">💉</span>
-                <span className="button-text">تطعيمات اثناء وبعد الكيماوي</span>
-                <span className="button-text-en">Vaccinations During and After Chemotherapy</span>
+                <span className="button-text">تطعيمات لمرضى السرطان</span>
+                <span className="button-text-en">Vaccinations for people with cancer</span>
               </a>
 
               <a href="/non-hcp/special-cases-vaccines/post-bone-marrow-transplant" className="section-button">

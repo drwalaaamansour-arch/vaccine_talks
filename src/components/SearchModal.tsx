@@ -40,6 +40,7 @@ const searchIndex: SearchResult[] = [
   { title: 'تسعة أشهر / Nine Months', href: '/nine-months', category: 'Children Vaccines' },
   { title: 'سنة واحدة / One Year', href: '/one-year', category: 'Children Vaccines' },
   { title: 'السنة الثانية / Second Year', href: '/second-year', category: 'Children Vaccines' },
+  { title: 'تسع سنوات / Nine Years', href: '/nine-years', category: 'Children Vaccines' },
   
   // Disease-specific pages (Public)
   { title: 'BCG / الدرن', href: '/bcg', category: 'Vaccines' },

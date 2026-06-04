@@ -1,14 +1,4 @@
-import NonHcpCommonQuestionsSubpage from '@/components/NonHcpCommonQuestionsSubpage';
-import { ARTICLE_META } from '@/lib/article-meta';
-import { hepatitisABQuestions } from '@/data/non-hcp-hepatitis-ab-questions';
+import { createNonHcpCommonQuestionsTopicPage } from '@/components/non-hcp-common-questions/createNonHcpCommonQuestionsTopicPage';
+import { NCQ_TOPICS } from '@/data/non-hcp-common-questions-topics';
 
-export default function HepatitisABQuestionsPage() {
-  return (
-    <NonHcpCommonQuestionsSubpage
-      meta={ARTICLE_META.nonHcpCqHepAb}
-      titleAr="التطعيم المشترك لكبد A+B"
-      titleEn="Hepatitis A+B (Combined)"
-      questions={hepatitisABQuestions}
-    />
-  );
-}
+export default createNonHcpCommonQuestionsTopicPage(NCQ_TOPICS.hepatitisAB);

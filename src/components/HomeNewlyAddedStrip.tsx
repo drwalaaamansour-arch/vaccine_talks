@@ -203,6 +203,25 @@ function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   );
 }
 
+function CancerVaccinationSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/vaccination-in-patients-with-cancer"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">Vaccination in Patients with Cancer</h3>
+      <p className="home-newly-card-body">
+        New HCP guidance on vaccinating patients with cancer: timing before and during chemotherapy, influenza,
+        pneumococcal, hepatitis B, live vaccines, post-therapy boosters, Australian handbook PDFs, and pediatric
+        oncology expert consensus for Egypt.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function HsctSpecialPopulationsSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -225,6 +244,7 @@ function HsctSpecialPopulationsSpotlightCard({ duplicate }: { duplicate?: boolea
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <CancerVaccinationSpotlightCard duplicate={duplicate} />
       <HsctSpecialPopulationsSpotlightCard duplicate={duplicate} />
       <AspleniaNonHcpSpotlightCard duplicate={duplicate} />
       <CdcArabicPdfsSpotlightCard duplicate={duplicate} />

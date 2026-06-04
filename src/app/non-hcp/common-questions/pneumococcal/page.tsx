@@ -1,14 +1,4 @@
-import NonHcpCommonQuestionsSubpage from '@/components/NonHcpCommonQuestionsSubpage';
-import { ARTICLE_META } from '@/lib/article-meta';
-import { pneumococcalQuestions } from '@/data/non-hcp-pneumococcal-questions';
+import { createNonHcpCommonQuestionsTopicPage } from '@/components/non-hcp-common-questions/createNonHcpCommonQuestionsTopicPage';
+import { NCQ_TOPICS } from '@/data/non-hcp-common-questions-topics';
 
-export default function PneumococcalQuestionsPage() {
-  return (
-    <NonHcpCommonQuestionsSubpage
-      meta={ARTICLE_META.nonHcpCqPneumococcal}
-      titleAr="تطعيم المكورات الرئوية"
-      titleEn="Pneumococcal (PCV / PPSV)"
-      questions={pneumococcalQuestions}
-    />
-  );
-}
+export default createNonHcpCommonQuestionsTopicPage(NCQ_TOPICS.pneumococcal);

@@ -36,15 +36,21 @@ const ROUTES = {
     'src/app/hcp-special-populations/haematopoietic-stem-cell-transplant-recipients/page.tsx',
   hcpPediatricOncologyReimmunizationEgypt:
     'src/app/hcp-special-populations/expert-consensus-pediatric-oncology-re-immunization-egypt/page.tsx',
+  hcpVaccinationInPatientsWithCancer:
+    'src/app/hcp-special-populations/vaccination-in-patients-with-cancer/page.tsx',
   hcpSafetyEffectiveness:
     'src/app/hcp-special-populations/altered-immunocompetence/safety-and-effectiveness/page.tsx',
   hcpAlteredImmunocompetenceHub:
     'src/app/hcp-special-populations/altered-immunocompetence/page.tsx',
   hcpSpecialPopulationsHub: 'src/app/hcp-special-populations/page.tsx',
+  hcpOccupationalRisk: 'src/app/hcp-special-populations/occupational-risk/page.tsx',
+  hcpInternationalTravellers: 'src/app/hcp-special-populations/international-travellers/page.tsx',
   nonHcpPregnancy: 'src/app/non-hcp/special-cases-vaccines/pregnancy-and-breastfeeding/page.tsx',
   nonHcpCochlear: 'src/app/non-hcp/special-cases-vaccines/post-cochlear-implant/page.tsx',
   nonHcpPreterm: 'src/app/non-hcp/special-cases-vaccines/preterm-infants/page.tsx',
   nonHcpSplenectomy: 'src/app/non-hcp/special-cases-vaccines/splenectomy/page.tsx',
+  nonHcpChemotherapyDuringAfter:
+    'src/app/non-hcp/special-cases-vaccines/during-and-after-chemotherapy/page.tsx',
   nonHcpSpecialCasesHub: 'src/app/non-hcp/special-cases-vaccines/page.tsx',
   nonHcpPretermGuidelines: 'src/app/non-hcp/preterm/vaccine-specific-guidelines/page.tsx',
   nonHcpHub: 'src/app/non-hcp/page.tsx',
@@ -166,17 +172,96 @@ const ROUTES = {
     'src/app/doc/administration-scheduling-contraindications/page.tsx',
 };
 
-/** When git "first commit" is a stub/hub but real content landed later, set added here. */
+/** When git "first commit" is a stub/hub but real content landed later, set added/lastUpdated here. */
 const MANUAL = {
-  hcpBreastfeeding: { added: 'MAY 22, 2026', lastUpdated: 'MAY 22, 2026' },
-  hcpPregnancy: { added: 'MAY 15, 2026', lastUpdated: 'MAY 16, 2026' },
-  hcpPretermInfants: { added: 'MAY 11, 2026', lastUpdated: 'MAY 11, 2026' },
-  hcpAlteredImmunocompetenceGeneral: { added: 'MAY 11, 2026', lastUpdated: 'MAY 15, 2026' },
-  hcpAsplenia: { added: 'MAY 07, 2026', lastUpdated: 'MAY 15, 2026' },
-  hcpCochlearImplants: { added: 'FEBRUARY 13, 2026', lastUpdated: 'MARCH 28, 2026' },
-  hcpHematopoieticTransplants: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 01, 2026' },
-  hcpPediatricOncologyReimmunizationEgypt: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 02, 2026' },
+  hcpBreastfeeding: { added: 'MAY 22, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpPregnancy: { added: 'MAY 15, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpPretermInfants: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpPretermVaccineGuidelines: { added: 'FEBRUARY 23, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpCochlearImplants: { added: 'FEBRUARY 13, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAnaesthesiaSurgery: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpImmunoglobulinBloodProducts: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAlteredImmunocompetenceGeneral: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpVaccinationOfContacts: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAsplenia: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAspleniaMeningococcal: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAspleniaHib: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAspleniaPneumococcal: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpCorticosteroids: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpSafetyEffectiveness: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpHematopoieticTransplants: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAlteredImmunocompetenceHub: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpSpecialPopulationsHub: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
+  hcpOccupationalRisk: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpInternationalTravellers: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpPediatricOncologyReimmunizationEgypt: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 05, 2026' },
+  hcpVaccinationInPatientsWithCancer: { added: 'JUNE 03, 2026', lastUpdated: 'JUNE 05, 2026' },
 };
+
+/** Extra paths for lastUpdated (guide article components). */
+const ARTICLE_SOURCES = {
+  hcpSpecialPopulationsHub: ['src/components/hcp-guide/HcpSpecialPopulationsHub.tsx'],
+  hcpAlteredImmunocompetenceHub: ['src/components/hcp-guide/HcpAlteredImmunocompetenceHub.tsx'],
+  hcpAlteredImmunocompetenceGeneral: [
+    'src/components/hcp-guide/articles/GeneralPrinciplesArticle.tsx',
+  ],
+  hcpVaccinationOfContacts: [
+    'src/components/hcp-guide/articles/VaccinationOfContactsArticle.tsx',
+  ],
+  hcpAsplenia: ['src/components/hcp-guide/articles/AnatomicOrFunctionalAspleniaArticle.tsx'],
+  hcpAspleniaHib: ['src/components/hcp-guide/articles/AspleniaHibArticle.tsx'],
+  hcpAspleniaMeningococcal: ['src/components/hcp-guide/articles/AspleniaMeningococcalArticle.tsx'],
+  hcpAspleniaPneumococcal: ['src/components/hcp-guide/articles/AspleniaPneumococcalArticle.tsx'],
+  hcpCorticosteroids: ['src/components/hcp-guide/HcpGuideComingSoon.tsx'],
+  hcpSafetyEffectiveness: ['src/components/hcp-guide/HcpGuideComingSoon.tsx'],
+  hcpHematopoieticTransplants: [
+    'src/components/hcp-guide/articles/HaematopoieticStemCellTransplantArticle.tsx',
+  ],
+  hcpPregnancy: ['src/components/hcp-guide/articles/PregnancyArticle.tsx'],
+  hcpBreastfeeding: ['src/components/hcp-guide/articles/BreastfeedingArticle.tsx'],
+  hcpPretermInfants: ['src/components/hcp-guide/articles/PretermInfantsArticle.tsx'],
+  hcpPretermVaccineGuidelines: [
+    'src/components/hcp-guide/articles/PretermVaccineSpecificGuidelinesArticle.tsx',
+  ],
+  hcpAnaesthesiaSurgery: ['src/components/hcp-guide/articles/AnaesthesiaSurgeryArticle.tsx'],
+  hcpImmunoglobulinBloodProducts: [
+    'src/components/hcp-guide/articles/ImmunoglobulinBloodProductsArticle.tsx',
+  ],
+  hcpCochlearImplants: ['src/components/hcp-guide/articles/CochlearImplantsArticle.tsx'],
+  hcpOccupationalRisk: ['src/app/hcp-special-populations/occupational-risk/page.tsx'],
+  hcpInternationalTravellers: [
+    'src/app/hcp-special-populations/international-travellers/page.tsx',
+  ],
+};
+
+const MONTH_ORDER = {
+  JANUARY: 1,
+  FEBRUARY: 2,
+  MARCH: 3,
+  APRIL: 4,
+  MAY: 5,
+  JUNE: 6,
+  JULY: 7,
+  AUGUST: 8,
+  SEPTEMBER: 9,
+  OCTOBER: 10,
+  NOVEMBER: 11,
+  DECEMBER: 12,
+};
+
+function parseMetaDate(s) {
+  const m = s.match(/^([A-Z]+) (\d{1,2}), (\d{4})$/);
+  if (!m) return 0;
+  return (
+    Number(m[3]) * 10000 +
+    (MONTH_ORDER[m[1]] ?? 0) * 100 +
+    Number(m[2])
+  );
+}
+
+function latestDate(...dates) {
+  return dates.filter(Boolean).sort((a, b) => parseMetaDate(b) - parseMetaDate(a))[0] ?? null;
+}
 
 function gitDate(relPath, reverse) {
   if (!fs.existsSync(path.join(ROOT, relPath))) return null;
@@ -209,16 +294,20 @@ const sections = {
     'hcpAspleniaPneumococcal',
     'hcpCorticosteroids',
     'hcpHematopoieticTransplants',
+    'hcpVaccinationInPatientsWithCancer',
     'hcpPediatricOncologyReimmunizationEgypt',
     'hcpSafetyEffectiveness',
     'hcpAlteredImmunocompetenceHub',
     'hcpSpecialPopulationsHub',
+    'hcpOccupationalRisk',
+    'hcpInternationalTravellers',
   ],
   'Non-HCP special cases': [
     'nonHcpPregnancy',
     'nonHcpCochlear',
     'nonHcpPreterm',
     'nonHcpSplenectomy',
+    'nonHcpChemotherapyDuringAfter',
     'nonHcpSpecialCasesHub',
     'nonHcpPretermGuidelines',
     'nonHcpHub',
@@ -358,7 +447,12 @@ for (const [section, keys] of Object.entries(sections)) {
     }
     const manual = MANUAL[key];
     const added = manual?.added ?? gitDate(rel, true);
-    const lastUpdated = manual?.lastUpdated ?? gitDate(rel, false);
+    const routeUpdated = gitDate(rel, false);
+    const articleUpdated = (ARTICLE_SOURCES[key] ?? [])
+      .map((p) => gitDate(p, false))
+      .filter(Boolean);
+    const lastUpdated =
+      manual?.lastUpdated ?? latestDate(routeUpdated, ...articleUpdated);
     if (!added || !lastUpdated) {
       console.warn('skip', key, rel);
       continue;

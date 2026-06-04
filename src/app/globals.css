@@ -2246,45 +2246,452 @@ body {
   }
 }
 
-/* Gallery Styles */
-.gallery-container {
-  padding: 2rem;
+/* Gallery page — /gallery */
+.gallery-page {
+  background: var(--bg);
+}
+
+/* Shorter top hero so the grid is visible sooner */
+.gallery-page .hero {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+.gallery-page .hero-title {
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  margin-bottom: 0.35rem;
+}
+
+.gallery-page .hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 0;
+}
+
+.gallery-page .hero-quote {
+  display: none;
+}
+
+.gallery-section.about-section {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+}
+
+.gallery-section .about-elegant-card {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.75rem);
+  width: 100%;
+  max-width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+.gallery-elegant {
   width: 100%;
 }
 
-.gallery-title {
+.gallery-inner {
+  padding: 0;
+  width: 100%;
+}
+
+.gallery-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.gallery-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.gallery-hero .vax-hub-hero-lead {
+  max-width: 40rem;
+}
+
+.gallery-page-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.gallery-page-title-en {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gallery-title-ar {
+  font-size: clamp(1.1rem, 4vw, 1.45rem);
+  font-weight: 700;
+  opacity: 0.95;
+}
+
+.gallery-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 1.25rem;
+  margin-bottom: 1.15rem;
+}
+
+.gallery-stat {
+  font-size: 0.92rem;
+  color: rgba(45, 42, 38, 0.82);
+}
+
+.gallery-stat strong {
+  color: #40606d;
+  font-weight: 800;
+}
+
+.gallery-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.gallery-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #40606d;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(64, 96, 109, 0.22);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-filter-btn:hover {
+  border-color: rgba(64, 96, 109, 0.4);
+}
+
+.gallery-filter-btn--active {
+  background: #40606d;
+  color: #fff;
+  border-color: #40606d;
+}
+
+.gallery-filter-count {
+  font-size: 0.8rem;
+  font-weight: 800;
+  opacity: 0.85;
+}
+
+.gallery-search.vax-hub-search-wrap {
+  direction: ltr;
+}
+
+.gallery-search .vax-hub-search {
+  text-align: left;
+  direction: ltr;
+  padding-inline: 2.75rem 2.5rem;
+}
+
+.gallery-search-meta {
   text-align: center;
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
-  margin-bottom: 2rem;
-  color: #40606D;
+}
+
+.gallery-empty {
+  margin: 0;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: rgba(45, 42, 38, 0.75);
+  font-size: 1rem;
+  border-radius: 20px;
+  border: 2px dashed rgba(64, 96, 109, 0.2);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .gallery-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+}
+
+.gallery-card-wrap {
+  margin: 0;
+  min-width: 0;
+}
+
+.gallery-card {
+  position: relative;
   width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 2px solid rgba(64, 96, 109, 0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f0ebe3;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(64, 96, 109, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .gallery-container {
-    padding: 1.5rem;
+.gallery-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(64, 96, 109, 0.28);
+  box-shadow: 0 14px 32px rgba(64, 96, 109, 0.16);
+}
+
+.gallery-card:focus-visible {
+  outline: 2px solid #40606d;
+  outline-offset: 3px;
+}
+
+.gallery-card-media {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  pointer-events: none;
+}
+
+.gallery-card-media--error {
+  opacity: 0;
+}
+
+.gallery-card:has(.gallery-card-media--error)::after {
+  content: 'Preview unavailable';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(64, 96, 109, 0.75);
+}
+
+.gallery-card-play {
+  position: absolute;
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding-left: 0.15rem;
+  color: #fff;
+  background: rgba(64, 96, 109, 0.82);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.gallery-card-badge {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(64, 96, 109, 0.88);
+  border-radius: 6px;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: rgba(0, 0, 0, 0.92);
+  cursor: pointer;
+}
+
+.gallery-lightbox-inner {
+  position: relative;
+  width: min(96vw, 1100px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: default;
+}
+
+.gallery-lightbox-media {
+  max-width: 100%;
+  max-height: calc(92vh - 4rem);
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  object-fit: contain;
+}
+
+.gallery-lightbox-caption {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+}
+
+.gallery-lightbox-counter {
+  opacity: 0.75;
+  font-size: 0.85rem;
+}
+
+.gallery-lightbox-close {
+  position: absolute;
+  top: -0.25rem;
+  right: 0;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.gallery-lightbox-close:hover {
+  transform: scale(1.08);
+  background: #fff;
+}
+
+.gallery-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.gallery-lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.gallery-lightbox-nav--prev {
+  left: 0.5rem;
+}
+
+.gallery-lightbox-nav--next {
+  right: 0.5rem;
+}
+
+.gallery-lightbox-close {
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .gallery-lightbox-nav--prev {
+    left: -2.75rem;
   }
-  
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+
+  .gallery-lightbox-nav--next {
+    right: -2.75rem;
   }
 }
 
-@media (max-width: 480px) {
-  .gallery-container {
-    padding: 1rem;
-  }
-  
+@media (max-width: 640px) {
   .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
+  }
+
+  .gallery-card {
+    border-radius: 12px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .gallery-card-play {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .gallery-hero.vax-hub-hero {
+    padding: 1rem 0.85rem 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-hero .vax-hub-hero-lead,
+  .gallery-hero .hub-hero-meta {
+    display: none;
+  }
+
+  .gallery-hero .vax-hub-hero-subtitle {
+    margin-bottom: 0;
+  }
+
+  .gallery-stats {
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-back {
+    position: relative;
+    z-index: 2;
+  }
+
+  .gallery-section .card-corner {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-inline: auto;
   }
 }
 
@@ -2338,33 +2745,921 @@ body {
   }
 }
 
-/* Children Vaccines Grid */
-.children-vaccines-grid {
+/* Children vaccines hub — /children-vaccines */
+.children-vax-page .hero {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+.children-vax-page .hero-title {
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  margin-bottom: 0.35rem;
+}
+
+.children-vax-page .hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 0;
+}
+
+.children-vax-page .hero-quote {
+  display: none;
+}
+
+.children-vax-section.about-section {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+}
+
+.children-vax-elegant {
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+}
+
+.children-vax-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.children-vax-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.children-vax-hero .vax-hub-hero-lead {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.children-vax-hero-lead-en {
+  margin: 0.35rem auto 0;
+  max-width: 36rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  text-align: center;
+}
+
+.children-vax-stats {
+  margin-bottom: 1rem;
+}
+
+.children-vax-empty {
+  margin: 0;
+  padding: 1.75rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgba(45, 42, 38, 0.75);
+  border-radius: 16px;
+  border: 2px dashed rgba(64, 96, 109, 0.2);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.children-vax-age-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  direction: rtl;
+}
+
+.vax-hub-tile--photo {
+  min-height: auto;
+  padding: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+.vax-hub-tile-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #e8e0d4;
+}
+
+.vax-hub-tile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.vax-hub-tile--photo .vax-hub-tile-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.95rem 1rem 1.4rem;
+  text-align: center;
+}
+
+.vax-hub-tile--photo .vax-hub-tile-ar {
+  margin: 0;
+}
+
+.vax-hub-tile--photo .vax-hub-tile-en {
+  margin: 0;
+}
+
+.vax-hub-tile--photo .vax-hub-tile-arrow {
+  bottom: 0.55rem;
+}
+
+@media (max-width: 640px) {
+  .children-vax-section .card-corner {
+    display: none;
+  }
+
+  .children-vax-hero .vax-hub-hero-lead,
+  .children-vax-hero-lead-en,
+  .children-vax-hero .hub-hero-meta {
+    display: none;
+  }
+
+  .children-vax-age-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .vax-hub-tile--photo .vax-hub-tile-body {
+    padding: 0.75rem 0.65rem 1.2rem;
+  }
+
+  .vax-hub-tile--photo .vax-hub-tile-ar {
+    font-size: 0.98rem;
+  }
+
+  .vax-hub-tile--photo .vax-hub-tile-en {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .children-vax-age-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+
+/* Non-HCP common questions topic — e.g. /non-hcp/common-questions/hpv */
+.ncq-topic-page .hero {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+.ncq-topic-page .hero-title {
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  margin-bottom: 0.35rem;
+}
+
+.ncq-topic-page .hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 0;
+}
+
+.ncq-topic-page .hero-quote {
+  display: none;
+}
+
+.ncq-topic-section.about-section {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+}
+
+.ncq-topic-elegant {
+  max-width: min(900px, 100%);
+  margin-inline: auto;
+}
+
+.ncq-topic-inner {
+  direction: rtl;
+  text-align: right;
+}
+
+.ncq-topic-hero .vax-hub-hero-lead {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.ncq-topic-hero-emoji {
+  font-size: 1.1em;
+}
+
+.ncq-topic-hero-lead-alt {
+  position: relative;
+  margin: 0.35rem auto 0;
+  max-width: 36rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+}
+
+.ncq-topic-lang-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-  gap: 1.75rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 1024px) {
-  .children-vaccines-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 1.5rem;
+.ncq-topic-lang-btn {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid rgba(64, 96, 109, 0.2);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.ncq-topic-lang-btn:hover {
+  border-color: rgba(64, 96, 109, 0.45);
+}
+
+.ncq-topic-lang-btn--active {
+  color: #fff;
+  background: #40606d;
+  border-color: #40606d;
+}
+
+.ncq-topic-stats {
+  margin-bottom: 1rem;
+}
+
+.ncq-topic-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.ncq-topic-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ncq-topic-tool-btn {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #40606d;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(64, 96, 109, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.ncq-topic-tool-btn:hover {
+  background: rgba(64, 96, 109, 0.08);
+}
+
+.ncq-topic-accordion-panel {
+  border-radius: 16px;
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  background: rgba(255, 255, 255, 0.88);
+  overflow: hidden;
+}
+
+.ncq-topic-empty {
+  margin: 0;
+  padding: 1.75rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgba(45, 42, 38, 0.7);
+}
+
+.ncq-topic-section-title {
+  margin: 1.25rem 1rem 0.5rem;
+  padding-bottom: 0.45rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #8b7355;
+  border-bottom: 2px solid rgba(139, 115, 85, 0.25);
+  text-align: right;
+}
+
+.ncq-topic-section-title:first-child {
+  margin-top: 0.75rem;
+}
+
+.ncq-topic-item {
+  border-bottom: 1px solid rgba(64, 96, 109, 0.1);
+}
+
+.ncq-topic-item:last-child {
+  border-bottom: none;
+}
+
+.ncq-topic-item-heading {
+  margin: 0;
+}
+
+.ncq-topic-question-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: right;
+  font: inherit;
+  color: #2d2a26;
+}
+
+.ncq-topic-question-btn:hover {
+  background: rgba(64, 96, 109, 0.05);
+}
+
+.ncq-topic-question-btn:focus-visible {
+  outline: 2px solid #40606d;
+  outline-offset: -2px;
+}
+
+.ncq-topic-q-num {
+  flex-shrink: 0;
+  min-width: 2rem;
+  padding: 0.2rem 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #40606d;
+  background: rgba(64, 96, 109, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ncq-topic-question {
+  flex: 1;
+  font-size: clamp(0.98rem, 2.2vw, 1.08rem);
+  font-weight: 700;
+  line-height: 1.45;
+  color: #355a63;
+}
+
+.ncq-topic-chevron {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: #8b7355;
+  transition: transform 0.2s ease;
+}
+
+.ncq-topic-chevron--open {
+  transform: rotate(180deg);
+}
+
+.ncq-topic-answer-wrap {
+  padding: 0 1.1rem 1.1rem;
+}
+
+.ncq-topic-answer {
+  margin: 0;
+  font-size: clamp(0.95rem, 2vw, 1.02rem);
+  line-height: 1.8;
+  color: rgba(45, 42, 38, 0.88);
+  white-space: pre-wrap;
+  text-align: right;
+}
+
+.ncq-topic-text-en {
+  direction: ltr;
+  unicode-bidi: embed;
+  text-align: right;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .ncq-topic-section .card-corner {
+    display: none;
+  }
+
+  .ncq-topic-hero .vax-hub-hero-lead,
+  .ncq-topic-hero-lead-alt,
+  .ncq-topic-hero .hub-hero-meta {
+    display: none;
+  }
+
+  .ncq-topic-question-btn {
+    padding: 0.85rem 0.9rem;
   }
 }
 
-@media (max-width: 768px) {
-  .children-vaccines-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-    gap: 1.25rem;
+/* Non-HCP common questions hub — /non-hcp/common-questions */
+.ncq-hub-page .hero {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+.ncq-hub-page .hero-title {
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  margin-bottom: 0.35rem;
+}
+
+.ncq-hub-page .hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 0;
+}
+
+.ncq-hub-page .hero-quote {
+  display: none;
+}
+
+.ncq-hub-section.about-section {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+}
+
+.ncq-hub-elegant {
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+}
+
+.ncq-hub-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.ncq-hub-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.ncq-hub-hero .vax-hub-hero-lead {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.ncq-hub-hero-lead-en {
+  position: relative;
+  margin: 0.35rem auto 0;
+  max-width: 36rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  text-align: center;
+}
+
+.ncq-hub-stats {
+  margin-bottom: 1rem;
+}
+
+.ncq-hub-grid {
+  direction: rtl;
+}
+
+.ncq-hub-empty {
+  margin: 0;
+  padding: 1.75rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgba(45, 42, 38, 0.75);
+  border-radius: 16px;
+  border: 2px dashed rgba(64, 96, 109, 0.2);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 640px) {
+  .ncq-hub-section .card-corner {
+    display: none;
+  }
+
+  .ncq-hub-hero .vax-hub-hero-lead,
+  .ncq-hub-hero-lead-en,
+  .ncq-hub-hero .hub-hero-meta {
+    display: none;
   }
 }
 
-@media (max-width: 480px) {
-  .children-vaccines-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1rem;
+/* Adult vaccines hub — /adult-vaccines */
+.adult-vax-page .hero {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+.adult-vax-page .hero-title {
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  margin-bottom: 0.35rem;
+}
+
+.adult-vax-page .hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 0;
+}
+
+.adult-vax-page .hero-quote {
+  display: none;
+}
+
+.adult-vax-section.about-section {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+}
+
+.adult-vax-elegant {
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+}
+
+.adult-vax-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.adult-vax-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.adult-vax-hero .vax-hub-hero-lead {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.adult-vax-hero-lead-en {
+  margin: 0.35rem auto 0;
+  max-width: 36rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  text-align: center;
+}
+
+.adult-vax-stats {
+  margin-bottom: 1rem;
+}
+
+.adult-vax-grid {
+  direction: rtl;
+}
+
+.adult-vax-empty {
+  margin: 0;
+  padding: 1.75rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgba(45, 42, 38, 0.75);
+  border-radius: 16px;
+  border: 2px dashed rgba(64, 96, 109, 0.2);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 640px) {
+  .adult-vax-section .card-corner {
+    display: none;
+  }
+
+  .adult-vax-hero .vax-hub-hero-lead,
+  .adult-vax-hero-lead-en,
+  .adult-vax-hero .hub-hero-meta {
+    display: none;
+  }
+}
+
+/* Child age vaccine pages — e.g. /four-months */
+.child-age-vax-page .hero {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+.child-age-vax-page .hero-title {
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  margin-bottom: 0.35rem;
+}
+
+.child-age-vax-page .hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 0;
+}
+
+.child-age-vax-page .hero-quote {
+  display: none;
+}
+
+.child-age-vax-section.about-section {
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2.5vw, 1.5rem);
+  align-items: stretch;
+}
+
+.child-age-vax-elegant {
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+}
+
+.child-age-vax-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.child-age-vax-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.child-age-vax-hero .vax-hub-hero-lead {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.child-age-vax-hero-lead-en {
+  margin: 0.35rem auto 0;
+  max-width: 36rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  text-align: center;
+}
+
+.child-age-vax-featured-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 1.25rem;
+}
+
+.child-age-vax-featured {
+  margin-inline: auto;
+  max-width: min(420px, 100%);
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #e8e0d4;
+  box-shadow: 0 8px 28px rgba(45, 42, 38, 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.child-age-vax-featured-img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(360px, 55vw);
+  display: block;
+  margin-inline: auto;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.child-age-vax-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.child-age-vax-category-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.55rem 1rem;
+  min-width: 5.5rem;
+  font-weight: 700;
+  color: #40606d;
+  background: rgba(255, 255, 255, 0.92);
+  border: 2px solid rgba(64, 96, 109, 0.2);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.child-age-vax-category-btn:hover {
+  border-color: rgba(64, 96, 109, 0.45);
+}
+
+.child-age-vax-category-ar {
+  font-size: 0.95rem;
+}
+
+.child-age-vax-category-en {
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.child-age-vax-category-count {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  opacity: 0.75;
+}
+
+.child-age-vax-category-btn--active {
+  color: #fff;
+  border-color: #40606d;
+  background: #40606d;
+  box-shadow: 0 4px 14px rgba(64, 96, 109, 0.35);
+}
+
+.child-age-vax-category-btn--mandatory.child-age-vax-category-btn--active {
+  background: #2d6a4f;
+  border-color: #2d6a4f;
+  box-shadow: 0 4px 14px rgba(45, 106, 79, 0.35);
+}
+
+.child-age-vax-category-btn--additional.child-age-vax-category-btn--active {
+  background: #b0892e;
+  border-color: #b0892e;
+  box-shadow: 0 4px 14px rgba(176, 137, 46, 0.35);
+}
+
+.child-age-vax-stats {
+  margin-bottom: 1rem;
+}
+
+.child-age-vax-stat-btn {
+  border: 2px solid transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  font: inherit;
+  text-align: inherit;
+  width: 100%;
+}
+
+.child-age-vax-stat-btn:hover {
+  transform: translateY(-1px);
+}
+
+.child-age-vax-stat-btn--mandatory.child-age-vax-stat-btn--active {
+  border-color: rgba(45, 106, 79, 0.45);
+  background: rgba(45, 106, 79, 0.08);
+}
+
+.child-age-vax-stat-btn--additional.child-age-vax-stat-btn--active {
+  border-color: rgba(176, 137, 46, 0.45);
+  background: rgba(176, 137, 46, 0.1);
+}
+
+.child-age-vax-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.child-age-vax-group {
+  margin: 0;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  border-radius: 18px;
+  border: 2px solid rgba(64, 96, 109, 0.14);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.child-age-vax-group--mandatory {
+  border-color: rgba(45, 106, 79, 0.35);
+  background: linear-gradient(180deg, rgba(45, 106, 79, 0.07) 0%, rgba(255, 255, 255, 0.85) 100%);
+}
+
+.child-age-vax-group--additional {
+  border-color: rgba(176, 137, 46, 0.38);
+  background: linear-gradient(180deg, rgba(176, 137, 46, 0.09) 0%, rgba(255, 255, 255, 0.85) 100%);
+}
+
+.child-age-vax-group-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.child-age-vax-group-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+}
+
+.child-age-vax-group-badge--mandatory {
+  color: #1b4332;
+  background: rgba(45, 106, 79, 0.18);
+  border: 1px solid rgba(45, 106, 79, 0.35);
+}
+
+.child-age-vax-group-badge--additional {
+  color: #7c5a12;
+  background: rgba(176, 137, 46, 0.2);
+  border: 1px solid rgba(176, 137, 46, 0.4);
+}
+
+.child-age-vax-group-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem 0.65rem;
+  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.28rem);
+  font-weight: 800;
+  color: #2d2a26;
+}
+
+.child-age-vax-group-en {
+  font-weight: 600;
+  color: rgba(45, 42, 38, 0.72);
+  font-size: 0.92em;
+}
+
+.child-age-vax-group-desc {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(45, 42, 38, 0.78);
+}
+
+.child-age-vax-group-desc-en {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.86rem;
+  color: rgba(45, 42, 38, 0.62);
+}
+
+.child-age-vax-group-count {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(64, 96, 109, 0.85);
+}
+
+.child-age-vax-grid {
+  direction: rtl;
+}
+
+.child-age-vax-empty {
+  margin: 0;
+  padding: 1.75rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgba(45, 42, 38, 0.75);
+  border-radius: 16px;
+  border: 2px dashed rgba(64, 96, 109, 0.2);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 640px) {
+  .child-age-vax-section .card-corner {
+    display: none;
+  }
+
+  .child-age-vax-hero .vax-hub-hero-lead,
+  .child-age-vax-hero-lead-en,
+  .child-age-vax-hero .hub-hero-meta {
+    display: none;
+  }
+
+  .child-age-vax-featured-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .child-age-vax-featured {
+    border-radius: 12px;
+  }
+
+  .child-age-vax-featured-img {
+    max-height: min(280px, 50vw);
+  }
+
+  .child-age-vax-group-desc,
+  .child-age-vax-group-desc-en {
+    display: none;
+  }
+
+  .child-age-vax-category-en {
+    display: none;
   }
 }
 
@@ -3905,6 +5200,2482 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+
+/* HCP — Vaccination in Patients with Cancer */
+.hcp-cancer-page {
+  background:
+    radial-gradient(circle at 6% 0%, rgba(120, 72, 110, 0.09), transparent 40%),
+    radial-gradient(circle at 94% 4%, rgba(64, 96, 109, 0.11), transparent 38%);
+}
+
+.hcp-cancer-inner {
+  width: 100%;
+  max-width: min(1080px, 100%);
+  margin-inline: auto;
+  direction: ltr;
+}
+
+.hcp-cancer-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.15rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(64, 96, 109, 0.08);
+  border: 1px solid rgba(64, 96, 109, 0.18);
+  color: #40606d;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hcp-cancer-back:hover {
+  background: rgba(64, 96, 109, 0.14);
+  transform: translateX(-2px);
+}
+
+.hcp-cancer-hero {
+  position: relative;
+  text-align: center;
+  padding: clamp(1.5rem, 3vw, 2.1rem) clamp(1rem, 2.5vw, 1.6rem);
+  margin-bottom: 1.5rem;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4a3d58 0%, #5a4a6a 28%, #40606d 62%, #3d6d78 100%);
+  box-shadow: 0 18px 44px rgba(58, 48, 72, 0.32);
+}
+
+.hcp-cancer-hero-glow {
+  position: absolute;
+  inset: -35% -15% auto;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+.hcp-cancer-hero-emoji {
+  position: relative;
+  display: block;
+  font-size: clamp(2.6rem, 6vw, 3.5rem);
+  line-height: 1;
+  margin-bottom: 0.45rem;
+}
+
+.hcp-cancer-hero-tag {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.28rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  color: #fff;
+  font-size: clamp(0.95rem, 2vw, 1.08rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.hcp-cancer-hero-title {
+  position: relative;
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.85rem, 4.5vw, 2.45rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+}
+
+.hcp-cancer-hero-lead {
+  position: relative;
+  margin: 0 auto 0.65rem;
+  max-width: 42rem;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(1.15rem, 2.6vw, 1.28rem);
+  line-height: 1.75;
+  text-align: left;
+}
+
+.hcp-cancer-hero-lead--secondary {
+  font-size: clamp(1.08rem, 2.4vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hcp-cancer-hero-meta p {
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 1rem !important;
+}
+
+.hcp-cancer-body {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 920px) {
+  .hcp-cancer-body {
+    grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+.hcp-cancer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+@media (max-width: 919px) {
+  .hcp-cancer-nav {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    margin: 0 -0.25rem;
+    padding: 0.65rem 0.25rem 0.85rem;
+    background: linear-gradient(180deg, rgba(248, 244, 238, 0.98) 75%, transparent);
+  }
+}
+
+.hcp-cancer-nav-label {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(64, 96, 109, 0.75);
+}
+
+@media (max-width: 919px) {
+  .hcp-cancer-nav-label {
+    padding-left: 0.35rem;
+  }
+}
+
+.hcp-cancer-nav-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 919px) {
+  .hcp-cancer-nav-scroll {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.45rem;
+    padding-bottom: 0.25rem;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (min-width: 920px) {
+  .hcp-cancer-nav-panel {
+    position: sticky;
+    top: 1.15rem;
+    max-height: calc(100vh - 2.3rem);
+    overflow-y: auto;
+    padding: 1.1rem 1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(64, 96, 109, 0.14);
+    box-shadow: 0 10px 32px rgba(64, 96, 109, 0.09);
+  }
+}
+
+.hcp-cancer-nav-scroll a {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.65rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #40606d;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+@media (min-width: 920px) {
+  .hcp-cancer-nav-scroll a {
+    white-space: normal;
+    line-height: 1.4;
+    font-size: 0.98rem;
+  }
+}
+
+.hcp-cancer-nav-scroll a:hover {
+  background: rgba(64, 96, 109, 0.1);
+  border-color: rgba(64, 96, 109, 0.12);
+  color: #2d454f;
+}
+
+.hcp-cancer-nav-num {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(64, 96, 109, 0.12);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #40606d;
+}
+
+.hcp-cancer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  min-width: 0;
+}
+
+.hcp-cancer-section {
+  scroll-margin-top: 5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 10px 30px rgba(64, 96, 109, 0.07);
+  overflow: hidden;
+}
+
+.hcp-cancer-section-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(90deg, rgba(64, 96, 109, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
+  border-bottom: 1px solid rgba(64, 96, 109, 0.1);
+}
+
+.hcp-cancer-section-icon {
+  flex-shrink: 0;
+  width: 2.65rem;
+  height: 2.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  font-size: 1.55rem;
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-cancer-section-title {
+  margin: 0;
+  font-size: clamp(1.22rem, 2.8vw, 1.45rem);
+  font-weight: 800;
+  color: #355a63;
+  line-height: 1.35;
+}
+
+.hcp-cancer-section-body {
+  padding: 1.2rem 1.35rem 1.35rem;
+  font-size: 1.18rem;
+  line-height: 1.85;
+  color: #3d4a52;
+}
+
+.hcp-cancer-section-body p {
+  margin: 0 0 0.75rem;
+}
+
+.hcp-cancer-section-body p:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-cancer-section-body ul {
+  margin: 0 0 0.75rem;
+  padding-left: 1.35rem;
+}
+
+.hcp-cancer-section-body ul:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-cancer-section-body li {
+  margin-bottom: 0.35rem;
+}
+
+.hcp-cancer-section-body li:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-cancer-sub {
+  margin: 1rem 0 0.45rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #40606d;
+}
+
+.hcp-cancer-sub:first-child {
+  margin-top: 0;
+}
+
+.hcp-cancer-sub--muted {
+  margin-top: 0.65rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #5a7280;
+}
+
+.hcp-cancer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hcp-cancer-chip {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(240, 246, 248, 0.95));
+  border: 1px solid rgba(64, 96, 109, 0.16);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #40606d;
+  box-shadow: 0 2px 8px rgba(64, 96, 109, 0.06);
+}
+
+.hcp-cancer-vaccine-pair {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 520px) {
+  .hcp-cancer-vaccine-pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hcp-cancer-vaccine-card {
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+}
+
+.hcp-cancer-vaccine-card--ok {
+  background: rgba(56, 142, 96, 0.1);
+  border: 2px solid rgba(56, 142, 96, 0.32);
+}
+
+.hcp-cancer-vaccine-card--no {
+  background: rgba(180, 95, 60, 0.08);
+  border: 2px solid rgba(180, 95, 60, 0.28);
+}
+
+.hcp-cancer-vaccine-card-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hcp-cancer-vaccine-card--ok .hcp-cancer-vaccine-card-label {
+  color: #2d6b47;
+}
+
+.hcp-cancer-vaccine-card--no .hcp-cancer-vaccine-card-label {
+  color: #8b4e32;
+}
+
+.hcp-cancer-vaccine-card p {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #355a63;
+}
+
+.hcp-cancer-alert {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(90deg, rgba(180, 95, 60, 0.14) 0%, rgba(255, 250, 245, 0.98) 100%);
+  border: 2px solid rgba(180, 95, 60, 0.4);
+  border-left: 5px solid #b45f3c;
+}
+
+.hcp-cancer-alert strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: #8b4e32;
+}
+
+.hcp-cancer-post-grid {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.65rem;
+}
+
+@media (min-width: 600px) {
+  .hcp-cancer-post-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.hcp-cancer-post-card {
+  padding: 1rem 1.05rem;
+  border-radius: 16px;
+  background: rgba(248, 252, 253, 0.95);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  border-top: 3px solid #40606d;
+}
+
+.hcp-cancer-post-card h5 {
+  margin: 0 0 0.5rem;
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #40606d;
+}
+
+.hcp-cancer-post-card p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.hcp-cancer-takeaway-section {
+  border: 2px solid rgba(64, 96, 109, 0.22);
+  background: linear-gradient(160deg, rgba(64, 96, 109, 0.1) 0%, rgba(255, 255, 255, 0.95) 55%);
+}
+
+.hcp-cancer-takeaway-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.hcp-cancer-takeaway-list li {
+  position: relative;
+  padding-left: 1.65rem;
+  margin: 0;
+}
+
+.hcp-cancer-takeaway-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(56, 142, 96, 0.15);
+  color: #2d6b47;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.hcp-cancer-related {
+  padding: 1.35rem 1.2rem;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(64, 96, 109, 0.06) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border: 2px solid rgba(64, 96, 109, 0.16);
+}
+
+.hcp-cancer-related--before-pdfs {
+  margin: 0 0 1.15rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hcp-cancer-related-title {
+  margin: 0 0 1.15rem;
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #40606d;
+  text-align: center;
+}
+
+.hcp-cancer-consensus-btn {
+  width: 100%;
+  min-height: 200px !important;
+  padding: 2rem 1.75rem !important;
+  border: 2px solid rgba(64, 96, 109, 0.28) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 250, 0.9)) !important;
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.12) !important;
+}
+
+.hcp-cancer-consensus-btn:hover {
+  border-color: rgba(64, 96, 109, 0.45) !important;
+  background: linear-gradient(145deg, #fff, rgba(232, 244, 248, 0.95)) !important;
+  transform: translateY(-3px);
+}
+
+.hcp-cancer-consensus-btn .button-text-en {
+  font-size: clamp(1.28rem, 3vw, 1.5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+  color: #355a63 !important;
+  max-width: 44rem;
+}
+
+.hcp-cancer-inline-link {
+  color: #40606d;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hcp-cancer-inline-link:hover {
+  color: #2d454f;
+}
+
+.hcp-cancer-ref-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: decimal;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #4a5a62;
+}
+
+.hcp-cancer-ref-list li {
+  margin-bottom: 0.65rem;
+  word-break: break-word;
+}
+
+.hcp-cancer-ref-list li:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-cancer-ref-list a {
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.hcp-cancer-pdfs {
+  scroll-margin-top: 5rem;
+  padding: 1.35rem 1.25rem 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 10px 30px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-cancer-pdfs-heading {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
+  font-weight: 800;
+  color: #355a63;
+  text-align: left;
+  line-height: 1.35;
+}
+
+.hcp-cancer-pdf-block {
+  margin-bottom: 2rem;
+}
+
+.hcp-cancer-pdf-block:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-cancer-pdf-title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.18rem);
+  font-weight: 700;
+  color: #40606d;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.hcp-cancer-pdf-frame {
+  width: 100%;
+  height: min(800px, 75vh);
+  border: none;
+  border-radius: 12px;
+  background: #f8fafb;
+  box-shadow: inset 0 0 0 1px rgba(64, 96, 109, 0.12);
+}
+
+.hcp-cancer-pdf-actions {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.hcp-cancer-pdf-download {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #40606d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 14px rgba(64, 96, 109, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hcp-cancer-pdf-download:hover {
+  background: #355a63;
+  transform: translateY(-2px);
+}
+
+/* HCP — Pediatric oncology expert consensus (Egypt) */
+.hcp-consensus-page {
+  background:
+    radial-gradient(circle at 8% 2%, rgba(90, 120, 160, 0.1), transparent 42%),
+    radial-gradient(circle at 92% 6%, rgba(120, 72, 110, 0.09), transparent 40%);
+}
+
+.hcp-consensus-hero {
+  background: linear-gradient(135deg, #3d4a6a 0%, #5a6a8a 30%, #40606d 65%, #4a7a88 100%);
+  box-shadow: 0 18px 44px rgba(61, 74, 106, 0.3);
+}
+
+.hcp-consensus-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  width: 100%;
+}
+
+.hcp-consensus-policy-section .hcp-cancer-section-body {
+  padding-top: 0.85rem;
+}
+
+.hcp-consensus-policy-grid {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+}
+
+@media (min-width: 560px) {
+  .hcp-consensus-policy-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.hcp-consensus-policy-card {
+  padding: 1.1rem 1.15rem;
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 248, 252, 0.95) 100%);
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  border-top: 4px solid #5a7a9a;
+  box-shadow: 0 6px 18px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-consensus-policy-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #40606d;
+  line-height: 1.35;
+}
+
+.hcp-consensus-policy-card p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #3d4a52;
+}
+
+.hcp-consensus-conclusion {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.75;
+  color: #355a63;
+}
+
+/* HCP Guide — shared layout (special populations, excluding bespoke cancer/consensus pages) */
+.hcp-guide-page {
+  background:
+    radial-gradient(circle at 5% 0%, rgba(64, 96, 109, 0.1), transparent 42%),
+    radial-gradient(circle at 95% 8%, rgba(90, 120, 160, 0.08), transparent 38%);
+}
+
+.hcp-guide-hero {
+  background: linear-gradient(135deg, #355a63 0%, #40606d 45%, #4a7a88 100%);
+  box-shadow: 0 18px 44px rgba(53, 90, 99, 0.28);
+}
+
+.hcp-guide-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  min-width: 0;
+}
+
+.hcp-guide-main--full {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  width: 100%;
+}
+
+.hcp-guide-subnav {
+  padding: 1.15rem 1.2rem;
+  border-radius: 18px;
+  background: rgba(64, 96, 109, 0.06);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+}
+
+.hcp-guide-subnav-title {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #40606d;
+}
+
+.hcp-guide-subnav-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+@media (min-width: 520px) {
+  .hcp-guide-subnav-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 780px) {
+  .hcp-guide-subnav-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.hcp-guide-subnav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 2px solid rgba(64, 96, 109, 0.14);
+  text-decoration: none;
+  color: #355a63;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hcp-guide-subnav-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(64, 96, 109, 0.28);
+  box-shadow: 0 8px 20px rgba(64, 96, 109, 0.12);
+}
+
+.hcp-guide-subnav-emoji {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.hcp-guide-coming-soon {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px dashed rgba(64, 96, 109, 0.22);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #5a7280;
+}
+
+/* HCP Special Populations hub */
+.hcp-sp-hub-hero .hcp-cancer-hero-lead:last-of-type {
+  margin-bottom: 0;
+}
+
+.hcp-sp-hub-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.hcp-sp-hub-group-title {
+  margin: 0 0 0.85rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid rgba(64, 96, 109, 0.15);
+  font-size: clamp(1.1rem, 2.5vw, 1.28rem);
+  font-weight: 800;
+  color: #40606d;
+}
+
+.hcp-sp-hub-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+}
+
+.hcp-sp-hub-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.15rem 1.1rem;
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(248, 252, 253, 0.95));
+  border: 2px solid rgba(64, 96, 109, 0.14);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 6px 18px rgba(64, 96, 109, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  min-height: 130px;
+}
+
+.hcp-sp-hub-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(64, 96, 109, 0.28);
+  box-shadow: 0 12px 28px rgba(64, 96, 109, 0.14);
+}
+
+.hcp-sp-hub-card-emoji {
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.hcp-sp-hub-card-label {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #355a63;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.hcp-sp-hub-card-cta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #40606d;
+}
+
+/* HCP Resources hub — /hcp-resources */
+.hcp-res-hub-page {
+  background:
+    radial-gradient(circle at 6% 0%, rgba(53, 90, 99, 0.12), transparent 42%),
+    radial-gradient(circle at 94% 8%, rgba(90, 154, 138, 0.1), transparent 40%);
+}
+
+.hcp-res-hub-elegant {
+  overflow: visible;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(0.85rem, 2vw, 1.35rem) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 252, 253, 0.94) 100%);
+}
+
+.hcp-res-hub-inner {
+  width: 100%;
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+  direction: ltr;
+}
+
+.hcp-res-hub-hero .vax-hub-hero-lead {
+  max-width: 44rem;
+}
+
+.hcp-res-welcome {
+  display: grid;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 860px) {
+  .hcp-res-welcome {
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.hcp-res-welcome-visual {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 14px 36px rgba(53, 90, 99, 0.14);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(232, 244, 246, 0.9));
+  min-height: 200px;
+}
+
+.hcp-res-welcome-img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+.hcp-res-welcome-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.06);
+}
+
+.hcp-res-welcome-quote {
+  margin: 0;
+  font-size: clamp(1.02rem, 2.2vw, 1.12rem);
+  font-weight: 600;
+  line-height: 1.7;
+  color: #355a63;
+}
+
+.hcp-res-welcome-mark {
+  color: rgba(64, 96, 109, 0.45);
+  font-size: 1.35em;
+  font-weight: 800;
+}
+
+.hcp-res-topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.hcp-res-topic-pill {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #355a63;
+  background: rgba(64, 96, 109, 0.08);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+}
+
+.hcp-res-stats {
+  margin-bottom: 1.15rem;
+}
+
+.hcp-res-sections-head {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding: 0 0.5rem;
+}
+
+.hcp-res-sections-title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 800;
+  color: #355a63;
+}
+
+.hcp-res-sections-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(64, 96, 109, 0.82);
+  line-height: 1.5;
+}
+
+.hcp-res-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hcp-res-group {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 10px 28px rgba(64, 96, 109, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.hcp-res-group--teal {
+  border-top: 4px solid #4a7a88;
+}
+
+.hcp-res-group--mint {
+  border-top: 4px solid #5a9a8a;
+}
+
+.hcp-res-group--gold {
+  border-top: 4px solid #b8956b;
+}
+
+.hcp-res-group-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  background: linear-gradient(135deg, rgba(53, 90, 99, 0.1) 0%, rgba(64, 96, 109, 0.04) 100%);
+  border-bottom: 2px solid rgba(64, 96, 109, 0.12);
+}
+
+.hcp-res-group--mint .hcp-res-group-head {
+  background: linear-gradient(135deg, rgba(90, 154, 138, 0.14) 0%, rgba(64, 96, 109, 0.04) 100%);
+}
+
+.hcp-res-group--gold .hcp-res-group-head {
+  background: linear-gradient(135deg, rgba(184, 149, 107, 0.16) 0%, rgba(64, 96, 109, 0.04) 100%);
+}
+
+.hcp-res-group-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 14px;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-res-group-titles {
+  min-width: 0;
+}
+
+.hcp-res-group-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(64, 96, 109, 0.65);
+}
+
+.hcp-res-group-title {
+  margin: 0 0 0.2rem;
+  font-size: clamp(1.12rem, 2.5vw, 1.28rem);
+  font-weight: 800;
+  color: #355a63;
+  line-height: 1.35;
+}
+
+.hcp-res-group-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(45, 42, 38, 0.78);
+  line-height: 1.45;
+}
+
+.hcp-res-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.hcp-res-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 1.05rem 1.05rem;
+  border-radius: 16px;
+  background: rgba(248, 252, 253, 0.95);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+}
+
+.hcp-res-item-top {
+  display: grid;
+  gap: 0.85rem;
+  align-items: start;
+}
+
+@media (min-width: 520px) {
+  .hcp-res-item-top {
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+.hcp-res-item-thumb {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: rgba(64, 96, 109, 0.08);
+  border: 1px solid rgba(64, 96, 109, 0.1);
+}
+
+.hcp-res-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hcp-res-item-emoji {
+  position: absolute;
+  top: 0.45rem;
+  left: 0.45rem;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.4rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(64, 96, 109, 0.12);
+}
+
+.hcp-res-item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.hcp-res-item-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #355a63;
+  line-height: 1.35;
+}
+
+.hcp-res-item-tag {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #40606d;
+}
+
+.hcp-res-item-desc {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: rgba(45, 42, 38, 0.88);
+}
+
+.hcp-res-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #355a63 0%, #40606d 50%, #4a7a88 100%);
+  border: 2px solid rgba(53, 90, 99, 0.35);
+  box-shadow: 0 6px 18px rgba(53, 90, 99, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.hcp-res-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(53, 90, 99, 0.32);
+  filter: brightness(1.05);
+}
+
+.hcp-res-btn:active {
+  transform: translateY(0);
+}
+
+.hcp-res-btn-arrow {
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.hcp-res-empty {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-weight: 600;
+  color: rgba(64, 96, 109, 0.75);
+}
+
+/* HCP Vaccination Basics hub — /hcp-vaccination-basics */
+.hcp-vb-hub-page {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(53, 90, 99, 0.11), transparent 42%),
+    radial-gradient(circle at 92% 6%, rgba(90, 154, 138, 0.09), transparent 40%);
+}
+
+.hcp-vb-hub-elegant {
+  overflow: visible;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(0.85rem, 2vw, 1.35rem) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 252, 253, 0.94) 100%);
+}
+
+.hcp-vb-hub-inner {
+  width: 100%;
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+  direction: ltr;
+}
+
+.hcp-vb-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hcp-vb-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.hcp-vb-hub-hero .vax-hub-hero-lead {
+  max-width: 44rem;
+}
+
+.hcp-vb-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.hcp-vb-welcome-visual {
+  width: 100%;
+  max-width: min(420px, 100%);
+  margin-inline: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 14px 36px rgba(53, 90, 99, 0.14);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(232, 244, 246, 0.9));
+  min-height: 200px;
+}
+
+.hcp-vb-welcome-img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  margin-inline: auto;
+}
+
+.hcp-vb-welcome-copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.06);
+  text-align: center;
+}
+
+.hcp-vb-welcome-copy .hcp-vb-topic-pills {
+  justify-content: center;
+}
+
+.hcp-vb-welcome-text {
+  margin: 0;
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(45, 42, 38, 0.9);
+}
+
+.hcp-vb-topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+}
+
+.hcp-vb-topic-pill {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #355a63;
+  background: rgba(64, 96, 109, 0.08);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+}
+
+.hcp-vb-stats {
+  margin-bottom: 1.15rem;
+}
+
+.hcp-vb-item-top {
+  grid-template-columns: auto 1fr !important;
+  align-items: center;
+}
+
+.hcp-vb-item-emoji {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+  font-size: 1.65rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.08);
+}
+
+/* HCP Documents hub — /hcp-documents */
+.hcp-doc-hub-page {
+  background:
+    radial-gradient(circle at 6% 0%, rgba(53, 90, 99, 0.1), transparent 42%),
+    radial-gradient(circle at 94% 4%, rgba(184, 149, 107, 0.08), transparent 40%);
+}
+
+.hcp-doc-hub-elegant {
+  overflow: visible;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(0.85rem, 2vw, 1.35rem) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 252, 253, 0.94) 100%);
+}
+
+.hcp-doc-hub-inner {
+  width: 100%;
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+  direction: ltr;
+}
+
+.hcp-doc-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hcp-doc-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.hcp-doc-hub-hero .vax-hub-hero-lead {
+  max-width: 44rem;
+}
+
+.hcp-doc-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.hcp-doc-welcome-visual {
+  width: 100%;
+  max-width: min(420px, 100%);
+  margin-inline: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 14px 36px rgba(53, 90, 99, 0.14);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(232, 244, 246, 0.9));
+  min-height: 200px;
+}
+
+.hcp-doc-welcome-img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.hcp-doc-welcome-copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.06);
+  text-align: center;
+}
+
+.hcp-doc-welcome-text {
+  margin: 0;
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(45, 42, 38, 0.9);
+}
+
+.hcp-doc-topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+  justify-content: center;
+}
+
+.hcp-doc-topic-pill {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #355a63;
+  background: rgba(64, 96, 109, 0.08);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+}
+
+.hcp-doc-stats {
+  margin-bottom: 1.15rem;
+}
+
+.hcp-doc-hub-page .vax-hub-search {
+  text-align: left;
+}
+
+.hcp-doc-items-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .hcp-doc-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.hcp-doc-item-top {
+  grid-template-columns: auto 1fr !important;
+  align-items: center;
+}
+
+.hcp-doc-item-emoji {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+  font-size: 1.65rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-doc-alpha-panel {
+  border-radius: 20px;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 10px 28px rgba(64, 96, 109, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+}
+
+.hcp-doc-alpha-panel .hcp-doc-items-grid {
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+/* HCP Vaccines & Sera hub — /hcp-vaccines-sera */
+.hcp-vs-hub-page {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(90, 154, 138, 0.1), transparent 42%),
+    radial-gradient(circle at 92% 6%, rgba(53, 90, 99, 0.09), transparent 40%);
+}
+
+.hcp-vs-hub-elegant {
+  overflow: visible;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(0.85rem, 2vw, 1.35rem) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 252, 253, 0.94) 100%);
+}
+
+.hcp-vs-hub-inner {
+  width: 100%;
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+  direction: ltr;
+}
+
+.hcp-vs-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hcp-vs-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.hcp-vs-hub-hero .vax-hub-hero-lead {
+  max-width: 44rem;
+}
+
+.hcp-vs-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.hcp-vs-welcome-visual {
+  width: 100%;
+  max-width: min(420px, 100%);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 14px 36px rgba(53, 90, 99, 0.14);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(232, 244, 246, 0.9));
+  min-height: 200px;
+}
+
+.hcp-vs-welcome-img {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  margin-inline: auto;
+}
+
+.hcp-vs-welcome-copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.06);
+  text-align: center;
+}
+
+.hcp-vs-welcome-text {
+  margin: 0;
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(45, 42, 38, 0.9);
+}
+
+.hcp-vs-stats {
+  margin-bottom: 1.15rem;
+}
+
+.hcp-vs-hub-page .vax-hub-search {
+  text-align: left;
+}
+
+.hcp-vs-items-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.hcp-vs-items-grid .hcp-res-btn {
+  font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+  padding: 0.75rem 0.65rem;
+}
+
+.hcp-vs-item-top {
+  grid-template-columns: auto 1fr !important;
+  align-items: center;
+}
+
+.hcp-vs-item-emoji {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+  font-size: 1.65rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-vs-alpha-panel {
+  border-radius: 20px;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 10px 28px rgba(64, 96, 109, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+}
+
+.hcp-vs-alpha-panel .hcp-vs-items-grid {
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.hcp-vs-items-grid .hcp-res-item {
+  min-width: 0;
+}
+
+/* HCP Vaccine Updates — /hcp-vaccine-updates */
+.hcp-vu-hub-page {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(184, 149, 107, 0.09), transparent 42%),
+    radial-gradient(circle at 90% 4%, rgba(53, 90, 99, 0.1), transparent 40%);
+}
+
+.hcp-vu-hub-elegant {
+  overflow: visible;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(0.85rem, 2vw, 1.35rem) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 252, 253, 0.94) 100%);
+}
+
+.hcp-vu-hub-inner {
+  width: 100%;
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+  direction: ltr;
+}
+
+.hcp-vu-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.hcp-vu-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.hcp-vu-hub-hero .vax-hub-hero-lead {
+  max-width: 44rem;
+}
+
+.hcp-vu-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.hcp-vu-welcome-visual {
+  width: 100%;
+  max-width: min(420px, 100%);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 14px 36px rgba(53, 90, 99, 0.14);
+  min-height: 200px;
+}
+
+.hcp-vu-welcome-img {
+  width: 100%;
+  min-height: 200px;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hcp-vu-welcome-copy {
+  width: 100%;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.06);
+  text-align: center;
+}
+
+.hcp-vu-welcome-text {
+  margin: 0 0 0.75rem;
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(45, 42, 38, 0.9);
+}
+
+.hcp-vu-welcome-text:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-vu-stats {
+  margin-bottom: 1.15rem;
+}
+
+.hcp-vu-hub-page .vax-hub-search {
+  text-align: left;
+}
+
+.hcp-vu-index-panel {
+  border-radius: 20px;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 10px 28px rgba(64, 96, 109, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.hcp-vu-index-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.hcp-vu-index-top {
+  grid-template-columns: auto 1fr !important;
+  align-items: flex-start;
+}
+
+.hcp-vu-index-emoji {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+  font-size: 1.65rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-vu-index-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.hcp-vu-index-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #8b7355;
+}
+
+.hcp-vu-index-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8b7355;
+  background: rgba(139, 115, 85, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+.hcp-vu-index-card .hcp-res-item-title {
+  font-size: 1rem;
+}
+
+.hcp-vu-index-grid .hcp-res-btn {
+  font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+  padding: 0.75rem 0.65rem;
+}
+
+.hcp-vu-updates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hcp-vu-update {
+  scroll-margin-top: 5rem;
+  border-radius: 20px;
+  border: 2px solid rgba(64, 96, 109, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.07);
+  overflow: hidden;
+}
+
+.hcp-vu-update-head {
+  padding: 1.15rem 1.25rem;
+  background: linear-gradient(135deg, rgba(53, 90, 99, 0.08) 0%, rgba(64, 96, 109, 0.03) 100%);
+  border-bottom: 1px solid rgba(64, 96, 109, 0.12);
+}
+
+.hcp-vu-update-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.hcp-vu-update-date {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #8b7355;
+}
+
+.hcp-vu-update-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8b7355;
+  background: rgba(139, 115, 85, 0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.hcp-vu-update-title {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.8vw, 1.55rem);
+  font-weight: 800;
+  color: #355a63;
+  line-height: 1.35;
+}
+
+.hcp-vu-update-body {
+  padding: 1.15rem 1.25rem 1.35rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #40606d;
+}
+
+.hcp-vu-update-body p {
+  margin: 0 0 1rem;
+}
+
+.hcp-vu-update-body h3 {
+  margin: 1.25rem 0 0.65rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #355a63;
+}
+
+.hcp-vu-update-body ul {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.hcp-vu-update-body li {
+  margin-bottom: 0.45rem;
+}
+
+.hcp-vu-pdfs {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.hcp-vu-pdfs-heading {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #355a63;
+}
+
+.hcp-vu-pdf-group {
+  margin-bottom: 1.5rem;
+}
+
+.hcp-vu-pdf-group:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-vu-pdf-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #8b7355;
+}
+
+.hcp-vu-pdf-group .hcp-cancer-pdfs-heading {
+  display: none;
+}
+
+.hcp-vu-report-cite {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(64, 96, 109, 0.06);
+  border: 1px solid rgba(64, 96, 109, 0.1);
+}
+
+.hcp-vu-report-cite p {
+  margin-bottom: 0.5rem;
+}
+
+.hcp-vu-report-source {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #8b7355;
+  margin: 0 !important;
+}
+
+.hcp-vu-disclaimer-ar {
+  margin-top: 1rem !important;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #40606d;
+}
+
+/* HCP FAQ hub — /hcp-faq */
+.hcp-faq-hub-page {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(53, 90, 99, 0.1), transparent 42%),
+    radial-gradient(circle at 92% 6%, rgba(139, 115, 85, 0.08), transparent 40%);
+}
+
+.hcp-faq-hub-elegant {
+  overflow: visible;
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(0.85rem, 2vw, 1.35rem) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 252, 253, 0.94) 100%);
+}
+
+.hcp-faq-hub-inner {
+  width: 100%;
+  max-width: min(1100px, 100%);
+  margin-inline: auto;
+  direction: ltr;
+}
+
+.hcp-faq-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.hcp-faq-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.hcp-faq-hub-hero .vax-hub-hero-lead {
+  max-width: 44rem;
+}
+
+.hcp-faq-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.hcp-faq-welcome-visual {
+  width: 100%;
+  max-width: min(420px, 100%);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 14px 36px rgba(53, 90, 99, 0.14);
+  min-height: 200px;
+}
+
+.hcp-faq-welcome-img {
+  width: 100%;
+  min-height: 200px;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hcp-faq-welcome-copy {
+  width: 100%;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.06);
+  text-align: center;
+}
+
+.hcp-faq-note {
+  margin: 0 0 0.85rem;
+  font-size: clamp(0.95rem, 2vw, 1.02rem);
+  line-height: 1.65;
+  color: rgba(45, 42, 38, 0.9);
+  text-align: left;
+}
+
+.hcp-faq-welcome-text {
+  margin: 0 0 0.5rem;
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(45, 42, 38, 0.88);
+}
+
+.hcp-faq-welcome-text:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-faq-stats {
+  margin-bottom: 1.15rem;
+}
+
+.hcp-faq-hub-page .vax-hub-search {
+  text-align: left;
+}
+
+.hcp-faq-alpha-panel {
+  border-radius: 20px;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 10px 28px rgba(64, 96, 109, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+}
+
+.hcp-faq-topics-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.hcp-faq-item-top {
+  grid-template-columns: auto 1fr !important;
+  align-items: center;
+}
+
+.hcp-faq-item-emoji {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+  font-size: 1.65rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.08);
+}
+
+/* FAQ topic article pages — e.g. /faq/administering-vaccines */
+.faq-topic-page {
+  background: var(--bg);
+}
+
+.faq-topic-elegant {
+  max-width: min(920px, 100%);
+  margin-inline: auto;
+}
+
+.faq-topic-inner {
+  padding: clamp(1rem, 3vw, 1.75rem);
+}
+
+.faq-topic-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+  text-decoration: none;
+}
+
+.faq-topic-back:hover {
+  color: #355a63;
+  text-decoration: underline;
+}
+
+.faq-topic-hero .vax-hub-hero-lead {
+  max-width: 44rem;
+}
+
+.faq-topic-hero-emoji {
+  font-size: 0.92em;
+}
+
+.faq-topic-intro {
+  width: 100%;
+  margin-bottom: 1.25rem;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  box-shadow: 0 8px 24px rgba(64, 96, 109, 0.06);
+}
+
+.faq-topic-note {
+  margin: 0 0 0.65rem;
+  font-size: clamp(0.95rem, 2vw, 1.02rem);
+  line-height: 1.65;
+  color: rgba(45, 42, 38, 0.9);
+  text-align: left;
+}
+
+.faq-topic-welcome-text {
+  margin: 0;
+  font-size: clamp(0.95rem, 2vw, 1rem);
+  line-height: 1.6;
+  color: rgba(45, 42, 38, 0.82);
+  text-align: left;
+}
+
+.faq-topic-page .vax-hub-search {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.faq-topic-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.faq-topic-count {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #40606d;
+}
+
+.faq-topic-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.faq-topic-tool-btn {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #40606d;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(64, 96, 109, 0.22);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.faq-topic-tool-btn:hover {
+  background: #40606d;
+  color: #fff;
+}
+
+.faq-topic-accordion-panel {
+  border-radius: 20px;
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow: 0 10px 28px rgba(64, 96, 109, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+}
+
+.faq-topic-empty {
+  margin: 0;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  color: rgba(45, 42, 38, 0.75);
+  font-size: 1rem;
+}
+
+.faq-topic-accordion {
+  padding: 0.35rem 0;
+}
+
+.faq-topic-item {
+  border-bottom: 1px solid rgba(64, 96, 109, 0.12);
+}
+
+.faq-topic-item:last-child {
+  border-bottom: none;
+}
+
+.faq-topic-item-heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.faq-topic-question-btn {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.faq-topic-question-btn:hover {
+  background: rgba(64, 96, 109, 0.06);
+}
+
+.faq-topic-question-btn:focus-visible {
+  outline: 2px solid #40606d;
+  outline-offset: -2px;
+}
+
+.faq-topic-q-num {
+  flex-shrink: 0;
+  min-width: 2rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fff;
+  background: #40606d;
+  border-radius: 8px;
+  padding: 0.2rem 0.45rem;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 0.15rem;
+}
+
+.faq-topic-question {
+  flex: 1;
+  font-size: clamp(0.98rem, 2.2vw, 1.08rem);
+  font-weight: 700;
+  color: #355a63;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.faq-topic-chevron {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: #8b7355;
+  transition: transform 0.25s ease;
+  margin-top: 0.2rem;
+}
+
+.faq-topic-chevron--open {
+  transform: rotate(180deg);
+}
+
+.faq-topic-answer-wrap {
+  padding: 0 1.15rem 1.1rem 3.9rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.faq-topic-answer p {
+  margin: 0 0 0.65rem;
+  font-size: clamp(0.95rem, 2vw, 1.02rem);
+  line-height: 1.7;
+  color: rgba(45, 42, 38, 0.9);
+  text-align: left;
+}
+
+.faq-topic-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-topic-inline-link {
+  color: #40606d;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.faq-topic-inline-link:hover {
+  color: #355a63;
+}
+
+@media (max-width: 640px) {
+  .faq-topic-answer-wrap {
+    padding-left: 1.15rem;
+    padding-right: 1rem;
+  }
+
+  .faq-topic-q-num {
+    min-width: 1.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* HCP vaccine product pages — e.g. /hcp/hepatitis-a */
+.hcp-vax-product-page {
+  background:
+    radial-gradient(circle at 6% 0%, rgba(53, 90, 99, 0.09), transparent 42%),
+    radial-gradient(circle at 94% 8%, rgba(184, 149, 107, 0.07), transparent 40%);
+}
+
+.hcp-vax-product-elegant {
+  overflow: visible;
+}
+
+.hcp-vax-product-visual {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  max-width: min(520px, 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 12px 32px rgba(53, 90, 99, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.hcp-vax-product-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.hcp-vax-product-subhead {
+  margin: 1.15rem 0 0.5rem;
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #355a63;
+}
+
+.hcp-vax-product-subhead:first-child {
+  margin-top: 0;
+}
+
+.hcp-vax-product-refs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #4a5a62;
+}
+
+.hcp-vax-product-refs li {
+  word-break: break-word;
+}
+
+.hcp-vax-product-refs a {
+  color: #40606d;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.hcp-vax-product-refs a:hover {
+  color: #355a63;
+}
+
+.hcp-vax-product-pdf {
+  margin-bottom: 1.5rem;
+}
+
+.hcp-vax-product-pdf:last-child {
+  margin-bottom: 0;
+}
+
+.hcp-vax-product-pdf-disclaimer {
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #40606d;
+}
+
+.hcp-vax-product-pdf .hcp-cancer-pdfs {
+  margin-top: 0;
+}
+
+.hcp-res-hub-page .vax-hub-search {
+  text-align: left;
+}
+
+.hcp-guide-related-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.hcp-guide-related-link {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #355a63, #40606d);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 18px rgba(64, 96, 109, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hcp-guide-related-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(64, 96, 109, 0.28);
+}
+
+/* HSCT & legacy chunk styling inside guide layout */
+.hcp-guide-hsct,
+.hcp-guide-chunks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  width: 100%;
+}
+
+.hcp-guide-hsct .hcp-content-chunk-group,
+.hcp-guide-chunks .hcp-content-chunk-group {
+  width: 100%;
+}
+
+.hcp-guide-hsct .hcp-content-chunk-group > h4,
+.hcp-guide-chunks .hcp-content-chunk-group > h4 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  font-weight: 800;
+  color: #40606d;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid rgba(64, 96, 109, 0.18);
+}
+
+.hcp-guide-hsct .hcp-content-chunk-bubble,
+.hcp-guide-chunks .hcp-content-chunk-bubble {
+  border-radius: 0 14px 14px 0;
 }
 
 .bubble-container {
@@ -6458,6 +10229,11 @@ body {
 }
 
 .hub-en.vax-hub-hero-subtitle,
+.hub-en.ncq-hub-hero-lead-en,
+.hub-en.ncq-topic-hero-lead-alt,
+.hub-en.adult-vax-hero-lead-en,
+.hub-en.children-vax-hero-lead-en,
+.hub-en.child-age-vax-hero-lead-en,
 .hub-en.non-hcp-hero-subtitle,
 .hub-en.info-hub-hero-subtitle,
 .hub-en.non-hcp-nav-subtitle,
