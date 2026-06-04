@@ -124,6 +124,27 @@ export default function RootLayout({
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
         <meta name="referrer" content="no-referrer-when-downgrade" />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+html,body{overflow-x:hidden;max-width:100vw;margin:0}
+body{color:#40606d;background:#f5f1ec;font-family:system-ui,-apple-system,sans-serif}
+.header{background:rgba(255,255,255,.92);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(139,115,85,.08)}
+.header-container{display:flex;align-items:center;justify-content:space-between;max-width:100%;box-sizing:border-box}
+.desktop-nav{display:none!important}
+.search-container{display:none}
+@media(min-width:768px){.search-container{display:flex}}
+@media(min-width:1024px){.desktop-nav{display:flex!important}}
+@media(max-width:767px){.search-container{display:none!important}}
+.min-h-screen:not(.home-page)>main.hero{display:none}
+.about-elegant-card{max-width:100%;box-sizing:border-box;overflow:visible}
+.vax-hub-hero,.hcp-vs-hub-hero{background:linear-gradient(135deg,#355a63,#4a7580 42%,#5a9a8a)!important;color:#fff;border-radius:22px;padding:1rem 1.25rem;text-align:center}
+.vax-hub-hero-title,.hcp-vs-hub-hero-title{color:#fff;font-weight:800;font-size:clamp(1.35rem,5vw,2rem);margin:0}
+.nav-link,.mobile-link{color:#40606d;text-decoration:none}
+a{color:#0d9488}
+`,
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} ${cairo.variable} font-sans antialiased`}

@@ -160,14 +160,13 @@ body {
    ===================================================== */
 
 .desktop-nav {
-  display: none;
+  display: none !important;
 }
 
 @media (min-width: 1024px) {
   .desktop-nav {
-    display: block;
+    display: flex !important;
     flex: 1;
-    display: flex;
     justify-content: center;
     padding: 0 3rem;
   }
@@ -314,6 +313,51 @@ body {
 @media (min-width: 768px) {
   .search-container {
     display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .search-container {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .header-container {
+    max-width: 100%;
+    padding-inline: 0.75rem;
+    height: auto;
+    min-height: 64px;
+    gap: 0.5rem;
+    overflow: hidden;
+  }
+
+  .header-brand-row {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .header-actions {
+    flex-shrink: 0;
+    margin-inline-start: auto;
+  }
+
+  .header-about-link {
+    max-width: 5.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-inline: 0.55rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-about-link {
+    display: none;
   }
 }
 
@@ -6093,6 +6137,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .min-h-screen:not(.home-page) > main.hero {
+    display: none;
+  }
+
   .min-h-screen:not(.home-page) main.hero {
     min-height: auto;
     padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) clamp(0.75rem, 2vw, 1rem);
