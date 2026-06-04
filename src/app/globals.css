@@ -11070,3 +11070,23 @@ body {
     max-width: 100%;
   }
 }
+
+/* Final mobile grid enforcement — must stay last to win CSS cascade */
+@media (max-width: 639px) {
+  .hcp-vs-items-grid,
+  .hcp-doc-items-grid,
+  .vax-hub-grid,
+  .vaccines-sera-grid,
+  .vax-hub-stats--two,
+  .non-hcp-features,
+  .gallery-grid,
+  .faq-grid,
+  .vaccination-basics-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hcp-res-item-tag {
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+}
