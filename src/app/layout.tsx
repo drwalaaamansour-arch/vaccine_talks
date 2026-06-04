@@ -140,6 +140,8 @@ body{color:#40606d;background:#f5f1ec;font-family:system-ui,-apple-system,sans-s
 .about-elegant-card{max-width:100%;box-sizing:border-box;overflow:visible}
 .vax-hub-hero,.hcp-vs-hub-hero{background:linear-gradient(135deg,#355a63,#4a7580 42%,#5a9a8a)!important;color:#fff;border-radius:22px;padding:1rem 1.25rem;text-align:center}
 .vax-hub-hero-title,.hcp-vs-hub-hero-title{color:#fff;font-weight:800;font-size:clamp(1.35rem,5vw,2rem);margin:0}
+.hcp-vs-items-grid{grid-template-columns:1fr!important}
+@media(min-width:640px){.hcp-vs-items-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 .nav-link,.mobile-link{color:#40606d;text-decoration:none}
 a{color:#0d9488}
 `,
