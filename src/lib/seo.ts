@@ -84,7 +84,23 @@ export function createPageMetadata({
   };
 }
 
+function getSiteVerificationMetadata(): Metadata['verification'] {
+  const google = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+  const bing = process.env.BING_SITE_VERIFICATION?.trim();
+  const yandex = process.env.YANDEX_SITE_VERIFICATION?.trim();
+
+  if (!google && !bing && !yandex) return undefined;
+
+  return {
+    ...(google ? { google } : {}),
+    ...(bing ? { other: { 'msvalidate.01': bing } } : {}),
+    ...(yandex ? { yandex } : {}),
+  };
+}
+
 export function createHomeMetadata(): Metadata {
+  const verification = getSiteVerificationMetadata();
+
   return {
     metadataBase: new URL(SITE_URL),
     title: {
@@ -139,6 +155,7 @@ export function createHomeMetadata(): Metadata {
       creator: '@VaccineTalk',
     },
     category: 'Health & Medical',
+    ...(verification ? { verification } : {}),
     other: {
       'geo.region': 'EG',
       'geo.placename': 'Egypt',
