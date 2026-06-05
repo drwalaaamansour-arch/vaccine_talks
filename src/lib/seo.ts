@@ -112,6 +112,10 @@ export function createHomeMetadata(): Metadata {
     authors: [{ name: 'Vaccine Talk Team' }],
     creator: SITE_NAME_SHORT,
     publisher: SITE_NAME_SHORT,
+    icons: {
+      icon: [{ url: '/vaccine-talks-icon.png', type: 'image/png' }],
+      apple: [{ url: '/vaccine-talks-icon.png', type: 'image/png' }],
+    },
     alternates: {
       canonical: SITE_URL,
       languages: {

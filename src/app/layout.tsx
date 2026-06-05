@@ -38,8 +38,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#0d9488" />
+        <meta name="theme-color" content="#355a63" />
         <meta name="geo.region" content="EG" />
         <meta name="geo.placename" content="Egypt" />
         <meta name="language" content="Arabic, English" />

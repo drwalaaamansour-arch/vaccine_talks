@@ -9,19 +9,14 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: '/',
     display: 'standalone',
     background_color: '#f5f1ec',
-    theme_color: '#0d9488',
+    theme_color: '#355a63',
     lang: 'ar',
     dir: 'rtl',
     icons: [
       {
-        src: '/favicon.ico',
-        sizes: 'any',
-        type: 'image/x-icon',
-      },
-      {
-        src: '/logo.svg',
-        sizes: 'any',
-        type: 'image/svg+xml',
+        src: '/vaccine-talks-icon.png',
+        sizes: '512x512',
+        type: 'image/png',
       },
     ],
   };
