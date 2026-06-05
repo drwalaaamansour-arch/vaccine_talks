@@ -84,6 +84,11 @@ export const HCP_SPECIAL_POPULATIONS_GROUPS: HcpGuideHubGroup[] = [
         label: 'International travellers',
         emoji: '✈️',
       },
+      {
+        href: '/hcp-special-populations/vaccinations-with-multiple-sclerosis',
+        label: 'Vaccinations with Multiple Sclerosis',
+        emoji: '🧠',
+      },
     ],
   },
 ];
