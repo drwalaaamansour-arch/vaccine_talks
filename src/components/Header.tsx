@@ -99,8 +99,8 @@ export default function Header() {
               <Image
                 src="/vaccine-talks-icon.png"
                 alt="Vaccine Talks — Egyptian edition"
-                width={56}
-                height={56}
+                width={80}
+                height={80}
                 priority
                 className="logo-image"
               />
