@@ -68,9 +68,9 @@ export function createPageMetadata({
       type,
       images: [
         {
-          url: absoluteUrl('/logo.svg'),
-          width: 1200,
-          height: 630,
+          url: absoluteUrl('/vaccine-talks-icon.png'),
+          width: 512,
+          height: 512,
           alt: `${SITE_NAME_SHORT} - التطعيمات في مصر`,
         },
       ],
@@ -79,7 +79,7 @@ export function createPageMetadata({
       card: 'summary_large_image',
       title,
       description: pageDescription,
-      images: [absoluteUrl('/logo.svg')],
+      images: [absoluteUrl('/vaccine-talks-icon.png')],
     },
   };
 }
@@ -144,9 +144,9 @@ export function createHomeMetadata(): Metadata {
       type: 'website',
       images: [
         {
-          url: absoluteUrl('/logo.svg'),
-          width: 1200,
-          height: 630,
+          url: absoluteUrl('/vaccine-talks-icon.png'),
+          width: 512,
+          height: 512,
           alt: 'Vaccine Talk - التطعيمات في مصر',
         },
       ],
@@ -155,7 +155,7 @@ export function createHomeMetadata(): Metadata {
       card: 'summary_large_image',
       title: 'Vaccine Talk - التطعيمات في مصر',
       description: SITE_DESCRIPTION_AR,
-      images: [absoluteUrl('/logo.svg')],
+      images: [absoluteUrl('/vaccine-talks-icon.png')],
       creator: '@VaccineTalk',
     },
     category: 'Health & Medical',

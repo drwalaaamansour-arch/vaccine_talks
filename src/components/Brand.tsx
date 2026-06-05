@@ -8,12 +8,12 @@ export default function Brand() {
       className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-xl transition-all duration-300 hover:scale-[1.02] p-1"
     >
       {/* Logo with gradient background */}
-      <div className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl shadow-lg shadow-teal-500/30 group-hover:shadow-xl group-hover:shadow-teal-500/40 transition-all duration-300 group-hover:-translate-y-0.5">
+      <div className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-[#355a63] rounded-2xl shadow-lg shadow-teal-900/20 group-hover:shadow-xl group-hover:shadow-teal-900/30 transition-all duration-300 group-hover:-translate-y-0.5 overflow-hidden">
         <Image
-          src="/logo.svg"
-          alt="Vaccine Talk"
+          src="/vaccine-talks-icon.png"
+          alt="Vaccine Talks — Egyptian edition"
           fill
-          className="object-contain p-2.5"
+          className="object-contain p-1.5"
           priority
           sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 64px"
         />

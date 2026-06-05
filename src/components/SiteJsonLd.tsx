@@ -10,7 +10,7 @@ export default function SiteJsonLd() {
         name: SITE_NAME_SHORT,
         alternateName: SITE_NAME,
         url: SITE_URL,
-        logo: `${SITE_URL}/logo.svg`,
+        logo: `${SITE_URL}/vaccine-talks-icon.png`,
         description: SITE_DESCRIPTION_AR,
         areaServed: {
           '@type': 'Country',

@@ -97,13 +97,12 @@ export default function Header() {
           <Link href="/" className="logo-link">
             <div className="logo-box">
               <Image
-                src="/logonew.jpeg"
-                alt="Vaccine Talk"
-                width={180}
-                height={80}
+                src="/vaccine-talks-icon.png"
+                alt="Vaccine Talks — Egyptian edition"
+                width={56}
+                height={56}
                 priority
                 className="logo-image"
-                style={{ width: 'auto', height: '60px' }}
               />
             </div>
           </Link>
