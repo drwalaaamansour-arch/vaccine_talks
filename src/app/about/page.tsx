@@ -1,11 +1,15 @@
-import type { Metadata } from 'next';
 import Header from '@/components/Header';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'About us | Vaccine Talk',
+export const metadata = createPageMetadata({
+  title: 'من نحن | About us — Vaccine Talk',
   description:
-    'Vaccine Talk (Egyptian Edition) — a trusted Egyptian platform about vaccines for families and health professionals.',
-};
+    'تعرف على Vaccine Talk — منصة مصرية موثوقة عن التطعيمات للعائلات والعاملين بالمجال الطبي.',
+  descriptionEn:
+    'Learn about Vaccine Talk — a trusted Egyptian platform about vaccines for families and health professionals.',
+  path: '/about',
+  keywords: ['Vaccine Talk', 'من نحن', 'التطعيمات في مصر'],
+});
 
 export default function AboutPage() {
   return (

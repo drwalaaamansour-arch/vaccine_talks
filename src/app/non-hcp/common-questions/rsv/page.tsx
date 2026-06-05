@@ -1,4 +1,10 @@
-import { createNonHcpCommonQuestionsTopicPage } from '@/components/non-hcp-common-questions/createNonHcpCommonQuestionsTopicPage';
+import {
+  createNonHcpCommonQuestionsTopicPage,
+  createNonHcpTopicMetadata,
+} from '@/components/non-hcp-common-questions/createNonHcpCommonQuestionsTopicPage';
 import { NCQ_TOPICS } from '@/data/non-hcp-common-questions-topics';
 
-export default createNonHcpCommonQuestionsTopicPage(NCQ_TOPICS.rsv);
+const config = NCQ_TOPICS.rsv;
+
+export const metadata = createNonHcpTopicMetadata(config, '/non-hcp/common-questions/rsv');
+export default createNonHcpCommonQuestionsTopicPage(config);
