@@ -55,7 +55,7 @@ export function SpecialCasePageLayout({ children, beforeContent }: SpecialCasePa
         </div>
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p className="copyright-text">© 2025 Vaccine Talk – All rights reserved.</p>
+            <p className="copyright-text">© 2025 Vaccine Talks – All rights reserved.</p>
           </div>
           <div className="footer-policy">
             <a href="/copy" className="policy-link">

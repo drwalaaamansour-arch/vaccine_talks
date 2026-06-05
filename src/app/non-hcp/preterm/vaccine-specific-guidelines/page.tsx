@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import PretermVaccineGuidelinesTabs, { PretermVaccineGuidelinesTabsEnglish } from './PretermVaccineGuidelinesTabs';
 
 export const metadata: Metadata = {
-  title: 'إرشادات خاصة بالتطعيمات للأطفال المبتسرين | Vaccine Talk',
+  title: 'إرشادات خاصة بالتطعيمات للأطفال المبتسرين | Vaccine Talks',
   description: 'Vaccine-specific guidelines for preterm infants (non-HCP).',
 };
 
@@ -120,7 +120,7 @@ export default function NonHcpPretermVaccineSpecificGuidelinesPage() {
         </div>
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p className="copyright-text">© 2025 Vaccine Talk – All rights reserved.</p>
+            <p className="copyright-text">© 2025 Vaccine Talks – All rights reserved.</p>
             <p className="copyright-text">Content is original and may not be copied without permission.</p>
           </div>
           <div className="footer-policy">

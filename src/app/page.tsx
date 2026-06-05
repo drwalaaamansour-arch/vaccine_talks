@@ -12,7 +12,7 @@ export default function Home() {
         <h1 className="hero-title animate-fade-in-up">
           Vaccine
           <br />
-          Talk
+          Talks
           </h1>
         
         <p className="hero-subtitle animate-fade-in-up animate-delay-1">
@@ -151,7 +151,7 @@ export default function Home() {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p className="copyright-text">
-              © 2025 Vaccine Talk – All rights reserved.
+              © 2025 Vaccine Talks – All rights reserved.
             </p>
             <p className="copyright-text">
               Content is original and may not be copied without permission.

@@ -38,11 +38,11 @@ export default function CopyPage() {
           <div className="about-bilingual">
             {/* Arabic Content */}
             <div className="about-lang arabic" style={{alignItems:'flex-start', direction: 'rtl', textAlign: 'right'}}>
-              <p className="about-lang-intro">جميع المواد المنشورة على موقع Vaccine Talk – النسخة المصرية من نصوص، صور، تصميمات، ومحتوى علمي، هي ملك خاص للموقع، ولا يجوز إعادة نشرها أو نسخها أو اقتباسها دون إذن مسبق.</p>
+              <p className="about-lang-intro">جميع المواد المنشورة على موقع Vaccine Talks – النسخة المصرية من نصوص، صور، تصميمات، ومحتوى علمي، هي ملك خاص للموقع، ولا يجوز إعادة نشرها أو نسخها أو اقتباسها دون إذن مسبق.</p>
               <p className="about-lang-intro">يهدف الموقع إلى التوعية فقط، ولا يتبع أي جهة أو شركة، ولا يقدّم استشارات طبية فردية.</p>
               <p className="about-lang-intro">جميع المعلومات الواردة تم إعدادها بعناية من مصادر موثوقة، ولكن لا تغني عن استشارة الطبيب أو المختص.</p>
               <p className="about-lang-intro">يُسمح بمشاركة روابط الموقع على وسائل التواصل الاجتماعي لأغراض تعليمية أو توعوية مع الإشارة الواضحة إلى المصدر.</p>
-              <p className="about-lang-intro" style={{fontWeight: 700}}>© 2025 Vaccine Talk – جميع الحقوق محفوظة.</p>
+              <p className="about-lang-intro" style={{fontWeight: 700}}>© 2025 Vaccine Talks – جميع الحقوق محفوظة.</p>
             </div>
 
             {/* Divider */}
@@ -50,11 +50,11 @@ export default function CopyPage() {
 
             {/* English Content */}
             <div className="about-lang" style={{alignItems:'flex-start'}}>
-              <p className="about-lang-intro">All materials published on Vaccine Talk – Egyptian Edition, including text, images, designs, and educational content, are the exclusive property of this website and may not be copied, reproduced, or redistributed without prior permission.</p>
+              <p className="about-lang-intro">All materials published on Vaccine Talks – Egyptian Edition, including text, images, designs, and educational content, are the exclusive property of this website and may not be copied, reproduced, or redistributed without prior permission.</p>
               <p className="about-lang-intro">This website is intended for educational and awareness purposes only and is not affiliated with any company or organization.</p>
               <p className="about-lang-intro">Information provided here is carefully sourced from verified references but does not replace professional medical advice.</p>
-              <p className="about-lang-intro">You may share Vaccine Talk's content or links for educational purposes as long as proper credit is given.</p>
-              <p className="about-lang-intro" style={{fontWeight: 700}}>© 2025 Vaccine Talk – All Rights Reserved.</p>
+              <p className="about-lang-intro">You may share Vaccine Talks' content or links for educational purposes as long as proper credit is given.</p>
+              <p className="about-lang-intro" style={{fontWeight: 700}}>© 2025 Vaccine Talks – All Rights Reserved.</p>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function CopyPage() {
         </div>
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p className="copyright-text">© 2025 Vaccine Talk – All rights reserved.</p>
+            <p className="copyright-text">© 2025 Vaccine Talks – All rights reserved.</p>
             <p className="copyright-text">Content is original and may not be copied without permission.</p>
           </div>
           <div className="footer-policy">

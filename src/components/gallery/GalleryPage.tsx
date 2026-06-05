@@ -15,10 +15,10 @@ import {
 import { ARTICLE_META } from '@/lib/article-meta';
 
 const GALLERY_HERO = {
-  tag: 'Vaccine Talk · Egypt',
+  tag: 'Vaccine Talks · Egypt',
   title: 'Gallery',
   titleAr: 'المعرض',
-  subtitle: 'Posts, graphics & videos from Vaccine Talk',
+  subtitle: 'Posts, graphics & videos from Vaccine Talks',
   lead: 'Browse educational visuals and short videos shared on our channels — tap any item to view full size.',
 } as const;
 

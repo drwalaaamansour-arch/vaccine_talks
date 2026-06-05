@@ -95,7 +95,7 @@ export default function FAQ() {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p className="copyright-text">
-              © 2025 Vaccine Talk – All rights reserved.
+              © 2025 Vaccine Talks – All rights reserved.
             </p>
             <p className="copyright-text">
               Content is original and may not be copied without permission.

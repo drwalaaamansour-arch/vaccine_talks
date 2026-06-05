@@ -104,12 +104,12 @@ export function createHomeMetadata(): Metadata {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: 'Vaccine Talk - التطعيمات في مصر | دليل شامل للتطعيمات في مصر',
+      default: `${SITE_NAME_SHORT} - التطعيمات في مصر | دليل شامل للتطعيمات في مصر`,
       template: `%s | ${SITE_NAME_SHORT}`,
     },
     description: `${SITE_DESCRIPTION_AR} ${SITE_DESCRIPTION_EN}`,
     keywords: SITE_KEYWORDS,
-    authors: [{ name: 'Vaccine Talk Team' }],
+    authors: [{ name: `${SITE_NAME_SHORT} Team` }],
     creator: SITE_NAME_SHORT,
     publisher: SITE_NAME_SHORT,
     icons: {
@@ -135,7 +135,7 @@ export function createHomeMetadata(): Metadata {
       },
     },
     openGraph: {
-      title: 'Vaccine Talk - التطعيمات في مصر | دليل شامل للتطعيمات',
+      title: `${SITE_NAME_SHORT} - التطعيمات في مصر | دليل شامل للتطعيمات`,
       description: SITE_DESCRIPTION_AR,
       url: SITE_URL,
       siteName: SITE_NAME,
@@ -147,13 +147,13 @@ export function createHomeMetadata(): Metadata {
           url: absoluteUrl('/vaccine-talks-icon.png'),
           width: 512,
           height: 512,
-          alt: 'Vaccine Talk - التطعيمات في مصر',
+          alt: `${SITE_NAME_SHORT} - التطعيمات في مصر`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Vaccine Talk - التطعيمات في مصر',
+      title: `${SITE_NAME_SHORT} - التطعيمات في مصر`,
       description: SITE_DESCRIPTION_AR,
       images: [absoluteUrl('/vaccine-talks-icon.png')],
       creator: '@VaccineTalk',

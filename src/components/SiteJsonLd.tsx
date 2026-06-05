@@ -32,7 +32,7 @@ export default function SiteJsonLd() {
         '@type': 'MedicalWebPage',
         '@id': `${SITE_URL}/#homepage`,
         url: SITE_URL,
-        name: 'Vaccine Talk - التطعيمات في مصر',
+        name: `${SITE_NAME_SHORT} - التطعيمات في مصر`,
         description: SITE_DESCRIPTION_AR,
         inLanguage: 'ar-EG',
         isPartOf: {

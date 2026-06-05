@@ -24,7 +24,7 @@ export default function Brand() {
       {/* Brand Text */}
       <div className="flex flex-col leading-none">
         <span className="text-xl lg:text-2xl font-bold tracking-tight group-hover:text-teal-700 transition-colors duration-300" style={{ color: '#40606D' }}>
-          Vaccine Talk
+          Vaccine Talks
         </span>
         <span className="text-xs lg:text-sm font-medium mt-1 group-hover:text-teal-600 transition-colors duration-300" style={{ color: '#40606D' }}>
           Egyptian Edition

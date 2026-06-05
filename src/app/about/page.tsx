@@ -2,13 +2,13 @@ import Header from '@/components/Header';
 import { createPageMetadata } from '@/lib/seo';
 
 export const metadata = createPageMetadata({
-  title: 'من نحن | About us — Vaccine Talk',
+  title: 'من نحن | About us — Vaccine Talks',
   description:
-    'تعرف على Vaccine Talk — منصة مصرية موثوقة عن التطعيمات للعائلات والعاملين بالمجال الطبي.',
+    'تعرف على Vaccine Talks — منصة مصرية موثوقة عن التطعيمات للعائلات والعاملين بالمجال الطبي.',
   descriptionEn:
-    'Learn about Vaccine Talk — a trusted Egyptian platform about vaccines for families and health professionals.',
+    'Learn about Vaccine Talks — a trusted Egyptian platform about vaccines for families and health professionals.',
   path: '/about',
-  keywords: ['Vaccine Talk', 'من نحن', 'التطعيمات في مصر'],
+  keywords: ['Vaccine Talks', 'من نحن', 'التطعيمات في مصر'],
 });
 
 export default function AboutPage() {
@@ -54,7 +54,7 @@ export default function AboutPage() {
               <div className="about-lang arabic">
                 <h2 className="about-lang-title">
                   <span dir="ltr" className="home-about-brand-ltr">
-                    Vaccine Talk
+                    Vaccine Talks
                   </span>{' '}
                   <span className="edition-badge">(النسخة المصرية)</span>
                 </h2>
@@ -80,7 +80,7 @@ export default function AboutPage() {
                   <div className="feature-item">
                     <span className="feature-emoji">⚖️</span>
                     <p>
-                      Vaccine Talk مش تابع لأي شركة أو جهة، هدفه التوعية فقط — وبصبغة مصرية خالصة.
+                      Vaccine Talks مش تابع لأي شركة أو جهة، هدفه التوعية فقط — وبصبغة مصرية خالصة.
                     </p>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
 
               <div className="about-lang">
                 <h2 className="about-lang-title">
-                  Vaccine Talk <span className="edition-badge">(Egyptian Edition)</span>
+                  Vaccine Talks <span className="edition-badge">(Egyptian Edition)</span>
                 </h2>
                 <p className="about-lang-intro">
                   A trusted Egyptian platform that speaks to everyone — in a simple, clear, and friendly way.
@@ -114,7 +114,7 @@ export default function AboutPage() {
                   <div className="feature-item">
                     <span className="feature-emoji">⚖️</span>
                     <p>
-                      Vaccine Talk is not affiliated with any company or organization. It&apos;s a purely educational platform — with a proudly Egyptian spirit.
+                      Vaccine Talks is not affiliated with any company or organization. It&apos;s a purely educational platform — with a proudly Egyptian spirit.
                     </p>
                   </div>
                 </div>

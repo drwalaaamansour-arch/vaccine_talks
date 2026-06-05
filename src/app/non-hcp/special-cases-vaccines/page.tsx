@@ -51,7 +51,7 @@ export default function SpecialCasesVaccinesPage() {
                 <li>وإيه الهدف منها</li>
               </ul>
               <p>
-                في القسم ده من Vaccine Talk هنشرح تطعيمات الحالات الخاصة بطريقة بسيطة وواضحة بالعامية المصرية، علشان نساعد كل أب وأم أو أي أسرة تبقى فاهمة، مطمنة، وقادرة تاخد القرار الصح لحماية حبايبها.
+                في القسم ده من Vaccine Talks هنشرح تطعيمات الحالات الخاصة بطريقة بسيطة وواضحة بالعامية المصرية، علشان نساعد كل أب وأم أو أي أسرة تبقى فاهمة، مطمنة، وقادرة تاخد القرار الصح لحماية حبايبها.
               </p>
             </div>
             <div className="about-lang-intro" style={{direction: 'ltr', textAlign: 'left', maxWidth: '900px', margin: '0 auto 1.8rem auto', lineHeight: 1.9}}>
@@ -71,7 +71,7 @@ export default function SpecialCasesVaccinesPage() {
                 <li>What the goal of each vaccine is</li>
               </ul>
               <p>
-                In this Vaccine Talk section, we explain special-case vaccinations in a simple and clear way, so every parent and every family can feel informed, reassured, and able to make the right decision to protect their loved ones.
+                In this Vaccine Talks section, we explain special-case vaccinations in a simple and clear way, so every parent and every family can feel informed, reassured, and able to make the right decision to protect their loved ones.
               </p>
             </div>
 
@@ -171,7 +171,7 @@ export default function SpecialCasesVaccinesPage() {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p className="copyright-text">
-              © 2025 Vaccine Talk – All rights reserved.
+              © 2025 Vaccine Talks – All rights reserved.
             </p>
             <p className="copyright-text">
               Content is original and may not be copied without permission.

@@ -1,5 +1,5 @@
-export const SITE_NAME = 'Vaccine Talk - Egyptian Edition';
-export const SITE_NAME_SHORT = 'Vaccine Talk';
+export const SITE_NAME = 'Vaccine Talks - Egyptian Edition';
+export const SITE_NAME_SHORT = 'Vaccine Talks';
 export const SITE_URL = 'https://www.vaccinetalks.com';
 export const SITE_DESCRIPTION_AR =
   'دليل شامل عن التطعيمات في مصر — تطعيمات الأطفال والكبار، جداول اللقاحات، وأسئلة شائعة للعائلات والعاملين بالمجال الطبي.';
@@ -20,7 +20,7 @@ export const SITE_KEYWORDS = [
   'vaccination Egypt',
   'immunization Egypt',
   'Egypt vaccine schedule',
-  'Vaccine Talk',
+  'Vaccine Talks',
   'vaccinetalks',
   'vaccinetalks.com',
   'www.vaccinetalks.com',

@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Sign in",
-  description: "Sign in to Vaccine Talk with Google or Apple.",
+  description: "Sign in to Vaccine Talks with Google or Apple.",
 };
 
 export default function SignInPage() {

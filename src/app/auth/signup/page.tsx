@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Sign up",
-  description: "Create a Vaccine Talk account with Google or Apple.",
+  description: "Create a Vaccine Talks account with Google or Apple.",
 };
 
 export default function SignUpPage() {
