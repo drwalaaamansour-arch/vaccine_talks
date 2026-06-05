@@ -532,12 +532,13 @@ function ChemoArticle({ locale }: { locale: Locale }) {
           <p>{c.afterP2}</p>
         </ScProse>
         <ScVaxCloud items={c.afterBoosters} />
-        {locale === 'ar' && (
-          <ScCallout>
-            نقطة مهمة: لو المريض اتعض أو اتخربش من حيوان زي الكلاب والقطط وغيرهم لازيم يتطعم بس هنا جرعات التطعيم هيكونوا خمسة مش أربعة
-          </ScCallout>
-        )}
       </ScCard>
+
+      {locale === 'ar' && (
+        <ScCallout>
+          نقطة مهمة: لو المريض اثناء أو بعد العلاج اتعض أو اتخربش من حيوان زي الكلاب والقطط وغيرهم، لازيم ياخد تطعيم السعار بس هنا جرعات التطعيم هتكون خمسة مش أربعة.
+        </ScCallout>
+      )}
 
       <ScCard variant="tips" icon="📌" title={c.summaryTitle}>
         <ScTipsGrid tips={c.summaryTips} />

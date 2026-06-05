@@ -166,13 +166,13 @@ export const hpvQuestions: NonHcpQuestion[] = [
   {
     question: 'فين بيتحقن تطعيم HPV؟',
     questionEn: 'Where is HPV vaccine injected?',
-    answer: 'بيتحقن في عضلة الكتف.',
+    answer: 'بيتحقن عضل في عضلة الكتف.',
     answerEn: 'It is injected into the shoulder muscle.',
   },
   {
     question: 'هل لازم نعيد التطعيم لو اتاخد بطريقة غلط (زي تحت الجلد بدل العضل)؟',
     questionEn: 'Must vaccination be repeated if given incorrectly (e.g. under skin instead of muscle)?',
-    answer: 'أيوه، لازم يتكرر بالحقن الصحيح في العضل لضمان الفعالية.',
+    answer: 'أيوه، لازم يتكرر بالحقن الصحيح عضل في عضلة الكتف لضمان الفعالية.',
     answerEn: 'Yes. It should be repeated with correct intramuscular injection to ensure effectiveness.',
   },
   {
