@@ -6379,10 +6379,11 @@ body {
 
 .hcp-guide-hero-search {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: 42rem;
   margin: 0 auto 1rem;
+  pointer-events: auto;
 }
 
 .hcp-guide-hero-search .hcp-guide-table-search-meta {
@@ -6393,6 +6394,21 @@ body {
 .hcp-guide-table-search-input {
   text-align: left;
   direction: ltr;
+}
+
+.hcp-guide-table-search-wrap {
+  direction: ltr;
+}
+
+.hcp-guide-hero-search .hcp-guide-table-search-wrap,
+.hcp-guide-table-search .hcp-guide-table-search-wrap {
+  direction: ltr;
+}
+
+.hcp-guide-hero-search .hcp-guide-table-search-input,
+.hcp-guide-table-search .hcp-guide-table-search-input {
+  direction: ltr;
+  text-align: left;
 }
 
 .hcp-guide-table-search-meta {
@@ -10304,6 +10320,27 @@ body {
   font-size: 0.92rem;
   font-weight: 600;
   color: #6b8a96;
+}
+
+.hcp-guide-hero-search .vax-hub-search-wrap,
+.hcp-guide-table-search .hcp-guide-table-search-wrap {
+  direction: ltr;
+}
+
+.hcp-guide-hero-search .vax-hub-search,
+.hcp-guide-table-search .vax-hub-search {
+  direction: ltr;
+  text-align: left;
+}
+
+.hcp-guide-hero-search .vax-hub-search-icon {
+  inset-inline-start: 1rem;
+  inset-inline-end: auto;
+}
+
+.hcp-guide-hero-search .vax-hub-search-clear {
+  inset-inline-end: 0.85rem;
+  inset-inline-start: auto;
 }
 
 .vax-hub-categories {

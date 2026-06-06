@@ -1,5 +1,24 @@
 export function normalizeTableSearchQuery(query: string) {
-  return query.trim().toLowerCase();
+  return query
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function rowHaystack<T extends Record<string, unknown>>(row: T, keys?: (keyof T)[]) {
+  const values = keys ?? (Object.keys(row) as (keyof T)[]);
+
+  return values
+    .map((key) => {
+      const value = row[key];
+      return typeof value === 'string' ? value : '';
+    })
+    .join(' ')
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u2013\u2014]/g, '-');
 }
 
 export function filterTableRows<T extends Record<string, unknown>>(
@@ -10,16 +29,10 @@ export function filterTableRows<T extends Record<string, unknown>>(
   const normalized = normalizeTableSearchQuery(query);
   if (!normalized) return rows;
 
-  return rows.filter((row) => {
-    const values = keys ?? (Object.keys(row) as (keyof T)[]);
-    const haystack = values
-      .map((key) => {
-        const value = row[key];
-        return typeof value === 'string' ? value : '';
-      })
-      .join(' ')
-      .toLowerCase();
+  const tokens = normalized.split(' ').filter(Boolean);
 
-    return haystack.includes(normalized);
+  return rows.filter((row) => {
+    const haystack = rowHaystack(row, keys);
+    return tokens.every((token) => haystack.includes(token));
   });
 }

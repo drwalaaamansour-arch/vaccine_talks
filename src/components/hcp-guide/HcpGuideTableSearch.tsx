@@ -19,12 +19,17 @@ export default function HcpGuideTableSearch({
 
   return (
     <div className="hcp-guide-table-search">
-      <div className="vax-hub-search-wrap" dir="ltr">
+      <div className="vax-hub-search-wrap hcp-guide-table-search-wrap" dir="ltr">
         <span className="vax-hub-search-icon" aria-hidden>
           🔍
         </span>
         <input
-          type="search"
+          type="text"
+          inputMode="search"
+          enterKeyHint="search"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
           className="vax-hub-search hcp-guide-table-search-input"
           placeholder={placeholder}
           value={query}
@@ -45,7 +50,7 @@ export default function HcpGuideTableSearch({
       </div>
 
       {hasQuery && resultCount !== undefined && totalCount !== undefined ? (
-        <p className="vax-hub-search-meta hcp-guide-table-search-meta">
+        <p className="vax-hub-search-meta hcp-guide-table-search-meta" role="status" aria-live="polite">
           {resultCount > 0
             ? `Showing ${resultCount} of ${totalCount} table row${totalCount === 1 ? '' : 's'}`
             : 'No matches — try a drug name, brand, cytokine, or condition'}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import HcpGuideSection from '@/components/hcp-guide/HcpGuideSection';
 import HcpGuideMedicalTable, { RiskTierBadge } from '@/components/hcp-guide/HcpGuideMedicalTable';
@@ -66,6 +66,36 @@ export default function CorticosteroidsImmunosuppressiveContent({
   const visibleRowCount =
     traditionalRows.length + cytokineRows.length + bCellRows.length + timingRows.length;
   const isFiltering = query.trim().length > 0;
+
+  useEffect(() => {
+    if (!isFiltering) return;
+
+    const firstVisibleSectionId = traditionalRows.length
+      ? 'traditional-drugs'
+      : cytokineRows.length
+        ? 'cytokine-drugs'
+        : bCellRows.length
+          ? 'b-cell-drugs'
+          : timingRows.length
+            ? 'timing-matrix'
+            : null;
+
+    if (!firstVisibleSectionId) return;
+
+    window.requestAnimationFrame(() => {
+      document.getElementById(firstVisibleSectionId)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+  }, [
+    isFiltering,
+    query,
+    traditionalRows.length,
+    cytokineRows.length,
+    bCellRows.length,
+    timingRows.length,
+  ]);
 
   return (
     <>

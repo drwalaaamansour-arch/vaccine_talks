@@ -71,6 +71,7 @@ const searchIndex: SearchResult[] = [
   { title: 'Documents', href: '/hcp-documents', category: 'HCP' },
   { title: 'Vaccines and Sera', href: '/hcp-vaccines-sera', category: 'HCP' },
   { title: 'Special Populations', href: '/hcp-special-populations', category: 'HCP' },
+  { title: 'Corticosteroids and immunosuppressive drugs', href: '/hcp-special-populations/altered-immunocompetence/corticosteroids-and-immunosuppressive-drugs', category: 'HCP Special Populations', description: 'Immunosuppressive drug tables and vaccine timing matrix' },
   { title: 'Global Vaccine Updates', href: '/hcp-vaccine-updates', category: 'HCP' },
   { title: 'FAQ', href: '/hcp-faq', category: 'HCP' },
   
