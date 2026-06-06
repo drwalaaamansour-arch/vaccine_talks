@@ -102,6 +102,14 @@ export const CYTOKINE_AND_JAK_INHIBITORS: ImmunosuppressiveDrugRow[] = [
       'Upper respiratory infections, leukopenia, thrombocytopenia, elevated liver enzymes, hyperlipidemia. Rare bowel perforation.',
   },
   {
+    medication: 'Complement inhibitor\n(Eculizumab/Soliris)',
+    targetMechanism:
+      'Complement C5. Prevents uncontrolled complement activation in the innate immune cascade that destroys host cells in PNH and aHUS.',
+    indications: 'Paroxysmal nocturnal hemoglobinuria (PNH), atypical hemolytic uremic syndrome (aHUS).',
+    monitoring:
+      'Markedly increased Neisseria infection risk (including meningococcus). Meningococcal vaccination required before starting; antibiotic prophylaxis during therapy.',
+  },
+  {
     medication: 'JAK inhibitors\n(Tofacitinib/Xeljanz, Upadacitinib/Rinvoq, Baricitinib/Olumiant)',
     targetMechanism:
       'Janus kinase (JAK) pathways. Oral small molecules blocking intracellular inflammatory cytokine signaling.',
