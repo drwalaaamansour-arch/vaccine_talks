@@ -24,6 +24,7 @@ export type HcpGuideSectionProps = {
   title: string;
   icon?: string;
   variant?: 'default' | 'takeaway';
+  titleAlign?: 'left' | 'center';
   children: ReactNode;
 };
 

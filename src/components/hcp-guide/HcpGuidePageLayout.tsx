@@ -15,6 +15,7 @@ type HcpGuidePageLayoutProps = {
   backHref?: string;
   backLabel?: string;
   heroClassName?: string;
+  heroBelowTitle?: ReactNode;
   toc?: HcpGuideTocItem[];
   children: ReactNode;
 };
@@ -28,6 +29,7 @@ export default function HcpGuidePageLayout({
   backHref = '/hcp-special-populations',
   backLabel = '← Special Populations',
   heroClassName = '',
+  heroBelowTitle,
   toc,
   children,
 }: HcpGuidePageLayoutProps) {
@@ -69,6 +71,7 @@ export default function HcpGuidePageLayout({
               </span>
               <span className="hcp-cancer-hero-tag">{tag}</span>
               <h1 className="hcp-cancer-hero-title">{title}</h1>
+              {heroBelowTitle ? <div className="hcp-guide-hero-search">{heroBelowTitle}</div> : null}
               {lead ? <p className="hcp-cancer-hero-lead">{lead}</p> : null}
               <div className="hcp-cancer-hero-meta hub-hero-meta">
                 <ArticleMetaDate {...meta} locale="en" align="center" compact />

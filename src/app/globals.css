@@ -5419,8 +5419,13 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
     gap: 0.45rem;
     padding-bottom: 0.25rem;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+    scroll-behavior: auto;
+    scroll-snap-type: x proximity;
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
   }
@@ -5506,6 +5511,15 @@ body {
   padding: 1rem 1.2rem;
   background: linear-gradient(90deg, rgba(64, 96, 109, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
   border-bottom: 1px solid rgba(64, 96, 109, 0.1);
+}
+
+.hcp-cancer-section-head--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.hcp-cancer-section-head--center .hcp-cancer-section-title {
+  flex: 0 1 auto;
 }
 
 .hcp-cancer-section-icon {
@@ -5962,6 +5976,10 @@ body {
   box-shadow: 0 18px 44px rgba(53, 90, 99, 0.28);
 }
 
+.hcp-guide-hero .hcp-cancer-hero-lead {
+  text-align: center;
+}
+
 .hcp-guide-main {
   display: flex;
   flex-direction: column;
@@ -6139,36 +6157,64 @@ body {
 }
 
 /* HCP guide — responsive medical data tables */
+.hcp-guide-table-shell {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 1rem 0 0.35rem;
+}
+
 .hcp-guide-table-wrap {
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
+  scroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 1rem 0 0.35rem;
   border-radius: 14px;
   border: 2px solid rgba(64, 96, 109, 0.14);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 6px 20px rgba(64, 96, 109, 0.08);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+
+.hcp-guide-table-wrap:focus-visible {
+  outline: 2px solid rgba(64, 96, 109, 0.45);
+  outline-offset: 2px;
 }
 
 .hcp-guide-table {
-  width: 100%;
-  min-width: 920px;
-  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.92rem;
   line-height: 1.55;
   color: rgba(45, 42, 38, 0.92);
 }
 
 .hcp-guide-table-caption {
-  caption-side: top;
+  margin: 0 0 0.55rem;
+  padding: 0 0.15rem;
   text-align: left;
-  padding: 0.85rem 1rem;
   font-weight: 700;
   font-size: 0.98rem;
   color: #355a63;
-  background: linear-gradient(180deg, rgba(64, 96, 109, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
-  border-bottom: 1px solid rgba(64, 96, 109, 0.12);
+}
+
+.hcp-guide-table-scroll-hint {
+  display: none;
+  margin: 0.45rem 0 0;
+  padding: 0 0.15rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(64, 96, 109, 0.62);
 }
 
 .hcp-guide-table thead th {
@@ -6188,6 +6234,20 @@ body {
   white-space: nowrap;
 }
 
+.hcp-guide-table thead th:first-child,
+.hcp-guide-table tbody td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 4px 0 10px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-guide-table thead th:first-child {
+  z-index: 3;
+  background: rgba(240, 248, 250, 0.98);
+}
+
 .hcp-guide-table tbody td {
   padding: 0.85rem;
   vertical-align: top;
@@ -6198,8 +6258,16 @@ body {
   background: rgba(248, 252, 253, 0.65);
 }
 
+.hcp-guide-table tbody tr:nth-child(even) td:first-child {
+  background: rgba(248, 252, 253, 0.98);
+}
+
 .hcp-guide-table tbody tr:hover {
   background: rgba(232, 244, 248, 0.55);
+}
+
+.hcp-guide-table tbody tr:hover td:first-child {
+  background: rgba(232, 244, 248, 0.98);
 }
 
 .hcp-guide-table-med {
@@ -6303,13 +6371,108 @@ body {
   font-size: 0.96em;
 }
 
+.hcp-guide-table-search {
+  margin-top: 0;
+}
+
+.hcp-guide-hero-search {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto 1rem;
+}
+
+.hcp-guide-hero-search .hcp-guide-table-search-meta {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.hcp-guide-table-search-input {
+  text-align: left;
+  direction: ltr;
+}
+
+.hcp-guide-table-search-meta {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.hcp-guide-table-empty {
+  margin: 0.5rem 0 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(64, 96, 109, 0.06);
+  border: 1px dashed rgba(64, 96, 109, 0.18);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(53, 90, 99, 0.82);
+}
+
+.hcp-guide-table-search-empty {
+  margin: 0.5rem 0 0.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  text-align: center;
+}
+
+.hcp-guide-table-search-empty p {
+  margin: 0 0 0.75rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #355a63;
+}
+
+.hcp-guide-table-search-reset {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  background: rgba(64, 96, 109, 0.12);
+  color: #355a63;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hcp-guide-table-search-reset:hover {
+  background: rgba(64, 96, 109, 0.18);
+}
+
 @media (max-width: 768px) {
+  .hcp-cancer-section-body .hcp-guide-table-shell {
+    margin-left: -0.85rem;
+    margin-right: -0.85rem;
+    width: calc(100% + 1.7rem);
+  }
+
+  .hcp-guide-table-scroll-hint {
+    display: block;
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
+  }
+
+  .hcp-guide-table-wrap {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 28px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 28px), transparent);
+  }
+
+  .hcp-guide-table-caption {
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
+  }
+
   .hcp-guide-table {
-    min-width: 780px;
     font-size: 0.86rem;
   }
 
   .hcp-guide-table thead th {
+    position: static;
     font-size: 0.75rem;
     padding: 0.65rem 0.7rem;
   }
@@ -6482,6 +6645,7 @@ body {
 
   .hcp-cancer-nav-scroll li {
     flex-shrink: 0;
+    scroll-snap-align: start;
   }
 }
 

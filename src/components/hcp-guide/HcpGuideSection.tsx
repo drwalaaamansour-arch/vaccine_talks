@@ -5,6 +5,7 @@ export default function HcpGuideSection({
   title,
   icon = '📋',
   variant = 'default',
+  titleAlign = 'left',
   children,
 }: HcpGuideSectionProps) {
   return (
@@ -12,7 +13,9 @@ export default function HcpGuideSection({
       id={id}
       className={`hcp-cancer-section${variant === 'takeaway' ? ' hcp-cancer-takeaway-section' : ''}`}
     >
-      <div className="hcp-cancer-section-head">
+      <div
+        className={`hcp-cancer-section-head${titleAlign === 'center' ? ' hcp-cancer-section-head--center' : ''}`}
+      >
         <span className="hcp-cancer-section-icon" aria-hidden>
           {icon}
         </span>
