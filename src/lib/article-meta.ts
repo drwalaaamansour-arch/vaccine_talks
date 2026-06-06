@@ -22,7 +22,7 @@ export const ARTICLE_META = {
   hcpAspleniaMeningococcal: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpAspleniaHib: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpAspleniaPneumococcal: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
-  hcpCorticosteroids: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpCorticosteroids: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 05, 2026' },
   hcpHematopoieticTransplants: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpPediatricOncologyReimmunizationEgypt: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 05, 2026' },
   hcpVaccinationInPatientsWithCancer: { added: 'JUNE 03, 2026', lastUpdated: 'JUNE 05, 2026' },

@@ -1,13 +1,5 @@
-import HcpGuideComingSoon from '@/components/hcp-guide/HcpGuideComingSoon';
+import CorticosteroidsImmunosuppressiveArticle from '@/components/hcp-guide/articles/CorticosteroidsImmunosuppressiveArticle';
 
 export default function CorticosteroidsAndImmunosuppressiveDrugsPage() {
-  return (
-    <HcpGuideComingSoon
-      metaKey="hcpCorticosteroids"
-      title="Corticosteroids and immunosuppressive drugs"
-      emoji="💊"
-      backHref="/hcp-special-populations/altered-immunocompetence"
-      backLabel="← Altered immunocompetence"
-    />
-  );
+  return <CorticosteroidsImmunosuppressiveArticle />;
 }

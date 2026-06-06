@@ -6138,6 +6138,187 @@ body {
   box-sizing: border-box;
 }
 
+/* HCP guide — responsive medical data tables */
+.hcp-guide-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0 0.35rem;
+  border-radius: 14px;
+  border: 2px solid rgba(64, 96, 109, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 6px 20px rgba(64, 96, 109, 0.08);
+}
+
+.hcp-guide-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(45, 42, 38, 0.92);
+}
+
+.hcp-guide-table-caption {
+  caption-side: top;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #355a63;
+  background: linear-gradient(180deg, rgba(64, 96, 109, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border-bottom: 1px solid rgba(64, 96, 109, 0.12);
+}
+
+.hcp-guide-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.75rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #355a63;
+  background: rgba(240, 248, 250, 0.98);
+  border-bottom: 2px solid rgba(64, 96, 109, 0.18);
+  white-space: nowrap;
+}
+
+.hcp-guide-table tbody td {
+  padding: 0.85rem;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(64, 96, 109, 0.1);
+}
+
+.hcp-guide-table tbody tr:nth-child(even) {
+  background: rgba(248, 252, 253, 0.65);
+}
+
+.hcp-guide-table tbody tr:hover {
+  background: rgba(232, 244, 248, 0.55);
+}
+
+.hcp-guide-table-med {
+  min-width: 11rem;
+  font-weight: 700;
+  color: #2f4f58;
+}
+
+.hcp-guide-table-mechanism {
+  min-width: 14rem;
+}
+
+.hcp-guide-table-indications,
+.hcp-guide-table-monitoring {
+  min-width: 12rem;
+}
+
+.hcp-guide-table-category {
+  min-width: 13rem;
+  font-weight: 700;
+  color: #2f4f58;
+}
+
+.hcp-guide-table-tier {
+  min-width: 7.5rem;
+  white-space: nowrap;
+}
+
+.hcp-guide-table-timing {
+  min-width: 10.5rem;
+  font-size: 0.88rem;
+}
+
+.hcp-guide-tier {
+  display: inline-block;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  white-space: normal;
+  text-align: center;
+}
+
+.hcp-guide-tier--severe {
+  background: rgba(185, 58, 58, 0.14);
+  color: #8f2f2f;
+  border: 1px solid rgba(185, 58, 58, 0.28);
+}
+
+.hcp-guide-tier--moderate {
+  background: rgba(196, 120, 42, 0.14);
+  color: #8a5418;
+  border: 1px solid rgba(196, 120, 42, 0.28);
+}
+
+.hcp-guide-tier--mild {
+  background: rgba(56, 142, 96, 0.14);
+  color: #2d6b47;
+  border: 1px solid rgba(56, 142, 96, 0.28);
+}
+
+.hcp-guide-tier--tiered {
+  background: rgba(64, 96, 109, 0.12);
+  color: #355a63;
+  border: 1px solid rgba(64, 96, 109, 0.24);
+}
+
+.hcp-guide-tier--neutral {
+  background: rgba(107, 93, 79, 0.1);
+  color: #5c4d3d;
+  border: 1px solid rgba(107, 93, 79, 0.2);
+}
+
+.hcp-guide-references-block {
+  font-size: 0.84rem;
+  line-height: 1.58;
+  color: rgba(45, 42, 38, 0.88);
+}
+
+.hcp-guide-references-block p {
+  margin-bottom: 0.75rem;
+}
+
+.hcp-guide-ref-numbered {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: inherit;
+}
+
+.hcp-guide-ref-numbered li {
+  line-height: 1.55;
+}
+
+.hcp-guide-ref-numbered em {
+  color: rgba(45, 42, 38, 0.78);
+  font-size: 0.96em;
+}
+
+@media (max-width: 768px) {
+  .hcp-guide-table {
+    min-width: 780px;
+    font-size: 0.86rem;
+  }
+
+  .hcp-guide-table thead th {
+    font-size: 0.75rem;
+    padding: 0.65rem 0.7rem;
+  }
+
+  .hcp-guide-table tbody td {
+    padding: 0.7rem;
+  }
+}
+
 @media (max-width: 768px) {
   .min-h-screen:not(.home-page) > main.hero {
     display: none;
