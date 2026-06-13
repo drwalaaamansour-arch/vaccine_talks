@@ -74,7 +74,17 @@ export default function MobileNav() {
           
           <NavLink href="/non-hcp" className="modern-mobile-link" onClick={closeMenu}>
             <span className="modern-mobile-link-icon">👥</span>
-            <span className="arabic">للجمهور</span>
+            <span className="nav-bilingual-label">
+              <span className="nav-bilingual-ar" lang="ar" dir="rtl">
+                للجمهور
+              </span>
+              <span className="nav-bilingual-sep" aria-hidden>
+                ·
+              </span>
+              <span className="nav-bilingual-en" lang="en">
+                For the public
+              </span>
+            </span>
           </NavLink>
           
           <NavLink href="/hcp-resources" className="modern-mobile-link" onClick={closeMenu}>

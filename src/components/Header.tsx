@@ -7,14 +7,35 @@ import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import SearchModal from './SearchModal';
 
-type NavSubLink = { href: string; label: string };
+type NavSubLink = { href: string; label: string; labelEn?: string };
 
 type NavLinkItem = {
   href: string;
   label: string;
+  labelEn?: string;
   submenu?: NavSubLink[];
   submenuTabs?: boolean;
 };
+
+function NavBilingualLabel({ label, labelEn }: { label: string; labelEn?: string }) {
+  if (!labelEn) {
+    return <>{label}</>;
+  }
+
+  return (
+    <span className="nav-bilingual-label">
+      <span className="nav-bilingual-ar" lang="ar" dir="rtl">
+        {label}
+      </span>
+      <span className="nav-bilingual-sep" aria-hidden>
+        ·
+      </span>
+      <span className="nav-bilingual-en" lang="en">
+        {labelEn}
+      </span>
+    </span>
+  );
+}
 
 /** Re-enable when Google/Apple OAuth is configured for production. */
 const SHOW_AUTH_LINKS = false;
@@ -57,14 +78,19 @@ export default function Header() {
     { 
       href: '/non-hcp', 
       label: 'غير العاملين بالمجال الطبي',
+      labelEn: 'For the public',
       submenu: [
-        { href: '/children-vaccines', label: 'تطعيمات الأطفال' },
-        { href: '/adult-vaccines', label: 'تطعيمات الكبار' },
-        { href: '/vaccinations', label: 'التطعيمات' },
-        { href: '/important-info', label: 'معلومات تهمك' },
-        { href: '/whats-new', label: 'ما الجديد' },
-        { href: '/non-hcp/common-questions', label: 'أسئلة شائعة' },
-        { href: '/non-hcp/special-cases-vaccines', label: 'تطعيمات الحالات الخاصة' },
+        { href: '/children-vaccines', label: 'تطعيمات الأطفال', labelEn: "Children's vaccines" },
+        { href: '/adult-vaccines', label: 'تطعيمات الكبار', labelEn: 'Adult vaccines' },
+        { href: '/vaccinations', label: 'التطعيمات', labelEn: 'Vaccinations' },
+        { href: '/important-info', label: 'معلومات تهمك', labelEn: 'Important information' },
+        { href: '/whats-new', label: 'ما الجديد', labelEn: "What's new" },
+        { href: '/non-hcp/common-questions', label: 'أسئلة شائعة', labelEn: 'Common questions' },
+        {
+          href: '/non-hcp/special-cases-vaccines',
+          label: 'تطعيمات الحالات الخاصة',
+          labelEn: 'Special cases vaccines',
+        },
       ]
     },
     { 
@@ -129,9 +155,9 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
-                  className={`nav-link ${pathname === link.href ? 'nav-link-active' : ''}`}
+                  className={`nav-link${link.labelEn ? ' nav-link--bilingual' : ''} ${pathname === link.href ? 'nav-link-active' : ''}`}
                 >
-                  {link.label}
+                  <NavBilingualLabel label={link.label} labelEn={link.labelEn} />
                 </Link>
                 {link.submenu && isDropdownOpen && (
                   <div
@@ -143,7 +169,7 @@ export default function Header() {
                         href={subLink.href}
                         className={`dropdown-link${link.submenuTabs ? ' dropdown-link--tab' : ''} ${pathname === subLink.href ? 'dropdown-link-active' : ''}`}
                       >
-                        {subLink.label}
+                        <NavBilingualLabel label={subLink.label} labelEn={subLink.labelEn} />
                       </Link>
                     ))}
                   </div>
@@ -315,7 +341,9 @@ export default function Header() {
                         aria-expanded={openMobileSubmenu === link.href}
                         type="button"
                       >
-                        <span>{link.label}</span>
+                        <span className="mobile-link-label">
+                          <NavBilingualLabel label={link.label} labelEn={link.labelEn} />
+                        </span>
                         <svg 
                           width="16" 
                           height="16" 
@@ -340,7 +368,7 @@ export default function Header() {
                                 setOpenMobileSubmenu(null);
                               }}
                             >
-                              {subLink.label}
+                              <NavBilingualLabel label={subLink.label} labelEn={subLink.labelEn} />
                             </Link>
                           ))}
                         </div>
@@ -352,7 +380,7 @@ export default function Header() {
                       className={`mobile-link ${pathname === link.href ? 'mobile-link-active' : ''}`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {link.label}
+                      <NavBilingualLabel label={link.label} labelEn={link.labelEn} />
                     </Link>
                   )}
                 </div>

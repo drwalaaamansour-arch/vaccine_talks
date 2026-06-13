@@ -289,6 +289,51 @@ body {
   font-weight: 600;
 }
 
+.nav-bilingual-label {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  line-height: 1.35;
+}
+
+.nav-bilingual-ar {
+  font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
+}
+
+.nav-bilingual-sep {
+  color: rgba(64, 96, 109, 0.45);
+  font-weight: 700;
+}
+
+.nav-bilingual-en {
+  font-weight: 600;
+  color: rgba(64, 96, 109, 0.88);
+}
+
+.nav-link--bilingual {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.3;
+  padding-inline: 1rem;
+}
+
+.dropdown-menu:not(.dropdown-menu--tabs) {
+  min-width: min(22rem, 92vw);
+}
+
+.mobile-link-label {
+  flex: 1;
+  min-width: 0;
+  margin-inline-end: 0.5rem;
+  text-align: start;
+}
+
+.mobile-submenu-link .nav-bilingual-label,
+.dropdown-link .nav-bilingual-label {
+  width: 100%;
+}
+
 /* =====================================================
    ACTION BUTTONS - Clean & Modern
    ===================================================== */
