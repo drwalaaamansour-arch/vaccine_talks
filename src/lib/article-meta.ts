@@ -40,6 +40,7 @@ export const ARTICLE_META = {
   nonHcpSplenectomy: { added: 'MAY 22, 2026', lastUpdated: 'MAY 22, 2026' },
   nonHcpBoneMarrowTransplant: { added: 'JUNE 03, 2026', lastUpdated: 'JUNE 03, 2026' },
   nonHcpChemotherapyDuringAfter: { added: 'JUNE 04, 2026', lastUpdated: 'JUNE 04, 2026' },
+  nonHcpImmunosuppressiveMedications: { added: 'JUNE 13, 2026', lastUpdated: 'JUNE 13, 2026' },
   nonHcpSpecialCasesHub: { added: 'MAY 11, 2026', lastUpdated: 'MAY 15, 2026' },
   nonHcpPretermGuidelines: { added: 'MAY 11, 2026', lastUpdated: 'MAY 11, 2026' },
   nonHcpHub: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 03, 2026' },

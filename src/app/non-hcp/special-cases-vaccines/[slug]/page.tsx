@@ -30,10 +30,6 @@ const specialCasesMap: Record<string, { ar: string; en: string }> = {
     ar: 'التطعيمات لمرضى الأمراض المناعية',
     en: 'Vaccinations for Patients with Immune Diseases',
   },
-  'immunosuppressive-medications': {
-    ar: 'التطعيمات مع الادوية المثبطة للمناعة',
-    en: 'Vaccinations with Immunosuppressive Medications',
-  },
 };
 
 export default async function SpecialCaseComingSoonPage({

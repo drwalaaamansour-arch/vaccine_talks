@@ -27,11 +27,8 @@ function NavBilingualLabel({ label, labelEn }: { label: string; labelEn?: string
       <span className="nav-bilingual-ar" lang="ar" dir="rtl">
         {label}
       </span>
-      <span className="nav-bilingual-sep" aria-hidden>
-        ·
-      </span>
       <span className="nav-bilingual-en" lang="en">
-        {labelEn}
+        ({labelEn})
       </span>
     </span>
   );

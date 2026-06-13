@@ -46,7 +46,9 @@ export function SpecialCaseArticleChrome({
         >
           {altTitle}
         </p>
-        <ArticleMetaDate {...meta} locale={locale} compact />
+        <div className="hub-hero-meta">
+          <ArticleMetaDate {...meta} locale={locale} compact />
+        </div>
       </header>
 
       <div className="bmt-lead">

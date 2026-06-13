@@ -301,11 +301,6 @@ body {
   font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
 }
 
-.nav-bilingual-sep {
-  color: rgba(64, 96, 109, 0.45);
-  font-weight: 700;
-}
-
 .nav-bilingual-en {
   font-weight: 600;
   color: rgba(64, 96, 109, 0.88);
@@ -9875,6 +9870,18 @@ body {
   margin-bottom: 0;
 }
 
+.bmt-faq-question {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  font-weight: 800;
+  line-height: 1.65;
+  color: #355a63;
+}
+
+.bmt-spotlight .bmt-faq-question {
+  font-style: italic;
+}
+
 .bmt-chip-list {
   list-style: none;
   padding: 0;
@@ -11192,8 +11199,9 @@ body {
 }
 
 .vax-article-meta p,
-.hub-hero-meta p {
-  color: rgba(255, 255, 255, 0.82) !important;
+.hub-hero-meta p,
+.bmt-hero .hub-hero-meta p {
+  color: rgba(255, 255, 255, 0.92) !important;
   font-size: 0.92rem !important;
 }
 

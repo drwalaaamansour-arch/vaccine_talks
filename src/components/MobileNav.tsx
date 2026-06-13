@@ -78,11 +78,8 @@ export default function MobileNav() {
               <span className="nav-bilingual-ar" lang="ar" dir="rtl">
                 للجمهور
               </span>
-              <span className="nav-bilingual-sep" aria-hidden>
-                ·
-              </span>
               <span className="nav-bilingual-en" lang="en">
-                For the public
+                (For the public)
               </span>
             </span>
           </NavLink>

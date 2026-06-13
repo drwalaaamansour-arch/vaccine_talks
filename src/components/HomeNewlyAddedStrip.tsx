@@ -203,6 +203,29 @@ function CochlearNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   );
 }
 
+function ImmunosuppressiveNonHcpSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/non-hcp/special-cases-vaccines/immunosuppressive-medications"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+      lang="ar"
+    >
+      <h3 className="home-newly-card-title home-newly-card-title--rtl">
+        التطعيمات مع الأدوية المثبطة للمناعة — لغير العاملين بالمجال الطبي
+      </h3>
+      <p className="home-newly-card-body home-newly-card-body--rtl">
+        صفحة جديدة بالعربي والإنجليزي: ينفع أتطعم وأنا باخد كورتيزون أو أدوية المناعة؟ توقيت التطعيم، الفرق بين
+        التطعيمات الحية وغير الحية، ومتى تسأل الطبيب — بأسلوب بسيط وواضح.
+      </p>
+      <span className="home-newly-card-more" dir="rtl">
+        اقرأ المزيد ←
+      </span>
+    </a>
+  );
+}
+
 function CancerVaccinationSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -244,6 +267,7 @@ function HsctSpecialPopulationsSpotlightCard({ duplicate }: { duplicate?: boolea
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <ImmunosuppressiveNonHcpSpotlightCard duplicate={duplicate} />
       <CancerVaccinationSpotlightCard duplicate={duplicate} />
       <HsctSpecialPopulationsSpotlightCard duplicate={duplicate} />
       <AspleniaNonHcpSpotlightCard duplicate={duplicate} />
