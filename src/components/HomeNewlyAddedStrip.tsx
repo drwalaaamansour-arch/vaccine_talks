@@ -226,6 +226,25 @@ function ImmunosuppressiveNonHcpSpotlightCard({ duplicate }: { duplicate?: boole
   );
 }
 
+function SolidOrganTransplantSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/solid-organ-transplant-vaccination"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">Solid organ transplant vaccination</h3>
+      <p className="home-newly-card-body">
+        New HCP guide on vaccination before and after solid organ transplantation: pre- and post-transplant timing,
+        inactivated vs live vaccines, universal schedules for influenza, pneumococcal, HBV, COVID-19, shingles, and HPV,
+        organ-specific priorities, cocooning strategy, references, and downloadable PDFs.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function CancerVaccinationSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -267,6 +286,7 @@ function HsctSpecialPopulationsSpotlightCard({ duplicate }: { duplicate?: boolea
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <SolidOrganTransplantSpotlightCard duplicate={duplicate} />
       <ImmunosuppressiveNonHcpSpotlightCard duplicate={duplicate} />
       <CancerVaccinationSpotlightCard duplicate={duplicate} />
       <HsctSpecialPopulationsSpotlightCard duplicate={duplicate} />

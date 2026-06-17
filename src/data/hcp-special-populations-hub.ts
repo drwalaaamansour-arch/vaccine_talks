@@ -45,6 +45,11 @@ export const HCP_SPECIAL_POPULATIONS_GROUPS: HcpGuideHubGroup[] = [
         emoji: '🧬',
       },
       {
+        href: '/hcp-special-populations/solid-organ-transplant-vaccination',
+        label: 'Solid organ transplant vaccination',
+        emoji: '🫀',
+      },
+      {
         href: '/hcp-special-populations/expert-consensus-pediatric-oncology-re-immunization-egypt',
         label: 'Pediatric oncology expert consensus (Egypt)',
         emoji: '👧',
