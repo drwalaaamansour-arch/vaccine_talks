@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import HcpGuidePdfEmbed from '@/components/hcp-guide/HcpGuidePdfEmbed';
 import HcpVaccineUpdatesMultiPdf from '@/components/hcp-vaccine-updates/HcpVaccineUpdatesMultiPdf';
 import VaccineUpdateShell from '@/components/hcp-vaccine-updates/VaccineUpdateShell';
@@ -61,6 +62,12 @@ export default function VaccineUpdatesSections({ visibleIds }: { visibleIds: str
             src="/maternal-immunization-schedule.pdf"
             title="ACOG 2026 Maternal Immunization Schedule (PDF)"
           />
+          <Link
+            href="/hcp-special-populations/pregnancy-breastfeeding"
+            className="hcp-guide-related-link"
+          >
+            To read more about vaccination during pregnancy, press here
+          </Link>
         </VaccineUpdateShell>
       ) : null}
 
