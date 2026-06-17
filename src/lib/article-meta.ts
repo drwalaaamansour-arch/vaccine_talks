@@ -176,7 +176,7 @@ export const ARTICLE_META = {
   docPneumococcal: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MAY 07, 2026' },
   docVaricella: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   docStorage: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
-  docShingles: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
+  docShingles: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 17, 2026' },
   docRsv: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   docRotavirus: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   docRabies: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
