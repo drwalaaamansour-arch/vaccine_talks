@@ -23,6 +23,18 @@ export const HCP_VACCINE_UPDATES_INTRO = [
 
 export const HCP_VACCINE_UPDATE_INDEX: HcpVaccineUpdateIndexItem[] = [
   {
+    id: 'acog-maternal-2026',
+    date: 'June 10, 2026',
+    badge: 'Guidelines',
+    title:
+      'ACOG releases 2026 Maternal Immunization Schedule, endorsed by 13 medical, nursing, and pharmacy organizations',
+    summary:
+      'Routine pregnancy vaccines (influenza, COVID-19, Tdap, RSV) plus seven additional vaccines when indicated — aligned with CDC 2025 schedule with noted COVID-19 guidance differences.',
+    keywords:
+      'acog maternal pregnancy immunization schedule 2026 influenza covid tdap rsv pneumococcal meningococcal hepa hepb hpv mmr varicella lactating postpartum',
+    emoji: '🤰',
+  },
+  {
     id: 'autism-evidence',
     date: 'April 2026',
     badge: 'Evidence Update',

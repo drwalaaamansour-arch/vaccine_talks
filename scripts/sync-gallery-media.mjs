@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -16,10 +17,82 @@ function mediaKind(name) {
   return null;
 }
 
-const files = fs
+function isGarbledFilename(name) {
+  const base = name.replace(/\.[^.]+$/, '');
+  if (/[╪┘╞╪╬╧╩╦╤╫╢]/.test(base)) return true;
+  if (/[\u0080-\u00BF]{3,}/.test(base) && !/[\u0600-\u06FF]/.test(base)) return true;
+  return false;
+}
+
+function fileHash(filePath) {
+  const hash = crypto.createHash('md5');
+  const data = fs.readFileSync(filePath);
+  hash.update(data);
+  return hash.digest('hex');
+}
+
+function isVariantDuplicate(name) {
+  return / \(\d+\)(?=\.[^.]+$)/.test(name);
+}
+
+function keeperScore(entry) {
+  let score = 0;
+  if (!isGarbledFilename(entry.filename)) score += 100;
+  if (!isVariantDuplicate(entry.filename)) score += 50;
+  if (/[\u0600-\u06FF]/.test(entry.filename)) score += 10;
+  score += entry.mtimeMs / 1_000_000_000_000;
+  return score;
+}
+
+const entries = fs
   .readdirSync(postsDir, { encoding: 'utf8' })
   .filter((f) => !f.startsWith('.') && mediaKind(f))
-  .sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
+  .map((filename) => {
+    const filePath = path.join(postsDir, filename);
+    const stat = fs.statSync(filePath);
+    return {
+      filename,
+      filePath,
+      mtimeMs: stat.mtimeMs,
+      hash: fileHash(filePath),
+    };
+  });
+
+const byHash = new Map();
+for (const entry of entries) {
+  if (!byHash.has(entry.hash)) byHash.set(entry.hash, []);
+  byHash.get(entry.hash).push(entry);
+}
+
+const keepers = [];
+const removed = [];
+
+for (const group of byHash.values()) {
+  const sorted = [...group].sort((a, b) => keeperScore(b) - keeperScore(a));
+  keepers.push(sorted[0]);
+  for (const duplicate of sorted.slice(1)) {
+    fs.unlinkSync(duplicate.filePath);
+    removed.push(duplicate.filename);
+  }
+}
+
+// Drop obvious "(1)" variants when the base file also exists (same stem, different content).
+const keeperNames = new Set(keepers.map((k) => k.filename));
+for (const entry of [...keepers]) {
+  const variantMatch = entry.filename.match(/^(.*) \(\d+\)(\.[^.]+)$/);
+  if (!variantMatch) continue;
+  const baseName = `${variantMatch[1]}${variantMatch[2]}`;
+  if (keeperNames.has(baseName)) {
+    fs.unlinkSync(entry.filePath);
+    removed.push(entry.filename);
+    const index = keepers.findIndex((k) => k.filename === entry.filename);
+    if (index >= 0) keepers.splice(index, 1);
+  }
+}
+
+const files = keepers
+  .sort((a, b) => b.mtimeMs - a.mtimeMs)
+  .map(({ filename }) => filename);
 
 const items = files.map((filename, index) => ({
   id: `media-${index + 1}`,
@@ -44,4 +117,15 @@ export const GALLERY_MEDIA_COUNT = GALLERY_MEDIA.length;
 `;
 
 fs.writeFileSync(path.join(root, 'src/data/gallery-media.ts'), out);
-console.log('Wrote', items.length, 'items (', items.filter((i) => i.kind === 'image').length, 'images,', items.filter((i) => i.kind === 'video').length, 'videos)');
+console.log(
+  'Wrote',
+  items.length,
+  'items (',
+  items.filter((i) => i.kind === 'image').length,
+  'images,',
+  items.filter((i) => i.kind === 'video').length,
+  'videos)',
+);
+if (removed.length > 0) {
+  console.log('Removed duplicates:', removed.join(', '));
+}

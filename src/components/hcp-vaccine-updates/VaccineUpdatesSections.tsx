@@ -10,6 +10,60 @@ export default function VaccineUpdatesSections({ visibleIds }: { visibleIds: str
 
   return (
     <div className="hcp-vu-updates-list">
+      {show('acog-maternal-2026') ? (
+        <VaccineUpdateShell
+          id="acog-maternal-2026"
+          date="June 10, 2026"
+          badge="Guidelines"
+          title="ACOG releases 2026 Maternal Immunization Schedule, endorsed by 13 medical, nursing, and pharmacy organizations"
+        >
+          <p>
+            On June 10, the American College of Obstetricians and Gynecologists (ACOG) released its 2026 Maternal
+            Immunization Schedule. ACOG&apos;s maternal immunization schedule provides evidence-based vaccine
+            recommendations to protect U.S.-based pregnant, postpartum, and lactating patients and their infants
+            from vaccine-preventable illnesses.
+          </p>
+          <p>
+            The new ACOG guidance continues to recommend routine vaccination during pregnancy with four vaccines
+            (influenza, COVID-19, Tdap, RSV). Vaccination during pregnancy confers protection during the pregnancy,
+            as well as to the newborn in the early months of life. RSV vaccination is licensed and recommended for
+            one pregnancy only; in subsequent pregnancies, infants should receive an RSV preventive antibody product.
+          </p>
+          <p>
+            ACOG recommends seven additional vaccines (pneumococcal, meningococcal, HepA, HepB, HPV, MMR, varicella)
+            when indicated based on patient-specific circumstances. The recommended timing of these additional
+            vaccines varies because some are contraindicated or not recommended during pregnancy.
+          </p>
+          <p>
+            All immunizations recommended on the ACOG schedule are also listed on the 2025 CDC schedule last updated
+            July 2, 2025, which is currently in effect and published on the CDC website. A difference is that CDC
+            currently recommends COVID-19 vaccination after shared clinical decision-making, while ACOG routinely
+            recommends COVID-19 vaccination during pregnancy.
+          </p>
+          <h3>Endorsing organizations</h3>
+          <p>ACOG&apos;s 2026 Maternal Immunization Schedule was endorsed by 13 medical, nursing, and pharmacy organizations, including:</p>
+          <ul>
+            <li>American Academy of Family Physicians (AAFP)</li>
+            <li>American Academy of Pediatrics (AAP)</li>
+            <li>American Academy of Physician Associates (AAPA)</li>
+            <li>American College of Nurse-Midwives (ACNM)</li>
+            <li>Association of Physician Associates in Obstetrics and Gynecology (APAOG)</li>
+            <li>American Pharmacists Association (APhA)</li>
+            <li>Association of Women&apos;s Health, Obstetric and Neonatal Nurses (AWHONN)</li>
+            <li>Council of Medical Specialty Societies (CMSS)</li>
+            <li>Infectious Diseases Society of America (IDSA)</li>
+            <li>Infectious Diseases Society for Obstetrics and Gynecology (IDSOG)</li>
+            <li>National Medical Association (NMA)</li>
+            <li>National Association of Nurse Practitioners in Women&apos;s Health (NPWH)</li>
+            <li>Society for Maternal-Fetal Medicine (SMFM)</li>
+          </ul>
+          <HcpGuidePdfEmbed
+            src="/maternal-immunization-schedule.pdf"
+            title="ACOG 2026 Maternal Immunization Schedule (PDF)"
+          />
+        </VaccineUpdateShell>
+      ) : null}
+
       {show('autism-evidence') ? (
         <VaccineUpdateShell
           id="autism-evidence"

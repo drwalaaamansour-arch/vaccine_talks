@@ -20,6 +20,17 @@ type HomeNewsMarqueeItem = {
 
 const HOME_NEWS_MARQUEE_ITEMS: HomeNewsMarqueeItem[] = [
   {
+    id: 'acog-maternal-2026',
+    date: 'June 10, 2026',
+    category: 'Guidelines',
+    title:
+      'ACOG releases 2026 Maternal Immunization Schedule, endorsed by 13 medical, nursing, and pharmacy organizations',
+    body:
+      'ACOG released its 2026 Maternal Immunization Schedule with routine pregnancy vaccines (influenza, COVID-19, Tdap, RSV) and seven additional vaccines when indicated. RSV vaccination is recommended for one pregnancy only; subsequent pregnancies should use infant RSV preventive antibody. The schedule aligns with the 2025 CDC schedule, with ACOG routinely recommending COVID-19 vaccination during pregnancy. Endorsed by AAFP, AAP, SMFM, and nine other organizations. Full summary and PDF on HCP Vaccine Updates.',
+    href: '/hcp-vaccine-updates#acog-maternal-2026',
+    linkText: 'Read more on Vaccine Updates →',
+  },
+  {
     id: 'autism-evidence',
     date: 'April 2026',
     category: 'Evidence Update',

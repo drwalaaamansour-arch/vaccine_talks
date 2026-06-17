@@ -32,6 +32,7 @@ const listStyle: React.CSSProperties = {
 const listItemStyle: React.CSSProperties = { marginBottom: '0.35rem' };
 
 const PREGNANCY_PDF = '/pregnancy.pdf';
+const MATERNAL_IMMUNIZATION_SCHEDULE_PDF = '/maternal-immunization-schedule.pdf';
 const ABRYSVO_PREGNANCY_PDF = encodeURI('/abrysvo during pregnancy.pdf');
 const TDAP_PREGNANCY_PDF = encodeURI('/dtap during pregnancy.pdf');
 
@@ -264,6 +265,7 @@ export default function PregnancyArticle() {
         ]}
       />
 
+      <HcpGuidePdfEmbed title="Maternal immunization schedule — PDF" src={MATERNAL_IMMUNIZATION_SCHEDULE_PDF} />
       <HcpGuidePdfEmbed title="Pregnancy — PDF" src={PREGNANCY_PDF} />
       <HcpGuidePdfEmbed title="Abrysvo during pregnancy — PDF" src={ABRYSVO_PREGNANCY_PDF} />
       <HcpGuidePdfEmbed title="Tdap during pregnancy — PDF" src={TDAP_PREGNANCY_PDF} />

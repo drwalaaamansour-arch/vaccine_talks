@@ -128,7 +128,7 @@ export const ARTICLE_META = {
   childrenVaccines: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   adultVaccines: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   hcpVaccinesSera: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
-  hcpVaccineUpdates: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
+  hcpVaccineUpdates: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 17, 2026' },
   hcpVaccineRelease: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   hcpVaccineComposition: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   hcpVaccineAdministration: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
@@ -146,7 +146,7 @@ export const ARTICLE_META = {
   disclaimer: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   copy: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   home: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MAY 11, 2026' },
-  gallery: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
+  gallery: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 17, 2026' },
 
   // FAQ
   faqHub: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },

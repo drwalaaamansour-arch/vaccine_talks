@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
 import ArticleMetaDate from '@/components/ArticleMetaDate';
+import GalleryVideoThumb from '@/components/gallery/GalleryVideoThumb';
 import {
   GALLERY_IMAGE_COUNT,
   GALLERY_MEDIA,
@@ -237,13 +238,9 @@ export default function GalleryPage() {
                     >
                       {item.kind === 'video' ? (
                         <>
-                          <video
+                          <GalleryVideoThumb
                             className="gallery-card-media"
                             src={mediaSrc(item.filename)}
-                            muted
-                            playsInline
-                            preload="metadata"
-                            aria-hidden
                           />
                           <span className="gallery-card-play" aria-hidden>
                             ▶
