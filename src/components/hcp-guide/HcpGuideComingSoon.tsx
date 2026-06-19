@@ -27,6 +27,14 @@ export default function HcpGuideComingSoon({
       tag={tag}
       backHref={backHref}
       backLabel={backLabel}
+      bilingual={{
+        arLead: 'يتم إعداد هذا القسم. عد قريبًا للحصول على إرشادات قائمة على الأدلة.',
+        arabicChildren: (
+          <div className="hcp-guide-coming-soon" dir="rtl" lang="ar">
+            <p>المحتوى قريبًا.</p>
+          </div>
+        ),
+      }}
     >
       <div className="hcp-guide-coming-soon">
         <p>Content coming soon.</p>

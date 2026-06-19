@@ -4,6 +4,11 @@ type HcpGuideTableSearchProps = {
   query: string;
   onQueryChange: (query: string) => void;
   placeholder?: string;
+  ariaLabel?: string;
+  clearAriaLabel?: string;
+  showingLabel?: (count: number, total: number) => string;
+  noMatchesLabel?: string;
+  metaDir?: 'ltr' | 'rtl';
   resultCount?: number;
   totalCount?: number;
 };
@@ -12,6 +17,12 @@ export default function HcpGuideTableSearch({
   query,
   onQueryChange,
   placeholder = 'Search drugs, biologics, or timing guidance…',
+  ariaLabel = 'Search immunosuppressive drug and vaccine timing tables',
+  clearAriaLabel = 'Clear search',
+  showingLabel = (count, total) =>
+    `Showing ${count} of ${total} table row${total === 1 ? '' : 's'}`,
+  noMatchesLabel = 'No matches — try a drug name, brand, cytokine, or condition',
+  metaDir = 'ltr',
   resultCount,
   totalCount,
 }: HcpGuideTableSearchProps) {
@@ -34,7 +45,7 @@ export default function HcpGuideTableSearch({
           placeholder={placeholder}
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
-          aria-label="Search immunosuppressive drug and vaccine timing tables"
+          aria-label={ariaLabel}
           dir="ltr"
         />
         {hasQuery ? (
@@ -42,7 +53,7 @@ export default function HcpGuideTableSearch({
             type="button"
             className="vax-hub-search-clear"
             onClick={() => onQueryChange('')}
-            aria-label="Clear search"
+            aria-label={clearAriaLabel}
           >
             ✕
           </button>
@@ -50,10 +61,13 @@ export default function HcpGuideTableSearch({
       </div>
 
       {hasQuery && resultCount !== undefined && totalCount !== undefined ? (
-        <p className="vax-hub-search-meta hcp-guide-table-search-meta" role="status" aria-live="polite">
-          {resultCount > 0
-            ? `Showing ${resultCount} of ${totalCount} table row${totalCount === 1 ? '' : 's'}`
-            : 'No matches — try a drug name, brand, cytokine, or condition'}
+        <p
+          className="vax-hub-search-meta hcp-guide-table-search-meta"
+          role="status"
+          aria-live="polite"
+          dir={metaDir}
+        >
+          {resultCount > 0 ? showingLabel(resultCount, totalCount) : noMatchesLabel}
         </p>
       ) : null}
     </div>

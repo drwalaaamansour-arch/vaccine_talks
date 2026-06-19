@@ -10,6 +10,7 @@ const PDF_MENB = `/acwy/${encodeURIComponent('men b vaccine recom.pdf')}`;
 export default function AspleniaMeningococcalArticle() {
   return (
     <HcpGuidePageLayout
+      bilingual
       metaKey="hcpAspleniaMeningococcal"
       title="Meningococcal"
       emoji="💉"

@@ -5440,6 +5440,18 @@ body {
     align-items: start;
     gap: 2rem;
   }
+
+  .hcp-guide-body--ar {
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 250px);
+  }
+
+  .hcp-guide-body--ar > .hcp-cancer-nav {
+    order: 2;
+  }
+
+  .hcp-guide-body--ar > .hcp-cancer-main {
+    order: 1;
+  }
 }
 
 .hcp-cancer-nav {
@@ -5471,6 +5483,47 @@ body {
 @media (max-width: 919px) {
   .hcp-cancer-nav-label {
     padding-left: 0.35rem;
+  }
+}
+
+.hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-label {
+  text-align: right;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-panel,
+.hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-scroll {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-scroll li {
+  width: 100%;
+}
+
+.hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-scroll a {
+  direction: rtl;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: right;
+  width: 100%;
+}
+
+@media (max-width: 919px) {
+  .hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-scroll li {
+    width: auto;
+  }
+
+  .hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-scroll a {
+    width: auto;
+  }
+}
+
+@media (max-width: 919px) {
+  .hcp-cancer-nav[dir='rtl'] .hcp-cancer-nav-label {
+    padding-right: 0.35rem;
+    padding-left: 0;
   }
 }
 
@@ -5585,6 +5638,13 @@ body {
 .hcp-cancer-section-head--center {
   justify-content: center;
   text-align: center;
+}
+
+.hcp-cancer-section-head--right {
+  direction: rtl;
+  justify-content: flex-start;
+  text-align: right;
+  background: linear-gradient(270deg, rgba(64, 96, 109, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
 }
 
 .hcp-cancer-section-head--center .hcp-cancer-section-title {
@@ -6163,16 +6223,16 @@ body {
 .hcp-sp-hub-card {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  padding: 1.15rem 1.1rem;
-  border-radius: 16px;
+  gap: 0.65rem;
+  padding: 1.45rem 1.35rem;
+  border-radius: 18px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(248, 252, 253, 0.95));
   border: 2px solid rgba(64, 96, 109, 0.14);
   text-decoration: none;
   color: inherit;
   box-shadow: 0 6px 18px rgba(64, 96, 109, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  min-height: 130px;
+  min-height: 155px;
 }
 
 .hcp-sp-hub-card:hover {
@@ -6182,22 +6242,31 @@ body {
 }
 
 .hcp-sp-hub-card-emoji {
-  font-size: 1.65rem;
+  font-size: 1.85rem;
   line-height: 1;
 }
 
 .hcp-sp-hub-card-label {
-  font-size: 1.02rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.15rem);
   font-weight: 700;
   color: #355a63;
-  line-height: 1.4;
+  line-height: 1.45;
   flex: 1;
 }
 
 .hcp-sp-hub-card-cta {
-  font-size: 0.88rem;
+  font-size: clamp(0.98rem, 2.2vw, 1.08rem);
   font-weight: 700;
   color: #40606d;
+  padding-top: 0.15rem;
+}
+
+.hcp-sp-hub-page--ar .hcp-sp-hub-card-label {
+  text-align: right;
+}
+
+.hcp-sp-hub-page--ar .hcp-sp-hub-card-cta {
+  text-align: left;
 }
 
 /* =====================================================
@@ -8487,6 +8556,470 @@ body {
 .hcp-guide-related-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(64, 96, 109, 0.28);
+}
+
+.hcp-guide-lang-tabs-wrap {
+  width: 100%;
+  margin: 0 0 1.35rem;
+  display: flex;
+  justify-content: center;
+}
+
+.hcp-sp-hub-lang-tabs {
+  margin-bottom: 1.5rem;
+}
+
+.hcp-guide-lang-tabs {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0.65rem;
+  padding: 0.6rem;
+  border-radius: 999px;
+  background: rgba(64, 96, 109, 0.08);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.hcp-guide-lang-tab {
+  min-width: 11.5rem;
+  min-height: 3.5rem;
+  padding: 1rem 2.35rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #40606d;
+  font-size: clamp(1.12rem, 2.8vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hcp-guide-lang-tab:hover {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.hcp-guide-lang-tab--active {
+  background: linear-gradient(135deg, #355a63, #40606d);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(64, 96, 109, 0.22);
+}
+
+.hcp-guide-lang-tab--active:hover {
+  background: linear-gradient(135deg, #355a63, #40606d);
+  color: #fff;
+}
+
+.hcp-guide-hero--ar .hcp-cancer-hero-title,
+.hcp-guide-hero--ar .hcp-cancer-hero-lead {
+  direction: rtl;
+  text-align: center;
+}
+
+.hcp-guide-hero--ar .hcp-cancer-hero-meta {
+  direction: rtl;
+  text-align: center;
+}
+
+.hcp-guide-main--ar {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-guide-main--ar .hcp-cancer-section-head,
+.hcp-guide-main--ar .hcp-cancer-section-head--right,
+.hcp-guide-main--ar .hcp-cancer-section[dir='rtl'] .hcp-cancer-section-head {
+  direction: rtl;
+  justify-content: flex-start;
+  text-align: right;
+  background: linear-gradient(270deg, rgba(64, 96, 109, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.hcp-guide-main--ar .hcp-cancer-section-title,
+.hcp-guide-main--ar .hcp-guide-ar-organ-title,
+.hcp-guide-main--ar .hcp-cancer-sub {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-guide-main--ar .hcp-cancer-section-body,
+.hcp-guide-main--ar .hcp-guide-table-caption,
+.hcp-guide-main--ar .hcp-cancer-ref-list,
+.hcp-guide-main--ar .hcp-guide-ar-organ-card p {
+  text-align: right;
+}
+
+.hcp-guide-main--ar .hcp-cancer-section-body ul,
+.hcp-guide-main--ar .hcp-cancer-section-body ol,
+.hcp-guide-main--ar .hcp-cancer-ref-list {
+  padding-inline-start: 0;
+  padding-inline-end: 1.35rem;
+}
+
+.hcp-guide-main--mirror-en .hcp-content-chunk-group h4,
+.hcp-guide-main--mirror-en h4,
+.hcp-guide-main--mirror-en h5,
+.hcp-guide-main--mirror-en p,
+.hcp-guide-main--mirror-en li,
+.hcp-guide-main--mirror-en .about-lang-intro,
+.hcp-guide-main--mirror-en .hcp-guide-subnav-title,
+.hcp-guide-main--mirror-en .hcp-guide-subnav-link {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.hcp-guide-main--mirror-en .hcp-content-chunk-bubble,
+.hcp-guide-main--mirror-en .hcp-guide-hsct > div[style*='border'] {
+  border-left: none !important;
+  border-right: 4px solid rgba(64, 96, 109, 0.55) !important;
+  border-radius: 14px 0 0 14px !important;
+}
+
+.hcp-guide-main--mirror-en .hcp-guide-subnav {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-guide-main--mirror-en .hcp-guide-coming-soon {
+  direction: rtl;
+  text-align: center;
+}
+
+.hcp-guide-main--ar .hcp-cancer-section:not([dir='rtl']) .hcp-cancer-section-head {
+  direction: rtl;
+  justify-content: flex-start;
+  text-align: right;
+  background: linear-gradient(270deg, rgba(64, 96, 109, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.hcp-guide-main--ar .hcp-cancer-section:not([dir='rtl']) .hcp-cancer-section-title {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-guide-ar-panel-body--standalone {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-guide-ar-panel {
+  width: 100%;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 2px solid rgba(64, 96, 109, 0.14);
+}
+
+.hcp-guide-ar-panel-shell {
+  position: relative;
+  width: 100%;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(180, 90, 100, 0.1), transparent 42%),
+    radial-gradient(circle at 88% 4%, rgba(64, 96, 109, 0.12), transparent 40%),
+    linear-gradient(
+      165deg,
+      rgba(255, 252, 248, 0.98) 0%,
+      rgba(245, 239, 230, 0.96) 52%,
+      rgba(230, 242, 245, 0.72) 100%
+    );
+  border: 2px solid rgba(64, 96, 109, 0.16);
+  box-shadow:
+    0 18px 44px rgba(64, 96, 109, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+}
+
+.hcp-guide-ar-panel-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: #8b7355;
+  border-style: solid;
+  pointer-events: none;
+}
+
+.hcp-guide-ar-panel-corner-tl {
+  top: 12px;
+  inset-inline-start: 12px;
+  border-width: 3px 0 0 3px;
+}
+
+.hcp-guide-ar-panel-corner-tr {
+  top: 12px;
+  inset-inline-end: 12px;
+  border-width: 3px 3px 0 0;
+}
+
+.hcp-guide-ar-panel-corner-bl {
+  bottom: 12px;
+  inset-inline-start: 12px;
+  border-width: 0 0 3px 3px;
+}
+
+.hcp-guide-ar-panel-corner-br {
+  bottom: 12px;
+  inset-inline-end: 12px;
+  border-width: 0 3px 3px 0;
+}
+
+.hcp-guide-ar-panel-hero {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1.35rem;
+  padding: clamp(1.1rem, 2.5vw, 1.65rem) clamp(0.85rem, 2vw, 1.25rem);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+}
+
+.hcp-guide-ar-panel-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.85), transparent 68%);
+  pointer-events: none;
+}
+
+.hcp-guide-ar-panel-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #355a63, #40606d);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hcp-guide-ar-panel-title {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.45rem, 3.5vw, 2.05rem);
+  line-height: 1.55;
+  color: #355a63;
+  font-weight: 700;
+  direction: rtl;
+  text-align: center;
+}
+
+.hcp-guide-ar-panel-subtitle {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.85rem;
+  color: #6b8a96;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.hcp-guide-ar-panel-lead {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  max-width: min(52rem, 100%);
+  margin: 0 auto;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 245, 245, 0.96) 0%,
+    rgba(245, 239, 230, 0.92) 48%,
+    rgba(230, 242, 245, 0.62) 100%
+  );
+  border: 1px solid rgba(180, 90, 100, 0.2);
+  text-align: right;
+}
+
+.hcp-guide-ar-panel-lead-icon {
+  flex-shrink: 0;
+  color: #b45a64;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.hcp-guide-ar-panel-lead p {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.8;
+  color: #355a63;
+}
+
+.hcp-guide-ar-panel-nav {
+  margin-bottom: 1.25rem;
+  padding: 0.95rem 1rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(64, 96, 109, 0.12);
+}
+
+.hcp-guide-ar-panel-nav-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #40606d;
+  text-align: right;
+}
+
+.hcp-guide-ar-panel-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hcp-guide-ar-panel-nav-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(64, 96, 109, 0.08);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  color: #355a63;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  direction: rtl;
+  text-align: right;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hcp-guide-ar-panel-nav-list a:hover {
+  background: rgba(64, 96, 109, 0.14);
+  transform: translateY(-1px);
+}
+
+.hcp-guide-ar-panel-nav-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: #40606d;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.hcp-guide-ar-panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.hcp-guide-ar-disclaimer {
+  margin-top: 0.35rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(139, 115, 85, 0.28);
+  background: linear-gradient(160deg, rgba(255, 252, 248, 0.98), rgba(250, 246, 240, 0.9));
+  box-shadow: 0 4px 18px rgba(107, 93, 79, 0.06);
+  direction: rtl;
+  text-align: right;
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: rgba(45, 42, 38, 0.9);
+}
+
+.hcp-guide-ar-disclaimer p {
+  margin: 0;
+}
+
+.hcp-guide-ar-disclaimer strong {
+  color: #5c4d3d;
+  font-weight: 800;
+}
+
+.hcp-sp-hub-ar-disclaimer {
+  margin-top: 1.75rem;
+}
+
+.hcp-guide-ar-panel .hcp-cancer-section[dir='rtl'] .hcp-cancer-section-head {
+  direction: rtl;
+  justify-content: flex-start;
+  text-align: right;
+  background: linear-gradient(270deg, rgba(64, 96, 109, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.hcp-guide-ar-panel .hcp-cancer-section-title,
+.hcp-guide-ar-organ-title {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-guide-ar-panel .hcp-cancer-section-body,
+.hcp-guide-ar-panel .hcp-cancer-sub,
+.hcp-guide-ar-panel .hcp-guide-table-caption,
+.hcp-guide-ar-panel .hcp-cancer-ref-list {
+  text-align: right;
+}
+
+.hcp-guide-ar-panel .hcp-cancer-section-body ul,
+.hcp-guide-ar-panel .hcp-cancer-section-body ol {
+  padding-inline-start: 0;
+  padding-inline-end: 1.35rem;
+}
+
+.hcp-guide-ar-panel .hcp-cancer-takeaway-section .hcp-cancer-section-body {
+  text-align: right;
+}
+
+.hcp-guide-ar-organ-card {
+  margin-bottom: 0.85rem;
+  padding: 1rem 1.1rem 1.05rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  border-inline-start: 4px solid rgba(180, 90, 100, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.hcp-guide-ar-organ-title {
+  margin: 0 0 0.65rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #40606d;
+  line-height: 1.45;
+}
+
+.hcp-guide-ar-organ-card p {
+  margin: 0 0 0.65rem;
+  line-height: 1.85;
+}
+
+.hcp-guide-ar-organ-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .hcp-guide-ar-panel-shell {
+    padding: 1rem 0.85rem 1.1rem;
+  }
+
+  .hcp-guide-ar-panel-nav-list {
+    flex-direction: column;
+  }
+
+  .hcp-guide-ar-panel-nav-list a {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 
 /* HSCT & legacy chunk styling inside guide layout */

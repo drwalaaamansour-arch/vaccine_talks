@@ -5,6 +5,11 @@ import HcpGuidePageLayout from '@/components/hcp-guide/HcpGuidePageLayout';
 import HcpGuideTableSearch from '@/components/hcp-guide/HcpGuideTableSearch';
 import CorticosteroidsImmunosuppressiveContent from '@/components/hcp-guide/articles/CorticosteroidsImmunosuppressiveContent';
 import {
+  CORTICOSTEROIDS_AR_TOC,
+  CORTICOSTEROIDS_COPY,
+  CORTICOSTEROIDS_EN_TOC,
+} from '@/data/corticosteroids-immunosuppressive-copy';
+import {
   B_CELL_AND_SELECTIVE_BIOLOGICS,
   CYTOKINE_AND_JAK_INHIBITORS,
   TRADITIONAL_IMMUNOSUPPRESSIVE_DRUGS,
@@ -12,28 +17,44 @@ import {
 import { IMMUNOSUPPRESSIVE_VACCINE_TIMING } from '@/data/hcp-immunosuppressive-vaccine-timing';
 import { filterTableRows } from '@/lib/hcp-guide-table-search';
 
-const TOC = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'drug-reference', label: 'Drug reference guide' },
-  { id: 'traditional-drugs', label: 'Traditional & oral agents' },
-  { id: 'cytokine-drugs', label: 'Innate immunity targets' },
-  { id: 'b-cell-drugs', label: 'B-cell & selective biologics' },
-  { id: 'vaccine-concepts', label: 'Live vs non-live vaccines' },
-  { id: 'timing-matrix', label: 'Vaccine timing matrix' },
-  { id: 'pregnancy-alert', label: 'Pregnancy exposure alert' },
-  { id: 'cocooning', label: 'Household cocooning' },
-  { id: 'ms-vaccination', label: 'MS vaccination guide' },
-  { id: 'references', label: 'References & guidelines' },
-] as const;
-
 const TOTAL_TABLE_ROWS =
   TRADITIONAL_IMMUNOSUPPRESSIVE_DRUGS.length +
   CYTOKINE_AND_JAK_INHIBITORS.length +
   B_CELL_AND_SELECTIVE_BIOLOGICS.length +
   IMMUNOSUPPRESSIVE_VACCINE_TIMING.length;
 
+function TableSearch({
+  copy,
+  query,
+  onQueryChange,
+  visibleRowCount,
+  metaDir,
+}: {
+  copy: (typeof CORTICOSTEROIDS_COPY)['en'];
+  query: string;
+  onQueryChange: (query: string) => void;
+  visibleRowCount: number;
+  metaDir?: 'ltr' | 'rtl';
+}) {
+  return (
+    <HcpGuideTableSearch
+      query={query}
+      onQueryChange={onQueryChange}
+      placeholder={copy.search.placeholder}
+      ariaLabel={copy.search.ariaLabel}
+      clearAriaLabel={copy.search.clearAriaLabel}
+      showingLabel={copy.searchMeta.showing}
+      noMatchesLabel={copy.searchMeta.noMatches}
+      metaDir={metaDir}
+      resultCount={visibleRowCount}
+      totalCount={TOTAL_TABLE_ROWS}
+    />
+  );
+}
+
 export default function CorticosteroidsImmunosuppressiveArticle() {
   const [query, setQuery] = useState('');
+  const copy = CORTICOSTEROIDS_COPY;
 
   const visibleRowCount = useMemo(() => {
     if (!query.trim()) return TOTAL_TABLE_ROWS;
@@ -49,23 +70,44 @@ export default function CorticosteroidsImmunosuppressiveArticle() {
   return (
     <HcpGuidePageLayout
       metaKey="hcpCorticosteroids"
-      title="Corticosteroids and immunosuppressive drugs"
+      title={copy.en.heroTitle}
       emoji="💊"
-      lead="Immunosuppressive medication profiles (AAAAI) and universal vaccine timing windows (CDC, IDSA, Australian Immunisation Handbook) — organized for clinical reference."
-      backHref="/hcp-special-populations/altered-immunocompetence"
-      backLabel="← Altered immunocompetence"
-      toc={[...TOC]}
+      lead={copy.en.heroLead}
+      backHref="/hcp-special-populations"
+      backLabel={copy.en.backLabel}
+      toc={[...CORTICOSTEROIDS_EN_TOC]}
       heroBelowTitle={
-        <HcpGuideTableSearch
+        <TableSearch
+          copy={copy.en}
           query={query}
           onQueryChange={setQuery}
-          placeholder="Search e.g. rituximab, TNF, methotrexate, live vaccine, prednisone…"
-          resultCount={visibleRowCount}
-          totalCount={TOTAL_TABLE_ROWS}
+          visibleRowCount={visibleRowCount}
         />
       }
+      arHeroBelowTitle={
+        <TableSearch
+          copy={copy.ar}
+          query={query}
+          onQueryChange={setQuery}
+          visibleRowCount={visibleRowCount}
+          metaDir="rtl"
+        />
+      }
+      bilingual={{
+        arTitle: copy.ar.arHeroTitle,
+        arLead: copy.ar.arHeroLead,
+        arToc: [...CORTICOSTEROIDS_AR_TOC],
+        arabicChildren: (
+          <CorticosteroidsImmunosuppressiveContent
+            copy={copy.ar}
+            arabic
+            query={query}
+            onQueryChange={setQuery}
+          />
+        ),
+      }}
     >
-      <CorticosteroidsImmunosuppressiveContent query={query} onQueryChange={setQuery} />
+      <CorticosteroidsImmunosuppressiveContent copy={copy.en} query={query} onQueryChange={setQuery} />
     </HcpGuidePageLayout>
   );
 }

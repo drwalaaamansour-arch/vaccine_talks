@@ -43,6 +43,7 @@ const PRETERM_CONSENSUS_PDF = '/vaccine-specific-guidelines.pdf';
 export default function PretermVaccineSpecificGuidelinesArticle() {
   return (
     <HcpGuidePageLayout
+      bilingual
       metaKey="hcpPretermVaccineGuidelines"
       title="Vaccine-specific guidelines"
       emoji="📋"

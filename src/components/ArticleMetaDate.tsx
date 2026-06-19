@@ -4,7 +4,7 @@ export type ArticleMetaLocale = 'ar' | 'en';
 
 type ArticleMetaDateProps = ArticleMeta & {
   locale?: ArticleMetaLocale;
-  align?: 'center' | 'left';
+  align?: 'center' | 'left' | 'right';
   compact?: boolean;
 };
 
@@ -34,7 +34,7 @@ export default function ArticleMetaDate({
   align = 'center',
   compact = false,
 }: ArticleMetaDateProps) {
-  const textAlign = align === 'left' ? 'left' : 'center';
+  const textAlign = align === 'left' ? 'left' : align === 'right' ? 'right' : 'center';
   const labels = LABELS[locale];
   const isRtl = locale === 'ar';
 

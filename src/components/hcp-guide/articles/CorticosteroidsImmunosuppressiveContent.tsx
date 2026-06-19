@@ -3,6 +3,7 @@
 import { useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import HcpGuideSection from '@/components/hcp-guide/HcpGuideSection';
+import HcpGuideArabicPanel from '@/components/hcp-guide/HcpGuideArabicPanel';
 import HcpGuideMedicalTable, { RiskTierBadge } from '@/components/hcp-guide/HcpGuideMedicalTable';
 import {
   B_CELL_AND_SELECTIVE_BIOLOGICS,
@@ -10,37 +11,137 @@ import {
   TRADITIONAL_IMMUNOSUPPRESSIVE_DRUGS,
 } from '@/data/hcp-immunosuppressive-drugs';
 import { IMMUNOSUPPRESSIVE_VACCINE_TIMING } from '@/data/hcp-immunosuppressive-vaccine-timing';
+import type {
+  CorticosteroidsCopy,
+  CorticosteroidsParagraph,
+} from '@/data/corticosteroids-immunosuppressive-copy';
+import { CORTICOSTEROIDS_SECTION_IDS } from '@/data/corticosteroids-immunosuppressive-copy';
 import { filterTableRows } from '@/lib/hcp-guide-table-search';
-
-const DRUG_COLUMNS = [
-  { key: 'medication', label: 'Medication & examples', className: 'hcp-guide-table-med' },
-  { key: 'targetMechanism', label: 'Target & mechanism', className: 'hcp-guide-table-mechanism' },
-  { key: 'indications', label: 'Indications for use', className: 'hcp-guide-table-indications' },
-  { key: 'monitoring', label: 'Monitoring & cautions', className: 'hcp-guide-table-monitoring' },
-] as const;
-
-const TIMING_COLUMNS = [
-  { key: 'category', label: 'Therapeutic category / condition', className: 'hcp-guide-table-category' },
-  { key: 'riskTier', label: 'Risk tier', className: 'hcp-guide-table-tier' },
-  { key: 'mechanism', label: 'Target / mechanism', className: 'hcp-guide-table-mechanism' },
-  { key: 'beforeTreatment', label: 'Before treatment', className: 'hcp-guide-table-timing' },
-  { key: 'duringTreatment', label: 'During active therapy', className: 'hcp-guide-table-timing' },
-  { key: 'afterTreatment', label: 'After treatment / recovery', className: 'hcp-guide-table-timing' },
-] as const;
 
 function toDrugRows(drugs: typeof TRADITIONAL_IMMUNOSUPPRESSIVE_DRUGS) {
   return drugs.map((drug) => ({ ...drug }));
 }
 
+function renderParagraph(paragraph: CorticosteroidsParagraph, key: string) {
+  if (typeof paragraph === 'string') {
+    return <p key={key}>{paragraph}</p>;
+  }
+
+  return (
+    <p key={key}>
+      {paragraph.parts.map((part, index) => {
+        if (part.bold) return <strong key={`${key}-${index}`}>{part.text}</strong>;
+        if (part.em) return <em key={`${key}-${index}`}>{part.text}</em>;
+        return part.text;
+      })}
+    </p>
+  );
+}
+
+function renderListItem(item: CorticosteroidsParagraph, key: string) {
+  if (typeof item === 'string') {
+    return <li key={key}>{item}</li>;
+  }
+
+  return (
+    <li key={key}>
+      {item.parts.map((part, index) =>
+        part.bold ? <strong key={`${key}-${index}`}>{part.text}</strong> : part.text,
+      )}
+    </li>
+  );
+}
+
+function renderVaccineText(text: CorticosteroidsParagraph) {
+  if (typeof text === 'string') return text;
+
+  return text.parts.map((part, index) =>
+    part.bold ? <strong key={index}>{part.text}</strong> : part.text,
+  );
+}
+
 type CorticosteroidsImmunosuppressiveContentProps = {
+  copy: CorticosteroidsCopy;
+  arabic?: boolean;
   query: string;
   onQueryChange: (query: string) => void;
 };
 
 export default function CorticosteroidsImmunosuppressiveContent({
+  copy,
+  arabic,
   query,
   onQueryChange,
 }: CorticosteroidsImmunosuppressiveContentProps) {
+  const sectionIds = arabic ? CORTICOSTEROIDS_SECTION_IDS.ar : CORTICOSTEROIDS_SECTION_IDS.en;
+  const [
+    overviewSection,
+    drugReferenceSection,
+    traditionalDrugsSection,
+    cytokineDrugsSection,
+    bCellDrugsSection,
+    vaccineConceptsSection,
+    timingMatrixSection,
+    pregnancyAlertSection,
+    cocooningSection,
+    referencesSection,
+  ] = copy.sections;
+
+  const drugColumns = useMemo(
+    () =>
+      [
+        { key: 'medication', label: copy.tables.drugColumnLabels.medication, className: 'hcp-guide-table-med' },
+        {
+          key: 'targetMechanism',
+          label: copy.tables.drugColumnLabels.targetMechanism,
+          className: 'hcp-guide-table-mechanism',
+        },
+        {
+          key: 'indications',
+          label: copy.tables.drugColumnLabels.indications,
+          className: 'hcp-guide-table-indications',
+        },
+        {
+          key: 'monitoring',
+          label: copy.tables.drugColumnLabels.monitoring,
+          className: 'hcp-guide-table-monitoring',
+        },
+      ] as const,
+    [copy.tables.drugColumnLabels],
+  );
+
+  const timingColumns = useMemo(
+    () =>
+      [
+        {
+          key: 'category',
+          label: copy.tables.timingColumnLabels.category,
+          className: 'hcp-guide-table-category',
+        },
+        { key: 'riskTier', label: copy.tables.timingColumnLabels.riskTier, className: 'hcp-guide-table-tier' },
+        {
+          key: 'mechanism',
+          label: copy.tables.timingColumnLabels.mechanism,
+          className: 'hcp-guide-table-mechanism',
+        },
+        {
+          key: 'beforeTreatment',
+          label: copy.tables.timingColumnLabels.beforeTreatment,
+          className: 'hcp-guide-table-timing',
+        },
+        {
+          key: 'duringTreatment',
+          label: copy.tables.timingColumnLabels.duringTreatment,
+          className: 'hcp-guide-table-timing',
+        },
+        {
+          key: 'afterTreatment',
+          label: copy.tables.timingColumnLabels.afterTreatment,
+          className: 'hcp-guide-table-timing',
+        },
+      ] as const,
+    [copy.tables.timingColumnLabels],
+  );
 
   const traditionalRows = useMemo(
     () => toDrugRows(filterTableRows(TRADITIONAL_IMMUNOSUPPRESSIVE_DRUGS, query)),
@@ -71,13 +172,13 @@ export default function CorticosteroidsImmunosuppressiveContent({
     if (!isFiltering) return;
 
     const firstVisibleSectionId = traditionalRows.length
-      ? 'traditional-drugs'
+      ? sectionIds.traditionalDrugs
       : cytokineRows.length
-        ? 'cytokine-drugs'
+        ? sectionIds.cytokineDrugs
         : bCellRows.length
-          ? 'b-cell-drugs'
+          ? sectionIds.bCellDrugs
           : timingRows.length
-            ? 'timing-matrix'
+            ? sectionIds.timingMatrix
             : null;
 
     if (!firstVisibleSectionId) return;
@@ -95,215 +196,227 @@ export default function CorticosteroidsImmunosuppressiveContent({
     cytokineRows.length,
     bCellRows.length,
     timingRows.length,
+    sectionIds,
   ]);
 
-  return (
+  const sectionProps = arabic
+    ? { dir: 'rtl' as const, lang: 'ar', titleAlign: 'right' as const }
+    : {};
+
+  const body = (
     <>
-      <HcpGuideSection id="overview" title="Immunosuppressive medications & vaccination guidelines" icon="📋">
-        <p>
-          Managing vaccines during immunosuppressive therapy requires balancing infection prevention with
-          medical safety. This guide is organized in two core parts:
-        </p>
-        <ul>
-          <li>
-            <strong>Part 1 — Immunosuppressive drug reference:</strong> mechanisms, indications, and monitoring
-            warnings based on AAAAI data.
-          </li>
-          <li>
-            <strong>Part 2 — Universal vaccine timing matrix:</strong> safe vaccination windows before, during,
-            and after therapy based on CDC, IDSA, and Australian Immunisation Handbook consensus.
-          </li>
-        </ul>
-        <p>
-          Use these tables alongside individual patient factors — including diagnosis, dose, duration, concurrent
-          therapies, and laboratory immune markers — when planning immunization.
-        </p>
+      <HcpGuideSection
+        id={overviewSection.id}
+        title={overviewSection.title}
+        icon={overviewSection.icon}
+        {...sectionProps}
+      >
+        {overviewSection.paragraphs?.[0]
+          ? renderParagraph(overviewSection.paragraphs[0], `${overviewSection.id}-p-0`)
+          : null}
+        {overviewSection.listItems ? (
+          <ul>
+            {overviewSection.listItems.map((item, index) =>
+              renderListItem(item, `${overviewSection.id}-li-${index}`),
+            )}
+          </ul>
+        ) : null}
+        {overviewSection.paragraphs?.[1]
+          ? renderParagraph(overviewSection.paragraphs[1], `${overviewSection.id}-p-1`)
+          : null}
       </HcpGuideSection>
 
-      <HcpGuideSection id="drug-reference" title="Part 1: Comprehensive immunosuppressive drug database" icon="💊">
-        <p>
-          Reference tables below outline targets, therapeutic uses, and key monitoring warnings for medications
-          commonly prescribed across autoimmune, autoinflammatory, transplant, and oncologic conditions.
-        </p>
+      <HcpGuideSection
+        id={drugReferenceSection.id}
+        title={drugReferenceSection.title}
+        icon={drugReferenceSection.icon}
+        {...sectionProps}
+      >
+        {drugReferenceSection.paragraphs?.map((paragraph, index) =>
+          renderParagraph(paragraph, `${drugReferenceSection.id}-p-${index}`),
+        )}
       </HcpGuideSection>
 
       {(!isFiltering || traditionalRows.length > 0) && (
-        <HcpGuideSection id="traditional-drugs" title="Traditional & oral immunosuppressives" icon="🧪">
+        <HcpGuideSection
+          id={traditionalDrugsSection.id}
+          title={traditionalDrugsSection.title}
+          icon={traditionalDrugsSection.icon}
+          {...sectionProps}
+        >
           <HcpGuideMedicalTable
-            caption="Table 1. Corticosteroids, antimetabolites, and conventional DMARDs"
-            columns={[...DRUG_COLUMNS]}
+            caption={copy.tables.captions.traditional}
+            columns={[...drugColumns]}
             rows={traditionalRows}
-            emptyMessage="No traditional or oral agents match your search."
+            emptyMessage={copy.tables.emptyMessages.traditional}
+            scrollHint={copy.tables.scrollHint}
           />
         </HcpGuideSection>
       )}
 
       {(!isFiltering || cytokineRows.length > 0) && (
         <HcpGuideSection
-          id="cytokine-drugs"
-          title="Innate Immunity Targets (Biologics & Small Molecules)"
-          icon="🎯"
+          id={cytokineDrugsSection.id}
+          title={cytokineDrugsSection.title}
+          icon={cytokineDrugsSection.icon}
+          {...sectionProps}
         >
           <HcpGuideMedicalTable
-            caption="Table 2. Anti-cytokine biologics and oral JAK inhibitors"
-            columns={[...DRUG_COLUMNS]}
+            caption={copy.tables.captions.cytokine}
+            columns={[...drugColumns]}
             rows={cytokineRows}
-            emptyMessage="No innate immunity targets match your search."
+            emptyMessage={copy.tables.emptyMessages.cytokine}
+            scrollHint={copy.tables.scrollHint}
           />
         </HcpGuideSection>
       )}
 
       {(!isFiltering || bCellRows.length > 0) && (
         <HcpGuideSection
-          id="b-cell-drugs"
-          title="B-cell depletion & selective biologics"
-          icon="🔬"
-          titleAlign="center"
+          id={bCellDrugsSection.id}
+          title={bCellDrugsSection.title}
+          icon={bCellDrugsSection.icon}
+          {...sectionProps}
+          titleAlign={bCellDrugsSection.titleAlign === 'center' ? 'center' : sectionProps.titleAlign}
         >
           <HcpGuideMedicalTable
-            caption="Table 3. B-cell depletion & selective biologics"
-            columns={[...DRUG_COLUMNS]}
+            caption={copy.tables.captions.bCell}
+            columns={[...drugColumns]}
             rows={bCellRows}
-            emptyMessage="No B-cell or selective biologics match your search."
+            emptyMessage={copy.tables.emptyMessages.bCell}
+            scrollHint={copy.tables.scrollHint}
           />
         </HcpGuideSection>
       )}
 
-      <HcpGuideSection id="vaccine-concepts" title="Core concepts: live vs non-live vaccines" icon="🛡️" variant="takeaway">
-        <p>Before using the timing matrix, distinguish the two vaccine categories:</p>
+      <HcpGuideSection
+        id={vaccineConceptsSection.id}
+        title={vaccineConceptsSection.title}
+        icon={vaccineConceptsSection.icon}
+        variant="takeaway"
+        {...sectionProps}
+      >
+        {vaccineConceptsSection.paragraphs?.map((paragraph, index) =>
+          renderParagraph(paragraph, `${vaccineConceptsSection.id}-p-${index}`),
+        )}
         <div className="hcp-cancer-vaccine-pair">
           <div className="hcp-cancer-vaccine-card hcp-cancer-vaccine-card--no">
-            <p className="hcp-cancer-vaccine-card-label">Live-attenuated vaccines</p>
-            <p>
-              Examples: MMR, varicella, yellow fever, oral rotavirus. Contain weakened but replicating organisms.
-              During significant immunosuppression the host may fail to control the vaccine strain, risking severe
-              vaccine-derived infection. <strong>Generally contraindicated during active immunosuppression.</strong>
-            </p>
+            <p className="hcp-cancer-vaccine-card-label">{copy.vaccineCards.liveLabel}</p>
+            <p>{renderVaccineText(copy.vaccineCards.liveText)}</p>
           </div>
           <div className="hcp-cancer-vaccine-card hcp-cancer-vaccine-card--ok">
-            <p className="hcp-cancer-vaccine-card-label">Non-live / inactivated vaccines</p>
-            <p>
-              Examples: inactivated influenza, COVID-19, Shingrix, pneumococcal, Tdap. Cannot replicate or cause
-              infection — <strong>physically safe at any time</strong>. Immunosuppression may still blunt antibody
-              responses, so timing optimization remains clinically important.
-            </p>
+            <p className="hcp-cancer-vaccine-card-label">{copy.vaccineCards.nonLiveLabel}</p>
+            <p>{renderVaccineText(copy.vaccineCards.nonLiveText)}</p>
           </div>
         </div>
       </HcpGuideSection>
 
       {(!isFiltering || timingRows.length > 0) && (
-        <HcpGuideSection id="timing-matrix" title="Part 2: Unified vaccine timing matrix" icon="📊">
-          <p>
-            Master reference merging AAAAI drug-risk profiles with CDC and Australian Immunisation Handbook vaccine
-            scheduling guidance. Columns define pre-treatment windows, status during active therapy, and post-therapy
-            recovery intervals before live vaccines may resume.
-          </p>
+        <HcpGuideSection
+          id={timingMatrixSection.id}
+          title={timingMatrixSection.title}
+          icon={timingMatrixSection.icon}
+          {...sectionProps}
+        >
+          {timingMatrixSection.paragraphs?.map((paragraph, index) =>
+            renderParagraph(paragraph, `${timingMatrixSection.id}-p-${index}`),
+          )}
           <HcpGuideMedicalTable
-            caption="Table 4. Immunosuppressive risk tiers and vaccine timing windows"
-            columns={[...TIMING_COLUMNS]}
+            caption={copy.tables.captions.timing}
+            columns={[...timingColumns]}
             rows={timingRows}
-            emptyMessage="No timing guidance rows match your search."
+            emptyMessage={copy.tables.emptyMessages.timing}
+            scrollHint={copy.tables.scrollHint}
           />
         </HcpGuideSection>
       )}
 
       {isFiltering && visibleRowCount === 0 ? (
-        <div className="hcp-guide-table-search-empty" role="status">
-          <p>No table rows match &ldquo;{query.trim()}&rdquo;.</p>
+        <div className="hcp-guide-table-search-empty" role="status" dir={arabic ? 'rtl' : 'ltr'}>
+          <p>{copy.searchEmpty.noRowsMessage.replace('{query}', query.trim())}</p>
           <button type="button" className="hcp-guide-table-search-reset" onClick={() => onQueryChange('')}>
-            Clear search
+            {copy.searchEmpty.clearSearch}
           </button>
         </div>
       ) : null}
 
-      <HcpGuideSection id="pregnancy-alert" title="Clinical alert: in-utero biologic exposure" icon="⚠️">
+      <HcpGuideSection
+        id={pregnancyAlertSection.id}
+        title={pregnancyAlertSection.title}
+        icon={pregnancyAlertSection.icon}
+        {...sectionProps}
+      >
         <div className="hcp-cancer-alert">
-          <p>
-            <strong>Pregnancy exposure:</strong> Highly immunosuppressive biologics — especially anti-TNF agents
-            (e.g., adalimumab/Humira) and anti-CD20 agents (e.g., rituximab) — readily cross the placenta in the
-            second and third trimesters.
-          </p>
-          <p style={{ marginTop: '0.75rem' }}>
-            <strong>Infant live-vaccine safety:</strong> Exposed infants must not receive live-attenuated vaccines
-            (notably BCG and oral rotavirus) until at least <strong>6 months of age</strong>, allowing clearance of
-            maternal drug. Standard non-live childhood vaccines should follow routine pediatric schedules.
-          </p>
+          {copy.pregnancyAlert.map((paragraph, index) => (
+            <p key={`${pregnancyAlertSection.id}-alert-${index}`} style={index > 0 ? { marginTop: '0.75rem' } : undefined}>
+              {typeof paragraph === 'string'
+                ? paragraph
+                : paragraph.parts.map((part, partIndex) =>
+                    part.bold ? (
+                      <strong key={partIndex}>{part.text}</strong>
+                    ) : (
+                      part.text
+                    ),
+                  )}
+            </p>
+          ))}
         </div>
       </HcpGuideSection>
 
-      <HcpGuideSection id="cocooning" title="Protecting the household: cocooning strategy" icon="👥">
-        <p>
-          When live vaccines are unsafe for the immunocompromised patient, household members, partners, and close
-          contacts should remain fully vaccinated against measles, varicella, influenza, and other preventable
-          diseases.
-        </p>
-        <p>
-          This <strong>cocooning</strong> approach creates a protective barrier around the patient and substantially
-          reduces the probability of household introduction of vaccine-preventable viruses.
-        </p>
+      <HcpGuideSection
+        id={cocooningSection.id}
+        title={cocooningSection.title}
+        icon={cocooningSection.icon}
+        {...sectionProps}
+      >
+        {copy.cocooning.map((paragraph, index) =>
+          renderParagraph(paragraph, `${cocooningSection.id}-p-${index}`),
+        )}
       </HcpGuideSection>
 
-      <section id="ms-vaccination" className="hcp-cancer-related hcp-cancer-related--before-pdfs">
-        <Link
-          href="/hcp-special-populations/vaccinations-with-multiple-sclerosis"
-          className="hcp-guide-related-link"
-        >
-          To know more about vaccination for people with MS, press here
+      <section
+        id={sectionIds.msVaccination}
+        className="hcp-cancer-related hcp-cancer-related--before-pdfs"
+        dir={arabic ? 'rtl' : 'ltr'}
+      >
+        <Link href={copy.msLinkHref} className="hcp-guide-related-link">
+          {copy.msLinkLabel}
         </Link>
       </section>
 
-      <HcpGuideSection id="references" title="References & clinical guidelines" icon="📚">
+      <HcpGuideSection
+        id={referencesSection.id}
+        title={referencesSection.title}
+        icon={referencesSection.icon}
+        {...sectionProps}
+      >
         <div className="hcp-guide-references-block">
-          <p>
-            To ensure maximum safety and data transparency for our users, all medical timelines, drug risk tiers, and
-            vaccine windows on this page are compiled from global medical authorities:
-          </p>
+          <p>{copy.referencesIntro}</p>
           <ol className="hcp-guide-ref-numbered">
-            <li>
-              <strong>Drug profiles &amp; biological mechanisms:</strong>{' '}
-              <a
-                href="https://www.aaaai.org/conditions-treatments/related-conditions/immunosuppressive"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hcp-cancer-inline-link"
-              >
-                American Academy of Allergy, Asthma &amp; Immunology (AAAAI)
-              </a>
-              {' — '}
-              <em>Immunosuppressive Medication for the Treatment of Autoimmune Disease Guide.</em>
-            </li>
-            <li>
-              <strong>Universal vaccine scheduling guidelines:</strong>{' '}
-              <a
-                href="https://www.cdc.gov/vaccines/hcp/imz-best-practices/altered-immunocompetence.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hcp-cancer-inline-link"
-              >
-                Centers for Disease Control and Prevention (CDC)
-              </a>
-              {' — '}
-              <em>General Best Practice Guidelines for Immunization: Altered Immunocompetence.</em>
-            </li>
-            <li>
-              <strong>Immunocompromise levels &amp; drug potentials:</strong>{' '}
-              <a
-                href="https://immunisationhandbook.health.gov.au/contents/vaccination-for-special-risk-groups/vaccination-for-people-who-are-immunocompromised"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hcp-cancer-inline-link"
-              >
-                The Australian Immunisation Handbook
-              </a>
-              {' — '}
-              <em>
-                Guidance on Secondary Immunodeficiencies Due to Medical Conditions and Therapies (Tables for
-                Corticosteroids, Conventional, Biological, and Small Molecule Therapies).
-              </em>
-            </li>
+            {copy.references.map((ref, index) => (
+              <li key={`${referencesSection.id}-ref-${index}`}>
+                <strong>{ref.boldLead}</strong>{' '}
+                <a
+                  href={ref.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hcp-cancer-inline-link"
+                >
+                  {ref.linkText}
+                </a>
+                {' — '}
+                <em>{ref.trailingEm}</em>
+              </li>
+            ))}
           </ol>
         </div>
       </HcpGuideSection>
     </>
   );
+
+  if (arabic) {
+    return <HcpGuideArabicPanel contentOnly>{body}</HcpGuideArabicPanel>;
+  }
+
+  return body;
 }

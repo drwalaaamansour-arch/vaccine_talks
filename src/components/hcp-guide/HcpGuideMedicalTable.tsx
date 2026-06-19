@@ -5,6 +5,7 @@ type HcpGuideMedicalTableProps = {
   columns: { key: string; label: string; className?: string }[];
   rows: Record<string, ReactNode>[];
   emptyMessage?: string;
+  scrollHint?: string;
 };
 
 function formatCell(value: ReactNode) {
@@ -23,6 +24,7 @@ export default function HcpGuideMedicalTable({
   columns,
   rows,
   emptyMessage = 'No rows to display.',
+  scrollHint = 'Swipe sideways to view all columns',
 }: HcpGuideMedicalTableProps) {
   return (
     <div className="hcp-guide-table-shell">
@@ -63,7 +65,7 @@ export default function HcpGuideMedicalTable({
             </table>
           </div>
           <p className="hcp-guide-table-scroll-hint" aria-hidden="true">
-            Swipe sideways to view all columns
+            {scrollHint}
           </p>
         </>
       )}

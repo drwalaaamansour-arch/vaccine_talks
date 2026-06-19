@@ -11,6 +11,7 @@ const PDF_50YR = `/pneumo/${encodeURIComponent('pneumo 50yr.pdf')}`;
 export default function AspleniaPneumococcalArticle() {
   return (
     <HcpGuidePageLayout
+      bilingual
       metaKey="hcpAspleniaPneumococcal"
       title="Pneumococcal"
       emoji="💉"

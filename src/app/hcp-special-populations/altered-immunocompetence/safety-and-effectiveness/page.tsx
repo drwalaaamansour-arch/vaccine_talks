@@ -6,8 +6,8 @@ export default function SafetyAndEffectivenessPage() {
       metaKey="hcpSafetyEffectiveness"
       title="Safety and effectiveness"
       emoji="✓"
-      backHref="/hcp-special-populations/altered-immunocompetence"
-      backLabel="← Altered immunocompetence"
+      backHref="/hcp-special-populations"
+      backLabel="← Special Populations"
     />
   );
 }

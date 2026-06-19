@@ -6,6 +6,7 @@ import HcpGuideReferences from '@/components/hcp-guide/HcpGuideReferences';
 export default function AspleniaHibArticle() {
   return (
     <HcpGuidePageLayout
+      bilingual
       metaKey="hcpAspleniaHib"
       title="Hib"
       emoji="💉"

@@ -24,8 +24,17 @@ export type HcpGuideSectionProps = {
   title: string;
   icon?: string;
   variant?: 'default' | 'takeaway';
-  titleAlign?: 'left' | 'center';
+  titleAlign?: 'left' | 'center' | 'right';
+  dir?: 'rtl' | 'ltr';
+  lang?: string;
   children: ReactNode;
+};
+
+export type HcpGuideBilingualOptions = {
+  arTitle?: string;
+  arLead?: string;
+  arToc?: HcpGuideTocItem[];
+  arabicChildren?: ReactNode;
 };
 
 export type HcpGuideHubGroup = {
