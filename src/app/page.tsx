@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import HomeNewlyAddedStrip from '@/components/HomeNewlyAddedStrip';
 import HomeNewsMarquee from '@/components/HomeNewsMarquee';
+import { SITE_TAGLINE } from '@/lib/site';
 
 export default function Home() {
   return (
@@ -14,12 +15,16 @@ export default function Home() {
           <br />
           Talks
           </h1>
+
+        <p className="hero-tagline animate-fade-in-up animate-delay-1" lang="en">
+          {SITE_TAGLINE}
+        </p>
         
-        <p className="hero-subtitle animate-fade-in-up animate-delay-1">
+        <p className="hero-subtitle animate-fade-in-up animate-delay-2">
           (Egyptian Edition)
         </p>
         
-        <div className="hero-quote animate-fade-in-up animate-delay-2">
+        <div className="hero-quote animate-fade-in-up animate-delay-3">
           <p>"Everything you need to know about</p>
           <p>vaccines in Egypt"</p>
         </div>

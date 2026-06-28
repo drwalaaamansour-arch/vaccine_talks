@@ -75,11 +75,11 @@ export default function MobileNav() {
           <NavLink href="/non-hcp" className="modern-mobile-link" onClick={closeMenu}>
             <span className="modern-mobile-link-icon">👥</span>
             <span className="nav-bilingual-label">
+              <span className="nav-bilingual-en" lang="en">
+                For the public
+              </span>
               <span className="nav-bilingual-ar" lang="ar" dir="rtl">
                 للجمهور
-              </span>
-              <span className="nav-bilingual-en" lang="en">
-                (For the public)
               </span>
             </span>
           </NavLink>

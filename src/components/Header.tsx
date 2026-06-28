@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import SearchModal from './SearchModal';
+import { SITE_NAME_SHORT, SITE_TAGLINE } from '@/lib/site';
 
 type NavSubLink = { href: string; label: string; labelEn?: string };
 
@@ -24,11 +25,11 @@ function NavBilingualLabel({ label, labelEn }: { label: string; labelEn?: string
 
   return (
     <span className="nav-bilingual-label">
+      <span className="nav-bilingual-en" lang="en">
+        {labelEn}
+      </span>
       <span className="nav-bilingual-ar" lang="ar" dir="rtl">
         {label}
-      </span>
-      <span className="nav-bilingual-en" lang="en">
-        ({labelEn})
       </span>
     </span>
   );
@@ -40,7 +41,7 @@ const SHOW_AUTH_LINKS = false;
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [openDropdownHref, setOpenDropdownHref] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
@@ -71,7 +72,7 @@ export default function Header() {
   }, [isSearchOpen]);
 
   const navLinks: NavLinkItem[] = [
-    { href: '/', label: 'Home' },
+    { href: '/', label: 'الرئيسية', labelEn: 'Home' },
     { 
       href: '/non-hcp', 
       label: 'غير العاملين بالمجال الطبي',
@@ -92,32 +93,26 @@ export default function Header() {
     },
     { 
       href: '/hcp-resources', 
-      label: 'HCP',
+      label: 'العاملين بالمجال الطبي',
+      labelEn: 'HCP',
       submenu: [
-        { href: '/hcp-vaccination-basics', label: 'Vaccination Basics' },
-        { href: '/hcp-documents', label: 'Documents' },
-        { href: '/hcp-vaccines-sera', label: 'Vaccines and Sera' },
-        { href: '/hcp-special-populations', label: 'Special Populations' },
-        { href: '/hcp-vaccine-updates', label: 'Global Vaccine Updates' },
-        { href: '/hcp-faq', label: 'FAQ' },
+        { href: '/hcp-vaccination-basics', label: 'أساسيات التطعيم', labelEn: 'Vaccination Basics' },
+        { href: '/hcp-documents', label: 'الوثائق', labelEn: 'Documents' },
+        { href: '/hcp-vaccines-sera', label: 'اللقاحات والأمصال', labelEn: 'Vaccines and Sera' },
+        { href: '/hcp-special-populations', label: 'الفئات الخاصة', labelEn: 'Special Populations' },
+        { href: '/hcp-vaccine-updates', label: 'تحديثات اللقاحات العالمية', labelEn: 'Global Vaccine Updates' },
+        { href: '/hcp-faq', label: 'أسئلة شائعة', labelEn: 'FAQ' },
       ]
     },
-    {
-      href: '/gallery',
-      label: 'Gallery',
-      submenuTabs: true,
-      submenu: [
-        { href: '/gallery', label: 'Gallery' },
-        { href: '/about', label: 'من نحن', labelEn: 'About us' },
-      ],
-    },
+    { href: '/gallery', label: 'المعرض', labelEn: 'Gallery' },
+    { href: '/about', label: 'من نحن', labelEn: 'About us' },
   ];
 
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="header-container">
-        <div className="header-brand-row">
-          <Link href="/" className="logo-link">
+        <div className="header-brand">
+          <Link href="/" className="logo-link header-brand-logo" aria-label={`${SITE_NAME_SHORT} — Home`}>
             <div className="logo-box">
               <Image
                 src="/vaccine-talks-icon.png"
@@ -130,22 +125,14 @@ export default function Header() {
             </div>
           </Link>
 
-          <Link
-            href="/about"
-            className="header-about-link"
-            title="About us · من نحن"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <span className="header-about-link-label">
-              <span lang="en">About us</span>
-              <span className="header-about-link-sep" aria-hidden="true">
-                ·
+          <div className="header-brand-meta">
+            <Link href="/" className="header-brand-home">
+              <span className="header-brand-title">{SITE_NAME_SHORT}</span>
+              <span className="header-brand-tagline" lang="en">
+                {SITE_TAGLINE}
               </span>
-              <span className="header-about-link-ar" lang="ar" dir="rtl">
-                من نحن
-              </span>
-            </span>
-          </Link>
+            </Link>
+          </div>
         </div>
 
         {/* Desktop Navigation */}
@@ -155,8 +142,8 @@ export default function Header() {
               <div 
                 key={link.href} 
                 className="nav-item"
-                onMouseEnter={() => link.submenu && setIsDropdownOpen(true)}
-                onMouseLeave={() => link.submenu && setIsDropdownOpen(false)}
+                onMouseEnter={() => link.submenu && setOpenDropdownHref(link.href)}
+                onMouseLeave={() => link.submenu && setOpenDropdownHref(null)}
               >
                 <Link
                   href={link.href}
@@ -164,7 +151,7 @@ export default function Header() {
                 >
                   <NavBilingualLabel label={link.label} labelEn={link.labelEn} />
                 </Link>
-                {link.submenu && isDropdownOpen && (
+                {link.submenu && openDropdownHref === link.href && (
                   <div
                     className={`dropdown-menu${link.submenuTabs ? ' dropdown-menu--tabs' : ''}`}
                   >

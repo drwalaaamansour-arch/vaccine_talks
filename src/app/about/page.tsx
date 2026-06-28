@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
 import AboutPageContent from '@/components/about/AboutPageContent';
 import { createPageMetadata } from '@/lib/seo';
+import { SITE_TAGLINE } from '@/lib/site';
 
 export const metadata = createPageMetadata({
   title: 'من نحن | About us — Vaccine Talks',
@@ -24,8 +25,11 @@ export default function AboutPage() {
           <br />
           Talks
         </h1>
-        <p className="hero-subtitle animate-fade-in-up animate-delay-1">(Egyptian Edition)</p>
-        <div className="hero-quote animate-fade-in-up animate-delay-2">
+        <p className="hero-tagline animate-fade-in-up animate-delay-1" lang="en">
+          {SITE_TAGLINE}
+        </p>
+        <p className="hero-subtitle animate-fade-in-up animate-delay-2">(Egyptian Edition)</p>
+        <div className="hero-quote animate-fade-in-up animate-delay-3">
           <p>&quot;Everything you need to know about</p>
           <p>vaccines in Egypt&quot;</p>
         </div>

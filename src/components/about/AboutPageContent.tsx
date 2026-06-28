@@ -274,7 +274,7 @@ function AboutEnglishContent({ glanceStats }: { glanceStats: GlanceStat[] }) {
       <div className="about-page-block">
         <h2 className="about-page-section-title">Vaccine Talks at a Glance</h2>
         <p className="about-page-section-intro">
-          Over the years, Vaccine Talks has grown into one of Egypt&apos;s most comprehensive independent
+          Over time, Vaccine Talks has grown into one of Egypt&apos;s most comprehensive independent
           vaccine education platforms — serving both healthcare professionals and the general public
           through continuously updated, evidence-based educational resources.
         </p>
@@ -363,7 +363,7 @@ function AboutArabicContent({ glanceStats }: { glanceStats: GlanceStat[] }) {
       <div className="about-page-block">
         <h2 className="about-page-section-title">Vaccine Talks في أرقام</h2>
         <p className="about-page-section-intro">
-          على مدار السنوات، تطورت Vaccine Talks لتصبح واحدة من أكبر المنصات التعليمية المستقلة
+          مع مرور الوقت، تطورت Vaccine Talks لتصبح واحدة من أكبر المنصات التعليمية المستقلة
           المتخصصة في التطعيمات في مصر، حيث تجمع بين المحتوى العلمي الموجه للعاملين بالمجال الصحي
           والمحتوى التوعوي الموجه للجمهور.
         </p>
