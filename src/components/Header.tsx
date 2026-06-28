@@ -108,7 +108,7 @@ export default function Header() {
       submenuTabs: true,
       submenu: [
         { href: '/gallery', label: 'Gallery' },
-        { href: '/about', label: 'About us' },
+        { href: '/about', label: 'من نحن', labelEn: 'About us' },
       ],
     },
   ];
@@ -136,7 +136,15 @@ export default function Header() {
             title="About us · من نحن"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            About us
+            <span className="header-about-link-label">
+              <span lang="en">About us</span>
+              <span className="header-about-link-sep" aria-hidden="true">
+                ·
+              </span>
+              <span className="header-about-link-ar" lang="ar" dir="rtl">
+                من نحن
+              </span>
+            </span>
           </Link>
         </div>
 

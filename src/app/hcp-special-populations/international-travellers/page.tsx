@@ -1,12 +1,5 @@
-import HcpGuideComingSoon from '@/components/hcp-guide/HcpGuideComingSoon';
+import InternationalTravellersArticle from '@/components/hcp-guide/articles/InternationalTravellersArticle';
 
 export default function InternationalTravellers() {
-  return (
-    <HcpGuideComingSoon
-      metaKey="hcpInternationalTravellers"
-      title="International travellers"
-      emoji="✈️"
-      lead="Travel vaccination guidance for healthcare providers is being prepared."
-    />
-  );
+  return <InternationalTravellersArticle />;
 }

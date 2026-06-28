@@ -283,6 +283,50 @@ function HsctSpecialPopulationsSpotlightCard({ duplicate }: { duplicate?: boolea
   );
 }
 
+function InternationalTravellersSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/international-travellers"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">
+        ✈️ Travel vaccinations for Egyptians travelling abroad
+      </h3>
+      <p className="home-newly-card-body">
+        New bilingual HCP guide on travel vaccines for Egyptians going abroad: prepare 4–6 weeks before
+        departure, destination-specific vaccines, routine catch-up, and CDC Travelers&apos; Health
+        destination lookup by country.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
+function InternationalTravellersArSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/international-travellers"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+      lang="ar"
+    >
+      <h3 className="home-newly-card-title home-newly-card-title--rtl">
+        ✈️ تطعيمات السفر للمصريين المسافرين إلى الخارج
+      </h3>
+      <p className="home-newly-card-body home-newly-card-body--rtl">
+        دليل جديد للعاملين بالمجال الطبي بالعربي والإنجليزي: التحضير قبل السفر من مصر، اللقاحات حسب
+        الوجهة، وروابط أداة CDC لمتطلبات اللقاحات حسب الدولة.
+      </p>
+      <span className="home-newly-card-more" dir="rtl">
+        اقرأ المزيد ←
+      </span>
+    </a>
+  );
+}
+
 function Pcv21CapvaxiveSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -307,6 +351,8 @@ function Pcv21CapvaxiveSpotlightCard({ duplicate }: { duplicate?: boolean }) {
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <InternationalTravellersSpotlightCard duplicate={duplicate} />
+      <InternationalTravellersArSpotlightCard duplicate={duplicate} />
       <Pcv21CapvaxiveSpotlightCard duplicate={duplicate} />
       <SolidOrganTransplantSpotlightCard duplicate={duplicate} />
       <ImmunosuppressiveNonHcpSpotlightCard duplicate={duplicate} />

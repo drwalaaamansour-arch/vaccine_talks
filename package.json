@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:host": "next dev --hostname 0.0.0.0",
+    "generate:stats": "node scripts/generate-site-stats.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
