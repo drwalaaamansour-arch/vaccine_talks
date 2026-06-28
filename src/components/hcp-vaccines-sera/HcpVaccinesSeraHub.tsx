@@ -2,15 +2,16 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
 import ArticleMetaDate from '@/components/ArticleMetaDate';
+import HcpGuideLanguageTabs, { type HcpGuideLocale } from '@/components/hcp-guide/HcpGuideLanguageTabs';
+import HcpGuideArabicDisclaimer from '@/components/hcp-guide/HcpGuideArabicDisclaimer';
 import {
-  HCP_VACCINES_SERA,
-  HCP_VACCINES_SERA_COUNT,
-  HCP_VACCINES_SERA_HERO,
-  HCP_VACCINES_SERA_INTRO,
+  HCP_VACCINES_SERA_HUB_COPY,
+  HCP_VACCINES_SERA_SORTED,
+  type HcpVaccinesSeraHubItem,
 } from '@/data/hcp-vaccines-sera-hub';
 import { ARTICLE_META } from '@/lib/article-meta';
 
@@ -20,31 +21,45 @@ function normalizeSearch(value: string) {
   return value.trim().toLowerCase();
 }
 
-function matchesQuery(
-  item: { title: string; subtitle: string; excerpt: string; keywords: string },
-  query: string,
-) {
+function matchesQuery(item: HcpVaccinesSeraHubItem, query: string) {
   const q = normalizeSearch(query);
   if (!q) return true;
   return (
-    item.title.toLowerCase().includes(q) ||
-    item.subtitle.toLowerCase().includes(q) ||
-    item.excerpt.toLowerCase().includes(q) ||
+    item.titleEn.toLowerCase().includes(q) ||
+    item.titleAr.includes(q) ||
+    item.subtitleEn.toLowerCase().includes(q) ||
+    item.subtitleAr.includes(q) ||
+    item.excerptEn.toLowerCase().includes(q) ||
+    item.excerptAr.includes(q) ||
     item.keywords.includes(q)
   );
 }
 
 export default function HcpVaccinesSeraHub() {
   const meta = ARTICLE_META.hcpVaccinesSera;
+  const [locale, setLocale] = useState<HcpGuideLocale>('en');
   const [query, setQuery] = useState('');
+  const isArabic = locale === 'ar';
+  const copy = isArabic ? HCP_VACCINES_SERA_HUB_COPY.ar : HCP_VACCINES_SERA_HUB_COPY.en;
 
   const visibleProducts = useMemo(
-    () => HCP_VACCINES_SERA.filter((item) => matchesQuery(item, query)),
+    () => HCP_VACCINES_SERA_SORTED.filter((item) => matchesQuery(item, query)),
     [query],
   );
 
+  const handleLocaleChange = useCallback((next: HcpGuideLocale) => {
+    setLocale(next);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen hcp-vs-hub-page" dir="ltr" lang="en">
+    <div
+      className={`min-h-screen hcp-vs-hub-page${isArabic ? ' hcp-vs-hub-page--ar' : ''}`}
+      dir={isArabic ? 'rtl' : 'ltr'}
+      lang={isArabic ? 'ar' : 'en'}
+    >
       <Header />
 
       <main className="hero">
@@ -69,19 +84,30 @@ export default function HcpVaccinesSeraHub() {
 
           <div className="hcp-vs-hub-inner">
             <Link href="/hcp-resources" className="hcp-vs-back">
-              ← Back to HCP Resources
+              {copy.back}
             </Link>
 
-            <header className="vax-hub-hero hcp-vs-hub-hero">
+            <div className="hcp-guide-lang-tabs-wrap hcp-vs-hub-lang-tabs">
+              <HcpGuideLanguageTabs locale={locale} onChange={handleLocaleChange} />
+            </div>
+
+            <header
+              className={`vax-hub-hero hcp-vs-hub-hero${isArabic ? ' hcp-guide-hero--ar' : ''}`}
+              dir={isArabic ? 'rtl' : 'ltr'}
+            >
               <div className="vax-hub-hero-glow" aria-hidden />
-              <span className="vax-hub-hero-tag">{HCP_VACCINES_SERA_HERO.tag}</span>
-              <h1 className="vax-hub-hero-title">{HCP_VACCINES_SERA_HERO.title}</h1>
-              <p className="vax-hub-hero-subtitle hub-en" lang="en" style={{ fontStyle: 'normal', opacity: 0.95 }}>
-                {HCP_VACCINES_SERA_HERO.subtitle}
+              <span className="vax-hub-hero-tag">{copy.hero.tag}</span>
+              <h1 className="vax-hub-hero-title">{copy.hero.title}</h1>
+              <p
+                className="vax-hub-hero-subtitle hub-en"
+                lang={isArabic ? 'ar' : 'en'}
+                style={{ fontStyle: 'normal', opacity: 0.95 }}
+              >
+                {copy.hero.subtitle}
               </p>
-              <p className="vax-hub-hero-lead">{HCP_VACCINES_SERA_HERO.lead}</p>
+              <p className="vax-hub-hero-lead">{copy.hero.lead}</p>
               <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
+                <ArticleMetaDate {...meta} locale={isArabic ? 'ar' : 'en'} align="center" compact />
               </div>
             </header>
 
@@ -89,7 +115,7 @@ export default function HcpVaccinesSeraHub() {
               <div className="hcp-vs-welcome-visual">
                 <Image
                   src={VACCINES_IMAGE}
-                  alt="Vaccines and sera in Egypt"
+                  alt={isArabic ? 'اللقاحات والأمصال في مصر' : 'Vaccines and sera in Egypt'}
                   width={520}
                   height={360}
                   className="hcp-vs-welcome-img"
@@ -97,7 +123,7 @@ export default function HcpVaccinesSeraHub() {
                 />
               </div>
               <div className="hcp-vs-welcome-copy">
-                {HCP_VACCINES_SERA_INTRO.map((paragraph) => (
+                {copy.intro.map((paragraph) => (
                   <p key={paragraph.slice(0, 40)} className="hcp-vs-welcome-text">
                     {paragraph}
                   </p>
@@ -107,12 +133,12 @@ export default function HcpVaccinesSeraHub() {
 
             <div className="vax-hub-stats vax-hub-stats--two hcp-vs-stats">
               <div className="vax-hub-stat">
-                <span className="vax-hub-stat-num">{HCP_VACCINES_SERA_COUNT}</span>
-                <span className="vax-hub-stat-label">Products</span>
+                <span className="vax-hub-stat-num">{HCP_VACCINES_SERA_SORTED.length}</span>
+                <span className="vax-hub-stat-label">{copy.stats.products}</span>
               </div>
               <div className="vax-hub-stat">
                 <span className="vax-hub-stat-num">A–Z</span>
-                <span className="vax-hub-stat-label">Alphabetical order</span>
+                <span className="vax-hub-stat-label">{copy.stats.alphabetical}</span>
               </div>
             </div>
 
@@ -123,10 +149,10 @@ export default function HcpVaccinesSeraHub() {
               <input
                 type="search"
                 className="vax-hub-search"
-                placeholder="Search products… e.g. hepatitis, anti-snake, MMR"
+                placeholder={copy.search.placeholder}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                aria-label="Search vaccines and sera"
+                aria-label={copy.search.ariaLabel}
                 dir="ltr"
               />
               {query ? (
@@ -134,7 +160,7 @@ export default function HcpVaccinesSeraHub() {
                   type="button"
                   className="vax-hub-search-clear"
                   onClick={() => setQuery('')}
-                  aria-label="Clear search"
+                  aria-label={copy.search.clearAriaLabel}
                 >
                   ✕
                 </button>
@@ -142,24 +168,24 @@ export default function HcpVaccinesSeraHub() {
             </div>
 
             {query ? (
-              <p className="vax-hub-search-meta">
+              <p className="vax-hub-search-meta" dir={isArabic ? 'rtl' : 'ltr'}>
                 {visibleProducts.length > 0
-                  ? `Showing ${visibleProducts.length} product${visibleProducts.length === 1 ? '' : 's'}`
-                  : 'No matches — try another keyword'}
+                  ? copy.search.showing(visibleProducts.length)
+                  : copy.search.noMatches}
               </p>
             ) : null}
 
             <div className="hcp-res-sections-head">
-              <h2 className="hcp-res-sections-title">Vaccines & sera (A–Z)</h2>
+              <h2 className="hcp-res-sections-title">{copy.sectionTitle}</h2>
               <p className="hcp-res-sections-subtitle">
-                {HCP_VACCINES_SERA_COUNT} products listed alphabetically — open any topic with the button below.
+                {copy.sectionSubtitle(HCP_VACCINES_SERA_SORTED.length)}
               </p>
             </div>
 
             {visibleProducts.length === 0 ? (
-              <p className="hcp-res-empty">No products match your search.</p>
+              <p className="hcp-res-empty">{copy.search.empty}</p>
             ) : (
-              <section className="hcp-vs-alpha-panel" aria-label="Vaccines and sera A to Z">
+              <section className="hcp-vs-alpha-panel" aria-label={copy.gridAriaLabel}>
                 <div className="hcp-vs-items-grid">
                   {visibleProducts.map((item) => (
                     <article key={item.href} className="hcp-res-item">
@@ -168,15 +194,21 @@ export default function HcpVaccinesSeraHub() {
                           {item.emoji}
                         </span>
                         <div className="hcp-res-item-copy">
-                          <h3 className="hcp-res-item-title">{item.title}</h3>
-                          <p className="hcp-res-item-tag">{item.subtitle}</p>
-                          <p className="hcp-res-item-desc">{item.excerpt}</p>
+                          <h3 className="hcp-res-item-title">
+                            {isArabic ? item.titleAr : item.titleEn}
+                          </h3>
+                          <p className="hcp-res-item-tag">
+                            {isArabic ? item.subtitleAr : item.subtitleEn}
+                          </p>
+                          <p className="hcp-res-item-desc">
+                            {isArabic ? item.excerptAr : item.excerptEn}
+                          </p>
                         </div>
                       </div>
                       <Link href={item.href} className="hcp-res-btn">
-                        Open {item.title}
+                        {copy.openProduct(isArabic ? item.titleAr : item.titleEn)}
                         <span className="hcp-res-btn-arrow" aria-hidden>
-                          →
+                          {isArabic ? '←' : '→'}
                         </span>
                       </Link>
                     </article>
@@ -184,6 +216,8 @@ export default function HcpVaccinesSeraHub() {
                 </div>
               </section>
             )}
+
+            {isArabic ? <HcpGuideArabicDisclaimer className="hcp-vs-hub-ar-disclaimer" /> : null}
           </div>
         </div>
       </section>

@@ -1,14 +1,14 @@
 import type { ReactNode } from 'react';
+import HcpGuideArabicPanel from '@/components/hcp-guide/HcpGuideArabicPanel';
 import HcpVaccineProductLayout from '@/components/hcp-vaccine-product/HcpVaccineProductLayout';
 import {
-  HcpVaccineContentBlocks,
-  HcpVaccineExtraContent,
-  HcpVaccineInsertsSection,
-  HcpVaccineReferencesSection,
-  HcpVaccineResourcesSection,
-  type VaccinePagePdf,
-  type VaccinePageReference,
-  type VaccinePageSection,
+  HcpVaccineProductPageContent,
+  buildVaccineProductToc,
+} from '@/components/hcp-vaccine-product/HcpVaccineProductPageContent';
+import type {
+  VaccinePagePdf,
+  VaccinePageReference,
+  VaccinePageSection,
 } from '@/components/hcp-vaccine-product/HcpVaccineContentBlocks';
 import type { HcpGuideMetaKey, HcpGuideTocItem } from '@/components/hcp-guide/types';
 
@@ -28,24 +28,12 @@ export type HcpVaccineProductPageProps = {
   pdfs?: VaccinePagePdf[];
   extra?: ReactNode;
   tocExtra?: HcpGuideTocItem[];
+  /** Full Arabic product copy — enables dedicated Arabic tab with translation disclaimer. */
+  ar?: Omit<
+    HcpVaccineProductPageProps,
+    'metaKey' | 'ar' | 'emoji' | 'imageSrc' | 'imageAlt' | 'faqHref' | 'docHref'
+  >;
 };
-
-function buildToc(
-  sections: VaccinePageSection[],
-  opts: {
-    hasResources: boolean;
-    hasReferences: boolean;
-    hasPdfs: boolean;
-    tocExtra?: HcpGuideTocItem[];
-  },
-): HcpGuideTocItem[] {
-  const toc: HcpGuideTocItem[] = sections.map((s) => ({ id: s.id, label: s.title }));
-  if (opts.tocExtra) toc.push(...opts.tocExtra);
-  if (opts.hasResources) toc.push({ id: 'resources', label: 'FAQ & documents' });
-  if (opts.hasReferences) toc.push({ id: 'references', label: 'References' });
-  if (opts.hasPdfs) toc.push({ id: 'inserts', label: 'Product inserts (PDF)' });
-  return toc;
-}
 
 export default function HcpVaccineProductPage({
   metaKey,
@@ -63,14 +51,55 @@ export default function HcpVaccineProductPage({
   pdfs = [],
   extra,
   tocExtra,
+  ar,
 }: HcpVaccineProductPageProps) {
   const hasResources = Boolean(faqHref || docHref);
-  const toc = buildToc(sections, {
+  const enToc = buildVaccineProductToc(sections, {
+    arabic: false,
     hasResources,
     hasReferences: references.length > 0,
     hasPdfs: pdfs.length > 0,
     tocExtra,
   });
+
+  const arToc = ar
+    ? buildVaccineProductToc(ar.sections, {
+        arabic: true,
+        hasResources,
+        hasReferences: (ar.references ?? references).length > 0,
+        hasPdfs: (ar.pdfs ?? pdfs).length > 0,
+        tocExtra: ar.tocExtra ?? tocExtra,
+      })
+    : undefined;
+
+  const englishBody = (
+    <HcpVaccineProductPageContent
+      sections={sections}
+      faqHref={faqHref}
+      docHref={docHref}
+      faqLabel={faqLabel}
+      docLabel={docLabel}
+      references={references}
+      pdfs={pdfs}
+      extra={extra}
+    />
+  );
+
+  const arabicBody = ar ? (
+    <HcpGuideArabicPanel contentOnly>
+      <HcpVaccineProductPageContent
+        sections={ar.sections}
+        faqHref={faqHref}
+        docHref={docHref}
+        faqLabel={ar.faqLabel ?? faqLabel}
+        docLabel={ar.docLabel ?? docLabel}
+        references={ar.references ?? references}
+        pdfs={ar.pdfs ?? pdfs}
+        extra={ar.extra ?? extra}
+        arabic
+      />
+    </HcpGuideArabicPanel>
+  ) : undefined;
 
   return (
     <HcpVaccineProductLayout
@@ -80,18 +109,13 @@ export default function HcpVaccineProductPage({
       emoji={emoji}
       imageSrc={imageSrc}
       imageAlt={imageAlt}
-      toc={toc}
+      toc={enToc}
+      arTitle={ar?.title}
+      arLead={ar?.lead}
+      arToc={arToc}
+      arabicChildren={arabicBody}
     >
-      <HcpVaccineContentBlocks sections={sections} />
-      <HcpVaccineExtraContent>{extra}</HcpVaccineExtraContent>
-      <HcpVaccineResourcesSection
-        faqHref={faqHref}
-        docHref={docHref}
-        faqLabel={faqLabel}
-        docLabel={docLabel}
-      />
-      <HcpVaccineReferencesSection references={references} />
-      <HcpVaccineInsertsSection pdfs={pdfs} />
+      {englishBody}
     </HcpVaccineProductLayout>
   );
 }

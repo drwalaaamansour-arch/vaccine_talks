@@ -2,6 +2,7 @@
 export { BcgPage } from './bcg';
 export { DiphtheriaPage } from './diphtheria';
 export { DtPage } from './dt';
+export { HepatitisAPage } from './hepatitis-a';
 export { HepatitisABPage } from './hepatitis-a-b';
 export { HepatitisBPage } from './hepatitis-b';
 export { HibPage } from './hib';

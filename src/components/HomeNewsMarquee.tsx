@@ -20,6 +20,17 @@ type HomeNewsMarqueeItem = {
 
 const HOME_NEWS_MARQUEE_ITEMS: HomeNewsMarqueeItem[] = [
   {
+    id: 'pcv21-mflusiva-jun-2026',
+    date: 'June 17, 2026',
+    category: 'FDA Update',
+    title:
+      'FDA expands indication for 21-valent pneumococcal conjugate vaccine (PCV21, Capvaxive, Merck) to include children at increased risk.',
+    body:
+      'On June 17, FDA expanded Capvaxive (PCV21, Merck) to children and adolescents age 2–17 at increased IPD risk after a primary pediatric PCV series—the same population currently eligible for PPSV23. PCV21 remains recommended for adults age 50+ and high-risk adults 18–49, but not for primary infant series (PCV15 or PCV20). FDA approval letter and package insert PDFs on HCP Vaccine Updates.',
+    href: '/hcp-vaccine-updates#pcv21-mflusiva-jun-2026',
+    linkText: 'Read more on Vaccine Updates →',
+  },
+  {
     id: 'acog-maternal-2026',
     date: 'June 10, 2026',
     category: 'Guidelines',

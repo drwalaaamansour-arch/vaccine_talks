@@ -1,10 +1,15 @@
-import type { ReactNode } from 'react';
+'use client';
+
+import { useCallback, useState, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
 import ArticleMetaDate from '@/components/ArticleMetaDate';
+import HcpGuideLanguageTabs, { type HcpGuideLocale } from '@/components/hcp-guide/HcpGuideLanguageTabs';
+import HcpGuideArabicPanel from '@/components/hcp-guide/HcpGuideArabicPanel';
 import { ARTICLE_META } from '@/lib/article-meta';
+import { HCP_VACCINE_UI } from '@/data/hcp-vaccine-ui-copy';
 import type { HcpGuideMetaKey, HcpGuideTocItem } from '@/components/hcp-guide/types';
 
 type HcpVaccineProductLayoutProps = {
@@ -15,6 +20,10 @@ type HcpVaccineProductLayoutProps = {
   imageSrc?: string;
   imageAlt?: string;
   toc: HcpGuideTocItem[];
+  arTitle?: string;
+  arLead?: string;
+  arToc?: HcpGuideTocItem[];
+  arabicChildren?: ReactNode;
   children: ReactNode;
 };
 
@@ -26,9 +35,40 @@ export default function HcpVaccineProductLayout({
   imageSrc,
   imageAlt,
   toc,
+  arTitle,
+  arLead,
+  arToc,
+  arabicChildren,
   children,
 }: HcpVaccineProductLayoutProps) {
   const meta = ARTICLE_META[metaKey];
+  const [locale, setLocale] = useState<HcpGuideLocale>('en');
+  const isArabic = locale === 'ar';
+  const hasBilingual = Boolean(arTitle || arLead || arToc || arabicChildren);
+
+  const handleLocaleChange = useCallback((next: HcpGuideLocale) => {
+    setLocale(next);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, []);
+
+  const ui = isArabic ? HCP_VACCINE_UI.ar : HCP_VACCINE_UI.en;
+  const displayTitle = isArabic ? (arTitle ?? title) : title;
+  const displayLead = isArabic ? (arLead ?? lead) : lead;
+  const displayToc = isArabic ? (arToc ?? toc) : toc;
+
+  const mirrorEnglish = isArabic && arabicChildren == null;
+  const mainClassSuffix = `${isArabic ? ' hcp-guide-main--ar' : ''}${mirrorEnglish ? ' hcp-guide-main--mirror-en' : ''}`;
+
+  const mainContent =
+    isArabic && hasBilingual
+      ? (arabicChildren ?? (
+          <HcpGuideArabicPanel contentOnly showTranslationDisclaimer={false}>
+            {children}
+          </HcpGuideArabicPanel>
+        ))
+      : children;
 
   return (
     <div className="min-h-screen hcp-cancer-page hcp-guide-page hcp-vax-product-page" dir="ltr" lang="en">
@@ -56,19 +96,33 @@ export default function HcpVaccineProductLayout({
 
           <div className="hcp-cancer-inner hcp-guide-inner">
             <Link href="/hcp-vaccines-sera" className="hcp-cancer-back hcp-guide-back">
-              ← Vaccines and Sera in Egypt
+              {ui.back}
             </Link>
 
-            <header className="hcp-cancer-hero hcp-guide-hero hcp-vax-product-hero">
+            {hasBilingual ? (
+              <div className="hcp-guide-lang-tabs-wrap">
+                <HcpGuideLanguageTabs locale={locale} onChange={handleLocaleChange} />
+              </div>
+            ) : null}
+
+            <header
+              className={`hcp-cancer-hero hcp-guide-hero hcp-vax-product-hero${isArabic ? ' hcp-guide-hero--ar' : ''}`}
+              dir={isArabic ? 'rtl' : 'ltr'}
+              lang={isArabic ? 'ar' : 'en'}
+            >
               <div className="hcp-cancer-hero-glow" aria-hidden />
               <span className="hcp-cancer-hero-emoji" aria-hidden>
                 {emoji}
               </span>
-              <span className="hcp-cancer-hero-tag">HCP · Vaccines & sera · Egypt</span>
-              <h1 className="hcp-cancer-hero-title">{title}</h1>
-              <p className="hcp-cancer-hero-lead">{lead}</p>
+              <span className="hcp-cancer-hero-tag">{ui.tag}</span>
+              <h1 className="hcp-cancer-hero-title" dir={isArabic ? 'rtl' : undefined}>
+                {displayTitle}
+              </h1>
+              <p className="hcp-cancer-hero-lead" dir={isArabic ? 'rtl' : undefined}>
+                {displayLead}
+              </p>
               <div className="hcp-cancer-hero-meta hub-hero-meta">
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
+                <ArticleMetaDate {...meta} locale={isArabic ? 'ar' : 'en'} align="center" compact />
               </div>
             </header>
 
@@ -76,7 +130,7 @@ export default function HcpVaccineProductLayout({
               <div className="hcp-vax-product-visual">
                 <Image
                   src={imageSrc}
-                  alt={imageAlt ?? title}
+                  alt={imageAlt ?? displayTitle}
                   width={600}
                   height={400}
                   className="hcp-vax-product-img"
@@ -85,14 +139,22 @@ export default function HcpVaccineProductLayout({
               </div>
             ) : null}
 
-            <div className="hcp-cancer-body hcp-guide-body">
-              <nav className="hcp-cancer-nav hcp-guide-nav" aria-label="On this page">
-                <p className="hcp-cancer-nav-label">On this page</p>
+            <div className={`hcp-cancer-body hcp-guide-body${isArabic ? ' hcp-guide-body--ar' : ''}`}>
+              <nav
+                className="hcp-cancer-nav hcp-guide-nav"
+                aria-label={ui.onThisPage}
+                dir={isArabic ? 'rtl' : 'ltr'}
+              >
+                <p className="hcp-cancer-nav-label">{ui.onThisPage}</p>
                 <div className="hcp-cancer-nav-panel">
                   <ul className="hcp-cancer-nav-scroll">
-                    {toc.map((item, index) => (
+                    {displayToc.map((item, index) => (
                       <li key={item.id}>
-                        <a href={`#${item.id}`}>
+                        <a
+                          href={`#${item.id}`}
+                          dir={isArabic ? 'rtl' : undefined}
+                          lang={isArabic ? 'ar' : undefined}
+                        >
                           <span className="hcp-cancer-nav-num">{index + 1}</span>
                           {item.label}
                         </a>
@@ -101,7 +163,7 @@ export default function HcpVaccineProductLayout({
                   </ul>
                 </div>
               </nav>
-              <div className="hcp-cancer-main hcp-guide-main">{children}</div>
+              <div className={`hcp-cancer-main hcp-guide-main${mainClassSuffix}`}>{mainContent}</div>
             </div>
           </div>
         </div>

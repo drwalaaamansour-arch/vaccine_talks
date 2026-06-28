@@ -10,14 +10,14 @@ export default function HcpGuideLanguageTabs({
   onChange: (locale: HcpGuideLocale) => void;
 }) {
   return (
-    <div className="hcp-guide-lang-tabs" role="tablist" aria-label="Article language">
+    <div className="hcp-guide-lang-tabs" role="tablist" aria-label="Article language" dir="ltr">
       <button
         type="button"
         role="tab"
         id="hcp-guide-lang-tab-en"
         aria-selected={locale === 'en'}
         aria-controls="hcp-guide-lang-panel-en"
-        className={`hcp-guide-lang-tab${locale === 'en' ? ' hcp-guide-lang-tab--active' : ''}`}
+        className={`hcp-guide-lang-tab hcp-guide-lang-tab--en${locale === 'en' ? ' hcp-guide-lang-tab--active' : ''}`}
         onClick={() => onChange('en')}
       >
         English
@@ -28,7 +28,7 @@ export default function HcpGuideLanguageTabs({
         id="hcp-guide-lang-tab-ar"
         aria-selected={locale === 'ar'}
         aria-controls="hcp-guide-lang-panel-ar"
-        className={`hcp-guide-lang-tab${locale === 'ar' ? ' hcp-guide-lang-tab--active' : ''}`}
+        className={`hcp-guide-lang-tab hcp-guide-lang-tab--ar${locale === 'ar' ? ' hcp-guide-lang-tab--active' : ''}`}
         onClick={() => onChange('ar')}
       >
         العربية

@@ -11,6 +11,56 @@ export default function VaccineUpdatesSections({ visibleIds }: { visibleIds: str
 
   return (
     <div className="hcp-vu-updates-list">
+      {show('pcv21-mflusiva-jun-2026') ? (
+        <VaccineUpdateShell
+          id="pcv21-mflusiva-jun-2026"
+          date="June 17, 2026"
+          badge="FDA Update"
+          title="FDA expands indication for 21-valent pneumococcal conjugate vaccine (PCV21, Capvaxive, Merck) to include children at increased risk."
+        >
+          <h3>PCV-21</h3>
+          <p>
+            On June 17, FDA expanded the indicated age range for PCV-21 (Capvaxive, Merck) to include children
+            and adolescents age 2 through 17 years who have completed a primary pediatric PCV series and have one
+            or more chronic medical conditions that put them at increased risk for invasive pneumococcal disease
+            (IPD). This is the same population of children for whom a dose of pneumococcal polysaccharide vaccine
+            (PPSV23, Pneumovax23, Merck) is currently recommended. A primary series in infants and young children
+            is currently recommended to be completed with PCV15 (Vaxneuvance, Merck), or PCV20 (Prevnar20, Pfizer).
+          </p>
+          <p>
+            PCV21 is routinely recommended for adults age 50 and older and for those at increased risk age 18
+            through 49. PCV21 is not currently recommended for primary pneumococcal vaccination of young children
+            because, although it includes serotypes more likely to affect adults that are not included in PCV15 or
+            PCV20, it does not include some of the serotypes most likely to cause serious disease in young children.
+          </p>
+
+          <HcpVaccineUpdatesMultiPdf
+            pdfs={[
+              {
+                label: 'FDA approval letter (June 17, 2026)',
+                src: '/june-17-2026-approval-letter-capvaxive.pdf',
+                title: 'FDA approval letter for Capvaxive (PCV21)',
+              },
+              {
+                label: 'Package insert',
+                src: '/capvaxive-package-insert.pdf',
+                title: 'Capvaxive (PCV21) package insert',
+              },
+            ]}
+          />
+
+          <div className="hcp-vu-report-cite">
+            <p>
+              <strong>Source:</strong>{' '}
+              <a href="https://www.immunize.org/" target="_blank" rel="noopener noreferrer">
+                Immunize.org
+              </a>
+              .
+            </p>
+          </div>
+        </VaccineUpdateShell>
+      ) : null}
+
       {show('acog-maternal-2026') ? (
         <VaccineUpdateShell
           id="acog-maternal-2026"

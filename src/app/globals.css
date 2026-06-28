@@ -7600,6 +7600,9 @@ body {
   max-width: min(1100px, 100%);
   margin-inline: auto;
   direction: ltr;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .hcp-vs-back {
@@ -8563,6 +8566,8 @@ body {
   margin: 0 0 1.35rem;
   display: flex;
   justify-content: center;
+  direction: ltr;
+  align-self: center;
 }
 
 .hcp-sp-hub-lang-tabs {
@@ -8570,29 +8575,46 @@ body {
 }
 
 .hcp-guide-lang-tabs {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: stretch;
-  gap: 0.65rem;
-  padding: 0.6rem;
+  width: min(100%, 26rem);
+  gap: 0.5rem;
+  padding: 0.5rem;
   border-radius: 999px;
   background: rgba(64, 96, 109, 0.08);
   border: 1px solid rgba(64, 96, 109, 0.14);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  direction: ltr;
 }
 
 .hcp-guide-lang-tab {
-  min-width: 11.5rem;
-  min-height: 3.5rem;
-  padding: 1rem 2.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 3.35rem;
+  height: 100%;
+  padding: 0.75rem 0.85rem;
   border: none;
   border-radius: 999px;
   background: transparent;
   color: #40606d;
-  font-size: clamp(1.12rem, 2.8vw, 1.35rem);
+  font-size: clamp(1.05rem, 2.6vw, 1.28rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.15;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hcp-guide-lang-tab--en {
+  font-family: inherit;
+  padding-top: 0.08rem;
+}
+
+.hcp-guide-lang-tab--ar {
+  font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
+  padding-top: 0;
 }
 
 .hcp-guide-lang-tab:hover {
@@ -8946,8 +8968,138 @@ body {
   font-weight: 800;
 }
 
+.hcp-vs-hub-ar-disclaimer {
+  margin-top: 1.75rem;
+}
+
 .hcp-sp-hub-ar-disclaimer {
   margin-top: 1.75rem;
+}
+
+.hcp-vs-hub-page--ar .hcp-res-item-title,
+.hcp-vs-hub-page--ar .hcp-res-item-desc {
+  text-align: right;
+}
+
+.hcp-vs-hub-page--ar .hcp-vs-back {
+  direction: rtl;
+  align-self: flex-end;
+}
+
+.hcp-vs-hub-page--ar .hcp-vs-welcome-copy {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-vs-hub-page--ar .hcp-res-sections-head,
+.hcp-vs-hub-page--ar .hcp-res-sections-subtitle,
+.hcp-vs-hub-page--ar .hcp-res-empty {
+  direction: rtl;
+  text-align: right;
+}
+
+.hcp-vs-hub-page--ar .hcp-vs-hub-hero,
+.hcp-vs-hub-page--ar .hcp-guide-hero--ar {
+  direction: rtl;
+}
+
+.hcp-vs-hub-page--ar .vax-hub-hero-title,
+.hcp-vs-hub-page--ar .vax-hub-hero-subtitle,
+.hcp-vs-hub-page--ar .vax-hub-hero-lead {
+  direction: rtl;
+  text-align: center;
+}
+
+.hcp-vs-hub-lang-tabs {
+  margin-bottom: 1.25rem;
+  width: 100%;
+  direction: ltr;
+  align-self: center;
+}
+
+.hcp-vs-hub-lang-tabs .hcp-guide-lang-tabs {
+  width: 100%;
+  max-width: none;
+}
+
+/* HCP PDF serum pages (antisera, immunoglobulin) */
+.hcp-pdf-serum-elegant {
+  overflow: visible;
+}
+
+.hcp-pdf-serum-viewer {
+  width: 100%;
+  margin: 0 auto 1rem;
+}
+
+.hcp-pdf-serum-iframe {
+  display: block;
+  width: 100%;
+  height: 800px;
+  min-height: 600px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.hcp-pdf-serum-rotate-wrap {
+  transform: rotate(180deg);
+  transform-origin: center;
+  width: min(100%, 800px);
+  height: min(75vh, 600px);
+  margin: 0 auto;
+}
+
+.hcp-pdf-serum-rotate-wrap .hcp-pdf-serum-iframe {
+  height: 100%;
+  min-height: 0;
+}
+
+.hcp-pdf-serum-actions {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.hcp-pdf-serum-download {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #40606d;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hcp-pdf-serum-download:hover {
+  background: #2d4550;
+}
+
+.hcp-pdf-serum-download--placeholder {
+  display: inline-block;
+  opacity: 0.85;
+  cursor: default;
+  pointer-events: none;
+}
+
+.hcp-pdf-serum-iframe--placeholder {
+  background: linear-gradient(180deg, #f4f7f8 0%, #e8eef0 100%);
+}
+
+.hcp-pdf-serum-source {
+  text-align: center;
+  color: #40606d;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.hcp-pdf-serum-page--ar .hcp-pdf-serum-source {
+  text-align: center;
+}
+
+.hcp-pdf-serum-ar-disclaimer {
+  margin-top: 1.25rem;
 }
 
 .hcp-guide-ar-panel .hcp-cancer-section[dir='rtl'] .hcp-cancer-section-head {

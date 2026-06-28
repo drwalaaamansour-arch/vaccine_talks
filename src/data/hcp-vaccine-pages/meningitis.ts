@@ -1,4 +1,5 @@
 import type { HcpVaccineProductPageProps } from '@/components/hcp-vaccine-product/HcpVaccineProductPage';
+import { buildVaccineArBundle } from '@/lib/build-hcp-vaccine-ar';
 
 export const MeningitisPage: HcpVaccineProductPageProps = {
   "metaKey": "hcpMeningitis",
@@ -20,5 +21,22 @@ export const MeningitisPage: HcpVaccineProductPageProps = {
     }
   ],
   "references": [],
-  "pdfs": []
+  "pdfs": [],
+  ar: buildVaccineArBundle({
+    title: 'التهاب السحايا (HCP)',
+    lead: 'المحتوى قريباً...',
+    sections: [
+      {
+        id: 'overview',
+        title: 'نظرة عامة',
+        icon: '📋',
+        blocks: [
+          {
+            type: 'p',
+            text: 'المحتوى قريباً...',
+          },
+        ],
+      },
+    ],
+  }),
 };

@@ -283,9 +283,31 @@ function HsctSpecialPopulationsSpotlightCard({ duplicate }: { duplicate?: boolea
   );
 }
 
+function Pcv21CapvaxiveSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-vaccine-updates#pcv21-mflusiva-jun-2026"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">
+        FDA expands PCV21 (Capvaxive) to children at increased risk
+      </h3>
+      <p className="home-newly-card-body">
+        June 17, 2026: FDA expanded Capvaxive for children and adolescents age 2–17 with chronic conditions at
+        increased IPD risk, after a primary pediatric PCV series. Includes FDA approval letter and package insert
+        PDFs on Global Vaccine Updates.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <Pcv21CapvaxiveSpotlightCard duplicate={duplicate} />
       <SolidOrganTransplantSpotlightCard duplicate={duplicate} />
       <ImmunosuppressiveNonHcpSpotlightCard duplicate={duplicate} />
       <CancerVaccinationSpotlightCard duplicate={duplicate} />

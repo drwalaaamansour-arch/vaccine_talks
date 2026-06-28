@@ -23,6 +23,18 @@ export const HCP_VACCINE_UPDATES_INTRO = [
 
 export const HCP_VACCINE_UPDATE_INDEX: HcpVaccineUpdateIndexItem[] = [
   {
+    id: 'pcv21-mflusiva-jun-2026',
+    date: 'June 17, 2026',
+    badge: 'FDA Update',
+    title:
+      'FDA expands indication for 21-valent pneumococcal conjugate vaccine (PCV21, Capvaxive, Merck) to include children at increased risk.',
+    summary:
+      'PCV21 (Capvaxive) now licensed for children and adolescents age 2–17 at increased IPD risk after a primary pediatric PCV series.',
+    keywords:
+      'pcv21 capvaxive pneumococcal merck fda children ppsv23 pcv15 pcv20 ipd',
+    emoji: '🇺🇸',
+  },
+  {
     id: 'acog-maternal-2026',
     date: 'June 10, 2026',
     badge: 'Guidelines',

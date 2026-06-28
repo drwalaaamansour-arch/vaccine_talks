@@ -1,4 +1,5 @@
 import type { HcpVaccineProductPageProps } from '@/components/hcp-vaccine-product/HcpVaccineProductPage';
+import { buildVaccineArBundle } from '@/lib/build-hcp-vaccine-ar';
 
 export const DtPage: HcpVaccineProductPageProps = {
   "metaKey": "hcpDt",
@@ -61,5 +62,22 @@ export const DtPage: HcpVaccineProductPageProps = {
       "productName": "Product Monograph Adacel-polio",
       "src": "/Product%20Monograph%20Adacel-polio.pdf"
     }
-  ]
+  ],
+  ar: buildVaccineArBundle({
+    title: 'لقاحات تحتوي على DT',
+    lead: 'يوفر هذا القسم للعاملين في الرعاية الصحية موارد ومراجع متعلقة بلقاحات الدفتيريا والتيتانوس (DT) المستخدمة في مصر. ستُضاف معلومات أكثر تفصيلاً عن المنتجات هنا.',
+    sections: [
+      {
+        id: 'overview',
+        title: 'نظرة عامة',
+        icon: '📋',
+        blocks: [
+          {
+            type: 'p',
+            text: 'يوفر هذا القسم للعاملين في الرعاية الصحية موارد ومراجع متعلقة بلقاحات الدفتيريا والتيتانوس (DT) المستخدمة في مصر. ستُضاف معلومات أكثر تفصيلاً عن المنتجات هنا.',
+          },
+        ],
+      },
+    ],
+  }),
 };
