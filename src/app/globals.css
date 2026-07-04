@@ -12660,6 +12660,102 @@ body {
   font-style: italic;
 }
 
+/* Bilingual EN/AR tabs — vaccinations hub & article pages */
+.vax-hub-lang-tabs,
+.vax-article-lang-tabs {
+  margin-bottom: 1.25rem;
+}
+
+.vax-hub-page--en .vax-hub-inner,
+.vax-article-page--en .vax-article-inner {
+  direction: ltr;
+}
+
+.vax-hub-page--en .vax-hub-search-wrap {
+  direction: ltr;
+}
+
+.vax-hub-page--en .vax-hub-search {
+  text-align: left;
+  direction: ltr;
+}
+
+.vax-hub-page--en .vax-hub-grid {
+  direction: ltr;
+}
+
+.vax-hub-tile-label {
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  color: #355a63;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.vax-hub-page--en .vax-hub-tile-arrow {
+  inset-inline-start: auto;
+  inset-inline-end: 0.85rem;
+}
+
+.vax-hub-page--en .vax-hub-tile:hover .vax-hub-tile-arrow {
+  transform: translateX(2px);
+}
+
+.vax-article-hero--ar .vax-article-hero-title,
+.vax-article-hero--ar .vax-article-hero-lead {
+  direction: rtl;
+  text-align: center;
+}
+
+.vax-article-hero--en .vax-article-hero-title,
+.vax-article-hero--en .vax-article-hero-lead {
+  direction: ltr;
+  text-align: center;
+}
+
+.vax-article-intro-text {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  color: #355a63;
+  line-height: 1.85;
+}
+
+.vax-article-page--ar .vax-article-intro-text,
+.vax-article-page--ar .vax-article-schedule-note,
+.vax-article-page--ar .vax-article-highlight-text,
+.vax-article-page--ar .vax-article-summary-text {
+  text-align: right;
+}
+
+.vax-article-page--en .vax-article-intro-text,
+.vax-article-page--en .vax-article-schedule-note,
+.vax-article-page--en .vax-article-highlight-text,
+.vax-article-page--en .vax-article-summary-text {
+  text-align: left;
+}
+
+.vax-article-highlight-text {
+  margin: 0;
+  font-size: 1rem;
+  color: #355a63;
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.vax-article-summary-text {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #355a63;
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+.vax-article-chip-label {
+  font-weight: 700;
+  color: #355a63;
+}
+
 @media (max-width: 768px) {
   .vax-article-intro,
   .vax-article-schedules,

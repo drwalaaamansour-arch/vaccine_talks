@@ -31,3 +31,27 @@ export const PUBLIC_VACCINATIONS: PublicVaccinationItem[] = [
 ];
 
 export const PUBLIC_VACCINATION_TOPICS_COUNT = PUBLIC_VACCINATIONS.length;
+
+export const PUBLIC_VACCINATIONS_HUB_COPY = {
+  en: {
+    tag: 'Your vaccine guide · Egypt',
+    title: 'Available Vaccinations',
+    lead: 'Choose a vaccine to learn more — clear information for every vaccine in Egypt.',
+    searchPlaceholder: 'Search a vaccine…',
+    searchAriaLabel: 'Search vaccinations',
+    searchClearAriaLabel: 'Clear search',
+    searchShowing: (count: number) =>
+      `Showing ${count} result${count === 1 ? '' : 's'}`,
+    searchNoMatches: 'No matches — try another term',
+  },
+  ar: {
+    tag: 'دليل التطعيمات في مصر',
+    title: 'التطعيمات المتاحة',
+    lead: 'اختاروا التطعيم اللي عاوزين تعرفوا عنه — معلومات واضحة لكل لقاح في مصر.',
+    searchPlaceholder: 'دور على لقاح…',
+    searchAriaLabel: 'البحث في التطعيمات',
+    searchClearAriaLabel: 'مسح البحث',
+    searchShowing: (count: number) => `عرض ${count} نتيجة`,
+    searchNoMatches: 'مفيش نتائج — جرّب كلمة تانية',
+  },
+} as const;

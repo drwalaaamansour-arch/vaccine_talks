@@ -203,7 +203,7 @@ function buildGlanceStats(locale: HcpGuideLocale) {
 }
 
 export default function AboutPageContent() {
-  const [locale, setLocale] = useState<HcpGuideLocale>('en');
+  const [locale, setLocale] = useState<HcpGuideLocale>('ar');
   const isArabic = locale === 'ar';
 
   const handleLocaleChange = useCallback((next: HcpGuideLocale) => {

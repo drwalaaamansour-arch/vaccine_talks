@@ -4,11 +4,19 @@ type CdcArabicPdfSectionProps = {
   titleAr: string;
   titleEn: string;
   introAr?: string;
+  /** When true, show Arabic title/intro only (no English subtitle). */
+  arabicOnly?: boolean;
 };
 
 const CDC_ARABIC_BASE = '/cdc%20arabic';
 
-export default function CdcArabicPdfSection({ fileName, titleAr, titleEn, introAr }: CdcArabicPdfSectionProps) {
+export default function CdcArabicPdfSection({
+  fileName,
+  titleAr,
+  titleEn,
+  introAr,
+  arabicOnly = false,
+}: CdcArabicPdfSectionProps) {
   const pdfUrl = `${CDC_ARABIC_BASE}/${fileName}`;
   const embedUrl = `${pdfUrl}#view=FitH&toolbar=1`;
 
@@ -53,17 +61,19 @@ export default function CdcArabicPdfSection({ fileName, titleAr, titleEn, introA
                 {introAr}
               </p>
             ) : null}
-            <p
-              style={{
-                textAlign: 'center',
-                margin: '0 0 1.25rem',
-                color: '#40606d',
-                fontWeight: 600,
-              }}
-              dir="ltr"
-            >
-              {titleEn}
-            </p>
+            {!arabicOnly ? (
+              <p
+                style={{
+                  textAlign: 'center',
+                  margin: '0 0 1.25rem',
+                  color: '#40606d',
+                  fontWeight: 600,
+                }}
+                dir="ltr"
+              >
+                {titleEn}
+              </p>
+            ) : null}
             <div style={{ width: '100%', marginTop: '0.5rem' }}>
               <iframe
                 src={embedUrl}
