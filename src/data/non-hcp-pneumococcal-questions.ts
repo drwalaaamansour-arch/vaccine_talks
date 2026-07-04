@@ -29,9 +29,9 @@ export const pneumococcalQuestions: NonHcpQuestion[] = [
     question: 'إيه الفرق بين PCV و PPSV؟',
     questionEn: 'What is the difference between PCV and PPSV?',
     answer:
-      'PCV (المقترن) بيشتغل من 6 أسابيع، بيعمل مناعة أقوى وبيقلل حمل البكتيريا. PPSV (متعدد السكريات) للأطفال من سنتين والكبار، وبيتحط بعد PCV بشهرين أو سنة حسب الحالة. الأفضل PCV الأول وبعدين PPSV لو محتاجين الاتنين.',
+      'PCV (المقترن) بيشتغل من 6 أسابيع، بيعمل مناعة أقوى وبيقلل حمل البكتيريا. PPSV (متعدد السكريات) للأطفال من سنتين والكبار، وبيتحط بعد PCV بشهرين أو سنة حسب الحالة — إلا لو كان PCV20، ساعتها PPSV مش محتاج. الأفضل PCV الأول، وبعدين PPSV لو محتاجين الاتنين.',
     answerEn:
-      'PCV (conjugate) works from 6 weeks of age, produces stronger immunity, and reduces bacterial carriage. PPSV (polysaccharide) is for children from 2 years and adults, and is given after PCV by 2 months or 1 year depending on the situation. PCV first, then PPSV if both are needed, is preferred.',
+      'PCV (conjugate) works from 6 weeks of age, produces stronger immunity, and reduces bacterial carriage. PPSV (polysaccharide) is for children from 2 years and adults, and is given after PCV by 2 months or 1 year depending on the situation—except after PCV20, when PPSV is not needed. PCV first, then PPSV if both are needed, is preferred.',
   },
   {
     question: 'إيه أنواع PCV الموجودة في مصر؟',
@@ -39,25 +39,25 @@ export const pneumococcalQuestions: NonHcpQuestion[] = [
     section: 'التطعيم',
     sectionEn: 'Vaccination',
     answer:
-      'في مصر 3 أنواع مقترنة:\n\n• PCV10 (10 فصايل): للأطفال، ومينفعش بعد 5 سنين.\n• PCV13 (13 فصيلة): ينفع من 6 أسابيع لأي سن، حتى الكبار.\n• PCV15 (15 فصيلة): ينفع من 6 أسابيع للأطفال والكبار، وبيغطي فصايل PCV13 زائد فصيلتين إضافيتين.',
+      'في مصر 4 أنواع مقترنة:\n\n• PCV10 (10 فصايل): للأطفال، ومينفعش بعد 5 سنين.\n• PCV13 (13 فصيلة): ينفع من 6 أسابيع لأي سن، حتى الكبار.\n• PCV15 (15 فصيلة): ينفع من 6 أسابيع للأطفال والكبار، وبيغطي فصايل PCV13 زائد فصيلتين إضافيتين.\n• PCV20 (20 فصيلة): ينفع من 6 أسابيع للأطفال والكبار، وبيغطي فصايل PCV15 زائد 5 فصايل إضافية.',
     answerEn:
-      'In Egypt there are 3 conjugate vaccines:\n\n• PCV10 (10 serotypes): for children, not given after age 5.\n• PCV13 (13 serotypes): can be given from 6 weeks at any age, including adults.\n• PCV15 (15 serotypes): can be given from 6 weeks for children and adults, and covers PCV13 serotypes plus 2 additional serotypes.',
+      'In Egypt there are 4 conjugate vaccines:\n\n• PCV10 (10 serotypes): for children, not given after age 5.\n• PCV13 (13 serotypes): can be given from 6 weeks at any age, including adults.\n• PCV15 (15 serotypes): can be given from 6 weeks for children and adults, and covers PCV13 serotypes plus 2 additional serotypes.\n• PCV20 (20 serotypes): can be given from 6 weeks for children and adults, and covers PCV15 serotypes plus 5 additional serotypes.',
   },
   {
     question: 'تطعيم المكورات الرئوية بيتاخد إمتى للأطفال؟',
     questionEn: 'When is the pneumococcal vaccine given to children?',
     answer:
-      'PCV ممكن من 6 أسابيع. عدد الجرعات حسب العمر:\n\n• أقل من 6 شهور: 3 جرعات قبل السنة + منشطة في السنة التانية.\n• 7 شهور لسنة: جرعتين بينهم شهرين + منشطة في السنة التانية.\n• سنة لسنتين: جرعتين بينهم شهرين.\n• من سنتين: PCV13 أو PCV15 جرعة واحدة؛ PCV10 (لحد 5 سنين) جرعتين بينهم شهرين.',
+      'PCV ممكن من 6 أسابيع. عدد الجرعات حسب العمر (الأنواع الأربعة للأطفال زي بعض لحد سن السنتين، ما عدا PCV15 اللي ممكن يتاخد جرعتين فقط قبل سن السبع شهور):\n\n• أقل من 7 شهور: 3 جرعات + منشطة بين الشهر ١١ وال١٥ من العمر.\n• 7 شهور لسنة: جرعتين بينهم شهرين + منشطة في السنة التانية.\n• سنة لسنتين: جرعتين بينهم شهرين.\n• من سنتين: PCV13 أو PCV15 أو PCV20 جرعة واحدة؛ PCV10 (لحد 5 سنين) جرعتين بينهم شهرين.',
     answerEn:
-      'PCV can be given from 6 weeks of age. Number of doses depends on age:\n\n• Under 6 months: 3 doses before age 1 + booster in the second year.\n• 7 months to 1 year: 2 doses 2 months apart + booster in the second year.\n• 1 to 2 years: 2 doses 2 months apart.\n• From 2 years: PCV13 or PCV15 single dose; PCV10 (up to age 5) 2 doses 2 months apart.',
+      'PCV can be given from 6 weeks of age. Number of doses depends on age (all four types are the same for children up to age 2, except PCV15 which may be given as only 2 doses before 7 months):\n\n• Under 7 months: 3 doses + booster between months 11–15.\n• 7 months to 1 year: 2 doses 2 months apart + booster in the second year.\n• 1 to 2 years: 2 doses 2 months apart.\n• From 2 years: PCV13, PCV15, or PCV20 single dose; PCV10 (up to age 5) 2 doses 2 months apart.',
   },
   {
     question: 'الكبار ياخدوا تطعيم المكورات الرئوية؟',
     questionEn: 'Should adults receive the pneumococcal vaccine?',
     answer:
-      'أيوه، الكبار ممكن ياخدوا PCV13 أو PCV15 — جرعة واحدة. PPSV للكبار والناس اللي عندهم خطر أعلى، وبيتحط بعد PCV بشهرين أو سنة حسب الحالة (خصوصًا بعد PCV15).',
+      'أيوه، الكبار ممكن ياخدوا PCV13 أو PCV15 أو PCV20 — جرعة واحدة. PPSV للكبار والناس اللي عندهم خطر أعلى، وبيتحط بعد PCV بشهرين أو سنة حسب الحالة (خصوصًا بعد PCV15). لو اتاخد PCV20، PPSV مش محتاج.',
     answerEn:
-      'Yes, adults can receive PCV13 or PCV15—a single dose. PPSV is for adults and people at higher risk, given after PCV by 2 months or 1 year depending on the situation (especially after PCV15).',
+      'Yes, adults can receive PCV13, PCV15, or PCV20—a single dose. PPSV is for adults and people at higher risk, given after PCV by 2 months or 1 year depending on the situation (especially after PCV15). If PCV20 was received, PPSV is not needed.',
   },
   {
     question: 'مين المفروض ياخد تطعيم المكورات الرئوية؟',
