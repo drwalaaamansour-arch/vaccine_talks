@@ -157,8 +157,8 @@ export const PneumococcalPage: HcpVaccineProductPageProps = {
       "src": "/Vaxnuvance%20.pdf"
     },
     {
-      "productName": "PCV 20 EMA Label",
-      "src": "/PCV%2020%20EMA%20Label.pdf"
+      "productName": "Prevenar 20",
+      "src": "/egypt-prevenar-20-pcv20-lpd.pdf"
     },
     {
       "productName": "Weuphoria",
