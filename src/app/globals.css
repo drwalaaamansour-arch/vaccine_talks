@@ -6501,6 +6501,32 @@ body {
   transform: translateY(-2px);
 }
 
+.hcp-doc-pdf-section {
+  scroll-margin-top: 5rem;
+}
+
+.hcp-doc-pdf-section + .hcp-doc-pdf-section {
+  margin-top: 1.25rem;
+}
+
+.hcp-doc-preterm-intro {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(64, 96, 109, 0.14);
+  box-shadow: 0 10px 30px rgba(64, 96, 109, 0.08);
+  text-align: center;
+}
+
+.hcp-doc-preterm-intro p {
+  margin: 0 auto 1.15rem;
+  max-width: 42rem;
+  color: #40606d;
+  line-height: 1.65;
+  font-size: 1.02rem;
+}
+
 /* HCP — Pediatric oncology expert consensus (Egypt) */
 .hcp-consensus-page {
   background:

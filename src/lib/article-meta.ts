@@ -173,7 +173,7 @@ export const ARTICLE_META = {
   faqContraindications: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
 
   // Document library
-  docPneumococcal: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MAY 07, 2026' },
+  docPneumococcal: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JULY 16, 2026' },
   docVaricella: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   docStorage: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   docShingles: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 17, 2026' },
