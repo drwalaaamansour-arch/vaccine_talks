@@ -5,6 +5,9 @@ export type VaccineTextBlock = string | string[];
 
 export type VaccineFeature = {
   emoji?: string;
+  titleAr?: string;
+  titleEn?: string;
+  tone?: 'violet' | 'teal' | 'rose' | 'default';
   ar: string;
   en: string;
 };
@@ -40,7 +43,9 @@ export type VaccineCdcPdf = {
 export type VaccineArticle = {
   metaKey: ArticleMetaKey;
   emoji: string;
-  heroAccent?: 'polio' | 'default';
+  heroAccent?: 'polio' | 'rota' | 'pcv' | 'hpv' | 'default';
+  /** When true, the infographic appears above the feature cards. */
+  infographicFirst?: boolean;
   tagAr: string;
   tagEn: string;
   titleAr: string;
@@ -50,6 +55,13 @@ export type VaccineArticle = {
   image?: {
     src: string;
     alt: string;
+  };
+  infographic?: {
+    src: string;
+    /** Optional English-language image; falls back to `src` when omitted. */
+    srcEn?: string;
+    altAr: string;
+    altEn: string;
   };
   introAr?: string;
   introEn?: string;

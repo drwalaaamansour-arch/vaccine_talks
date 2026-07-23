@@ -35,6 +35,65 @@ function VaccineArticleBody({
   const isArabic = locale === 'ar';
   const showIntroSection = Boolean(article.image || article.introAr || article.introEn);
 
+  const featuresBlock =
+    article.features.length > 0 ? (
+      <div
+        className={`vax-article-highlights${article.features.some((f) => f.titleAr || f.titleEn) ? ' vax-article-highlights--titled' : ''}`}
+      >
+        {article.features.map((feature, index) => {
+          const text = isArabic ? feature.ar : feature.en;
+          const title = isArabic ? feature.titleAr : feature.titleEn;
+          const tone = feature.tone ?? 'default';
+          const hasTitle = Boolean(title);
+
+          return (
+            <article
+              key={featureKey(feature, index)}
+              className={[
+                'vax-article-highlight',
+                hasTitle ? 'vax-article-highlight--card' : '',
+                !hasTitle && text.length > 180 ? 'vax-article-highlight--wide' : '',
+                `vax-article-highlight--${tone}`,
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            >
+              {feature.emoji ? (
+                <span className="vax-article-highlight-emoji" aria-hidden>
+                  {feature.emoji}
+                </span>
+              ) : (
+                <span className="vax-article-highlight-emoji" aria-hidden>
+                  📌
+                </span>
+              )}
+              <div className="vax-article-highlight-body">
+                {title ? <h3 className="vax-article-highlight-title">{title}</h3> : null}
+                <p className="vax-article-highlight-text">
+                  <VaccineRichText text={text} />
+                </p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    ) : null;
+
+  const infographicBlock = article.infographic ? (
+    <figure className="vax-article-infographic">
+      <figcaption className="vax-article-infographic-caption">
+        {isArabic ? 'إنفوجرافيك توضيحي' : 'Visual guide'}
+      </figcaption>
+      <div className="vax-article-infographic-frame">
+        <img
+          src={isArabic ? article.infographic.src : (article.infographic.srcEn ?? article.infographic.src)}
+          alt={isArabic ? article.infographic.altAr : article.infographic.altEn}
+          className="vax-article-infographic-img"
+        />
+      </div>
+    </figure>
+  ) : null;
+
   return (
     <>
       {showIntroSection ? (
@@ -60,6 +119,8 @@ function VaccineArticleBody({
           ) : null}
         </div>
       ) : null}
+
+      {article.infographicFirst ? infographicBlock : null}
 
       {article.schedules && article.schedules.length > 0 ? (
         <div className="vax-article-schedules">
@@ -93,35 +154,9 @@ function VaccineArticleBody({
         </div>
       ) : null}
 
-      {article.features.length > 0 ? (
-        <div className="vax-article-highlights">
-          {article.features.map((feature, index) => {
-            const text = isArabic ? feature.ar : feature.en;
+      {featuresBlock}
 
-            return (
-              <article
-                key={featureKey(feature, index)}
-                className={`vax-article-highlight${text.length > 180 ? ' vax-article-highlight--wide' : ''}`}
-              >
-                {feature.emoji ? (
-                  <span className="vax-article-highlight-emoji" aria-hidden>
-                    {feature.emoji}
-                  </span>
-                ) : (
-                  <span className="vax-article-highlight-emoji" aria-hidden>
-                    📌
-                  </span>
-                )}
-                <div>
-                  <p className="vax-article-highlight-text">
-                    <VaccineRichText text={text} />
-                  </p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      ) : null}
+      {!article.infographicFirst ? infographicBlock : null}
 
       {article.summary ? (
         <div className="vax-article-summary">
@@ -163,7 +198,11 @@ export default function VaccineArticlePage({ article }: { article: VaccineArticl
   const heroClass =
     article.heroAccent === 'polio'
       ? 'vax-article-hero vax-article-hero--polio'
-      : 'vax-article-hero vax-article-hero--default';
+      : article.heroAccent === 'rota' ||
+          article.heroAccent === 'pcv' ||
+          article.heroAccent === 'hpv'
+        ? `vax-article-hero vax-article-hero--${article.heroAccent}`
+        : 'vax-article-hero vax-article-hero--default';
 
   const handleLocaleChange = useCallback((next: HcpGuideLocale) => {
     setLocale(next);
@@ -172,9 +211,18 @@ export default function VaccineArticlePage({ article }: { article: VaccineArticl
     }
   }, []);
 
+  const pageAccentClass =
+    article.heroAccent === 'rota' ||
+    article.heroAccent === 'pcv' ||
+    article.heroAccent === 'hpv'
+      ? ` vax-article-page--${article.heroAccent}`
+      : article.heroAccent === 'polio'
+        ? ' vax-article-page--polio'
+        : '';
+
   return (
     <div
-      className={`min-h-screen vax-article-page${isArabic ? ' vax-article-page--ar' : ' vax-article-page--en'}`}
+      className={`min-h-screen vax-article-page${isArabic ? ' vax-article-page--ar' : ' vax-article-page--en'}${pageAccentClass}`}
       dir={isArabic ? 'rtl' : 'ltr'}
       lang={isArabic ? 'ar' : 'en'}
     >
