@@ -2,8 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
-import { ARTICLE_META } from '@/lib/article-meta';
 import {
   IMPORTANT_INFO_CATEGORIES,
   IMPORTANT_INFO_TIPS,
@@ -78,9 +76,6 @@ export default function ImportantInfo() {
               <p className="info-hub-hero-lead">
                 معلومات مهمة ومفيدة حول التطعيمات في مصر — نصائح طبية لكل أسرة، بالعربي والإنجليزي.
               </p>
-              <div className="hub-hero-meta">
-                <ArticleMetaDate {...ARTICLE_META.importantInfo} locale="ar" align="center" compact />
-              </div>
             </header>
 
             <div className="info-hub-stats">

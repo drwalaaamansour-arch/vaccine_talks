@@ -5,13 +5,11 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import {
   CHILDREN_VACCINE_AGE_COUNT,
   CHILDREN_VACCINE_AGES,
   CHILDREN_VACCINES_HERO,
 } from '@/data/children-vaccines-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 function normalizeSearch(value: string) {
   return value.trim().toLowerCase();
@@ -28,7 +26,6 @@ function matchesAge(item: (typeof CHILDREN_VACCINE_AGES)[number], query: string)
 }
 
 export default function ChildrenVaccinesPage() {
-  const meta = ARTICLE_META.childrenVaccines;
   const [query, setQuery] = useState('');
 
   const filteredAges = useMemo(
@@ -76,9 +73,6 @@ export default function ChildrenVaccinesPage() {
               <p className="children-vax-hero-lead-en hub-en" lang="en">
                 {CHILDREN_VACCINES_HERO.leadEn}
               </p>
-              <div className="hub-hero-meta">
-                <ArticleMetaDate {...meta} locale="ar" align="center" compact />
-              </div>
             </header>
 
             <div className="vax-hub-stats vax-hub-stats--two children-vax-stats">

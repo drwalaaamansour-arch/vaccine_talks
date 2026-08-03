@@ -13,6 +13,8 @@ import {
 } from '@/data/anatomic-or-functional-asplenia-copy';
 
 const PDF_SRC = '/spleen.pdf';
+const GUIDELINES_PDF_SRC = '/asplenia-vaccination-guidelines.pdf';
+const CHECKLIST_PDF_SRC = '/asplenia-vaccination-checklist.pdf';
 
 function AspleniaBody({ copy, arabic }: { copy: AspleniaCopy; arabic?: boolean }) {
   const sectionProps = arabic
@@ -64,6 +66,8 @@ function AspleniaBody({ copy, arabic }: { copy: AspleniaCopy; arabic?: boolean }
       </HcpGuideSection>
 
       <div id={pdfId}>
+        <HcpGuidePdfEmbed src={CHECKLIST_PDF_SRC} title={copy.checklistPdfTitle} />
+        <HcpGuidePdfEmbed src={GUIDELINES_PDF_SRC} title={copy.guidelinesPdfTitle} />
         <HcpGuidePdfEmbed src={PDF_SRC} title={copy.pdfTitle} />
       </div>
 

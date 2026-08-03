@@ -16,6 +16,7 @@ const HSCT_VACCINATION_PDF = '/hsct%20vaccination.pdf';
 const AU_HSCT_TABLE_PDF = `/${encodeURIComponent(
   'Table. Recommendations for vaccination after haematopoietic stem cell transplant in children and adults | The Australian Immunisation Handbook.pdf',
 )}`;
+const CCLG_VACCINATIONS_GUIDELINES_PDF = '/cclg-vaccinations-guidelines-2025.pdf';
 
 function styles(arabic: boolean) {
   const dir = arabic ? ('rtl' as const) : ('ltr' as const);
@@ -682,6 +683,7 @@ export function HaematopoieticStemCellTransplantBody({
             boxShadow: '0 4px 20px rgba(64, 96, 109, 0.15)',
           }}
         />
+        <HcpGuidePdfEmbed src={CCLG_VACCINATIONS_GUIDELINES_PDF} title={copy.pdfTitles.cclgGuidelines} />
         <HcpGuidePdfEmbed src={HSCT_VACCINATION_PDF} title={copy.pdfTitles.hsctVaccination} />
         <HcpGuidePdfEmbed src={AU_HSCT_TABLE_PDF} title={copy.pdfTitles.australianTable} />
       </div>

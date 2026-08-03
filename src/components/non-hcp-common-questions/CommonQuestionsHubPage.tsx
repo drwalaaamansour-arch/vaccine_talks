@@ -4,13 +4,11 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import {
   NON_HCP_COMMON_QUESTION_TOPIC_COUNT,
   NON_HCP_COMMON_QUESTION_TOPICS,
   NON_HCP_COMMON_QUESTIONS_HERO,
 } from '@/data/non-hcp-common-questions-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 function normalizeSearch(value: string) {
   return value.trim().toLowerCase();
@@ -27,7 +25,6 @@ function matchesTopic(item: (typeof NON_HCP_COMMON_QUESTION_TOPICS)[number], que
 }
 
 export default function CommonQuestionsHubPage() {
-  const meta = ARTICLE_META.nonHcpCommonQuestions;
   const [query, setQuery] = useState('');
 
   const filteredTopics = useMemo(
@@ -75,9 +72,6 @@ export default function CommonQuestionsHubPage() {
               <p className="ncq-hub-hero-lead-en hub-en" lang="en">
                 {NON_HCP_COMMON_QUESTIONS_HERO.leadEn}
               </p>
-              <div className="hub-hero-meta">
-                <ArticleMetaDate {...meta} locale="ar" align="center" compact />
-              </div>
             </header>
 
             <div className="vax-hub-stats vax-hub-stats--two ncq-hub-stats">

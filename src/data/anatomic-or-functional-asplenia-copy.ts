@@ -15,6 +15,8 @@ export type AspleniaCopy = {
   subnavTitle: string;
   subnavLinks: HcpGuideNavLink[];
   pdfTitle: string;
+  guidelinesPdfTitle: string;
+  checklistPdfTitle: string;
   referencesTitle: string;
   references: HcpGuideReference[];
 };
@@ -130,6 +132,8 @@ export const ASPLENIA_COPY: { en: AspleniaCopy; ar: AspleniaCopy } = {
     subnavTitle: 'Vaccine-specific guidance',
     subnavLinks: VACCINE_LINKS_EN,
     pdfTitle: 'Anatomic or functional asplenia — PDF',
+    guidelinesPdfTitle: 'Asplenia Vaccination Guidelines',
+    checklistPdfTitle: 'Vaccination Checklist',
     referencesTitle: 'References',
     references: REFERENCES,
   },
@@ -166,6 +170,8 @@ export const ASPLENIA_COPY: { en: AspleniaCopy; ar: AspleniaCopy } = {
     subnavTitle: 'إرشادات خاصة بكل لقاح',
     subnavLinks: VACCINE_LINKS_AR,
     pdfTitle: 'نقص الطحال التشريحي أو الوظيفي — PDF',
+    guidelinesPdfTitle: 'إرشادات تطعيم نقص الطحال',
+    checklistPdfTitle: 'قائمة تحقق التطعيم',
     referencesTitle: 'المراجع',
     references: REFERENCES,
   },

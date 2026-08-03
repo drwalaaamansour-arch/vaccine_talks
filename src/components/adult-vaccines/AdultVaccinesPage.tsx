@@ -4,13 +4,11 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import {
   ADULT_VACCINE_COUNT,
   ADULT_VACCINES,
   ADULT_VACCINES_HERO,
 } from '@/data/adult-vaccines-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 function normalizeSearch(value: string) {
   return value.trim().toLowerCase();
@@ -27,7 +25,6 @@ function matchesVaccine(item: (typeof ADULT_VACCINES)[number], query: string) {
 }
 
 export default function AdultVaccinesPage() {
-  const meta = ARTICLE_META.adultVaccines;
   const [query, setQuery] = useState('');
 
   const filteredVaccines = useMemo(
@@ -75,9 +72,6 @@ export default function AdultVaccinesPage() {
               <p className="adult-vax-hero-lead-en hub-en" lang="en">
                 {ADULT_VACCINES_HERO.leadEn}
               </p>
-              <div className="hub-hero-meta">
-                <ArticleMetaDate {...meta} locale="ar" align="center" compact />
-              </div>
             </header>
 
             <div className="vax-hub-stats vax-hub-stats--two adult-vax-stats">

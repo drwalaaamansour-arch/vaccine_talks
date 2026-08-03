@@ -92,12 +92,13 @@ const EN_POST_THERAPY_CARDS: { title: string; blocks: CancerContentBlock[] }[] =
   {
     title: 'Pneumococcal Vaccines',
     blocks: [
-      { type: 'p', text: 'For individuals who have not completed a recommended pneumococcal series:' },
+      { type: 'p', text: 'From 6 years and onward:' },
       {
         type: 'ul',
         items: [
-          'One dose of PCV13, PCV15 or PCV20',
-          'Followed by two doses of PPSV23 according to recommended intervals',
+          'One dose of PCV13, followed by two doses of PPSV23',
+          'or PCV15 followed by one dose of PPSV23',
+          'or PCV20',
         ],
       },
     ],
@@ -177,12 +178,13 @@ const AR_POST_THERAPY_CARDS: { title: string; blocks: CancerContentBlock[] }[] =
   {
     title: 'لقاحات المكورات الرئوية',
     blocks: [
-      { type: 'p', text: 'للأفراد الذين لم يُكملوا سلسلة المكورات الرئوية الموصى بها:' },
+      { type: 'p', text: 'من عمر 6 سنوات فأكثر:' },
       {
         type: 'ul',
         items: [
-          'جرعة واحدة من PCV13 أو PCV15 أو PCV20',
-          'يليها جرعتان من PPSV23 وفق الفترات الموصى بها',
+          'جرعة واحدة من PCV13 يليها جرعتان من PPSV23',
+          'أو PCV15 يليها جرعة واحدة من PPSV23',
+          'أو PCV20',
         ],
       },
     ],
@@ -619,7 +621,7 @@ const EN_SECTIONS: CancerVaccinationSection[] = [
       },
       {
         type: 'p',
-        text: 'For patients who are clinically well and in remission for at least 6 months after completion of therapy, the following booster vaccinations may be considered.',
+        text: 'For patients who are clinically well and in remission for at least 3–6 months after completion of therapy, the following booster vaccinations may be considered.',
       },
       { type: 'postGrid', cards: EN_POST_THERAPY_CARDS },
     ],
@@ -1032,7 +1034,7 @@ const AR_SECTIONS: CancerVaccinationSection[] = [
       },
       {
         type: 'p',
-        text: 'للمرضى الذين هم بصحة سريرية جيدة وفي حالة هدوء لمدة 6 أشهر على الأقل بعد انتهاء العلاج، قد تُؤخذ جرعات المنشطات التالية في الاعتبار.',
+        text: 'للمرضى الذين هم بصحة سريرية جيدة وفي حالة هدوء لمدة 3–6 أشهر على الأقل بعد انتهاء العلاج، قد تُؤخذ جرعات المنشطات التالية في الاعتبار.',
       },
       { type: 'postGrid', cards: AR_POST_THERAPY_CARDS },
     ],
@@ -1080,7 +1082,7 @@ export const CANCER_VACCINATION_EN_TOC: { id: string; label: string }[] = [
   { id: 'after-therapy', label: 'After therapy' },
   { id: 'take-home', label: 'Take-home messages' },
   { id: 'related-resources', label: 'Expert consensus' },
-  { id: 'handbook-pdfs', label: 'Handbook PDFs' },
+  { id: 'handbook-pdfs', label: 'Guidelines & PDFs' },
   { id: 'references', label: 'References' },
 ];
 
@@ -1103,7 +1105,7 @@ export const CANCER_VACCINATION_AR_TOC_FULL: { id: string; label: string }[] = [
   { id: 'after-therapy-ar', label: 'بعد انتهاء العلاج' },
   { id: 'take-home-ar', label: 'رسائل للتذكير' },
   { id: 'related-resources-ar', label: 'توافق الخبراء' },
-  { id: 'handbook-pdfs-ar', label: 'ملفات PDF للدليل' },
+  { id: 'handbook-pdfs-ar', label: 'الإرشادات وملفات PDF' },
   { id: 'references-ar', label: 'المراجع' },
 ];
 
@@ -1164,7 +1166,7 @@ export const CANCER_VACCINATION_COPY: Record<CancerVaccinationLocale, CancerVacc
     references: REFERENCES,
     consensusButtonText:
       'Expert consensus on re-immunization strategies for pediatric oncology patients in Egypt',
-    pdfSectionHeading: 'Australian Immunisation Handbook — tables (PDF)',
+    pdfSectionHeading: 'Guidelines and handbook tables (PDF)',
     sections: EN_SECTIONS,
   },
   ar: {
@@ -1178,7 +1180,7 @@ export const CANCER_VACCINATION_COPY: Record<CancerVaccinationLocale, CancerVacc
     references: REFERENCES,
     consensusButtonText:
       'توافق الخبراء حول استراتيجيات إعادة التطعيم لمرضى الأورام عند الأطفال في مصر',
-    pdfSectionHeading: 'دليل التطعيم الأسترالي — جداول (PDF)',
+    pdfSectionHeading: 'إرشادات وجداول الدليل (PDF)',
     sections: AR_SECTIONS,
   },
 };

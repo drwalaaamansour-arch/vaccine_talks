@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import {
   HCP_FAQ_COUNT,
   HCP_FAQ_HERO,
@@ -13,7 +12,6 @@ import {
   HCP_FAQ_NOTE,
   HCP_FAQ_TOPICS,
 } from '@/data/hcp-faq-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const FAQ_IMAGE = '/question-mark.jpg';
 
@@ -36,7 +34,6 @@ function matchesQuery(
 }
 
 export default function HcpFaqHub() {
-  const meta = ARTICLE_META.hcpFaq;
   const [query, setQuery] = useState('');
 
   const visibleTopics = useMemo(
@@ -81,9 +78,6 @@ export default function HcpFaqHub() {
                 {HCP_FAQ_HERO.subtitle}
               </p>
               <p className="vax-hub-hero-lead">{HCP_FAQ_HERO.lead}</p>
-              <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
-              </div>
             </header>
 
             <div className="hcp-faq-welcome">

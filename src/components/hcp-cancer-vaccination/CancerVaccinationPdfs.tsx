@@ -6,6 +6,8 @@ const AU_IMMUNOCOMPROMISE_LEVELS_PDF = `/${encodeURIComponent(
   'Table. Types of medical conditions and immunosuppressive therapy and associated levels of immunocompromise | The Australian Immunisation Handbook.pdf',
 )}`;
 
+const CCLG_VACCINATIONS_GUIDELINES_PDF = '/cclg-vaccinations-guidelines-2025.pdf';
+
 function PdfEmbed({ src, title }: { src: string; title: string }) {
   return (
     <article className="hcp-cancer-pdf-block">
@@ -29,10 +31,12 @@ export default function CancerVaccinationPdfs({ arabic = false }: { arabic?: boo
       lang={arabic ? 'ar' : undefined}
     >
       <h2 className="hcp-cancer-pdfs-heading">
-        {arabic
-          ? 'جداول دليل التطعيم الأسترالي (PDF)'
-          : 'Australian Immunisation Handbook — tables (PDF)'}
+        {arabic ? 'إرشادات وجداول الدليل (PDF)' : 'Guidelines and handbook tables (PDF)'}
       </h2>
+      <PdfEmbed
+        src={CCLG_VACCINATIONS_GUIDELINES_PDF}
+        title="CCLG Vaccinations Guidelines 2025"
+      />
       <PdfEmbed
         src={AU_CHEMOTHERAPY_TABLE_PDF}
         title="Table. Recommendations for vaccination in people who have received chemotherapy | The Australian Immunisation Handbook"

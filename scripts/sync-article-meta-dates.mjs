@@ -183,19 +183,19 @@ const MANUAL = {
   hcpImmunoglobulinBloodProducts: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpAlteredImmunocompetenceGeneral: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpVaccinationOfContacts: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
-  hcpAsplenia: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpAsplenia: { added: 'MAY 07, 2026', lastUpdated: 'AUGUST 03, 2026' },
   hcpAspleniaMeningococcal: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpAspleniaHib: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpAspleniaPneumococcal: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpCorticosteroids: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpSafetyEffectiveness: { added: 'MAY 07, 2026', lastUpdated: 'JUNE 04, 2026' },
-  hcpHematopoieticTransplants: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 04, 2026' },
+  hcpHematopoieticTransplants: { added: 'JUNE 01, 2026', lastUpdated: 'AUGUST 03, 2026' },
   hcpAlteredImmunocompetenceHub: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpSpecialPopulationsHub: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   hcpOccupationalRisk: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpInternationalTravellers: { added: 'JANUARY 31, 2026', lastUpdated: 'JUNE 04, 2026' },
   hcpPediatricOncologyReimmunizationEgypt: { added: 'JUNE 01, 2026', lastUpdated: 'JUNE 05, 2026' },
-  hcpVaccinationInPatientsWithCancer: { added: 'JUNE 03, 2026', lastUpdated: 'JUNE 05, 2026' },
+  hcpVaccinationInPatientsWithCancer: { added: 'JUNE 03, 2026', lastUpdated: 'AUGUST 03, 2026' },
 };
 
 /** Extra paths for lastUpdated (guide article components). */

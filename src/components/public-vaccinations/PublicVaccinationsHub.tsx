@@ -4,20 +4,17 @@ import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import HcpGuideLanguageTabs, { type HcpGuideLocale } from '@/components/hcp-guide/HcpGuideLanguageTabs';
 import {
   PUBLIC_VACCINATIONS,
   PUBLIC_VACCINATIONS_HUB_COPY,
 } from '@/data/public-vaccinations-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 function normalizeSearch(value: string) {
   return value.trim().toLowerCase();
 }
 
 export default function PublicVaccinationsHub() {
-  const meta = ARTICLE_META.vaccinations;
   const [locale, setLocale] = useState<HcpGuideLocale>('ar');
   const [query, setQuery] = useState('');
   const isArabic = locale === 'ar';
@@ -83,9 +80,6 @@ export default function PublicVaccinationsHub() {
               <span className="vax-hub-hero-tag">{copy.tag}</span>
               <h2 className="vax-hub-hero-title">{copy.title}</h2>
               <p className="vax-hub-hero-lead">{copy.lead}</p>
-              <div className="hub-hero-meta">
-                <ArticleMetaDate {...meta} locale={isArabic ? 'ar' : 'en'} align="center" compact />
-              </div>
             </header>
 
             <div className="vax-hub-search-wrap" dir="ltr">

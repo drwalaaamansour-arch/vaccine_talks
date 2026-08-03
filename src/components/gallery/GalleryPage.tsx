@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import GalleryVideoThumb from '@/components/gallery/GalleryVideoThumb';
 import {
   GALLERY_IMAGE_COUNT,
@@ -13,7 +12,6 @@ import {
   GALLERY_VIDEO_COUNT,
   type GalleryMediaItem,
 } from '@/data/gallery-media';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const GALLERY_HERO = {
   tag: 'Vaccine Talks · Egypt',
@@ -53,7 +51,6 @@ function matchesQuery(item: GalleryMediaItem, query: string) {
 }
 
 export default function GalleryPage() {
-  const meta = ARTICLE_META.gallery;
   const [filter, setFilter] = useState<MediaFilter>('all');
   const [query, setQuery] = useState('');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -151,9 +148,6 @@ export default function GalleryPage() {
                 {GALLERY_HERO.subtitle}
               </p>
               <p className="vax-hub-hero-lead">{GALLERY_HERO.lead}</p>
-              <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
-              </div>
             </header>
 
             <div className="gallery-stats">

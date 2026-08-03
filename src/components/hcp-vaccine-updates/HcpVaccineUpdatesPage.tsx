@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import VaccineUpdatesSections from '@/components/hcp-vaccine-updates/VaccineUpdatesSections';
 import {
   HCP_VACCINE_UPDATE_INDEX,
@@ -13,7 +12,6 @@ import {
   HCP_VACCINE_UPDATES_HERO,
   HCP_VACCINE_UPDATES_INTRO,
 } from '@/data/hcp-vaccine-updates-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const UPDATES_IMAGE = '/updates.jpg';
 
@@ -36,7 +34,6 @@ function matchesQuery(
 }
 
 export default function HcpVaccineUpdatesPage() {
-  const meta = ARTICLE_META.hcpVaccineUpdates;
   const [query, setQuery] = useState('');
 
   const visibleIndex = useMemo(
@@ -83,9 +80,6 @@ export default function HcpVaccineUpdatesPage() {
                 {HCP_VACCINE_UPDATES_HERO.subtitle}
               </p>
               <p className="vax-hub-hero-lead">{HCP_VACCINE_UPDATES_HERO.lead}</p>
-              <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
-              </div>
             </header>
 
             <div className="hcp-vu-welcome">

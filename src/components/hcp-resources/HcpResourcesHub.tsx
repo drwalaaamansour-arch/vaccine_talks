@@ -5,13 +5,11 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import {
   HCP_RESOURCE_GROUPS,
   HCP_RESOURCES_HERO,
   HCP_RESOURCES_TOPICS,
 } from '@/data/hcp-resources-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const HCW_IMAGE = '/male%20Healthcare%20workers.jpg';
 
@@ -34,7 +32,6 @@ function matchesQuery(
 }
 
 export default function HcpResourcesHub() {
-  const meta = ARTICLE_META.hcpResources;
   const [query, setQuery] = useState('');
 
   const visibleGroups = useMemo(() => {
@@ -80,9 +77,6 @@ export default function HcpResourcesHub() {
                 {HCP_RESOURCES_HERO.subtitle}
               </p>
               <p className="vax-hub-hero-lead">{HCP_RESOURCES_HERO.lead}</p>
-              <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
-              </div>
             </header>
 
             <div className="hcp-res-welcome">

@@ -4,14 +4,11 @@ import { useCallback, useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import HcpGuideLanguageTabs, { type HcpGuideLocale } from '@/components/hcp-guide/HcpGuideLanguageTabs';
 import HcpGuideArabicDisclaimer from '@/components/hcp-guide/HcpGuideArabicDisclaimer';
 import { HCP_SPECIAL_POPULATIONS_HUB_COPY } from '@/data/hcp-special-populations-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 export default function HcpSpecialPopulationsHub() {
-  const meta = ARTICLE_META.hcpSpecialPopulationsHub;
   const [locale, setLocale] = useState<HcpGuideLocale>('en');
   const isArabic = locale === 'ar';
   const copy = isArabic ? HCP_SPECIAL_POPULATIONS_HUB_COPY.ar : HCP_SPECIAL_POPULATIONS_HUB_COPY.en;
@@ -70,9 +67,6 @@ export default function HcpSpecialPopulationsHub() {
                   {line}
                 </p>
               ))}
-              <div className="hcp-cancer-hero-meta hub-hero-meta">
-                <ArticleMetaDate {...meta} locale={isArabic ? 'ar' : 'en'} align="center" compact />
-              </div>
             </header>
 
             <div className="hcp-sp-hub-grid hcp-sp-hub-grid--flat">

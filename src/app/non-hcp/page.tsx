@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import Header from '@/components/Header';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const FEATURES = [
   {
@@ -77,9 +75,6 @@ export default function NonHCP() {
               <p className="non-hcp-hero-lead">
                 معلومة بسيطة، موثوقة، ومباشرة — علشان تحموا أسرتكم وتطمنوا على صحة أولادكم.
               </p>
-              <div className="hub-hero-meta">
-                <ArticleMetaDate {...ARTICLE_META.nonHcpHub} locale="ar" align="center" compact />
-              </div>
             </header>
 
             <div className="non-hcp-intro">

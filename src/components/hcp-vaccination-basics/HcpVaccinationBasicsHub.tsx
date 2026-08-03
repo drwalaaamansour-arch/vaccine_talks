@@ -2,19 +2,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import {
   HCP_VACCINATION_BASICS_GROUPS,
   HCP_VACCINATION_BASICS_HERO,
   HCP_VACCINATION_BASICS_INTRO,
   HCP_VACCINATION_BASICS_TOPICS,
 } from '@/data/hcp-vaccination-basics-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const BASICS_IMAGE = '/back-basics-simplifying-business-procedures-600nw-2363218041.jpg.webp';
 
 export default function HcpVaccinationBasicsHub() {
-  const meta = ARTICLE_META.hcpVaccinationBasics;
   const topicCount = HCP_VACCINATION_BASICS_GROUPS.reduce((n, g) => n + g.items.length, 0);
 
   return (
@@ -54,9 +51,6 @@ export default function HcpVaccinationBasicsHub() {
                 {HCP_VACCINATION_BASICS_HERO.subtitle}
               </p>
               <p className="vax-hub-hero-lead">{HCP_VACCINATION_BASICS_HERO.lead}</p>
-              <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
-              </div>
             </header>
 
             <div className="hcp-vb-welcome">

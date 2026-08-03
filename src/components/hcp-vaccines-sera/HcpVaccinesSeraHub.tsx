@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import HcpGuideLanguageTabs, { type HcpGuideLocale } from '@/components/hcp-guide/HcpGuideLanguageTabs';
 import HcpGuideArabicDisclaimer from '@/components/hcp-guide/HcpGuideArabicDisclaimer';
 import {
@@ -13,7 +12,6 @@ import {
   HCP_VACCINES_SERA_SORTED,
   type HcpVaccinesSeraHubItem,
 } from '@/data/hcp-vaccines-sera-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const VACCINES_IMAGE = '/vaccines.jpg';
 
@@ -36,7 +34,6 @@ function matchesQuery(item: HcpVaccinesSeraHubItem, query: string) {
 }
 
 export default function HcpVaccinesSeraHub() {
-  const meta = ARTICLE_META.hcpVaccinesSera;
   const [locale, setLocale] = useState<HcpGuideLocale>('en');
   const [query, setQuery] = useState('');
   const isArabic = locale === 'ar';
@@ -106,9 +103,6 @@ export default function HcpVaccinesSeraHub() {
                 {copy.hero.subtitle}
               </p>
               <p className="vax-hub-hero-lead">{copy.hero.lead}</p>
-              <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale={isArabic ? 'ar' : 'en'} align="center" compact />
-              </div>
             </header>
 
             <div className="hcp-vs-welcome">

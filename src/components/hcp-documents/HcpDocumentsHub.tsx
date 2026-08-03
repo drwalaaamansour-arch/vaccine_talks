@@ -5,14 +5,12 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import ArticleMetaDate from '@/components/ArticleMetaDate';
 import {
   HCP_DOCUMENTS,
   HCP_DOCUMENTS_COUNT,
   HCP_DOCUMENTS_HERO,
   HCP_DOCUMENTS_INTRO,
 } from '@/data/hcp-documents-hub';
-import { ARTICLE_META } from '@/lib/article-meta';
 
 const DOCUMENTS_IMAGE = '/doc.jpg';
 
@@ -35,7 +33,6 @@ function matchesQuery(
 }
 
 export default function HcpDocumentsHub() {
-  const meta = ARTICLE_META.hcpDocuments;
   const [query, setQuery] = useState('');
 
   const visibleDocuments = useMemo(
@@ -80,9 +77,6 @@ export default function HcpDocumentsHub() {
                 {HCP_DOCUMENTS_HERO.subtitle}
               </p>
               <p className="vax-hub-hero-lead">{HCP_DOCUMENTS_HERO.lead}</p>
-              <div className="hub-hero-meta" style={{ marginTop: '0.85rem' }}>
-                <ArticleMetaDate {...meta} locale="en" align="center" compact />
-              </div>
             </header>
 
             <div className="hcp-doc-welcome">

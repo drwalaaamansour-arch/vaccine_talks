@@ -159,6 +159,7 @@ export type HsctVaccinationCopy = {
   pdfTitles: {
     hsctVaccination: string;
     australianTable: string;
+    cclgGuidelines: string;
   };
 };
 
@@ -531,6 +532,7 @@ export const HSCT_COPY: Record<HsctVaccinationLocale, HsctVaccinationCopy> = {
       hsctVaccination: 'HSCT vaccination',
       australianTable:
         'Table. Recommendations for vaccination after haematopoietic stem cell transplant in children and adults | The Australian Immunisation Handbook',
+      cclgGuidelines: 'CCLG Vaccinations Guidelines 2025',
     },
   },
   ar: {
@@ -825,6 +827,7 @@ export const HSCT_COPY: Record<HsctVaccinationLocale, HsctVaccinationCopy> = {
       hsctVaccination: 'تطعيم HSCT',
       australianTable:
         'Table. Recommendations for vaccination after haematopoietic stem cell transplant in children and adults | The Australian Immunisation Handbook',
+      cclgGuidelines: 'إرشادات التطعيم CCLG 2025',
     },
   },
 };
