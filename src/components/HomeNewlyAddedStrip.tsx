@@ -348,9 +348,30 @@ function Pcv21CapvaxiveSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   );
 }
 
+function AdultRespiratoryEgyptPdfSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/doc/pneumococcal"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">
+        Adult vaccination against respiratory infections in Egypt: a review of expert opinions
+      </h3>
+      <p className="home-newly-card-body">
+        New PDF on the Pneumococcal documents page — expert opinions on adult vaccination against respiratory
+        infections in Egypt.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <AdultRespiratoryEgyptPdfSpotlightCard duplicate={duplicate} />
       <InternationalTravellersSpotlightCard duplicate={duplicate} />
       <InternationalTravellersArSpotlightCard duplicate={duplicate} />
       <Pcv21CapvaxiveSpotlightCard duplicate={duplicate} />
