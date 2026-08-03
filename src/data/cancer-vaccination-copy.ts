@@ -118,10 +118,13 @@ const EN_POST_THERAPY_CARDS: { title: string; blocks: CancerContentBlock[] }[] =
   {
     title: 'Meningococcal Vaccines',
     blocks: [
-      { type: 'ul', items: ['One dose of MenACWY', 'One dose of MenB'] },
+      {
+        type: 'ul',
+        items: ['Booster doses of MenACWY and MenB if previously fully immunized'],
+      },
       {
         type: 'p',
-        text: 'Individuals with asplenia should receive MenACWY booster doses every 5 years if the risk remains.',
+        text: 'Individuals with asplenia should receive booster doses every 3–5 years if the risk remains.',
       },
     ],
   },
@@ -204,10 +207,13 @@ const AR_POST_THERAPY_CARDS: { title: string; blocks: CancerContentBlock[] }[] =
   {
     title: 'لقاحات المكورات السحائية',
     blocks: [
-      { type: 'ul', items: ['جرعة واحدة من MenACWY', 'جرعة واحدة من MenB'] },
+      {
+        type: 'ul',
+        items: ['جرعات منشطة من MenACWY وMenB إذا كان قد اكتمل التطعيم سابقًا'],
+      },
       {
         type: 'p',
-        text: 'يجب أن يتلقى الأفراد ذوو نقص الطحال جرعات منشطة من MenACWY كل 5 سنوات إذا استمر الخطر.',
+        text: 'يجب أن يتلقى الأفراد ذوو نقص الطحال جرعات منشطة كل 3–5 سنوات إذا استمر الخطر.',
       },
     ],
   },

@@ -266,6 +266,12 @@ export const HCP_DOC_PAGES = {
         title: 'CDC recommendation for Pneumococcal vaccination update 2025',
         src: '/CDC%20recommendation%20for%20Pneumococcal%20vaccination%20update%202025.pdf',
       },
+      {
+        id: 'adult-respiratory',
+        label: 'Adult respiratory vaccines',
+        title: 'Adult vaccination against respiratory infections in Egypt: a review of expert opinions',
+        src: '/pneumo/Adult_vaccination_against_respiratory_infections_i.pdf',
+      },
     ],
   },
   pretermInfants: {
