@@ -66,7 +66,11 @@ function AspleniaBody({ copy, arabic }: { copy: AspleniaCopy; arabic?: boolean }
       </HcpGuideSection>
 
       <div id={pdfId}>
-        <HcpGuidePdfEmbed src={CHECKLIST_PDF_SRC} title={copy.checklistPdfTitle} />
+        <HcpGuidePdfEmbed
+          src={CHECKLIST_PDF_SRC}
+          title={copy.checklistPdfTitle}
+          downloadName="asplenia-vaccination-checklist.pdf"
+        />
         <HcpGuidePdfEmbed src={GUIDELINES_PDF_SRC} title={copy.guidelinesPdfTitle} />
         <HcpGuidePdfEmbed src={PDF_SRC} title={copy.pdfTitle} />
       </div>
