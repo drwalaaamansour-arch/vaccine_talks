@@ -1,5 +1,6 @@
 import type { HcpVaccineProductPageProps } from '@/components/hcp-vaccine-product/HcpVaccineProductPage';
 import { buildVaccineArBundle } from '@/lib/build-hcp-vaccine-ar';
+import PneumococcalTransitionGuidelines from '@/components/hcp-vaccine-product/PneumococcalTransitionGuidelines';
 
 export const PneumococcalPage: HcpVaccineProductPageProps = {
   "metaKey": "hcpPneumococcal",
@@ -165,6 +166,7 @@ export const PneumococcalPage: HcpVaccineProductPageProps = {
       "src": "/weuphoria.pdf"
     }
   ],
+  extra: <PneumococcalTransitionGuidelines />,
   ar: buildVaccineArBundle({
     title: 'المكورات الرئوية',
     lead: 'مرض المكورات الرئوية، الناجم عن البكتيريا Streptococcus pneumoniae، لا يزال سبباً مهماً للمرض والوفيات على مستوى العالم. مع تحديد أكثر من 100 نمط مصلي مميز، تعيش هذه البكتيريا عادة في الجهاز التنفسي البشري، لكن عدداً محدوداً من الأنماط المصلية فقط هو المسؤول عن معظم الأمراض الغازية.',
