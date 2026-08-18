@@ -10,6 +10,10 @@ node_modules/
 /.next/
 /out/
 
+# Serwist (generated service worker)
+public/serwist/sw.js
+public/serwist/swe-worker.*
+
 # Production
 /build
 

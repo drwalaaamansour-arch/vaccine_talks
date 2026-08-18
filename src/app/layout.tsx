@@ -1,11 +1,14 @@
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Cairo } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import ChatButton from "@/components/ChatButton";
 import AuthSessionProvider from "@/components/AuthSessionProvider";
 import SiteJsonLd from "@/components/SiteJsonLd";
+import PwaUpdatePrompt from "@/components/PwaUpdatePrompt";
 import { createHomeMetadata } from "@/lib/seo";
+import { SITE_NAME_SHORT } from "@/lib/site";
+import { SerwistProvider } from "@serwist/turbopack/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,11 +24,22 @@ const cairo = Cairo({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-export const metadata = createHomeMetadata();
+export const metadata: Metadata = {
+  ...createHomeMetadata(),
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: SITE_NAME_SHORT,
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#355a63",
 };
 
 export default function RootLayout({
@@ -89,8 +103,11 @@ a{color:#0d9488}
         </Script>
         
         <AuthSessionProvider>
-          {children}
-          <ChatButton />
+          <SerwistProvider swUrl="/serwist/sw.js">
+            {children}
+            <ChatButton />
+            <PwaUpdatePrompt />
+          </SerwistProvider>
         </AuthSessionProvider>
       </body>
     </html>

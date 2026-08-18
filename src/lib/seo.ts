@@ -114,7 +114,7 @@ export function createHomeMetadata(): Metadata {
     publisher: SITE_NAME_SHORT,
     icons: {
       icon: [{ url: '/vaccine-talks-icon.png', type: 'image/png' }],
-      apple: [{ url: '/vaccine-talks-icon.png', type: 'image/png' }],
+      apple: [{ url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     },
     alternates: {
       canonical: SITE_URL,

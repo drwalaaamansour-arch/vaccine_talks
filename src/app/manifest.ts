@@ -6,17 +6,31 @@ export default function manifest(): MetadataRoute.Manifest {
     name: SITE_NAME,
     short_name: SITE_NAME_SHORT,
     description: SITE_DESCRIPTION_AR,
+    id: '/',
     start_url: '/',
+    scope: '/',
     display: 'standalone',
     background_color: '#f5f1ec',
     theme_color: '#355a63',
     lang: 'ar',
     dir: 'rtl',
+    categories: ['medical', 'health'],
     icons: [
       {
-        src: '/vaccine-talks-icon.png',
+        src: '/icons/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/icons/icon-512.png',
         sizes: '512x512',
         type: 'image/png',
+      },
+      {
+        src: '/icons/icon-maskable-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
       },
     ],
   };
