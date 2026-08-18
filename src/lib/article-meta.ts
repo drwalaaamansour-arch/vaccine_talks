@@ -112,7 +112,7 @@ export const ARTICLE_META = {
   hcpHpv: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   hcpMeningococcal: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   hcpMmr: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
-  hcpPneumococcal: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
+  hcpPneumococcal: { added: 'NOVEMBER 29, 2025', lastUpdated: 'AUGUST 18, 2026' },
   hcpPolio: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   hcpRabies: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   hcpRota: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
