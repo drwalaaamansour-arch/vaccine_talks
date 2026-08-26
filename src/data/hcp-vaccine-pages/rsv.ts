@@ -176,12 +176,16 @@ export const RsvPage: HcpVaccineProductPageProps = {
   ],
   "pdfs": [
     {
-      "productName": "Synagis",
-      "src": "/Synagis.pdf"
-    },
-    {
       "productName": "Abrysvo",
       "src": "/abrysvo.pdf"
+    },
+    {
+      "productName": "Arexvy",
+      "src": "/Arexvy.pdf"
+    },
+    {
+      "productName": "Synagis",
+      "src": "/Synagis.pdf"
     }
   ],
   ar: buildVaccineArBundle({

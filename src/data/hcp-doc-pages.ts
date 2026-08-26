@@ -370,7 +370,7 @@ export const HCP_DOC_PAGES = {
   rsv: {
     metaKey: 'docRsv',
     title: 'RSV',
-    lead: 'Abrysvo product information (EMA).',
+    lead: 'RSV product documents, approval letters, and supporting clinical references.',
     emoji: '🫁',
     pdfs: [
       {
@@ -378,6 +378,32 @@ export const HCP_DOC_PAGES = {
         label: 'Abrysvo (EMA)',
         title: 'Abrysvo (EMA)',
         src: '/rsv/Abrysvo%20(EMA).pdf',
+      },
+      {
+        id: 'arexvy-approval',
+        label: 'Arexvy approval letter',
+        title: 'Arexvy FDA approval letter (March 12, 2026)',
+        src: '/march-12-2026-approval-letter-arexvy.pdf',
+      },
+      {
+        id: 'abrysvo-pregnancy',
+        label: 'Abrysvo during pregnancy',
+        title: 'Abrysvo during pregnancy',
+        src: '/rsv/abrysvo-during-pregnancy.pdf',
+      },
+      {
+        id: 'rsvpreF-budget-impact',
+        label: 'RSVpreF budget impact',
+        title:
+          'Budget impact analysis of bivalent respiratory syncytial virus prefusion F (RSVpreF) maternal vaccination for preventing respiratory syncytial virus infection',
+        src: '/rsv/rsvpreF-maternal-vaccination-budget-impact.pdf',
+      },
+      {
+        id: 'piis1201971224000389',
+        label: 'ILI surveillance in adult outpatients',
+        title:
+          'Influenza-like illness surveillance may underestimate the incidence of respiratory syncytial virus in adult outpatients',
+        src: '/rsv/PIIS1201971224000389.pdf',
       },
     ],
   },
