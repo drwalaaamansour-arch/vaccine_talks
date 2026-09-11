@@ -68,7 +68,7 @@ export function ResultsActions({
       <button
         type="button"
         onClick={handleShare}
-        className="btn btn-outline vaccine-checker-results-action"
+        className="vaccine-checker-results-action"
         aria-label={shareLabel}
       >
         <ShareIcon />
@@ -77,7 +77,7 @@ export function ResultsActions({
       <button
         type="button"
         onClick={handlePrint}
-        className="btn btn-outline vaccine-checker-results-action"
+        className="vaccine-checker-results-action"
         aria-label={printLabel}
       >
         <PrintIcon />

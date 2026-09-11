@@ -517,16 +517,16 @@ export function ResultsStep({
             </div>
           </div>
 
-          {checkerInput && (
-            <ResultsActions
-              currentStep={state.currentStep}
-              shareTitle={t('shareResultTitle')}
-              shareText={shareText}
-              t={t}
-            />
-          )}
+          <div className="vaccine-checker-results-footer vaccine-checker-no-print">
+            {checkerInput && (
+              <ResultsActions
+                currentStep={state.currentStep}
+                shareTitle={t('shareResultTitle')}
+                shareText={shareText}
+                t={t}
+              />
+            )}
 
-          <div className="vaccine-checker-no-print">
             <button type="button" onClick={restart} className="start-button vaccine-checker-primary-action">
               {language === 'ar' ? t('checkAnotherAr') : t('checkAnother')}
             </button>

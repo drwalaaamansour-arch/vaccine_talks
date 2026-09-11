@@ -75,5 +75,21 @@ describe('Results educational CTA', () => {
     expect(resultsActions).toContain('shareResultsText');
     expect(resultsActions).toContain("t('shareResult')");
     expect(resultsActions).toContain("t('printResult')");
+    expect(resultsActions).not.toContain('btn-outline');
+  });
+
+  it('wraps results footer actions for mobile spacing', () => {
+    const resultsStep = readFileSync(
+      resolve(process.cwd(), 'src/components/wizard/ResultsStep.tsx'),
+      'utf8'
+    );
+    const pageShell = readFileSync(
+      resolve(process.cwd(), 'src/components/wizard/VaccineCheckerPageShell.tsx'),
+      'utf8'
+    );
+
+    expect(resultsStep).toContain('vaccine-checker-results-footer');
+    expect(pageShell).toContain('vaccine-checker-route--results');
+    expect(pageShell).toContain('vaccine-checker-card--results');
   });
 });

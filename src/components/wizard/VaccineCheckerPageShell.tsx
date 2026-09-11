@@ -63,7 +63,9 @@ export function VaccineCheckerPageShell({
   children,
 }: VaccineCheckerPageShellProps) {
   return (
-    <div className="min-h-screen vaccine-checker-route">
+    <div
+      className={`min-h-screen vaccine-checker-route${currentStep === 'results' ? ' vaccine-checker-route--results' : ''}`}
+    >
       <Header />
 
       <main
@@ -86,7 +88,7 @@ export function VaccineCheckerPageShell({
             )}
 
             <div
-              className={`about-elegant-card vaccine-checker-card${currentStep === 'intro' ? ' vaccine-checker-card--intro' : ''}`}
+              className={`about-elegant-card vaccine-checker-card${currentStep === 'intro' ? ' vaccine-checker-card--intro' : ''}${currentStep === 'results' ? ' vaccine-checker-card--results' : ''}`}
             >
               <div className="card-corner card-corner-tl" />
               <div className="card-corner card-corner-tr" />

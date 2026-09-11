@@ -422,19 +422,47 @@
   .vaccine-checker-results-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.5rem;
+    gap: 0.625rem;
+    margin-top: 0;
   }
   .vaccine-checker-results-action {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     width: 100%;
-    min-height: 3rem;
-    padding: 0.875rem 1rem;
-    font-size: 1rem;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid rgba(64, 96, 109, 0.22);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.88);
+    color: rgba(53, 90, 99, 0.92);
+    font-size: 0.9375rem;
     font-weight: 600;
+    line-height: 1.25;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .vaccine-checker-results-action:hover {
+    background: rgba(64, 96, 109, 0.06);
+    border-color: rgba(64, 96, 109, 0.32);
+    color: #355a63;
+  }
+  .vaccine-checker-results-action:focus-visible {
+    outline: 2px solid rgba(64, 96, 109, 0.35);
+    outline-offset: 2px;
+  }
+  .vaccine-checker-results-action svg {
+    flex-shrink: 0;
+  }
+  .vaccine-checker-results-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
   }
   .vaccine-checker-share-feedback {
     grid-column: 1 / -1;
@@ -555,11 +583,6 @@
     .vaccine-checker-results-edu-cta-link {
       min-width: min(100%, 18rem);
       padding-inline: 1.35rem;
-    }
-  }
-  @media (max-width: 36rem) {
-    .vaccine-checker-results-actions {
-      grid-template-columns: 1fr;
     }
   }
   @media (max-width: 640px) {
@@ -14484,6 +14507,200 @@ body {
 
   .vaccine-checker-route .vaccine-checker-lang-option {
     width: 100%;
+  }
+}
+
+/* =====================================================
+   Vaccine Checker — Results page mobile / PWA polish
+   ===================================================== */
+.vaccine-checker-route .vaccine-checker-results-edu-cta-link,
+.vaccine-checker-route .vaccine-checker-results-edu-cta-link:visited,
+.vaccine-checker-route .vaccine-checker-results-edu-cta-link:hover,
+.vaccine-checker-route .vaccine-checker-results-edu-cta-link:active,
+.vaccine-checker-route .vaccine-checker-results-edu-cta-link:focus-visible {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.vaccine-checker-route--results .vaccine-checker-card--results {
+  min-height: auto;
+}
+
+@media (max-width: 480px) {
+  .vaccine-checker-route--results .vaccine-checker-section {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0));
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-card--results {
+    padding: 1.15rem 1rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-body {
+    gap: 0.875rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-grid {
+    gap: 0.65rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-heading {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin-bottom: 0.35rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-review-label {
+    font-size: 1.0625rem;
+    line-height: 1.4;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-review-value,
+  .vaccine-checker-route--results .vaccine-checker-help,
+  .vaccine-checker-route--results .vaccine-checker-results-copy {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-grid .vaccine-checker-result-card {
+    padding-block: 0.55rem !important;
+    padding-inline: 0.875rem !important;
+    border-radius: 0.65rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-meta {
+    margin-bottom: 0.75rem;
+    padding: 0.875rem 1rem;
+    gap: 0.25rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-meta-brand {
+    font-size: 0.9375rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-meta-line {
+    font-size: 0.875rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-edu-cta {
+    margin-top: 0.75rem;
+    border-radius: 1.125rem;
+    box-shadow:
+      0 6px 18px rgba(64, 96, 109, 0.06),
+      0 1px 4px rgba(107, 93, 79, 0.04);
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-edu-cta-inner {
+    padding: 1rem 1rem 1.05rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-edu-cta-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-edu-cta-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-edu-cta-heading {
+    margin-bottom: 0.4rem;
+    font-size: 1.125rem;
+    line-height: 1.45;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-edu-cta-text {
+    margin-bottom: 0.875rem;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-edu-cta-link {
+    width: min(100%, 88%);
+    max-width: 18rem;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-disclaimer-box {
+    margin-top: 0.65rem;
+    padding: 1rem 1rem;
+    border-radius: 0.875rem;
+    background: rgba(255, 255, 255, 0.55);
+    text-align: start;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-disclaimer-box p {
+    margin: 0;
+    color: rgba(64, 96, 109, 0.82);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-footer {
+    gap: 0.625rem;
+    margin-top: 0.65rem;
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0));
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-actions {
+    gap: 0.5rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-action {
+    min-height: 3rem;
+    padding: 0.55rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.65rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-action svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-share-feedback {
+    font-size: 0.8125rem;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-primary-action.start-button {
+    width: 100%;
+    min-height: 3.25rem;
+    margin-top: 0;
+    padding: 0.75rem 1.25rem;
+    font-size: 1.0625rem;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .vaccine-checker-route--results .vaccine-checker-results-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .vaccine-checker-route--results .vaccine-checker-results-action {
+    min-height: 3rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body:has(.vaccine-checker-route--results) .chat-button {
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: calc(88px + env(safe-area-inset-bottom, 0));
+    width: 56px;
+    height: 56px;
+  }
+
+  body:has(.vaccine-checker-route--results) .chat-window {
+    bottom: calc(88px + env(safe-area-inset-bottom, 0) + 4.5rem);
   }
 }
 
