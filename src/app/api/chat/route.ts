@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Groq from 'groq-sdk';
+import {
+  createGroqClient,
+  getGroqApiKey,
+  GROQ_CHAT_MODEL,
+  mapGroqErrorToResponse,
+  type ChatApiErrorBody,
+} from '@/lib/chat/groq-server';
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY || '',
-});
+export const runtime = 'nodejs';
 
 const SYSTEM_PROMPT = `You are a professional medical information assistant specializing in vaccines and immunization. Your role is to provide accurate, evidence-based information about vaccines ONLY.
 
@@ -19,61 +23,114 @@ CRITICAL RULES:
 
 Your responses should be informative, accurate, and focused solely on vaccine-related topics.`;
 
+type ChatHistoryMessage = {
+  role: string;
+  content: string;
+};
+
+function missingApiKeyResponse(): NextResponse<ChatApiErrorBody> {
+  if (process.env.NODE_ENV === 'development') {
+    console.error(
+      'Chat API: Groq API key is missing. Add it to .env.local and restart the dev server.'
+    );
+  }
+
+  return NextResponse.json(
+    {
+      error: 'Chat service unavailable',
+      code: 'missing_api_key',
+    },
+    { status: 503 }
+  );
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { message, conversationHistory } = await request.json();
+    if (!getGroqApiKey()) {
+      return missingApiKeyResponse();
+    }
 
-    if (!message || typeof message !== 'string') {
+    let payload: unknown;
+    try {
+      payload = await request.json();
+    } catch {
       return NextResponse.json(
-        { error: 'Message is required' },
+        {
+          error: 'Invalid JSON body',
+          code: 'invalid_request',
+        } satisfies ChatApiErrorBody,
         { status: 400 }
       );
     }
 
-    // Build conversation history for context
-    const messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
-      { role: 'system', content: SYSTEM_PROMPT }
-    ];
+    const { message, conversationHistory } = (payload ?? {}) as {
+      message?: unknown;
+      conversationHistory?: unknown;
+    };
 
-    // Add conversation history if provided
-    if (Array.isArray(conversationHistory)) {
-      conversationHistory.forEach((msg: { role: string; content: string }) => {
-        if (msg.role === 'user' || msg.role === 'assistant') {
-          messages.push({
-            role: msg.role as 'user' | 'assistant',
-            content: msg.content
-          });
-        }
-      });
+    if (!message || typeof message !== 'string') {
+      return NextResponse.json(
+        {
+          error: 'Message is required',
+          code: 'invalid_request',
+        } satisfies ChatApiErrorBody,
+        { status: 400 }
+      );
     }
 
-    // Add current message
-    messages.push({ role: 'user', content: message });
+    const trimmedMessage = message.trim();
+    if (!trimmedMessage) {
+      return NextResponse.json(
+        {
+          error: 'Message is required',
+          code: 'invalid_request',
+        } satisfies ChatApiErrorBody,
+        { status: 400 }
+      );
+    }
+
+    const messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
+      { role: 'system', content: SYSTEM_PROMPT },
+    ];
+
+    if (Array.isArray(conversationHistory)) {
+      for (const msg of conversationHistory as ChatHistoryMessage[]) {
+        if (
+          (msg.role === 'user' || msg.role === 'assistant') &&
+          typeof msg.content === 'string' &&
+          msg.content.trim()
+        ) {
+          messages.push({
+            role: msg.role,
+            content: msg.content.trim(),
+          });
+        }
+      }
+    }
+
+    messages.push({ role: 'user', content: trimmedMessage });
+
+    const groq = createGroqClient();
+    if (!groq) {
+      return missingApiKeyResponse();
+    }
 
     const completion = await groq.chat.completions.create({
-      messages: messages as any,
-      model: 'llama-3.3-70b-versatile', // Free and powerful model (updated from deprecated llama-3.1-70b-versatile)
+      messages,
+      model: GROQ_CHAT_MODEL,
       temperature: 0.7,
       max_tokens: 1000,
       stream: false,
     });
 
-    const response = completion.choices[0]?.message?.content || 
+    const response =
+      completion.choices[0]?.message?.content?.trim() ||
       "I apologize, but I'm unable to process that request. Please ask me about vaccines or immunization.";
 
-    return NextResponse.json({ 
-      response
-    });
-
-  } catch (error: any) {
-    console.error('Chat API error:', error);
-    return NextResponse.json(
-      { 
-        error: 'Failed to process chat message',
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ response });
+  } catch (error) {
+    const mapped = mapGroqErrorToResponse(error);
+    console.error('Chat API error:', mapped.logMessage);
+    return NextResponse.json(mapped.body, { status: mapped.status });
   }
 }
-

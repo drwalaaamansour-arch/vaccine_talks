@@ -6,12 +6,16 @@
     "dev": "next dev",
     "dev:host": "next dev --hostname 0.0.0.0",
     "generate:stats": "node scripts/generate-site-stats.mjs",
-    "build": "next build",
+    "generate:search-index": "tsx scripts/build-search-index.ts",
+    "build": "npm run generate:search-index && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "fuse.js": "^7.5.0",
     "groq-sdk": "^0.35.0",
     "next": "^16.1.0",
     "next-auth": "^5.0.0-beta.31",
@@ -25,11 +29,14 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.0",
     "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "^16.1.0",
     "serwist": "^9.5.12",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.23.13",
+    "typescript": "^5",
+    "vitest": "^4.1.11"
   }
 }

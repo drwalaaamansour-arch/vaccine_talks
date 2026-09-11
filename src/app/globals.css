@@ -1,9 +1,18 @@
 @import "tailwindcss";
 
-/* =====================================================
-   MODERN UI/UX IMPROVEMENTS
-   Same Layout - Better Design
-   ===================================================== */
+@theme {
+  --color-primary: #8b7355;
+  --color-primary-light: #a68a6d;
+  --color-primary-dark: #6b5744;
+  --color-text-dark: #40606D;
+  --color-text-medium: #40606D;
+  --color-text-light: #40606D;
+  --color-bg-light: #f5f1ec;
+  --color-bg-beige: #e8dfd5;
+  --color-white: #ffffff;
+  --color-background: #f5f1ec;
+  --color-surface: #ffffff;
+}
 
 :root {
   /* Beige Theme Colors */
@@ -19,10 +28,581 @@
   --shadow-color: rgba(139, 115, 85, 0.15);
 }
 
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+    outline: none;
+  }
+  .btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--primary), 0 0 0 4px white;
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+  }
+  .btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background-color: transparent;
+  }
+  .btn-outline:hover:not(:disabled) {
+    background-color: rgba(139, 115, 85, 0.1);
+  }
+  .btn-disabled {
+    border: 2px solid #d1d5db;
+    color: #9ca3af;
+    cursor: not-allowed;
+  }
+  .start-button {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+  }
+  .vaccine-checker-route {
+    min-height: 100vh;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+  }
+  .vaccine-checker-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-light);
+    padding: 0;
+  }
+  .vaccine-checker-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 1.5rem 0 3rem;
+  }
+  .vaccine-checker-container {
+    width: min(100%, 44rem);
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 1.5rem);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .vaccine-checker-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: min(72vh, calc(100vh - 12rem));
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+  .vaccine-checker-card .card-corner {
+    pointer-events: none;
+  }
+  .vaccine-checker-card-content {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .vaccine-checker-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    align-self: flex-start;
+    margin-bottom: 1.25rem;
+    padding: 0.5rem 0;
+    min-height: 2.75rem;
+    border: 0;
+    background: transparent;
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+  }
+  .vaccine-checker-back:hover {
+    color: var(--primary-dark);
+  }
+  .vaccine-checker-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .vaccine-checker-title {
+    color: var(--text-dark);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+  .vaccine-checker-subtitle {
+    color: var(--text-dark);
+    opacity: 0.85;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .vaccine-checker-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .vaccine-checker-progress {
+    margin-bottom: 0.5rem;
+  }
+  .vaccine-checker-progress-track {
+    height: 0.35rem;
+    border-radius: 999px;
+    background: rgba(139, 115, 85, 0.15);
+    overflow: hidden;
+  }
+  .vaccine-checker-progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary);
+    transition: width 0.25s ease;
+  }
+  .vaccine-checker-progress-label {
+    margin-top: 0.5rem;
+    color: var(--text-dark);
+    opacity: 0.75;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+  .vaccine-checker-language,
+  .vaccine-checker-date-grid,
+  .vaccine-checker-choice-row,
+  .vaccine-checker-list,
+  .vaccine-checker-review,
+  .vaccine-checker-results-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+  .vaccine-checker-language-options,
+  .vaccine-checker-choice-row,
+  .vaccine-checker-date-grid,
+  .vaccine-checker-review-actions {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .vaccine-checker-language-options,
+  .vaccine-checker-choice-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .vaccine-checker-choice-row--stack {
+    grid-template-columns: 1fr;
+  }
+  .vaccine-checker-date-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .vaccine-checker-field-label,
+  .vaccine-checker-review-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .vaccine-checker-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid rgba(64, 96, 109, 0.18);
+    border-radius: 0.75rem;
+    background: var(--white);
+    color: var(--text-dark);
+    font-size: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+  .vaccine-checker-date-grid--fields {
+    position: relative;
+    z-index: 2;
+  }
+  .vaccine-checker-date-grid--fields .vaccine-checker-field,
+  .vaccine-checker-date-field {
+    position: relative;
+    z-index: 2;
+  }
+  .vaccine-checker-date-grid--rtl {
+    direction: rtl;
+  }
+  .vaccine-checker-date-grid--ltr {
+    direction: ltr;
+  }
+  .vaccine-checker-date-grid--rtl .vaccine-checker-date-input {
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: plaintext;
+  }
+  .vaccine-checker-date-grid--ltr .vaccine-checker-date-input {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: plaintext;
+  }
+  .vaccine-checker-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.15);
+  }
+  .vaccine-checker-choice {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+  }
+  .vaccine-checker-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border: 2px solid rgba(64, 96, 109, 0.12);
+    border-radius: 0.75rem;
+    background: var(--white);
+    color: var(--text-dark);
+    text-align: start;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .vaccine-checker-list-item:hover {
+    border-color: rgba(139, 115, 85, 0.35);
+  }
+  .vaccine-checker-list-item--selected {
+    border-color: var(--primary);
+    background: rgba(139, 115, 85, 0.08);
+  }
+  .vaccine-checker-list-mark {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .vaccine-checker-disclaimer,
+  .vaccine-checker-help,
+  .vaccine-checker-age,
+  .vaccine-checker-error,
+  .vaccine-checker-review-meta,
+  .vaccine-checker-results-copy {
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+  .vaccine-checker-disclaimer,
+  .vaccine-checker-help,
+  .vaccine-checker-review-meta,
+  .vaccine-checker-results-copy {
+    opacity: 0.85;
+    font-size: 0.95rem;
+  }
+  .vaccine-checker-age {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .vaccine-checker-error {
+    color: #b42318;
+    font-size: 0.9rem;
+  }
+  .vaccine-checker-primary-action {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .vaccine-checker-share-checker {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(64, 96, 109, 0.12);
+  }
+  .vaccine-checker-share-checker-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .vaccine-checker-share-checker-feedback {
+    margin: 0.5rem 0 0;
+    color: var(--primary);
+    font-size: 0.875rem;
+    text-align: center;
+  }
+  .vaccine-checker-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .vaccine-checker-link-button {
+    border: 0;
+    background: transparent;
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.15rem;
+  }
+  .vaccine-checker-review-section,
+  .vaccine-checker-review-item,
+  .vaccine-checker-results-section,
+  .vaccine-checker-disclaimer-box,
+  .vaccine-checker-stop-message {
+    padding: 1rem;
+    border: 1px solid rgba(64, 96, 109, 0.12);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .vaccine-checker-results-grid > .vaccine-checker-results-section,
+  .vaccine-checker-results-grid .vaccine-checker-review-item {
+    padding-block: 1rem;
+    padding-inline: 1.25rem;
+  }
+  .vaccine-checker-results-grid .vaccine-checker-review-item p,
+  .vaccine-checker-results-grid .vaccine-checker-review-item ul,
+  .vaccine-checker-results-grid .vaccine-checker-results-copy {
+    overflow-wrap: anywhere;
+  }
+  .vaccine-checker-review-value,
+  .vaccine-checker-results-heading {
+    color: var(--text-dark);
+    font-weight: 700;
+  }
+  .vaccine-checker-results-heading {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+    font-size: 1.05rem;
+  }
+  .vaccine-checker-disclaimer-box,
+  .vaccine-checker-stop-message {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  .vaccine-checker-results-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(64, 96, 109, 0.12);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.72);
+    text-align: start;
+  }
+  .vaccine-checker-results-meta-brand {
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .vaccine-checker-results-meta-line {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .vaccine-checker-results-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .vaccine-checker-results-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .vaccine-checker-share-feedback {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--primary);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .vaccine-checker-results-edu-cta {
+    position: relative;
+    width: 100%;
+    margin-top: 1.25rem;
+    overflow: hidden;
+    border: 1px solid rgba(64, 96, 109, 0.12);
+    border-radius: 1.25rem;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 252, 247, 0.98) 0%,
+      rgba(248, 244, 238, 0.96) 48%,
+      rgba(241, 247, 248, 0.94) 100%
+    );
+    box-shadow:
+      0 10px 28px rgba(64, 96, 109, 0.07),
+      0 2px 8px rgba(107, 93, 79, 0.04);
+  }
+  .vaccine-checker-results-edu-cta::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 4px;
+    background: linear-gradient(
+      180deg,
+      rgba(64, 96, 109, 0.55) 0%,
+      rgba(64, 96, 109, 0.22) 100%
+    );
+    pointer-events: none;
+  }
+  .vaccine-checker-results-edu-cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(1.15rem, 3vw, 1.65rem) clamp(1.15rem, 3.5vw, 1.75rem);
+    text-align: center;
+  }
+  .vaccine-checker-results-edu-cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0.75rem;
+    border-radius: 999px;
+    color: rgba(64, 96, 109, 0.78);
+    background: rgba(64, 96, 109, 0.08);
+  }
+  .vaccine-checker-results-edu-cta-heading {
+    margin: 0 0 0.45rem;
+    max-width: 34rem;
+    color: #355a63;
+    font-size: clamp(1rem, 2.4vw, 1.08rem);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .vaccine-checker-results-edu-cta-text {
+    margin: 0 0 1rem;
+    max-width: 32rem;
+    color: rgba(64, 96, 109, 0.78);
+    font-size: clamp(0.88rem, 2.2vw, 0.94rem);
+    line-height: 1.65;
+  }
+  .vaccine-checker-results-edu-cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.7rem 1.65rem;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.94rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+    background: linear-gradient(135deg, #3d5c66 0%, #4a7580 52%, #558090 100%);
+    box-shadow:
+      0 8px 20px rgba(64, 96, 109, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+  .vaccine-checker-results-edu-cta-link:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #456872 0%, #528090 55%, #5f8f9a 100%);
+    transform: translateY(-1px);
+    box-shadow:
+      0 10px 24px rgba(64, 96, 109, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  .vaccine-checker-results-edu-cta-link:active {
+    transform: translateY(0);
+    box-shadow:
+      0 5px 14px rgba(64, 96, 109, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+  .vaccine-checker-results-edu-cta-link:focus-visible {
+    outline: 2px solid rgba(64, 96, 109, 0.45);
+    outline-offset: 3px;
+  }
+  @media (max-width: 640px) {
+    .vaccine-checker-results-edu-cta {
+      border-radius: 1.1rem;
+    }
+    .vaccine-checker-results-edu-cta-inner {
+      padding: 1.15rem 1rem 1.25rem;
+    }
+    .vaccine-checker-results-edu-cta-link {
+      min-width: min(100%, 18rem);
+      padding-inline: 1.35rem;
+    }
+  }
+  @media (max-width: 36rem) {
+    .vaccine-checker-results-actions {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .vaccine-checker-card {
+      padding: 1.15rem;
+    }
+    .vaccine-checker-date-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.vaccine-checker-results-grid > .vaccine-checker-results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.vaccine-checker-results-grid .vaccine-checker-result-card {
+  padding-block: 0.625rem !important;
+  padding-inline: 1.125rem !important;
+  border: 1px solid rgba(64, 96, 109, 0.12);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.72);
+  overflow-wrap: anywhere;
+}
+
+.vaccine-checker-results-grid .vaccine-checker-result-card p,
+.vaccine-checker-results-grid .vaccine-checker-result-card ul {
+  overflow-wrap: anywhere;
+}
+
+.vaccine-checker-results-grid .vaccine-checker-results-heading {
+  margin-bottom: 0;
 }
 
 html {
@@ -405,6 +985,480 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.share-page-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.share-page-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+}
+
+.share-page-feedback {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  inset-inline-end: 0;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(139, 115, 85, 0.18);
+  box-shadow:
+    0 4px 12px rgba(139, 115, 85, 0.12),
+    0 1px 2px rgba(139, 115, 85, 0.08);
+  color: #40606d;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  z-index: 70;
+}
+
+.search-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 10050;
+  animation: fadeIn 0.2s ease;
+}
+
+.search-modal {
+  position: fixed;
+  top: clamp(4.5rem, 12vh, 7rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 600px);
+  max-height: min(70vh, 640px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 10060;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: searchModalSlideDown 0.3s ease;
+}
+
+@keyframes searchModalSlideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.search-modal-input-wrap {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+}
+
+.search-modal-input-shell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(139, 115, 85, 0.05);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+.search-modal-input-icon {
+  color: #40606d;
+  flex-shrink: 0;
+}
+
+.search-modal-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  color: #40606d;
+  width: 100%;
+}
+
+.search-modal-clear {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #40606d;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.search-modal-results {
+  overflow-y: auto;
+  padding: 0.5rem;
+  flex: 1;
+}
+
+.search-modal-empty {
+  padding: 2rem;
+  text-align: center;
+  color: #40606d;
+}
+
+.search-modal-empty-title {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.search-modal-empty-hint {
+  margin: 0;
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+.search-modal-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #40606d;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background 0.2s ease;
+}
+
+.search-modal-result--active,
+.search-modal-result:hover {
+  background: rgba(139, 115, 85, 0.1);
+  border-color: rgba(139, 115, 85, 0.2);
+}
+
+.search-modal-result-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-modal-result-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  overflow-wrap: anywhere;
+}
+
+.search-modal-result-snippet {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  opacity: 0.82;
+  overflow-wrap: anywhere;
+}
+
+.search-modal-result-category {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.35rem;
+}
+
+.search-modal-result-arrow {
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.search-modal-footer {
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid rgba(139, 115, 85, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: #40606d;
+  opacity: 0.75;
+}
+
+.search-modal-close-text {
+  border: none;
+  background: transparent;
+  color: #40606d;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.15rem;
+}
+
+.chat-button {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #40606d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(64, 96, 109, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10040;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  touch-action: manipulation;
+}
+
+.chat-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(64, 96, 109, 0.55);
+}
+
+.chat-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 10045;
+}
+
+.chat-window {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  left: max(1rem, env(safe-area-inset-left));
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 4.5rem);
+  width: auto;
+  max-width: 420px;
+  margin-inline-start: auto;
+  height: min(calc(100dvh - 6.5rem), 600px);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 10050;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: chatWindowSlideUp 0.3s ease;
+}
+
+@keyframes chatWindowSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-window-header {
+  padding: 1rem 1.25rem;
+  background: #40606d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 0.75rem;
+}
+
+.chat-window-header-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-window-title {
+  margin: 0;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.chat-window-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  opacity: 0.9;
+  line-height: 1.3;
+}
+
+.chat-window-close {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+.chat-window-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.chat-message-row--user {
+  justify-content: flex-end;
+}
+
+.chat-message-row--assistant {
+  justify-content: flex-start;
+}
+
+.chat-message-avatar {
+  width: clamp(28px, 8vw, 32px);
+  height: clamp(28px, 8vw, 32px);
+  border-radius: 50%;
+  background: #40606d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+}
+
+.chat-message-bubble {
+  max-width: 85%;
+  padding: clamp(0.625rem, 2vw, 0.75rem) clamp(0.875rem, 2.5vw, 1rem);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.chat-message-bubble p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.chat-message-bubble--user {
+  background: #40606d;
+  color: white;
+}
+
+.chat-message-bubble--assistant {
+  background: white;
+  color: #40606d;
+}
+
+.chat-loading-text {
+  margin: 0;
+}
+
+.chat-window-input-area {
+  padding: clamp(0.75rem, 2.5vw, 1rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: white;
+  flex-shrink: 0;
+}
+
+.chat-window-disclaimer {
+  margin: 0 0 0.5rem;
+  font-size: clamp(0.68rem, 2vw, 0.75rem);
+  line-height: 1.45;
+  color: #6b7280;
+}
+
+.chat-window-disclaimer--ar {
+  text-align: right;
+}
+
+.chat-window-disclaimer--en {
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.chat-window-input-row {
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 0.75rem);
+  align-items: center;
+}
+
+.chat-window-input {
+  flex: 1;
+  padding: clamp(0.625rem, 2vw, 0.75rem) clamp(0.875rem, 2.5vw, 1rem);
+  border: 1px solid rgba(139, 115, 85, 0.2);
+  border-radius: 8px;
+  font-size: clamp(0.875rem, 2.5vw, 0.95rem);
+  outline: none;
+  color: #40606d;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+.chat-window-input:focus {
+  border-color: #40606d;
+}
+
+.chat-window-input:disabled {
+  opacity: 0.6;
+}
+
+.chat-window-send {
+  padding: clamp(0.625rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
+  background: #40606d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 2.5vw, 0.95rem);
+  min-height: 44px;
+  min-width: 60px;
+  touch-action: manipulation;
+}
+
+.chat-window-send:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media (min-width: 640px) {
+  .chat-window {
+    right: max(1.5rem, env(safe-area-inset-right));
+    left: auto;
+    width: 380px;
+    bottom: calc(max(1.5rem, env(safe-area-inset-bottom)) + 4.75rem);
+    height: min(500px, calc(100dvh - 7rem));
+  }
+}
+
+@media (min-width: 768px) {
+  .chat-button {
+    right: max(2rem, env(safe-area-inset-right));
+    bottom: max(2rem, env(safe-area-inset-bottom));
+    width: 60px;
+    height: 60px;
+  }
+
+  .chat-window {
+    right: max(2rem, env(safe-area-inset-right));
+    bottom: calc(max(2rem, env(safe-area-inset-bottom)) + 5rem);
+  }
 }
 
 .search-container {
@@ -4465,7 +5519,8 @@ body {
   background: linear-gradient(145deg, rgba(64, 96, 109, 0.09), rgba(139, 115, 85, 0.08));
 }
 
-.home-page .start-button {
+.home-page .start-button,
+.vaccine-checker-route .vaccine-checker-start-button {
   min-width: min(100%, 300px);
   padding: 1.1rem 2.5rem;
   color: #fff;
@@ -4476,7 +5531,8 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.home-page .start-button:hover {
+.home-page .start-button:hover,
+.vaccine-checker-route .vaccine-checker-start-button:hover {
   color: #fff;
   background: linear-gradient(135deg, #456872 0%, #528090 55%, #5f8f9a 100%);
   transform: translateY(-4px);
@@ -4584,6 +5640,284 @@ body {
 
   .home-section-heading {
     font-size: 1.65rem;
+  }
+}
+
+/* =====================================================
+   HOMEPAGE — Vaccine Checker spotlight card
+   ===================================================== */
+.home-vaccine-checker-section {
+  padding-top: 0.5rem;
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.home-vaccine-checker-spotlight {
+  position: relative;
+  width: min(100%, 52rem);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.5rem);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.home-vaccine-checker-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 8% 6% -6%;
+  border-radius: 2rem;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(64, 96, 109, 0.1) 0%,
+    rgba(139, 115, 85, 0.05) 42%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-vaccine-checker-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.35rem, 4vw, 2.25rem);
+  border-radius: 1.35rem;
+  border: 1px solid rgba(64, 96, 109, 0.1);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(248, 244, 238, 0.94) 52%,
+    rgba(255, 252, 247, 0.98) 100%
+  );
+  box-shadow:
+    0 18px 48px rgba(64, 96, 109, 0.08),
+    0 4px 14px rgba(107, 93, 79, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.home-vaccine-checker-corner {
+  position: absolute;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid rgba(139, 115, 85, 0.22);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.home-vaccine-checker-corner--tl {
+  top: 1rem;
+  inset-inline-start: 1rem;
+  border-inline-end: none;
+  border-bottom: none;
+  border-start-start-radius: 0.65rem;
+}
+
+.home-vaccine-checker-corner--tr {
+  top: 1rem;
+  inset-inline-end: 1rem;
+  border-inline-start: none;
+  border-bottom: none;
+  border-start-end-radius: 0.65rem;
+}
+
+.home-vaccine-checker-corner--bl {
+  bottom: 1rem;
+  inset-inline-start: 1rem;
+  border-inline-end: none;
+  border-top: none;
+  border-end-start-radius: 0.65rem;
+}
+
+.home-vaccine-checker-corner--br {
+  bottom: 1rem;
+  inset-inline-end: 1rem;
+  border-inline-start: none;
+  border-top: none;
+  border-end-end-radius: 0.65rem;
+}
+
+.home-vaccine-checker-header {
+  text-align: center;
+  margin-bottom: 1.35rem;
+}
+
+.home-vaccine-checker-title-ar {
+  margin: 0;
+  color: #355a63;
+  font-family: var(--font-cairo), 'Cairo', 'Noto Sans Arabic', sans-serif;
+  font-size: clamp(1.65rem, 4.2vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.home-vaccine-checker-title-en {
+  margin: 0.85rem 0 0;
+  color: rgba(64, 96, 109, 0.72);
+  font-size: clamp(0.98rem, 2.4vw, 1.08rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.home-vaccine-checker-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 36rem;
+  margin: 0 auto 1.65rem;
+  text-align: center;
+}
+
+.home-vaccine-checker-copy-ar {
+  margin: 0;
+  color: #40606d;
+  font-family: var(--font-cairo), 'Cairo', 'Noto Sans Arabic', sans-serif;
+  font-size: clamp(1rem, 2.6vw, 1.08rem);
+  line-height: 1.75;
+}
+
+.home-vaccine-checker-copy-en {
+  margin: 0;
+  color: rgba(64, 96, 109, 0.78);
+  font-size: clamp(0.92rem, 2.3vw, 0.98rem);
+  line-height: 1.65;
+}
+
+.home-vaccine-checker-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+.home-vaccine-checker-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 100%;
+  min-height: 3.35rem;
+  padding: 0.95rem 1.35rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #3d5c66 0%, #4a7580 52%, #558090 100%);
+  box-shadow:
+    0 10px 24px rgba(64, 96, 109, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.home-vaccine-checker-primary:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #456872 0%, #528090 55%, #5f8f9a 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 30px rgba(64, 96, 109, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.home-vaccine-checker-primary:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 16px rgba(64, 96, 109, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.home-vaccine-checker-primary:focus-visible {
+  outline: 2px solid rgba(64, 96, 109, 0.45);
+  outline-offset: 3px;
+}
+
+.home-vaccine-checker-primary-ar {
+  font-family: var(--font-cairo), 'Cairo', 'Noto Sans Arabic', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.home-vaccine-checker-primary-en {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.25;
+  opacity: 0.92;
+}
+
+.home-vaccine-checker-share-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.home-vaccine-checker-share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.75rem;
+  border: 0;
+  border-radius: 0.65rem;
+  background: transparent;
+  color: rgba(64, 96, 109, 0.82);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.home-vaccine-checker-share-link:hover {
+  color: #40606d;
+  background: rgba(64, 96, 109, 0.06);
+}
+
+.home-vaccine-checker-share-link:active {
+  background: rgba(64, 96, 109, 0.1);
+}
+
+.home-vaccine-checker-share-link:focus-visible {
+  outline: 2px solid rgba(64, 96, 109, 0.35);
+  outline-offset: 2px;
+}
+
+.home-vaccine-checker-share-feedback {
+  margin: 0.35rem 0 0;
+  color: rgba(64, 96, 109, 0.85);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .home-vaccine-checker-card {
+    padding: 1.5rem 1.15rem 1.35rem;
+    border-radius: 1.15rem;
+  }
+
+  .home-vaccine-checker-corner {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .home-vaccine-checker-copy {
+    margin-bottom: 1.45rem;
+  }
+
+  .home-vaccine-checker-actions {
+    max-width: none;
   }
 }
 
@@ -7152,6 +8486,10 @@ body {
 
   .min-h-screen:not(.home-page) main.hero .hero-quote {
     display: none;
+  }
+
+  .vaccine-checker-route .about-section.vaccine-checker-section {
+    align-items: center;
   }
 
   .min-h-screen .about-section {
@@ -13019,7 +14357,37 @@ body {
   }
 }
 
-/* Final mobile grid enforcement — must stay last to win CSS cascade */
+/* Vaccine Checker back navigation — unlayered so it wins over card decorations */
+.vaccine-checker-back {
+  position: relative;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.9rem;
+  min-height: 2.75rem;
+  border: 2px solid rgba(139, 115, 85, 0.25);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vaccine-checker-back:hover {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 1);
+}
+
+.vaccine-checker-card .card-corner {
+  pointer-events: none;
+}
 @media (max-width: 639px) {
   .hcp-vs-items-grid,
   .hcp-doc-items-grid,
@@ -13036,5 +14404,149 @@ body {
   .hcp-res-item-tag {
     word-break: normal;
     overflow-wrap: normal;
+  }
+}
+
+.vaccine-checker-route .about-section.vaccine-checker-section {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vaccine Checker intro — compact card, teal language selection, solid start CTA */
+.vaccine-checker-route:has(.vaccine-checker-card--intro) .vaccine-checker-section {
+  flex: 1;
+  padding-bottom: 2rem;
+}
+
+.vaccine-checker-route:has(.vaccine-checker-card--intro) .vaccine-checker-container {
+  flex: 0 0 auto;
+}
+
+.vaccine-checker-route .vaccine-checker-card--intro {
+  flex: 0 0 auto;
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+}
+
+.vaccine-checker-route .vaccine-checker-card--intro .vaccine-checker-card-content,
+.vaccine-checker-route .vaccine-checker-card--intro .vaccine-checker-body {
+  flex: 0 0 auto;
+}
+
+.vaccine-checker-route .vaccine-checker-card--intro .vaccine-checker-header {
+  margin-bottom: 1rem;
+}
+
+.vaccine-checker-route .vaccine-checker-lang-option {
+  flex: 1;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(64, 96, 109, 0.22);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.vaccine-checker-route .vaccine-checker-lang-option:hover:not(.vaccine-checker-lang-option--selected) {
+  border-color: rgba(64, 96, 109, 0.38);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.vaccine-checker-route .vaccine-checker-lang-option--selected {
+  background: var(--text-dark);
+  border-color: var(--text-dark);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(64, 96, 109, 0.24);
+}
+
+.vaccine-checker-route .vaccine-checker-card--intro .vaccine-checker-disclaimer {
+  margin-top: 0;
+}
+
+.vaccine-checker-route .vaccine-checker-start-button {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .vaccine-checker-route .vaccine-checker-language-options {
+    flex-direction: column;
+  }
+
+  .vaccine-checker-route .vaccine-checker-lang-option {
+    width: 100%;
+  }
+}
+
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  .header,
+  .chat-button,
+  .vaccine-checker-no-print,
+  .vaccine-checker-back,
+  .vaccine-checker-progress,
+  .vaccine-checker-card .card-corner {
+    display: none !important;
+  }
+
+  .vaccine-checker-route,
+  .vaccine-checker-page,
+  .vaccine-checker-section,
+  .vaccine-checker-container,
+  .vaccine-checker-card,
+  .vaccine-checker-card-content,
+  .vaccine-checker-body,
+  .vaccine-checker-print-area {
+    display: block !important;
+    min-height: auto !important;
+    height: auto !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  .vaccine-checker-header {
+    margin-bottom: 1rem;
+  }
+
+  .vaccine-checker-title,
+  .vaccine-checker-results-heading,
+  .vaccine-checker-review-label,
+  .vaccine-checker-review-value,
+  .vaccine-checker-help,
+  .vaccine-checker-results-copy,
+  .vaccine-checker-results-meta-brand,
+  .vaccine-checker-results-meta-line,
+  .vaccine-checker-print-disclaimer p {
+    color: #111 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+  }
+
+  .vaccine-checker-results-section,
+  .vaccine-checker-result-card,
+  .vaccine-checker-results-meta,
+  .vaccine-checker-print-disclaimer {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+
+  .vaccine-checker-primary-action,
+  .start-button {
+    display: none !important;
   }
 }

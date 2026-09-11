@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import HomeNewlyAddedStrip from '@/components/HomeNewlyAddedStrip';
 import HomeNewsMarquee from '@/components/HomeNewsMarquee';
+import HomeVaccineCheckerCta from '@/components/HomeVaccineCheckerCta';
 import { SITE_TAGLINE } from '@/lib/site';
 
 export default function Home() {
@@ -25,10 +26,18 @@ export default function Home() {
         </p>
         
         <div className="hero-quote animate-fade-in-up animate-delay-3">
-          <p>"Everything you need to know about</p>
-          <p>vaccines in Egypt"</p>
+          <p>&ldquo;Everything you need to know about</p>
+          <p>vaccines in Egypt&rdquo;</p>
         </div>
       </main>
+
+      {/* Vaccine Checker CTA */}
+      <section
+        className="about-section home-section home-vaccine-checker-section"
+        aria-label="Vaccine Checker"
+      >
+        <HomeVaccineCheckerCta />
+      </section>
 
       {/* Primary paths first: Non-HCP / HCP — side by side */}
       <section
@@ -116,7 +125,7 @@ export default function Home() {
             <div className="footer-section">
               <h3 className="footer-title">Contact</h3>
               <p className="footer-text">
-                I'm always looking for new and exciting opportunities. Let's connect.
+                I&apos;m always looking for new and exciting opportunities. Let&apos;s connect.
               </p>
               
               {/* Social Links */}

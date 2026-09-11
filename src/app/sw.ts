@@ -29,7 +29,6 @@ const serwist = new Serwist({
     {
       matcher: ({ url: { pathname }, sameOrigin }) =>
         sameOrigin && pathname.startsWith("/api/"),
-      method: "GET",
       handler: new NetworkOnly(),
     },
     {

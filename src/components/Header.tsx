@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import SearchModal from './SearchModal';
+import SharePageButton from './SharePageButton';
 import { SITE_NAME_SHORT, SITE_TAGLINE } from '@/lib/site';
 
 type NavSubLink = { href: string; label: string; labelEn?: string };
@@ -212,6 +213,8 @@ export default function Header() {
               </Link>
             </div>
           ) : null}
+
+          <SharePageButton />
 
           <div className="search-container">
             <input
