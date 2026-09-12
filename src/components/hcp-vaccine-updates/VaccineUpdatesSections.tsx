@@ -17,7 +17,7 @@ export default function VaccineUpdatesSections({ visibleIds }: { visibleIds: str
       {show('shingles-cv-nature-med-2026') ? (
         <VaccineUpdateShell
           id="shingles-cv-nature-med-2026"
-          date="August 26, 2026"
+          date="September 12, 2026"
           badge="Study"
           title="Recombinant Shingles Vaccination and the Risk of Cardiovascular Events"
         >

@@ -146,46 +146,57 @@ export default function HcpVaccineUpdatesPage() {
               </p>
             ) : null}
 
-            <div className="hcp-res-sections-head">
-              <h2 className="hcp-res-sections-title">Latest updates</h2>
-              <p className="hcp-res-sections-subtitle">
-                Jump to an update below — cards link to the full article on this page.
-              </p>
-            </div>
-
-            {visibleIndex.length === 0 ? (
-              <p className="hcp-res-empty">No updates match your search.</p>
-            ) : (
-              <div className="hcp-vu-index-panel">
-                <div className="hcp-vu-index-grid">
-                  {visibleIndex.map((item) => (
-                    <article key={item.id} className="hcp-res-item hcp-vu-index-card">
-                      <div className="hcp-res-item-top hcp-vu-index-top">
-                        <span className="hcp-vu-index-emoji" aria-hidden>
-                          {item.emoji}
-                        </span>
-                        <div className="hcp-res-item-copy">
-                          <div className="hcp-vu-index-meta">
-                            <time className="hcp-vu-index-date">{item.date}</time>
-                            <span className="hcp-vu-index-badge">{item.badge}</span>
-                          </div>
-                          <h3 className="hcp-res-item-title">{item.title}</h3>
-                          <p className="hcp-res-item-desc">{item.summary}</p>
-                        </div>
-                      </div>
-                      <a href={`#${item.id}`} className="hcp-res-btn">
-                        Read update
-                        <span className="hcp-res-btn-arrow" aria-hidden>
-                          →
-                        </span>
-                      </a>
-                    </article>
-                  ))}
+            {visibleIds.length > 0 ? (
+              <>
+                <div className="hcp-res-sections-head">
+                  <h2 className="hcp-res-sections-title">Latest updates</h2>
+                  <p className="hcp-res-sections-subtitle">
+                    Newest first — scroll down for the full index of updates on this page.
+                  </p>
                 </div>
-              </div>
+                <VaccineUpdatesSections visibleIds={visibleIds} />
+              </>
+            ) : (
+              <p className="hcp-res-empty">No updates match your search.</p>
             )}
 
-            {visibleIds.length > 0 ? <VaccineUpdatesSections visibleIds={visibleIds} /> : null}
+            {visibleIndex.length > 0 ? (
+              <>
+                <div className="hcp-res-sections-head hcp-vu-index-head">
+                  <h2 className="hcp-res-sections-title">All updates</h2>
+                  <p className="hcp-res-sections-subtitle">
+                    Jump to an update — cards link to the full article above.
+                  </p>
+                </div>
+                <div className="hcp-vu-index-panel">
+                  <div className="hcp-vu-index-grid">
+                    {visibleIndex.map((item) => (
+                      <article key={item.id} className="hcp-res-item hcp-vu-index-card">
+                        <div className="hcp-res-item-top hcp-vu-index-top">
+                          <span className="hcp-vu-index-emoji" aria-hidden>
+                            {item.emoji}
+                          </span>
+                          <div className="hcp-res-item-copy">
+                            <div className="hcp-vu-index-meta">
+                              <time className="hcp-vu-index-date">{item.date}</time>
+                              <span className="hcp-vu-index-badge">{item.badge}</span>
+                            </div>
+                            <h3 className="hcp-res-item-title">{item.title}</h3>
+                            <p className="hcp-res-item-desc">{item.summary}</p>
+                          </div>
+                        </div>
+                        <a href={`#${item.id}`} className="hcp-res-btn">
+                          Read update
+                          <span className="hcp-res-btn-arrow" aria-hidden>
+                            →
+                          </span>
+                        </a>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : null}
           </div>
         </div>
       </section>

@@ -21,7 +21,7 @@ type HomeNewsMarqueeItem = {
 const HOME_NEWS_MARQUEE_ITEMS: HomeNewsMarqueeItem[] = [
   {
     id: 'shingles-cv-nature-med-2026',
-    date: 'August 26, 2026',
+    date: 'September 12, 2026',
     category: 'Study',
     title: 'Recombinant Shingles Vaccination and the Risk of Cardiovascular Events',
     body:

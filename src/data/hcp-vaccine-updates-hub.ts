@@ -17,14 +17,14 @@ export const HCP_VACCINE_UPDATES_HERO = {
 } as const;
 
 export const HCP_VACCINE_UPDATES_INTRO = [
-  'Updates are listed newest first. Use search to find a topic, then open the full article below or jump directly from the index cards.',
+  'Updates are listed newest first. The latest full article appears at the top; use search or the index cards below to jump to any topic.',
   'PDFs and embedded documents are included where available for download and reference.',
 ] as const;
 
 export const HCP_VACCINE_UPDATE_INDEX: HcpVaccineUpdateIndexItem[] = [
   {
     id: 'shingles-cv-nature-med-2026',
-    date: 'August 26, 2026',
+    date: 'September 12, 2026',
     badge: 'Study',
     title: 'Recombinant Shingles Vaccination and the Risk of Cardiovascular Events',
     summary:
