@@ -128,7 +128,7 @@ export const ARTICLE_META = {
   childrenVaccines: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   adultVaccines: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
   hcpVaccinesSera: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 04, 2026' },
-  hcpVaccineUpdates: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 17, 2026' },
+  hcpVaccineUpdates: { added: 'NOVEMBER 29, 2025', lastUpdated: 'SEPTEMBER 12, 2026' },
   hcpVaccineRelease: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   hcpVaccineComposition: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   hcpVaccineAdministration: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
@@ -145,7 +145,7 @@ export const ARTICLE_META = {
   about: { added: 'MAY 11, 2026', lastUpdated: 'MAY 11, 2026' },
   disclaimer: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   copy: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
-  home: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MAY 11, 2026' },
+  home: { added: 'NOVEMBER 29, 2025', lastUpdated: 'SEPTEMBER 12, 2026' },
   gallery: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 17, 2026' },
 
   // FAQ
@@ -176,7 +176,7 @@ export const ARTICLE_META = {
   docPneumococcal: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JULY 16, 2026' },
   docVaricella: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   docStorage: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
-  docShingles: { added: 'NOVEMBER 29, 2025', lastUpdated: 'JUNE 17, 2026' },
+  docShingles: { added: 'NOVEMBER 29, 2025', lastUpdated: 'SEPTEMBER 12, 2026' },
   docRsv: { added: 'NOVEMBER 29, 2025', lastUpdated: 'AUGUST 26, 2026' },
   docRotavirus: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
   docRabies: { added: 'NOVEMBER 29, 2025', lastUpdated: 'MARCH 28, 2026' },
