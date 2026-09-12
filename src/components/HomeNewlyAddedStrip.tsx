@@ -368,9 +368,51 @@ function AdultRespiratoryEgyptPdfSpotlightCard({ duplicate }: { duplicate?: bool
   );
 }
 
+function RecombinantShinglesDementiaSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/doc/shingles#recombinant-shingles-dementia"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">
+        The recombinant shingles vaccine is associated with lower risk of dementia
+      </h3>
+      <p className="home-newly-card-body">
+        New PDF on the Shingles (HZ) documents page — evidence on recombinant shingles vaccination and
+        dementia risk.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
+function RecombinantShinglesCardiovascularSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/doc/shingles#recombinant-shingles-cardiovascular"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">
+        Recombinant shingles vaccination and the risk of cardiovascular events
+      </h3>
+      <p className="home-newly-card-body">
+        New PDF on the Shingles (HZ) documents page — evidence on recombinant shingles vaccination and
+        cardiovascular outcomes.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <RecombinantShinglesDementiaSpotlightCard duplicate={duplicate} />
+      <RecombinantShinglesCardiovascularSpotlightCard duplicate={duplicate} />
       <AdultRespiratoryEgyptPdfSpotlightCard duplicate={duplicate} />
       <InternationalTravellersSpotlightCard duplicate={duplicate} />
       <InternationalTravellersArSpotlightCard duplicate={duplicate} />

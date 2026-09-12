@@ -40,3 +40,4 @@ next-env.d.ts
 # Node version
 node-v20.10.0-darwin-x64/
 node.tar.gz
+.env*

@@ -20,6 +20,16 @@ type HomeNewsMarqueeItem = {
 
 const HOME_NEWS_MARQUEE_ITEMS: HomeNewsMarqueeItem[] = [
   {
+    id: 'shingles-cv-nature-med-2026',
+    date: 'August 26, 2026',
+    category: 'Study',
+    title: 'Recombinant Shingles Vaccination and the Risk of Cardiovascular Events',
+    body:
+      'In its August 26 issue, Nature Medicine published Recombinant Shingles Vaccination and the Risk of Cardiovascular Events. Read the summary and open the full PDF on Global Vaccine Updates.',
+    href: '/hcp-vaccine-updates#shingles-cv-nature-med-2026',
+    linkText: 'Read more on Vaccine Updates →',
+  },
+  {
     id: 'pcv21-mflusiva-jun-2026',
     date: 'June 17, 2026',
     category: 'FDA Update',

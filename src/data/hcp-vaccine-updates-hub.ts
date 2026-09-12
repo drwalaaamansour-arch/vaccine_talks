@@ -23,6 +23,17 @@ export const HCP_VACCINE_UPDATES_INTRO = [
 
 export const HCP_VACCINE_UPDATE_INDEX: HcpVaccineUpdateIndexItem[] = [
   {
+    id: 'shingles-cv-nature-med-2026',
+    date: 'August 26, 2026',
+    badge: 'Study',
+    title: 'Recombinant Shingles Vaccination and the Risk of Cardiovascular Events',
+    summary:
+      'Nature Medicine published this study on recombinant shingles vaccination and cardiovascular outcomes — full PDF below.',
+    keywords:
+      'shingles shingrix recombinant zoster hz cardiovascular heart nature medicine cardiovascular events',
+    emoji: '⚡',
+  },
+  {
     id: 'pcv21-mflusiva-jun-2026',
     date: 'June 17, 2026',
     badge: 'FDA Update',

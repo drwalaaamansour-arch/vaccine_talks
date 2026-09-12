@@ -410,7 +410,7 @@ export const HCP_DOC_PAGES = {
   shingles: {
     metaKey: 'docShingles',
     title: 'Shingles (HZ)',
-    lead: 'Shingles overview and Shingrix factsheet for adult immunization.',
+    lead: 'Shingles overview, Shingrix factsheet, and related evidence for adult immunization.',
     emoji: '⚡',
     pdfs: [
       {
@@ -424,6 +424,18 @@ export const HCP_DOC_PAGES = {
         label: 'Shingrix factsheet',
         title: 'Shingrix Factsheet',
         src: '/hz/Shingrix%20factsheet.pdf',
+      },
+      {
+        id: 'recombinant-shingles-dementia',
+        label: 'Recombinant shingles vaccine and dementia risk',
+        title: 'The recombinant shingles vaccine is associated with lower risk of dementia',
+        src: '/hz/The%20recombinant%20shingles%20vaccine%20is%20associated%20with%20lower%20risk%20of%20dementia.pdf',
+      },
+      {
+        id: 'recombinant-shingles-cardiovascular',
+        label: 'Recombinant shingles vaccination and cardiovascular events',
+        title: 'Recombinant shingles vaccination and the risk of cardiovascular events',
+        src: '/hz/Recombinant%20shingles%20vaccination%20and%20the%20risk%20of%20cardiovascular%20events.pdf',
       },
     ],
   },

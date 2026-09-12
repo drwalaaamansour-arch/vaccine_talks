@@ -6,11 +6,32 @@ import VaccineUpdateShell from '@/components/hcp-vaccine-updates/VaccineUpdateSh
 const IBD_PDF =
   '/The%20impact%20of%20a%20pneumococcal%20vaccination%20on%20disease%20activity%20in%20children%20and%20adolescents%20with%20inflammatory%20bowel%20disease%20%20a%202-year%20prospective%20study.pdf';
 
+const SHINGLES_CV_PDF =
+  '/hz/Recombinant%20shingles%20vaccination%20and%20the%20risk%20of%20cardiovascular%20events.pdf';
+
 export default function VaccineUpdatesSections({ visibleIds }: { visibleIds: string[] }) {
   const show = (id: string) => visibleIds.includes(id);
 
   return (
     <div className="hcp-vu-updates-list">
+      {show('shingles-cv-nature-med-2026') ? (
+        <VaccineUpdateShell
+          id="shingles-cv-nature-med-2026"
+          date="August 26, 2026"
+          badge="Study"
+          title="Recombinant Shingles Vaccination and the Risk of Cardiovascular Events"
+        >
+          <p>
+            In its August 26 issue, <em>Nature Medicine</em> published{' '}
+            <strong>Recombinant Shingles Vaccination and the Risk of Cardiovascular Events</strong>.
+          </p>
+          <HcpGuidePdfEmbed
+            src={SHINGLES_CV_PDF}
+            title="Recombinant Shingles Vaccination and the Risk of Cardiovascular Events"
+          />
+        </VaccineUpdateShell>
+      ) : null}
+
       {show('pcv21-mflusiva-jun-2026') ? (
         <VaccineUpdateShell
           id="pcv21-mflusiva-jun-2026"
