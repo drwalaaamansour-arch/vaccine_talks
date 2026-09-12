@@ -368,6 +368,26 @@ function AdultRespiratoryEgyptPdfSpotlightCard({ duplicate }: { duplicate?: bool
   );
 }
 
+function RecombinantShinglesNatureMedSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-vaccine-updates#shingles-cv-nature-med-2026"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">
+        Recombinant Shingles Vaccination and the Risk of Cardiovascular Events
+      </h3>
+      <p className="home-newly-card-body">
+        In its August 26 issue, <em>Nature Medicine</em> published this study — summary and full PDF on
+        Global Vaccine Updates.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function RecombinantShinglesDementiaSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -411,6 +431,7 @@ function RecombinantShinglesCardiovascularSpotlightCard({ duplicate }: { duplica
 function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
+      <RecombinantShinglesNatureMedSpotlightCard duplicate={duplicate} />
       <RecombinantShinglesDementiaSpotlightCard duplicate={duplicate} />
       <RecombinantShinglesCardiovascularSpotlightCard duplicate={duplicate} />
       <AdultRespiratoryEgyptPdfSpotlightCard duplicate={duplicate} />
