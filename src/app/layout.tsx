@@ -5,7 +5,6 @@ import "./globals.css";
 import ChatButton from "@/components/ChatButton";
 import AuthSessionProvider from "@/components/AuthSessionProvider";
 import SiteJsonLd from "@/components/SiteJsonLd";
-import PwaUpdatePrompt from "@/components/PwaUpdatePrompt";
 import { createHomeMetadata } from "@/lib/seo";
 import { SITE_NAME_SHORT } from "@/lib/site";
 import { SerwistProvider } from "@serwist/turbopack/react";
@@ -106,7 +105,6 @@ a{color:#0d9488}
           <SerwistProvider swUrl="/serwist/sw.js">
             {children}
             <ChatButton />
-            <PwaUpdatePrompt />
           </SerwistProvider>
         </AuthSessionProvider>
       </body>
