@@ -19,7 +19,6 @@ import {
   wizardStateToCheckerInput,
   type VaccineRecommendation,
 } from '@/lib/vaccine-checker';
-import { getTimingDisplayLines } from '@/lib/vaccine-checker/recommendation-timing';
 import {
   dedupeNeedsReviewItems,
   filterImportantNotesForDisplay,
@@ -31,8 +30,10 @@ import {
   getDisplayCardNoteParams,
   getProductDisplayLabel,
   getRecommendationCategoryLabel,
+  getResultsCardTimingLines,
   isRoutineBcgPrerequisite,
   isRoutineHexRecommendation,
+  shouldHideDoseLabelForInfluenzaTeenSeasonDueNow,
   shouldHideDoseLabelForTimingDisplay,
   shouldShowDoseLabelOnCard,
   shouldShowStatusOnCard,
@@ -110,11 +111,12 @@ function RecommendationCard({
   const showStatus = shouldShowStatusOnCard(section, item.status);
   const timingLines = item.conditionalNextDose
     ? []
-    : getTimingDisplayLines(item, referenceDate);
+    : getResultsCardTimingLines(item, referenceDate, checkerInput);
   const timingLineKeys = timingLines.map((line) => line.key);
   const showDoseLabel =
     shouldShowDoseLabelOnCard(section, item.doseLabelKey) &&
-    !shouldHideDoseLabelForTimingDisplay(item, timingLineKeys);
+    !shouldHideDoseLabelForTimingDisplay(item, timingLineKeys) &&
+    !shouldHideDoseLabelForInfluenzaTeenSeasonDueNow(item, checkerInput);
   const explanation = getCardExplanation(item, t, checkerInput);
   const isNeedsReview = section === 'needsReview';
   const cardNotes = getDisplayCardNoteKeys(item, checkerInput);

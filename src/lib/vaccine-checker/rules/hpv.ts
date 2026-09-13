@@ -93,15 +93,24 @@ function resolveHpvDoseDates(history: NonNullable<ReturnType<RuleContext['getHis
     return history.doseDates;
   }
 
-  if (history.numberOfDoses >= 2 && history.firstDoseDate && history.lastDoseDate) {
-    return [history.firstDoseDate, history.lastDoseDate];
-  }
-
-  if (history.numberOfDoses >= 1 && history.lastDoseDate) {
-    return [history.lastDoseDate];
+  if (history.firstDoseDate) {
+    return [history.firstDoseDate];
   }
 
   return [];
+}
+
+function hpvTwoDoseSeriesComplete(
+  history: NonNullable<ReturnType<RuleContext['getHistory']>>,
+  doses: Date[],
+  twoDoseSeries: boolean
+): boolean {
+  if (!twoDoseSeries) {
+    return false;
+  }
+
+  const claimed = history.numberOfDoses ?? 0;
+  return claimed >= 2 && Boolean(history.secondDoseDateUnknown) && doses.length >= 1;
 }
 
 function upcomingThreeDoseSeriesFromDose1(
@@ -148,10 +157,28 @@ function dose1Due(product?: string, noteKeys: string[] = []): VaccineRecommendat
   ];
 }
 
-function gardasil4Rules(ctx: RuleContext, doses: Date[], firstDoseDate: Date): VaccineRecommendation[] {
+function gardasil4Rules(
+  ctx: RuleContext,
+  doses: Date[],
+  firstDoseDate: Date,
+  history: NonNullable<ReturnType<RuleContext['getHistory']>>
+): VaccineRecommendation[] {
   const product = 'gardasil4';
   const twoDoseSeries = isHpvTwoDoseSeries(product, ctx.dob, firstDoseDate);
   const targetDoses = twoDoseSeries ? 2 : 3;
+
+  if (hpvTwoDoseSeriesComplete(history, doses, twoDoseSeries)) {
+    return [
+      makeRecommendation({
+        id: 'hpv-completed',
+        vaccineCategory: 'hpv',
+        product,
+        doseLabelKey: 'doseLabel_seriesComplete',
+        status: 'completed',
+        noteKeys: [],
+      }),
+    ];
+  }
 
   if (doses.length >= targetDoses) {
     return [
@@ -205,11 +232,29 @@ function gardasil4Rules(ctx: RuleContext, doses: Date[], firstDoseDate: Date): V
   ];
 }
 
-function gardasil9Rules(ctx: RuleContext, doses: Date[], firstDoseDate: Date): VaccineRecommendation[] {
+function gardasil9Rules(
+  ctx: RuleContext,
+  doses: Date[],
+  firstDoseDate: Date,
+  history: NonNullable<ReturnType<RuleContext['getHistory']>>
+): VaccineRecommendation[] {
   const product = 'gardasil9';
   const twoDoseSeries = isHpvTwoDoseSeries(product, ctx.dob, firstDoseDate);
 
   if (twoDoseSeries) {
+    if (hpvTwoDoseSeriesComplete(history, doses, true)) {
+      return [
+        makeRecommendation({
+          id: 'hpv-completed',
+          vaccineCategory: 'hpv',
+          product,
+          doseLabelKey: 'doseLabel_seriesComplete',
+          status: 'completed',
+          noteKeys: [],
+        }),
+      ];
+    }
+
     if (doses.length >= 2) {
       const intervalDays = daysBetween(doses[0], doses[1]);
       if (intervalDays < 150) {
@@ -291,10 +336,28 @@ function gardasil9Rules(ctx: RuleContext, doses: Date[], firstDoseDate: Date): V
   return dose1Due(product);
 }
 
-function cervarixRules(ctx: RuleContext, doses: Date[], firstDoseDate: Date): VaccineRecommendation[] {
+function cervarixRules(
+  ctx: RuleContext,
+  doses: Date[],
+  firstDoseDate: Date,
+  history: NonNullable<ReturnType<RuleContext['getHistory']>>
+): VaccineRecommendation[] {
   const product = 'cervarix';
   const twoDoseSeries = isHpvTwoDoseSeries(product, ctx.dob, firstDoseDate);
   const targetDoses = twoDoseSeries ? 2 : 3;
+
+  if (hpvTwoDoseSeriesComplete(history, doses, twoDoseSeries)) {
+    return [
+      makeRecommendation({
+        id: 'hpv-completed',
+        vaccineCategory: 'hpv',
+        product,
+        doseLabelKey: 'doseLabel_seriesComplete',
+        status: 'completed',
+        noteKeys: [],
+      }),
+    ];
+  }
 
   if (doses.length >= targetDoses) {
     return [
@@ -386,6 +449,37 @@ export function calculateHpv(ctx: RuleContext): VaccineRecommendation[] {
     ];
   }
 
+  if (history?.secondDoseDateUnknown && (history.numberOfDoses ?? 0) >= 2) {
+    const firstDose = history.firstDoseDate ?? doses[0];
+    if (firstDose && getAgeAtFirstDoseYears(ctx.dob, firstDose) >= 9 && product && !isUnknownHpvProduct(product)) {
+      const twoDoseSeries = isHpvTwoDoseSeries(product, ctx.dob, firstDose);
+      if (twoDoseSeries) {
+        return [
+          makeRecommendation({
+            id: 'hpv-completed',
+            vaccineCategory: 'hpv',
+            product,
+            doseLabelKey: 'doseLabel_seriesComplete',
+            status: 'completed',
+            noteKeys: ['note_hpvSecondDoseDateUnknown'],
+          }),
+        ];
+      }
+    }
+
+    return [
+      makeRecommendation({
+        id: 'hpv-additional-dose-timing-unknown',
+        vaccineCategory: 'hpv',
+        product,
+        doseLabelKey: 'doseLabel_dose2',
+        status: 'due-now',
+        noteKeys: ['note_hpvRemainingTimingDependsOnFirstDose'],
+        reasonKey: 'reason_hpvSecondDoseDateUnknown',
+      }),
+    ];
+  }
+
   if (isUnknownHpvProduct(product)) {
     if (doses.length === 0 && ageYears >= 9) {
       return zeroDoseCatchUp(ctx);
@@ -401,15 +495,19 @@ export function calculateHpv(ctx: RuleContext): VaccineRecommendation[] {
     return needsReview(product);
   }
 
+  if (firstDoseDate && getAgeAtFirstDoseYears(ctx.dob, firstDoseDate) < 9) {
+    return needsReview(product);
+  }
+
   const resolvedFirst = firstDoseDate ?? ctx.today;
 
   switch (product) {
     case 'gardasil4':
-      return gardasil4Rules(ctx, doses, resolvedFirst);
+      return gardasil4Rules(ctx, doses, resolvedFirst, history!);
     case 'gardasil9':
-      return gardasil9Rules(ctx, doses, resolvedFirst);
+      return gardasil9Rules(ctx, doses, resolvedFirst, history!);
     case 'cervarix':
-      return cervarixRules(ctx, doses, resolvedFirst);
+      return cervarixRules(ctx, doses, resolvedFirst, history!);
     default:
       return needsReview(product);
   }

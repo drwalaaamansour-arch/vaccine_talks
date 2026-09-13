@@ -5,9 +5,11 @@ import { WizardStepLayout } from '@/components/wizard/WizardStepLayout';
 import {
   getEligibleAdditionalVaccineCategories,
   getNextStepAfterAdditionalVaccines,
+  getReferenceDate,
 } from '@/lib/vaccine-checker/wizard-flow';
 import {
-  mergeSelectedAdditionalVaccineRecords,
+  buildAdditionalVaccinesAfterSelection,
+  parseWizardDob,
 } from '@/lib/vaccine-checker/wizard-history';
 import {
   type AdditionalVaccineCategory,
@@ -87,10 +89,18 @@ export function AdditionalVaccinesStep({
     if (selectedCategories.length === 0) return;
 
     setState((current) => {
-      const additionalVaccines = mergeSelectedAdditionalVaccineRecords(
-        current.additionalVaccines,
-        selectedCategories
-      );
+      const today = getReferenceDate();
+      const dob = parseWizardDob(current.dateOfBirth);
+      const additionalVaccines =
+        dob === null
+          ? []
+          : buildAdditionalVaccinesAfterSelection(
+              current.additionalVaccines,
+              selectedCategories,
+              eligibleCategories,
+              dob,
+              today
+            );
       const nextState = {
         ...current,
         additionalVaccinesHistoryAnswer: 'yes' as const,

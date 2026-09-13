@@ -350,10 +350,19 @@ export const AR_TRANSLATIONS = {
   influenzaCurrentSeasonQuestionAr: 'هل أخذ تطعيم الإنفلونزا للموسم الحالي؟',
   doseDateUnknown: "I don't remember the date",
   doseDateUnknownAr: 'مش فاكرة التاريخ',
+  hpvSecondDoseDateUnknown: "I don't remember the date (dose 2)",
+  hpvSecondDoseDateUnknownAr: 'مش فاكرة التاريخ (الجرعة الثانية)',
+  hpvFirstDoseBeforeAge9:
+    'This dose date is not valid. HPV vaccination starts from age 9 years.',
+  hpvFirstDoseBeforeAge9Ar: 'تاريخ الجرعة غير صحيح، تطعيم HPV يبدأ من عمر 9 سنوات.',
+  reviewDoseDateUnknown: 'Date unknown',
+  reviewDoseDateUnknownAr: 'التاريخ غير معروف',
   influenzaDoseCountQuestionAr: 'أخد كام جرعة قبل كده؟',
   resultRecommendedDate: 'الميعاد المقترح: {date}',
   resultOriginalRecommendedDate: 'كان ميعاده المقترح: {date}',
   resultScheduledDoseDate: '{{doseLabel}}: {date}',
+  resultDoseDueNow: '{{doseLabel}} مستحقة دلوقتي.',
+  resultInfluenzaSeasonDueNow: 'جرعة الموسم مستحقة دلوقتي.',
   resultPreferredWindow: 'الفترة المفضلة: من {startDate} إلى {endDate}',
   resultPreferredBoosterWindow: 'الفترة المفضلة للجرعة المنشطة: من {startDate} إلى {endDate}',
   resultPastPreferredWindow: 'الفترة المفضلة كانت من {startDate} إلى {endDate}، والتطعيم مستحق دلوقتي.',
@@ -558,6 +567,10 @@ export const AR_TRANSLATIONS = {
   reason_hpvProductUnknown: 'محتاجين نوع تطعيم HPV.',
   note_hpvRemainingTimingDependsOnFirstDose:
     'محتاجين جرعة HPV إضافية. التوقيت الدقيق وهل محتاجين جرعة ثالثة يعتمد على عمر وتاريخ الجرعة الأولى.',
+  reason_hpvSecondDoseDateUnknown:
+    'لم يُدخل تاريخ الجرعة الثانية — مواعيد الجرعات المتبقية تعتمد على تاريخ الجرعة الأولى.',
+  note_hpvSecondDoseDateUnknown: 'تم تسجيل جرعتين سابقًا دون إدخال تاريخ الجرعة الثانية.',
+
   reason_hpvFirstDoseDateUnknown:
     'تاريخ الجرعة الأولى من HPV مش متوفر — تفاصيل الجدول تعتمد على موعد الجرعة الأولى.',
 

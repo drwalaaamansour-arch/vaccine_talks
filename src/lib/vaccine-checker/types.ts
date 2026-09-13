@@ -63,6 +63,7 @@ export type VaccineHistoryRecord = {
   influenzaPrimingComplete?: boolean;
   influenzaCurrentSeasonReceived?: boolean;
   firstDoseDateUnknown?: boolean;
+  secondDoseDateUnknown?: boolean;
 };
 
 export type CheckerInput = {

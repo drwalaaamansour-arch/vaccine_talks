@@ -551,7 +551,7 @@ describe('HPV wizard routing', () => {
     'does not loop back to product selection after %s dose count is saved',
     (product) => {
       const afterProduct = hpvWizardState({ product }, 'doseCount');
-      expect(getFirstAdditionalVaccineStep(afterProduct)).toBe('productSelection');
+      expect(getFirstAdditionalVaccineStep(afterProduct)).toBe('doseCount');
 
       const afterDoseCount = hpvWizardState({ product, numberOfDoses: 1 }, 'doseCount');
       expect(getNextStepAfterDoseCount(afterDoseCount, 0)).toBe('lastDoseDate');

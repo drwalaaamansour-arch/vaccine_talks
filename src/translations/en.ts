@@ -352,10 +352,19 @@ export const TRANSLATIONS = {
   influenzaCurrentSeasonQuestionAr: 'هل أخذ تطعيم الإنفلونزا للموسم الحالي؟',
   doseDateUnknown: "I don't remember the date",
   doseDateUnknownAr: 'مش فاكرة التاريخ',
+  hpvSecondDoseDateUnknown: "I don't remember the date (dose 2)",
+  hpvSecondDoseDateUnknownAr: 'مش فاكرة التاريخ (الجرعة الثانية)',
+  hpvFirstDoseBeforeAge9:
+    'This dose date is not valid. HPV vaccination starts from age 9 years.',
+  hpvFirstDoseBeforeAge9Ar: 'تاريخ الجرعة غير صحيح، تطعيم HPV يبدأ من عمر 9 سنوات.',
+  reviewDoseDateUnknown: 'Date unknown',
+  reviewDoseDateUnknownAr: 'التاريخ غير معروف',
   influenzaDoseCountQuestionAr: 'أخد كام جرعة قبل كده؟',
   resultRecommendedDate: 'Recommended date: {date}',
   resultOriginalRecommendedDate: 'Original recommended date: {date}',
   resultScheduledDoseDate: '{{doseLabel}}: {date}',
+  resultDoseDueNow: '{{doseLabel}} is due now.',
+  resultInfluenzaSeasonDueNow: 'Seasonal dose is due now.',
   resultPreferredWindow: 'Preferred window: {startDate} to {endDate}',
   resultPreferredBoosterWindow: 'Preferred booster window: {startDate} to {endDate}',
   resultPastPreferredWindow:
@@ -565,6 +574,10 @@ export const TRANSLATIONS = {
     'An additional HPV dose is needed. Exact timing and whether a third dose is required depend on the age and date of the first dose.',
   reason_hpvFirstDoseDateUnknown:
     'First HPV dose date was not provided — schedule details depend on when the first dose was given.',
+  reason_hpvSecondDoseDateUnknown:
+    'Second HPV dose date was not provided — remaining timing depends on the first dose date.',
+  note_hpvSecondDoseDateUnknown:
+    'Two prior doses were reported; the second dose date was not entered.',
 
   note_influenzaSeasonComplete: 'A dose has already been recorded for the current influenza season.',
   note_influenzaOneDosePerSeason: 'One dose is recommended for the current flu season.',

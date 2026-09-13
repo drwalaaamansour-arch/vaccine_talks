@@ -88,6 +88,23 @@ export function influenzaTeenSeasonAnswerComplete(
   );
 }
 
+/** Healthy Hep A: two or more recorded prior doses complete the series (no dates needed). */
+export function hepatitisAHistoryCompleteWithoutDates(
+  record: Pick<AdditionalVaccineRecord, 'category' | 'numberOfDoses'>
+): boolean {
+  return record.category === 'hepatitisA' && record.numberOfDoses >= 2;
+}
+
+/** Hep A dose count alone is enough wizard history (0 prior doses, or series complete at 2+). */
+export function hepatitisAWizardCompleteAfterDoseCount(
+  record: Pick<AdditionalVaccineRecord, 'category' | 'numberOfDoses'>
+): boolean {
+  return (
+    record.category === 'hepatitisA' &&
+    (record.numberOfDoses === 0 || record.numberOfDoses >= 2)
+  );
+}
+
 /** How many dose-date fields the wizard must collect (may be fewer than numberOfDoses). */
 export function getWizardRequiredDoseDateCount(
   record: AdditionalVaccineRecord,
@@ -100,6 +117,19 @@ export function getWizardRequiredDoseDateCount(
 
   if (record.category === 'hpv') {
     if (record.numberOfDoses <= 0) {
+      return 0;
+    }
+    if (record.firstDoseDateUnknown) {
+      return 0;
+    }
+    if (record.numberOfDoses >= 2 && record.secondDoseDateUnknown) {
+      return 1;
+    }
+    return Math.min(record.numberOfDoses, 3);
+  }
+
+  if (record.category === 'hepatitisA') {
+    if (record.numberOfDoses <= 0 || record.numberOfDoses >= 2) {
       return 0;
     }
     return 1;
@@ -127,7 +157,7 @@ export function teenHistoryRecordComplete(
   }
 
   const requiredDates = getWizardRequiredDoseDateCount(record, dob, today);
-  if (record.category === 'hpv' && record.firstDoseDateUnknown) {
+  if (record.category === 'hpv' && (record.firstDoseDateUnknown || record.secondDoseDateUnknown)) {
     return record.numberOfDoses > 0;
   }
 
@@ -145,7 +175,11 @@ export function shouldSkipHistoryDetailsAfterDoseCount(
 
   const dob = parseDateParts(state.dateOfBirth);
 
-  if (record.category === 'pneumococcal' && isHealthyPcvOlderThanFive(dob, today)) {
+  if (
+    record.category === 'pneumococcal' &&
+    isHealthyPcvOlderThanFive(dob, today) &&
+    record.numberOfDoses >= 1
+  ) {
     return true;
   }
 
@@ -159,6 +193,10 @@ export function shouldSkipHistoryDetailsAfterDoseCount(
 
   if (record.category === 'influenza' && influenzaUsesCurrentSeasonQuestion(dob, today)) {
     return record.influenzaCurrentSeasonReceived !== undefined;
+  }
+
+  if (hepatitisAWizardCompleteAfterDoseCount(record)) {
+    return true;
   }
 
   return false;

@@ -14,9 +14,10 @@ import {
 export function calculateHepatitisA(ctx: RuleContext): VaccineRecommendation[] {
   const history = ctx.getHistory('hepatitisA');
   const doses = history?.doseDates ?? [];
+  const reportedDoses = history?.numberOfDoses ?? doses.length;
   const { dob, today } = ctx;
 
-  if (doses.length >= 2) {
+  if (doses.length >= 2 || reportedDoses >= 2) {
     return [
       makeRecommendation({
         id: 'hepa-completed',

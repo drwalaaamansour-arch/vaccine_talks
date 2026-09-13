@@ -217,7 +217,10 @@ function varicellaDoseCounts(dob: Date, today: Date): number[] {
 
 function hepatitisADoseCounts(dob: Date, today: Date): number[] {
   const max = maxPlausibleDosesBySpacing(today, 2, addMonths(dob, 12), { minIntervalMonths: 6 });
-  return range(1, max);
+  if (max < 1) {
+    return [];
+  }
+  return range(0, max);
 }
 
 function influenzaDoseCounts(dob: Date, today: Date): number[] {
@@ -275,12 +278,21 @@ function range(min: number, max: number): number[] {
   return Array.from({ length: max - min + 1 }, (_, index) => min + index);
 }
 
+export function filterDoseCountsForPreviouslyReceived(counts: number[]): number[] {
+  return counts.filter((count) => count >= 1);
+}
+
 export function getAvailableDoseCountsForVaccine(
   dob: Date,
   today: Date,
-  vaccine: Pick<AdditionalVaccineRecord, 'category' | 'product'>
+  vaccine: Pick<AdditionalVaccineRecord, 'category' | 'product'>,
+  options?: { previouslyReceived?: boolean }
 ): number[] {
-  return getPossiblePreviousDoseCounts(dob, today, vaccine);
+  const counts = getPossiblePreviousDoseCounts(dob, today, vaccine);
+  if (options?.previouslyReceived) {
+    return filterDoseCountsForPreviouslyReceived(counts);
+  }
+  return counts;
 }
 
 /** Doses the child could already have received historically by the current age. */
@@ -321,5 +333,7 @@ export function getAvailableDoseCounts(
   }
 
   const dob = parseDateParts(state.dateOfBirth);
-  return getAvailableDoseCountsForVaccine(dob, today, vaccine);
+  return getAvailableDoseCountsForVaccine(dob, today, vaccine, {
+    previouslyReceived: true,
+  });
 }

@@ -8,6 +8,8 @@ import { type AdditionalVaccineCategory } from '@/types/wizard-types';
 import { getVaccineCategoryLabel } from '@/translations/vaccine-category-labels';
 import { iso, type CheckerInput, type VaccineRecommendation } from '@/lib/vaccine-checker/types';
 import { expandEquivalentNoteKeys, getCardNoteKeys } from '@/lib/vaccine-checker/result-notes';
+import { getTimingDisplayLines, type TimingDisplayLine } from '@/lib/vaccine-checker/recommendation-timing';
+import { influenzaUsesCurrentSeasonQuestion } from '@/lib/vaccine-checker/teen-history-simplification';
 
 function getMmrDatesFromInput(input: CheckerInput): Date[] {
   return getVaricellaSpacingMmrDatesFromInput(input);
@@ -61,11 +63,49 @@ export function shouldShowVaricellaDelayedAfterRecentMmrNote(
   return getRecentMmrCausingVaricellaDelay(input.referenceDate, getMmrDatesFromInput(input)) !== null;
 }
 
+export function isInfluenzaTeenSeasonDueNowCard(
+  item: VaccineRecommendation,
+  input: CheckerInput
+): boolean {
+  if (item.vaccineCategory !== 'influenza' || item.conditionalNextDose) {
+    return false;
+  }
+
+  if (item.doseLabelKey !== 'doseLabel_seasonDose' || item.status !== 'due-now') {
+    return false;
+  }
+
+  return influenzaUsesCurrentSeasonQuestion(input.dob, input.referenceDate);
+}
+
+export function getResultsCardTimingLines(
+  item: VaccineRecommendation,
+  referenceDate: Date,
+  input?: CheckerInput | null
+): TimingDisplayLine[] {
+  if (input && isInfluenzaTeenSeasonDueNowCard(item, input)) {
+    return [{ key: 'resultInfluenzaSeasonDueNow', params: {} }];
+  }
+
+  return getTimingDisplayLines(item, referenceDate);
+}
+
+export function shouldHideDoseLabelForInfluenzaTeenSeasonDueNow(
+  item: VaccineRecommendation,
+  input?: CheckerInput | null
+): boolean {
+  return Boolean(input && isInfluenzaTeenSeasonDueNowCard(item, input));
+}
+
 export function getDisplayCardNoteKeys(
   item: VaccineRecommendation,
   input?: CheckerInput | null
 ): string[] {
-  const base = getCardNoteKeys(item.noteKeys);
+  let base = getCardNoteKeys(item.noteKeys);
+
+  if (input && isInfluenzaTeenSeasonDueNowCard(item, input)) {
+    base = base.filter((key) => key !== 'note_influenzaOneDosePerSeason');
+  }
 
   if (!input || item.vaccineCategory !== 'varicella') {
     return base;
@@ -164,11 +204,23 @@ export function isOverdueRecommendedDate(
   item: VaccineRecommendation,
   referenceDate: Date
 ): boolean {
-  if (item.status !== 'due-now' || !item.recommendedDate || item.conditionalNextDose) {
+  if (!item.recommendedDate || item.conditionalNextDose) {
+    return false;
+  }
+
+  if (item.status !== 'due-now' && item.status !== 'upcoming') {
     return false;
   }
 
   return isBefore(parseRecommendedIsoDate(item.recommendedDate), startOfDay(referenceDate));
+}
+
+/** Parent-facing: do not show a projected interval date in the past for doses not yet given. */
+export function shouldHideOverdueUnadministeredRecommendedDate(
+  item: VaccineRecommendation,
+  referenceDate: Date
+): boolean {
+  return isOverdueRecommendedDate(item, referenceDate);
 }
 
 export function getRecommendedDateLabelKey(
@@ -252,17 +304,16 @@ export function enrichRecommendationsForPresentation(
       };
     }
 
-    if (item.status !== 'due-now' || !item.recommendedDate) {
-      return item;
-    }
-
-    if (!isBefore(parseRecommendedIsoDate(item.recommendedDate), referenceDate)) {
+    if (!shouldHideOverdueUnadministeredRecommendedDate(item, referenceDate)) {
       return item;
     }
 
     return {
       ...item,
-      recommendedDateLabelKey: 'resultOriginalRecommendedDate',
+      status: 'due-now',
+      recommendedDate: undefined,
+      recommendedDateLabelKey: undefined,
+      urgency: Math.max(item.urgency, 80),
     };
   });
 }

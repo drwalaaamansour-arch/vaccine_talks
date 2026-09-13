@@ -11,6 +11,7 @@ import {
   getRecommendedDateLabelKey,
   isOverdueRecommendedDate,
   shouldHideCatchUpStartRecommendedDate,
+  shouldHideOverdueUnadministeredRecommendedDate,
   shouldHideDoseLabelForTimingDisplay,
   shouldShowStatusOnCard,
 } from '@/lib/vaccine-checker/result-presentation';
@@ -120,12 +121,12 @@ describe('result presentation', () => {
     expect(filtered).toEqual(['note_varicellaMmrInterval']);
   });
 
-  it('uses original recommended date label when due-now date is in the past', () => {
+  it('detects overdue unadministered recommended dates', () => {
     const referenceDate = new Date(2026, 7, 22);
     const item: VaccineRecommendation = {
-      id: 'pcv-dose1-due',
-      vaccineCategory: 'pneumococcal',
-      doseLabelKey: 'doseLabel_dose1',
+      id: 'varicella-dose2',
+      vaccineCategory: 'varicella',
+      doseLabelKey: 'doseLabel_dose2',
       status: 'due-now',
       recommendedDate: '2026-06-22',
       noteKeys: [],
@@ -133,9 +134,7 @@ describe('result presentation', () => {
     };
 
     expect(isOverdueRecommendedDate(item, referenceDate)).toBe(true);
-    expect(getRecommendedDateLabelKey(item, referenceDate)).toBe(
-      'resultOriginalRecommendedDate'
-    );
+    expect(shouldHideOverdueUnadministeredRecommendedDate(item, referenceDate)).toBe(true);
   });
 
   it('keeps recommended date label when due-now date is today or later', () => {

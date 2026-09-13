@@ -3,10 +3,17 @@
 import { useMemo, useState } from 'react';
 import { WizardStepLayout } from '@/components/wizard/WizardStepLayout';
 import { parseDateParts, type WizardStepProps } from '@/types/wizard-types';
-import { getActiveVaccineIndex } from '@/lib/vaccine-checker/input-adapter';
-import { getNextStepAfterDoseCount } from '@/lib/vaccine-checker/wizard-flow';
+import {
+  getActiveVaccineIndex,
+  getActiveVaccineIndexForState,
+} from '@/lib/vaccine-checker/input-adapter';
+import { getNextStepAfterDoseCount, getReferenceDate } from '@/lib/vaccine-checker/wizard-flow';
 import { getAvailableDoseCounts } from '@/lib/vaccine-checker/dose-count-options';
-import { getReferenceDate } from '@/lib/vaccine-checker/wizard-flow';
+import {
+  isDoseCountSpecified,
+  patchAdditionalVaccineAtIndex,
+  UNSPECIFIED_DOSE_COUNT,
+} from '@/lib/vaccine-checker/wizard-history';
 import { influenzaUsesCurrentSeasonQuestion } from '@/lib/vaccine-checker/teen-history-simplification';
 import { getVaccineHistoryStepLabel } from '@/translations/vaccine-history-labels';
 
@@ -52,7 +59,11 @@ export function DoseCountStep({
 
   const doseCount = useMemo(() => {
     const saved = currentVaccine?.numberOfDoses;
-    const savedSelection = saved && availableCounts.includes(saved) ? saved : null;
+    const savedSelection =
+      isDoseCountSpecified({ numberOfDoses: saved ?? UNSPECIFIED_DOSE_COUNT }) &&
+      availableCounts.includes(saved!)
+        ? saved!
+        : null;
 
     if (selectionState.key !== selectionContextKey) {
       return savedSelection;
@@ -81,20 +92,19 @@ export function DoseCountStep({
       if (currentSeasonReceived === null) return;
 
       setState((current) => {
-        const vaccines = [...current.additionalVaccines];
-        vaccines[currentIndex] = {
-          ...vaccines[currentIndex],
+        const index = getActiveVaccineIndexForState(current, today);
+        const additionalVaccines = patchAdditionalVaccineAtIndex(current.additionalVaccines, index, {
           numberOfDoses: currentSeasonReceived ? 1 : 0,
           influenzaCurrentSeasonReceived: currentSeasonReceived,
-        };
+        });
         const nextState = {
           ...current,
-          additionalVaccines: vaccines,
+          additionalVaccines,
         };
 
         return {
           ...nextState,
-          currentStep: getNextStepAfterDoseCount(nextState, currentIndex, today),
+          currentStep: getNextStepAfterDoseCount(nextState, index, today),
         };
       });
       return;
@@ -103,20 +113,20 @@ export function DoseCountStep({
     if (doseCount === null || doseCount === undefined || doseCount < 0) return;
 
     setState((current) => {
-      const vaccines = [...current.additionalVaccines];
-      vaccines[currentIndex] = {
-        ...vaccines[currentIndex],
+      const index = getActiveVaccineIndexForState(current, today);
+      const additionalVaccines = patchAdditionalVaccineAtIndex(current.additionalVaccines, index, {
         numberOfDoses: doseCount,
-        product: doseCount === 0 ? undefined : vaccines[currentIndex].product,
-      };
+        product:
+          doseCount === 0 ? undefined : current.additionalVaccines[index]?.product,
+      });
       const nextState = {
         ...current,
-        additionalVaccines: vaccines,
+        additionalVaccines,
       };
 
       return {
         ...nextState,
-        currentStep: getNextStepAfterDoseCount(nextState, currentIndex, today),
+        currentStep: getNextStepAfterDoseCount(nextState, index, today),
       };
     });
   };

@@ -106,6 +106,8 @@ export type AdditionalVaccineRecord = {
   influenzaCurrentSeasonReceived?: boolean;
   /** HPV: parent chose not to enter first-dose date when it would help timing. */
   firstDoseDateUnknown?: boolean;
+  /** HPV: parent reported a prior dose 2 but does not remember the date. */
+  secondDoseDateUnknown?: boolean;
 };
 
 export type RoutineVisitReceiptStatus = 'received' | 'notReceived';
@@ -273,16 +275,23 @@ export function parseDateParts(parts: {
   );
 }
 
-import { isVaccineRecordComplete } from '@/lib/vaccine-checker/input-adapter';
+import {
+  getActiveVaccineIndexForState,
+  isVaccineRecordCompleteForState,
+} from '@/lib/vaccine-checker/input-adapter';
+import { wizardRequiresProductSelection } from '@/lib/vaccine-checker/teen-history-simplification';
 import {
   getPreviousStepBeforeAdditionalVaccineFlow,
   getPreviousStepBeforeMmrDate,
+  getReferenceDate,
   shouldIncludeMmrStepInFlow,
   shouldShowAdditionalVaccinesStep,
   shouldShowMmrDateStep,
 } from '@/lib/vaccine-checker/wizard-flow';
 
 export function getPreviousWizardStep(state: WizardState): WizardStepId | null {
+  const today = getReferenceDate();
+
   switch (state.currentStep) {
     case 'intro':
       return null;
@@ -298,29 +307,30 @@ export function getPreviousWizardStep(state: WizardState): WizardStepId | null {
       return getPreviousStepBeforeMmrDate(state);
     case 'productSelection':
       return getPreviousStepBeforeAdditionalVaccineFlow(state);
-    case 'doseCount':
-      return categoryNeedsProductForPrevious(state)
-        ? 'productSelection'
-        : getPreviousStepBeforeAdditionalVaccineFlow(state);
+    case 'doseCount': {
+      const index = getActiveVaccineIndexForState(state, today);
+      const record = state.additionalVaccines[index];
+      if (record && wizardRequiresProductSelection(state, record.category, today)) {
+        return 'productSelection';
+      }
+      return getPreviousStepBeforeAdditionalVaccineFlow(state);
+    }
     case 'lastDoseDate':
       return 'doseCount';
     case 'review':
-      if (shouldIncludeMmrStepInFlow(state)) return 'mmrDate';
-      if (state.additionalVaccines.some((record) => isVaccineRecordComplete(record))) {
+      if (shouldIncludeMmrStepInFlow(state, today)) return 'mmrDate';
+      if (
+        state.additionalVaccines.some((record) =>
+          isVaccineRecordCompleteForState(state, record, today)
+        )
+      ) {
         return 'lastDoseDate';
       }
-      if (shouldShowAdditionalVaccinesStep(state)) return 'additionalVaccines';
+      if (shouldShowAdditionalVaccinesStep(state, today)) return 'additionalVaccines';
       return 'routineVaccines';
     case 'results':
       return state.medicalCondition.showStopMessage ? null : 'review';
     default:
       return null;
   }
-}
-
-function categoryNeedsProductForPrevious(state: WizardState): boolean {
-  const index = state.additionalVaccines.length - 1;
-  const record = state.additionalVaccines[index];
-  if (!record) return false;
-  return ['rotavirus', 'pneumococcal', 'meningococcalACWY', 'varicella', 'hpv'].includes(record.category);
 }

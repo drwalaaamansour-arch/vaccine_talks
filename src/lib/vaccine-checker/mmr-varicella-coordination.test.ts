@@ -208,8 +208,10 @@ describe('MMR and Varicella planned-date coordination', () => {
       (item) => item.vaccineCategory === 'varicella' && item.doseLabelKey === 'doseLabel_dose2'
     );
 
-    expect(mmrDose2?.recommendedDate).toBe('2026-06-01');
-    expect(varicellaDose2?.recommendedDate).toBe('2026-08-01');
+    expect(mmrDose2?.status).toBe('due-now');
+    expect(mmrDose2?.recommendedDate).toBeUndefined();
+    expect(varicellaDose2?.status).toBe('due-now');
+    expect(varicellaDose2?.recommendedDate).toBeUndefined();
     expect(
       Math.abs(daysBetween(new Date(2026, 5, 1), new Date(2026, 7, 1)))
     ).toBeGreaterThanOrEqual(28);

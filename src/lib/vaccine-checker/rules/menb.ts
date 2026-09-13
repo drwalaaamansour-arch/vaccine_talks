@@ -199,7 +199,9 @@ export function calculateMenB(ctx: RuleContext): VaccineRecommendation[] {
 
   if (startAgeYears >= 10 && startAgeYears <= 17) {
     if (doses.length === 1) {
-      return [recommendNextDose(ctx, 2, addMonths(doses[0], 6), 'note_menbTeenMinInterval')];
+      return [
+        recommendNextDose(ctx, 2, addMonths(doses[0], 2), 'note_menbTwoToNineYearInterval'),
+      ];
     }
     return [
       makeRecommendation({

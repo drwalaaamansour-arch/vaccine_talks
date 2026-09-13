@@ -89,7 +89,7 @@ describe('dose count options', () => {
         category: 'hepatitisA',
       });
 
-      expect(options).toEqual([1, 2]);
+      expect(options).toEqual([0, 1, 2]);
       expect(options).not.toContain(3);
     });
 

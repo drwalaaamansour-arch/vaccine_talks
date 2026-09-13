@@ -1,9 +1,10 @@
-import { categoryNeedsProduct, getActiveVaccineIndex } from '@/lib/vaccine-checker/input-adapter';
+import { getActiveVaccineIndexForState } from '@/lib/vaccine-checker/input-adapter';
 import {
   getReferenceDate,
   shouldIncludeMmrStepInFlow,
   shouldShowAdditionalVaccinesStep,
 } from '@/lib/vaccine-checker/wizard-flow';
+import { wizardRequiresProductSelection } from '@/lib/vaccine-checker/teen-history-simplification';
 import {
   type AdditionalVaccineCategory,
   type WizardState,
@@ -53,7 +54,7 @@ export function buildWizardProgressScreens(
         screens.push({ kind: 'product', category: record.category });
         screens.push({ kind: 'doseDates', category: record.category });
       } else {
-        if (categoryNeedsProduct(record.category)) {
+        if (wizardRequiresProductSelection(state, record.category, today)) {
           screens.push({ kind: 'product', category: record.category });
         }
         screens.push({ kind: 'doseCount', category: record.category });
@@ -86,15 +87,18 @@ export function resolveCurrentProgressScreen(state: WizardState): WizardProgress
         ? 'additionalVaccinesSelect'
         : 'additionalVaccinesYesNo';
     case 'productSelection': {
-      const record = state.additionalVaccines[getActiveVaccineIndex(state.additionalVaccines)];
+      const record =
+        state.additionalVaccines[getActiveVaccineIndexForState(state, getReferenceDate())];
       return record ? { kind: 'product', category: record.category } : null;
     }
     case 'doseCount': {
-      const record = state.additionalVaccines[getActiveVaccineIndex(state.additionalVaccines)];
+      const record =
+        state.additionalVaccines[getActiveVaccineIndexForState(state, getReferenceDate())];
       return record ? { kind: 'doseCount', category: record.category } : null;
     }
     case 'lastDoseDate': {
-      const record = state.additionalVaccines[getActiveVaccineIndex(state.additionalVaccines)];
+      const record =
+        state.additionalVaccines[getActiveVaccineIndexForState(state, getReferenceDate())];
       return record ? { kind: 'doseDates', category: record.category } : null;
     }
     case 'review':

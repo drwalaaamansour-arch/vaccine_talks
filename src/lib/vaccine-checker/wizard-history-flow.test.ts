@@ -196,7 +196,7 @@ describe('additional vaccine history wizard flow', () => {
     expect(merged[1]?.product).toBe('vaxneuvance');
     expect(merged[2]?.category).toBe('meningococcalB');
     expect(merged[2]?.product).toBe('bexsero');
-    expect(merged[2]?.numberOfDoses).toBe(0);
+    expect(merged[2]?.numberOfDoses).toBe(-1);
   });
 
   it('routes back from review to MMR when varicella catch-up still needs an MMR date', () => {

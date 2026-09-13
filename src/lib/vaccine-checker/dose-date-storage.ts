@@ -23,11 +23,34 @@ export function getDoseDateFromRecord(
     return record.firstDoseDate;
   }
 
-  if (doseNumber === record.numberOfDoses && record.lastDoseDate) {
+  if (
+    record.category !== 'hpv' &&
+    doseNumber === record.numberOfDoses &&
+    record.lastDoseDate
+  ) {
     return record.lastDoseDate;
   }
 
   return null;
+}
+
+/** HPV: only explicitly entered per-dose fields (never infer dose 2 from lastDoseDate). */
+export function getHpvAdministeredDoseDates(record: AdditionalVaccineRecord): DateOfBirth[] {
+  const dates: DateOfBirth[] = [];
+
+  for (const key of DOSE_DATE_KEYS) {
+    const value = record[key];
+    if (!value) {
+      break;
+    }
+    dates.push(value);
+  }
+
+  if (dates.length === 0 && record.firstDoseDate) {
+    return [record.firstDoseDate];
+  }
+
+  return dates;
 }
 
 export function getAllDoseDatesFromRecord(record: AdditionalVaccineRecord): DateOfBirth[] {
@@ -55,15 +78,23 @@ export function applyDoseDatesToRecord(
   record: AdditionalVaccineRecord,
   doseDates: DateOfBirth[]
 ): AdditionalVaccineRecord {
+  const isHpv = record.category === 'hpv';
+  const lastAdministered =
+    doseDates.length >= 2
+      ? doseDates[doseDates.length - 1]
+      : isHpv
+        ? null
+        : doseDates[doseDates.length - 1] ?? null;
+
   const next: AdditionalVaccineRecord = {
     ...record,
     dose1Date: doseDates[0] ?? null,
     dose2Date: doseDates[1] ?? null,
     dose3Date: doseDates[2] ?? null,
     dose4Date: doseDates[3] ?? null,
-    doseDates: doseDates.slice(0, record.numberOfDoses),
+    doseDates: isHpv ? doseDates : doseDates.slice(0, record.numberOfDoses),
     firstDoseDate: doseDates[0] ?? null,
-    lastDoseDate: doseDates[doseDates.length - 1] ?? null,
+    lastDoseDate: lastAdministered,
   };
 
   return next;

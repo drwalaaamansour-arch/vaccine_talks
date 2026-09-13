@@ -200,9 +200,7 @@ describe('catch-up start date display (zero previous doses)', () => {
       (item) => item.vaccineCategory === 'rotavirus' && item.doseLabelKey === 'doseLabel_dose2'
     );
     expect(dose2?.status).toBe('due-now');
-    expect(dose2?.recommendedDate).toBe(toIsoDate(expectedDose2Date));
-    expect(dose2?.recommendedDateLabelKey).toBe('resultOriginalRecommendedDate');
-    expect(getRecommendedDateLabelKey(dose2!, overdueToday)).toBe('resultOriginalRecommendedDate');
-    expect(getTimingDisplayLines(dose2!, overdueToday)[0]?.key).toBe('resultScheduledDoseDate');
+    expect(dose2?.recommendedDate).toBeUndefined();
+    expect(getTimingDisplayLines(dose2!, overdueToday)[0]?.key).toBe('resultDoseDueNow');
   });
 });

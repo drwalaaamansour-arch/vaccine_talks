@@ -4,9 +4,14 @@ import { useEffect } from 'react';
 import { BrandName } from '@/components/wizard/BrandName';
 import { WizardStepLayout } from '@/components/wizard/WizardStepLayout';
 import { getProductDisplayLabel } from '@/lib/vaccine-checker/result-presentation';
-import { getRoutineHistorySummary, shouldShowMmrDateStep } from '@/lib/vaccine-checker/wizard-flow';
-import { isVaccineRecordComplete } from '@/lib/vaccine-checker/input-adapter';
-import { getAllDoseDatesFromRecord } from '@/lib/vaccine-checker/dose-date-storage';
+import {
+  getReferenceDate,
+  getRoutineHistorySummary,
+  shouldShowMmrDateStep,
+} from '@/lib/vaccine-checker/wizard-flow';
+import { isVaccineRecordCompleteForState } from '@/lib/vaccine-checker/input-adapter';
+import { influenzaUsesCurrentSeasonQuestion } from '@/lib/vaccine-checker/teen-history-simplification';
+import { getAllDoseDatesFromRecord, getHpvAdministeredDoseDates } from '@/lib/vaccine-checker/dose-date-storage';
 import { formatEnglishAge } from '@/translations/format-english-age';
 import { formatRoutineVisitList } from '@/translations/routine-visit-labels';
 import { getVaccineCategoryLabel } from '@/translations/vaccine-category-labels';
@@ -53,6 +58,11 @@ export function ReviewStep({
         ? 'لم يتم الإدخال'
         : 'Not entered';
   const showMmrSection = mmrDateParts.length > 0;
+  const reviewReferenceDate = getReferenceDate();
+  const reviewDob =
+    state.dateOfBirth !== null
+      ? new Date(state.dateOfBirth.year, state.dateOfBirth.month - 1, state.dateOfBirth.day)
+      : null;
 
   useEffect(() => {
     if (shouldShowMmrDateStep(state)) {
@@ -123,9 +133,16 @@ export function ReviewStep({
             </p>
           ) : (
             state.additionalVaccines
-              .filter((vaccine) => isVaccineRecordComplete(vaccine))
+              .filter((vaccine) =>
+                isVaccineRecordCompleteForState(state, vaccine, reviewReferenceDate)
+              )
               .map((vaccine, index) => {
-                const doseDates = getAllDoseDatesFromRecord(vaccine);
+                const doseDates =
+                  vaccine.category === 'hpv'
+                    ? getHpvAdministeredDoseDates(vaccine)
+                    : getAllDoseDatesFromRecord(vaccine);
+                const unknownDateLabel =
+                  language === 'ar' ? t('reviewDoseDateUnknownAr') : t('reviewDoseDateUnknown');
 
                 return (
                   <div key={`${vaccine.category}-${index}`} className="vaccine-checker-review-item">
@@ -140,15 +157,39 @@ export function ReviewStep({
                         language === 'ar' ? 'غير محدد' : 'Not specified'
                       )}
                     </p>
-                    <p className="vaccine-checker-review-meta">
-                      {t('doses')}: {vaccine.numberOfDoses}
-                    </p>
+                    {vaccine.category === 'influenza' &&
+                    reviewDob &&
+                    influenzaUsesCurrentSeasonQuestion(reviewDob, reviewReferenceDate) ? (
+                      <p className="vaccine-checker-review-meta">
+                        {language === 'ar'
+                          ? `أخذ تطعيم الموسم الحالي: ${
+                              vaccine.influenzaCurrentSeasonReceived ? 'نعم' : 'لا'
+                            }`
+                          : `Current-season influenza vaccine: ${
+                              vaccine.influenzaCurrentSeasonReceived ? 'Yes' : 'No'
+                            }`}
+                      </p>
+                    ) : (
+                      <p className="vaccine-checker-review-meta">
+                        {t('doses')}: {vaccine.numberOfDoses}
+                      </p>
+                    )}
                     {doseDates.map((doseDate, doseIndex) => (
                       <p key={`${vaccine.category}-dose-${doseIndex}`} className="vaccine-checker-review-meta">
                         {t(`doseLabel_dose${doseIndex + 1}`)}:{' '}
                         {`${doseDate.day}/${doseDate.month}/${doseDate.year}`}
                       </p>
                     ))}
+                    {vaccine.category === 'hpv' && vaccine.firstDoseDateUnknown && (
+                      <p className="vaccine-checker-review-meta">
+                        {t('doseLabel_dose1')}: {unknownDateLabel}
+                      </p>
+                    )}
+                    {vaccine.category === 'hpv' && vaccine.secondDoseDateUnknown && (
+                      <p className="vaccine-checker-review-meta">
+                        {t('doseLabel_dose2')}: {unknownDateLabel}
+                      </p>
+                    )}
                   </div>
                 );
               })

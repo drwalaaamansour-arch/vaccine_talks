@@ -1,4 +1,3 @@
-import { getTimingDisplayLines } from '@/lib/vaccine-checker/recommendation-timing';
 import {
   getCardExplanation,
   getConditionalNextDoseTranslationKey,
@@ -7,6 +6,8 @@ import {
   getDisplayCardNoteParams,
   getProductDisplayLabel,
   getRecommendationCategoryLabel,
+  getResultsCardTimingLines,
+  shouldHideDoseLabelForInfluenzaTeenSeasonDueNow,
   shouldHideDoseLabelForTimingDisplay,
   shouldShowDoseLabelOnCard,
   type ResultsSectionKind,
@@ -59,11 +60,14 @@ export function formatRecommendationShareLine(
   const categoryLabel = getRecommendationCategoryLabel(item, language, t);
   const productLabel = getProductDisplayLabel(item.product);
   const doseLabel = t(item.doseLabelKey);
-  const timingLines = item.conditionalNextDose ? [] : getTimingDisplayLines(item, referenceDate);
+  const timingLines = item.conditionalNextDose
+    ? []
+    : getResultsCardTimingLines(item, referenceDate, checkerInput);
   const timingLineKeys = timingLines.map((line) => line.key);
   const showDoseLabel =
     shouldShowDoseLabelOnCard(section, item.doseLabelKey) &&
-    !shouldHideDoseLabelForTimingDisplay(item, timingLineKeys);
+    !shouldHideDoseLabelForTimingDisplay(item, timingLineKeys) &&
+    !shouldHideDoseLabelForInfluenzaTeenSeasonDueNow(item, checkerInput);
 
   const labelParts = [categoryLabel];
   if (productLabel) {

@@ -150,7 +150,8 @@ describe('Teen checker simplification (17y11d, as-of 13/09/2026)', () => {
       (item) => item.vaccineCategory === 'hpv'
     );
     expect(hpvNext.length).toBeGreaterThan(0);
-    expect(hpvNext[0]?.recommendedDate).toBeTruthy();
+    expect(hpvNext[0]?.status).toBe('due-now');
+    expect(hpvNext[0]?.recommendedDate).toBeUndefined();
   });
 
   it('Scenario G: HPV 1 prior dose, date unknown → continues with due dose and note', () => {

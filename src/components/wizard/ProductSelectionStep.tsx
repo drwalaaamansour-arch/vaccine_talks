@@ -4,7 +4,11 @@ import { useMemo, useState } from 'react';
 import { BrandName } from '@/components/wizard/BrandName';
 import { WizardStepLayout } from '@/components/wizard/WizardStepLayout';
 import { parseDateParts, type WizardStepProps } from '@/types/wizard-types';
-import { getActiveVaccineIndex } from '@/lib/vaccine-checker/input-adapter';
+import {
+  getActiveVaccineIndexForState,
+  normalizeProductId,
+} from '@/lib/vaccine-checker/input-adapter';
+import { getNextStepAfterProductSelection, getReferenceDate } from '@/lib/vaccine-checker/wizard-flow';
 import { getEligibleProductOptions } from '@/lib/vaccine-checker/product-options';
 import { getVaccineHistoryStepLabel } from '@/translations/vaccine-history-labels';
 
@@ -14,7 +18,8 @@ export function ProductSelectionStep({
   state,
   setState,
 }: WizardStepProps) {
-  const currentIndex = getActiveVaccineIndex(state.additionalVaccines);
+  const today = getReferenceDate();
+  const currentIndex = getActiveVaccineIndexForState(state, today);
   const currentVaccine = state.additionalVaccines[currentIndex];
   const category = currentVaccine?.category ?? 'rotavirus';
 
@@ -69,13 +74,17 @@ export function ProductSelectionStep({
       const vaccines = [...current.additionalVaccines];
       vaccines[currentIndex] = {
         ...vaccines[currentIndex],
-        product: selectedProduct,
+        product: normalizeProductId(selectedProduct),
       };
 
       return {
         ...current,
         additionalVaccines: vaccines,
-        currentStep: currentVaccine.category === 'pneumococcal' ? 'lastDoseDate' : 'doseCount',
+        currentStep: getNextStepAfterProductSelection(
+          { ...current, additionalVaccines: vaccines },
+          currentIndex,
+          today
+        ),
       };
     });
   };

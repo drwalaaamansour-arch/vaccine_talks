@@ -54,7 +54,10 @@ export function inferTimingKind(item: VaccineRecommendation): TimingKind {
     item.status === 'due-now' &&
     !item.recommendedDate &&
     !item.conditionalNextDose &&
-    item.doseLabelKey !== 'doseLabel_seriesComplete'
+    item.doseLabelKey !== 'doseLabel_seriesComplete' &&
+    (item.doseLabelKey === 'doseLabel_dose1' ||
+      item.doseLabelKey === 'doseLabel_singleDose' ||
+      item.doseLabelKey === 'doseLabel_completionDose')
   ) {
     return 'MINIMUM_START_ONLY';
   }
@@ -261,6 +264,17 @@ export function getTimingDisplayLines(
     case 'FIXED_DATE':
     default: {
       if (!normalized.recommendedDate) {
+        if (
+          normalized.status === 'due-now' &&
+          normalized.doseLabelKey !== 'doseLabel_dose1' &&
+          normalized.doseLabelKey !== 'doseLabel_singleDose' &&
+          normalized.doseLabelKey !== 'doseLabel_completionDose'
+        ) {
+          lines.push({
+            key: 'resultDoseDueNow',
+            params: { doseLabelKey: normalized.doseLabelKey },
+          });
+        }
         break;
       }
 

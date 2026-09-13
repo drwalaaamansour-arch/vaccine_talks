@@ -577,7 +577,8 @@ describe('varicella and MMR interaction', () => {
     const dose2 = [...results.dueNow, ...results.upcoming].find(
       (item) => item.vaccineCategory === 'varicella' && item.doseLabelKey === 'doseLabel_dose2'
     );
-    expect(dose2?.recommendedDate).toBe(toIsoDate(addDays(mmr, -28)));
+    expect(dose2?.status).toBe('due-now');
+    expect(dose2?.recommendedDate).toBeUndefined();
     expect(dose2?.noteKeys).toContain('note_varicellaMmrInterval');
   });
 });
