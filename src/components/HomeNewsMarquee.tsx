@@ -18,7 +18,21 @@ type HomeNewsMarqueeItem = {
   dir?: 'rtl' | 'ltr';
 };
 
+/** Newest-first; only the first `HOME_NEWS_MARQUEE_LIMIT` appear on the homepage. */
+const HOME_NEWS_MARQUEE_LIMIT = 10;
+
 const HOME_NEWS_MARQUEE_ITEMS: HomeNewsMarqueeItem[] = [
+  {
+    id: 'hcp-special-populations-vaccination-pdfs-2026',
+    date: 'September 13, 2026',
+    category: 'Resources',
+    title:
+      'New vaccination checklists & guideline PDFs — asplenia, chemotherapy, and HSCT',
+    body:
+      'Downloadable vaccination checklists and summary guideline PDFs are now on the HCP pages for Anatomic and Functional Asplenia, Vaccination in Patients with Cancer, and Haematopoietic Stem Cell Transplant recipients — preview in the browser or save for clinic use.',
+    href: '/hcp-special-populations',
+    linkText: 'Browse HCP special populations →',
+  },
   {
     id: 'shingles-cv-nature-med-2026',
     date: 'September 12, 2026',
@@ -246,7 +260,7 @@ export default function HomeNewsMarquee() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [reducedMotion]);
 
-  const items = HOME_NEWS_MARQUEE_ITEMS;
+  const items = HOME_NEWS_MARQUEE_ITEMS.slice(0, HOME_NEWS_MARQUEE_LIMIT);
 
   return (
     <section

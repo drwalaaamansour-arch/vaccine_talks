@@ -1,6 +1,11 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, type ComponentType } from 'react';
+
+/** Newest-first; only the first `HOME_NEWLY_ADDED_LIMIT` appear on the homepage. */
+const HOME_NEWLY_ADDED_LIMIT = 10;
+
+type NewlyAddedCardComponent = ComponentType<{ duplicate?: boolean }>;
 
 const NEWLY_VIEWPORT_ID = 'home-newly-marquee-viewport';
 
@@ -368,6 +373,60 @@ function AdultRespiratoryEgyptPdfSpotlightCard({ duplicate }: { duplicate?: bool
   );
 }
 
+function AspleniaVaccinationPdfsSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/altered-immunocompetence/anatomic-or-functional-asplenia"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">Asplenia — vaccination checklist &amp; guidelines (PDF)</h3>
+      <p className="home-newly-card-body">
+        New downloadable vaccination checklist and asplenia vaccination guidelines on the HCP Anatomic and Functional
+        Asplenia page — preview in the browser or save the PDFs for clinic use.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
+function ChemotherapyVaccinationPdfsSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/vaccination-in-patients-with-cancer"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">Chemotherapy — vaccination checklist &amp; guidelines (PDF)</h3>
+      <p className="home-newly-card-body">
+        New chemotherapy vaccination checklist and guidelines PDFs on Vaccination in Patients with Cancer — at the top of
+        the handbook PDF section, with CCLG and Australian Immunisation Handbook tables below.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
+function HsctVaccinationPdfsSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp-special-populations/haematopoietic-stem-cell-transplant-recipients"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">HSCT — vaccination checklist &amp; guidelines (PDF)</h3>
+      <p className="home-newly-card-body">
+        New HSCT vaccination checklist and guidelines PDFs for haematopoietic stem cell transplant recipients — preview
+        and download in the resources section, with existing CCLG and handbook PDFs.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function RecombinantShinglesNatureMedSpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -428,22 +487,25 @@ function RecombinantShinglesCardiovascularSpotlightCard({ duplicate }: { duplica
   );
 }
 
-function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
-  return (
-    <>
-      <RecombinantShinglesNatureMedSpotlightCard duplicate={duplicate} />
-      <RecombinantShinglesDementiaSpotlightCard duplicate={duplicate} />
-      <RecombinantShinglesCardiovascularSpotlightCard duplicate={duplicate} />
-      <AdultRespiratoryEgyptPdfSpotlightCard duplicate={duplicate} />
-      <InternationalTravellersSpotlightCard duplicate={duplicate} />
-      <InternationalTravellersArSpotlightCard duplicate={duplicate} />
-      <Pcv21CapvaxiveSpotlightCard duplicate={duplicate} />
-      <SolidOrganTransplantSpotlightCard duplicate={duplicate} />
-      <ImmunosuppressiveNonHcpSpotlightCard duplicate={duplicate} />
-      <CancerVaccinationSpotlightCard duplicate={duplicate} />
-      <HsctSpecialPopulationsSpotlightCard duplicate={duplicate} />
-      <AspleniaNonHcpSpotlightCard duplicate={duplicate} />
-      <CdcArabicPdfsSpotlightCard duplicate={duplicate} />
+const NEWLY_ADDED_SPOTLIGHT_ORDER: NewlyAddedCardComponent[] = [
+  AspleniaVaccinationPdfsSpotlightCard,
+  ChemotherapyVaccinationPdfsSpotlightCard,
+  HsctVaccinationPdfsSpotlightCard,
+  RecombinantShinglesNatureMedSpotlightCard,
+  RecombinantShinglesDementiaSpotlightCard,
+  RecombinantShinglesCardiovascularSpotlightCard,
+  AdultRespiratoryEgyptPdfSpotlightCard,
+  InternationalTravellersSpotlightCard,
+  InternationalTravellersArSpotlightCard,
+  Pcv21CapvaxiveSpotlightCard,
+  SolidOrganTransplantSpotlightCard,
+  ImmunosuppressiveNonHcpSpotlightCard,
+  CancerVaccinationSpotlightCard,
+  HsctSpecialPopulationsSpotlightCard,
+  AspleniaNonHcpSpotlightCard,
+  CdcArabicPdfsSpotlightCard,
+  function PregnancyHcpCard({ duplicate }) {
+    return (
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/pregnancy-breastfeeding"
@@ -451,7 +513,11 @@ function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
         body="Guidance on vaccines before, during, and after pregnancy—including flu, Tdap, and RSV; live-vaccine precautions for contacts; MMR and varicella counseling; references and a downloadable PDF."
         showReadMore
       />
-      <PregnancyNonHcpSpotlightCard duplicate={duplicate} />
+    );
+  },
+  PregnancyNonHcpSpotlightCard,
+  function PretermHcpCard({ duplicate }) {
+    return (
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/preterm-infants"
@@ -459,8 +525,12 @@ function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
         body="Evidence-based guidance on vaccination in preterm infants, including WHO classification, immunological considerations, vaccine-specific guidelines, and Egyptian preterm consensus documents."
         showReadMore
       />
-      <PretermNonHcpSpotlightCard duplicate={duplicate} />
-      <CochlearNonHcpSpotlightCard duplicate={duplicate} />
+    );
+  },
+  PretermNonHcpSpotlightCard,
+  CochlearNonHcpSpotlightCard,
+  function AspleniaHcpCard({ duplicate }) {
+    return (
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/altered-immunocompetence/anatomic-or-functional-asplenia"
@@ -468,25 +538,49 @@ function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
         body="Dedicated guidance for anatomic and functional asplenia, including pneumococcal, meningococcal, and Hib recommendations with references and linked PDF resources."
         showReadMore
       />
+    );
+  },
+  function ImmunoglobulinCard({ duplicate }) {
+    return (
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/immunoglobulin-blood-products"
         title="People who have recently received normal human immunoglobulin and other blood products"
         body="Information about vaccination considerations for people who have recently received normal human immunoglobulin and other blood products, including spacing requirements and recommendations for live and non-live vaccines."
       />
+    );
+  },
+  function AnaesthesiaSurgeryCard({ duplicate }) {
+    return (
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/anaesthesia-surgery"
         title="Before or after anaesthesia or surgery"
         body="Guidance on vaccination timing in relation to surgery and anaesthesia, including recommendations for elective procedures and considerations for post-operative vaccination."
       />
+    );
+  },
+  function CochlearHcpCard({ duplicate }) {
+    return (
       <SpotlightLinkCard
         duplicate={duplicate}
         href="/hcp-special-populations/cochlear-implants"
         title="Cochlear Implants and Vaccination Recommendations"
         body="CDC guidance on pneumococcal, Hib, and meningococcal vaccination for people with cochlear implants to prevent bacterial meningitis."
       />
-      <RsvSpotlightCard duplicate={duplicate} />
+    );
+  },
+  RsvSpotlightCard,
+];
+
+const VISIBLE_NEWLY_ADDED = NEWLY_ADDED_SPOTLIGHT_ORDER.slice(0, HOME_NEWLY_ADDED_LIMIT);
+
+function NewlyAddedTrack({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <>
+      {VISIBLE_NEWLY_ADDED.map((Card, index) => (
+        <Card key={Card.displayName ?? Card.name ?? index} duplicate={duplicate} />
+      ))}
     </>
   );
 }
