@@ -47,7 +47,7 @@ export function calculateInfluenza(ctx: RuleContext): VaccineRecommendation[] {
     ];
   }
 
-  if (hasDoseInCurrentSeason(doses, today)) {
+  if (history?.influenzaCurrentSeasonReceived === true || hasDoseInCurrentSeason(doses, today)) {
     return [
       makeRecommendation({
         id: 'influenza-season-complete',

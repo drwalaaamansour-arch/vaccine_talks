@@ -346,6 +346,10 @@ export const AR_TRANSLATIONS = {
   historyContext_hpv: 'بنكمل بيانات: فيروس الورم الحليمي البشري (HPV)',
   influenzaPrimingQuestion: 'Has your child received influenza vaccine before?',
   influenzaPrimingQuestionAr: 'الطفل أخد تطعيم الإنفلونزا قبل كده؟',
+  influenzaCurrentSeasonQuestion: 'Has the child received the influenza vaccine for the current season?',
+  influenzaCurrentSeasonQuestionAr: 'هل أخذ تطعيم الإنفلونزا للموسم الحالي؟',
+  doseDateUnknown: "I don't remember the date",
+  doseDateUnknownAr: 'مش فاكرة التاريخ',
   influenzaDoseCountQuestionAr: 'أخد كام جرعة قبل كده؟',
   resultRecommendedDate: 'الميعاد المقترح: {date}',
   resultOriginalRecommendedDate: 'كان ميعاده المقترح: {date}',
@@ -552,6 +556,10 @@ export const AR_TRANSLATIONS = {
     'عدد ومواعيد الجرعات اللي بعد كده بتختلف حسب نوع التطعيم المستخدم والسن وقت أول جرعة.',
   note_gardasil9ThirdDoseRequired: 'بما إن الجرعة التانية اتاخدت قبل 5 شهور من الأولى، محتاج جرعة تالتة.',
   reason_hpvProductUnknown: 'محتاجين نوع تطعيم HPV.',
+  note_hpvRemainingTimingDependsOnFirstDose:
+    'محتاجين جرعة HPV إضافية. التوقيت الدقيق وهل محتاجين جرعة ثالثة يعتمد على عمر وتاريخ الجرعة الأولى.',
+  reason_hpvFirstDoseDateUnknown:
+    'تاريخ الجرعة الأولى من HPV مش متوفر — تفاصيل الجدول تعتمد على موعد الجرعة الأولى.',
 
   note_influenzaSeasonComplete: 'اتسجلت جرعة للموسم الحالي.',
   note_influenzaOneDosePerSeason: 'جرعة واحدة مقترحة للموسم الحالي.',

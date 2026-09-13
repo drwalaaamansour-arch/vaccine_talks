@@ -18,7 +18,8 @@ import {
   getActiveVaccineIndex,
 } from '@/lib/vaccine-checker/input-adapter';
 import { applyDoseDatesToRecord, getDoseDateFromRecord } from '@/lib/vaccine-checker/dose-date-storage';
-import { getNextStepAfterAdditionalVaccineHistory } from '@/lib/vaccine-checker/wizard-flow';
+import { getNextStepAfterAdditionalVaccineHistory, getReferenceDate } from '@/lib/vaccine-checker/wizard-flow';
+import { getWizardRequiredDoseDateCount } from '@/lib/vaccine-checker/teen-history-simplification';
 import {
   getDoseDateFieldLabel,
   getDoseDatesHeading,
@@ -36,11 +37,21 @@ function buildInitialDoseInputs(
 }
 
 export function LastDoseDateStep({ t, language, state, setState }: WizardStepProps) {
-  const currentIndex = getActiveVaccineIndex(state.additionalVaccines);
+  const today = getReferenceDate();
+  const currentIndex = getActiveVaccineIndex(
+    state.additionalVaccines,
+    today,
+    state.dateOfBirth
+  );
   const currentVaccine = state.additionalVaccines[currentIndex];
   const category = currentVaccine?.category ?? 'rotavirus';
   const numberOfDoses = currentVaccine?.numberOfDoses ?? 1;
-  const doseInputContextKey = `${currentIndex}:${category}:${numberOfDoses}`;
+  const dob = state.dateOfBirth ? parseDateParts(state.dateOfBirth) : null;
+  const requiredDateFields =
+    currentVaccine && dob
+      ? getWizardRequiredDoseDateCount(currentVaccine, dob, today)
+      : numberOfDoses;
+  const doseInputContextKey = `${currentIndex}:${category}:${requiredDateFields}`;
 
   const [doseInputs, setDoseInputs] = useState<DateInputParts[]>(() =>
     currentVaccine
@@ -51,6 +62,9 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
   );
   const [influenzaPrimingComplete, setInfluenzaPrimingComplete] = useState<boolean | null>(
     currentVaccine?.influenzaPrimingComplete ?? null
+  );
+  const [firstDoseDateUnknown, setFirstDoseDateUnknown] = useState(
+    currentVaccine?.firstDoseDateUnknown ?? false
   );
   const [error, setError] = useState<string | null>(null);
 
@@ -63,12 +77,18 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
       )
     );
     setInfluenzaPrimingComplete(currentVaccine.influenzaPrimingComplete ?? null);
+    setFirstDoseDateUnknown(currentVaccine.firstDoseDateUnknown ?? false);
     setError(null);
   }, [currentVaccine, doseInputContextKey, numberOfDoses]);
 
   const needsInfluenzaPriming =
     currentVaccine &&
-    categoryRequiresInfluenzaPrimingQuestion(currentVaccine.category, currentVaccine.numberOfDoses);
+    categoryRequiresInfluenzaPrimingQuestion(
+      currentVaccine.category,
+      currentVaccine.numberOfDoses,
+      dob,
+      today
+    );
 
   const dateLabels = {
     day: language === 'ar' ? 'اليوم' : 'Day',
@@ -76,19 +96,20 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
     year: language === 'ar' ? 'السنة' : 'Year',
   };
 
-  const activeDoseInputs = doseInputs.slice(0, numberOfDoses);
+  const activeDoseInputs = doseInputs.slice(0, requiredDateFields);
   const parsedDates = activeDoseInputs.map((input) => parseDateInput(input));
-  const heading = getDoseDatesHeading(category, numberOfDoses, language, t);
+  const heading = getDoseDatesHeading(category, requiredDateFields, language, t);
+  const allowUnknownFirstDose = category === 'hpv' && numberOfDoses >= 1;
 
   const isValid = useMemo(() => {
     if (!currentVaccine) return false;
     if (needsInfluenzaPriming && influenzaPrimingComplete === null) return false;
+    if (allowUnknownFirstDose && firstDoseDateUnknown) return true;
 
-    const today = new Date();
-    const dob = state.dateOfBirth ? parseDateParts(state.dateOfBirth) : null;
+    const validateToday = new Date();
     let previousDate: Date | null = null;
 
-    for (let index = 0; index < numberOfDoses; index++) {
+    for (let index = 0; index < requiredDateFields; index++) {
       const input = activeDoseInputs[index];
       const parsed = parsedDates[index];
       if (!parsed || !isCompleteDateInput(input)) {
@@ -96,7 +117,7 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
       }
 
       const doseDate = parseDateParts(parsed);
-      if (doseDate > today) return false;
+      if (doseDate > validateToday) return false;
       if (dob && doseDate < dob) return false;
       if (previousDate && doseDate < previousDate) return false;
       previousDate = doseDate;
@@ -105,12 +126,14 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
     return true;
   }, [
     activeDoseInputs,
+    allowUnknownFirstDose,
     currentVaccine,
+    dob,
+    firstDoseDateUnknown,
     influenzaPrimingComplete,
     needsInfluenzaPriming,
-    numberOfDoses,
     parsedDates,
-    state.dateOfBirth,
+    requiredDateFields,
   ]);
 
   const updateDoseField = (doseIndex: number, field: keyof DateInputParts, value: string) => {
@@ -130,18 +153,44 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
   const continueHandler = () => {
     if (!currentVaccine || !isValid) return;
 
-    const today = new Date();
-    const dob = state.dateOfBirth ? parseDateParts(state.dateOfBirth) : null;
+    if (allowUnknownFirstDose && firstDoseDateUnknown) {
+      setState((current) => {
+        const vaccines = [...current.additionalVaccines];
+        vaccines[currentIndex] = {
+          ...vaccines[currentIndex],
+          firstDoseDateUnknown: true,
+          dose1Date: null,
+          dose2Date: null,
+          dose3Date: null,
+          dose4Date: null,
+          doseDates: [],
+          firstDoseDate: null,
+          lastDoseDate: null,
+        };
+
+        return {
+          ...current,
+          additionalVaccines: vaccines,
+          currentStep: getNextStepAfterAdditionalVaccineHistory(
+            { ...current, additionalVaccines: vaccines },
+            today
+          ),
+        };
+      });
+      return;
+    }
+
+    const validateToday = new Date();
     let previousDate: Date | null = null;
 
-    for (let index = 0; index < numberOfDoses; index++) {
+    for (let index = 0; index < requiredDateFields; index++) {
       const parsed = parsedDates[index];
       if (!parsed || !isCompleteDateInput(activeDoseInputs[index])) {
         return;
       }
 
       const doseDate = parseDateParts(parsed);
-      if (doseDate > today) {
+      if (doseDate > validateToday) {
         setError(t('doseDateFutureError'));
         return;
       }
@@ -160,6 +209,7 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
     setState((current) => {
       const vaccines = [...current.additionalVaccines];
       const doseDates = parsedDates
+        .slice(0, requiredDateFields)
         .map((parsed, index) =>
           parsed && isCompleteDateInput(activeDoseInputs[index]) ? buildDateParts(parsed) : null
         )
@@ -168,6 +218,7 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
       vaccines[currentIndex] = applyDoseDatesToRecord(
         {
           ...vaccines[currentIndex],
+          firstDoseDateUnknown: false,
           influenzaPrimingComplete: needsInfluenzaPriming
             ? influenzaPrimingComplete ?? undefined
             : vaccines[currentIndex].influenzaPrimingComplete,
@@ -178,10 +229,13 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
       return {
         ...current,
         additionalVaccines: vaccines,
-        currentStep: getNextStepAfterAdditionalVaccineHistory({
-          ...current,
-          additionalVaccines: vaccines,
-        }),
+        currentStep: getNextStepAfterAdditionalVaccineHistory(
+          {
+            ...current,
+            additionalVaccines: vaccines,
+          },
+          today
+        ),
       };
     });
   };
@@ -205,6 +259,19 @@ export function LastDoseDateStep({ t, language, state, setState }: WizardStepPro
           onChange={(field, value) => updateDoseField(index, field, value)}
         />
       ))}
+
+      {allowUnknownFirstDose && (
+        <button
+          type="button"
+          onClick={() => {
+            setFirstDoseDateUnknown(true);
+            setError(null);
+          }}
+          className={`btn vaccine-checker-choice ${firstDoseDateUnknown ? 'btn-primary' : 'btn-outline'}`}
+        >
+          {language === 'ar' ? t('doseDateUnknownAr') : t('doseDateUnknown')}
+        </button>
+      )}
 
       {needsInfluenzaPriming && (
         <div className="vaccine-checker-choice-row vaccine-checker-choice-row--stack">

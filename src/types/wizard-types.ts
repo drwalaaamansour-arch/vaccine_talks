@@ -102,6 +102,10 @@ export type AdditionalVaccineRecord = {
   dose4Date?: DateOfBirth | null;
   doseDates: DateOfBirth[];
   influenzaPrimingComplete?: boolean;
+  /** Age ≥9: received influenza vaccine for the current season (not lifetime history). */
+  influenzaCurrentSeasonReceived?: boolean;
+  /** HPV: parent chose not to enter first-dose date when it would help timing. */
+  firstDoseDateUnknown?: boolean;
 };
 
 export type RoutineVisitReceiptStatus = 'received' | 'notReceived';

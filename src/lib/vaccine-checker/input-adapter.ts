@@ -20,6 +20,14 @@ import {
 } from '@/lib/vaccine-checker/routine-history';
 import { buildRoutineVaccineLedger } from '@/lib/vaccine-checker/routine-ledger';
 import { getDueRoutineVisits } from '@/lib/vaccine-checker/routine';
+import {
+  influenzaTeenSeasonAnswerComplete,
+  influenzaUsesCurrentSeasonQuestion,
+  isHealthyMenAcwySingleDosePath,
+  isHealthyPcvOlderThanFive,
+  menAcwyTeenHistoryCompleteWithoutDetails,
+  pcvTeenHistoryCompleteWithoutDetails,
+} from '@/lib/vaccine-checker/teen-history-simplification';
 
 export const CATEGORIES_WITH_PRODUCT: AdditionalVaccineCategory[] = [
   'rotavirus',
@@ -44,18 +52,82 @@ export function categoryNeedsProduct(category: AdditionalVaccineCategory): boole
   return CATEGORIES_WITH_PRODUCT.includes(category);
 }
 
-export function getFirstIncompleteVaccineIndex(vaccines: AdditionalVaccineRecord[]): number {
-  return vaccines.findIndex((record) => !isVaccineRecordComplete(record));
+export function getFirstIncompleteVaccineIndex(
+  vaccines: AdditionalVaccineRecord[],
+  referenceDate: Date = new Date(),
+  dateOfBirth?: { day: number; month: number; year: number } | null
+): number {
+  return vaccines.findIndex(
+    (record) => !isVaccineRecordComplete(record, referenceDate, dateOfBirth)
+  );
 }
 
-export function isVaccineRecordComplete(record: AdditionalVaccineRecord): boolean {
+export function isVaccineRecordCompleteForState(
+  state: WizardState,
+  record: AdditionalVaccineRecord,
+  referenceDate: Date = new Date()
+): boolean {
+  return isVaccineRecordComplete(record, referenceDate, state.dateOfBirth);
+}
+
+export function isVaccineRecordComplete(
+  record: AdditionalVaccineRecord,
+  referenceDate: Date = new Date(),
+  dateOfBirth?: { day: number; month: number; year: number } | null
+): boolean {
+  const dob =
+    dateOfBirth !== undefined && dateOfBirth !== null
+      ? parseDateParts(dateOfBirth)
+      : null;
+  const today = referenceDate;
+
+  if (dob && influenzaTeenSeasonAnswerComplete(record, dob, today)) {
+    return true;
+  }
+
   if (record.numberOfDoses <= 0) {
     return record.category === 'pneumococcal';
   }
 
-  if (categoryNeedsProduct(record.category) && !record.product) return false;
-  if (!hasAllRequiredDoseDates(record)) return false;
+  if (dob) {
+    if (pcvTeenHistoryCompleteWithoutDetails(record, dob, today)) {
+      return true;
+    }
+    if (menAcwyTeenHistoryCompleteWithoutDetails(record, dob, today)) {
+      return true;
+    }
+  }
+
+  const needsProduct =
+    categoryNeedsProduct(record.category) &&
+    !(
+      dob &&
+      record.category === 'meningococcalACWY' &&
+      isHealthyMenAcwySingleDosePath(dob, today)
+    ) &&
+    !(dob && record.category === 'pneumococcal' && isHealthyPcvOlderThanFive(dob, today));
+
+  if (needsProduct && !record.product) {
+    return false;
+  }
+
+  if (record.category === 'hpv' && record.firstDoseDateUnknown) {
+    return record.numberOfDoses > 0 && Boolean(record.product);
+  }
+
+  if (dob && record.category === 'hpv') {
+    const required = record.firstDoseDateUnknown ? 0 : 1;
+    if (getAllDoseDatesFromRecord(record).length < required) {
+      return false;
+    }
+  } else if (!hasAllRequiredDoseDates(record)) {
+    return false;
+  }
+
   if (record.category === 'influenza' && record.influenzaPrimingComplete === undefined) {
+    if (dob && influenzaUsesCurrentSeasonQuestion(dob, today)) {
+      return record.influenzaCurrentSeasonReceived !== undefined;
+    }
     return false;
   }
   return true;
@@ -128,6 +200,8 @@ export function recordToHistory(record: AdditionalVaccineRecord): VaccineHistory
     firstDoseDate: dateFromParts(record.firstDoseDate ?? record.dose1Date ?? record.lastDoseDate),
     doseDates,
     influenzaPrimingComplete: record.influenzaPrimingComplete,
+    influenzaCurrentSeasonReceived: record.influenzaCurrentSeasonReceived,
+    firstDoseDateUnknown: record.firstDoseDateUnknown,
   };
 }
 
@@ -187,12 +261,26 @@ export function categoryRequiresFirstDoseDate(
 
 export function categoryRequiresInfluenzaPrimingQuestion(
   category: AdditionalVaccineCategory,
-  numberOfDoses: number
+  numberOfDoses: number,
+  dob?: Date | null,
+  referenceDate: Date = new Date()
 ): boolean {
-  return category === 'influenza' && numberOfDoses >= 1;
+  if (category !== 'influenza' || numberOfDoses < 1) {
+    return false;
+  }
+
+  if (dob && influenzaUsesCurrentSeasonQuestion(dob, referenceDate)) {
+    return false;
+  }
+
+  return true;
 }
 
-export function getActiveVaccineIndex(vaccines: AdditionalVaccineRecord[]): number {
-  const incomplete = getFirstIncompleteVaccineIndex(vaccines);
+export function getActiveVaccineIndex(
+  vaccines: AdditionalVaccineRecord[],
+  referenceDate: Date = new Date(),
+  dateOfBirth?: { day: number; month: number; year: number } | null
+): number {
+  const incomplete = getFirstIncompleteVaccineIndex(vaccines, referenceDate, dateOfBirth);
   return incomplete === -1 ? Math.max(vaccines.length - 1, 0) : incomplete;
 }

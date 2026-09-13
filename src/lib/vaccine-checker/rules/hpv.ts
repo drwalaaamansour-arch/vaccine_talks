@@ -372,6 +372,20 @@ export function calculateHpv(ctx: RuleContext): VaccineRecommendation[] {
     ];
   }
 
+  if (history?.firstDoseDateUnknown && (history.numberOfDoses ?? 0) >= 1) {
+    return [
+      makeRecommendation({
+        id: 'hpv-additional-dose-needed',
+        vaccineCategory: 'hpv',
+        product,
+        doseLabelKey: 'doseLabel_dose2',
+        status: 'due-now',
+        noteKeys: ['note_hpvRemainingTimingDependsOnFirstDose'],
+        reasonKey: 'reason_hpvFirstDoseDateUnknown',
+      }),
+    ];
+  }
+
   if (isUnknownHpvProduct(product)) {
     if (doses.length === 0 && ageYears >= 9) {
       return zeroDoseCatchUp(ctx);

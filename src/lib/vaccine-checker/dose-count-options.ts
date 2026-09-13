@@ -14,6 +14,10 @@ import {
   laterOf,
 } from '@/lib/vaccine-checker/date-utils';
 import { getReferenceDate } from '@/lib/vaccine-checker/wizard-flow';
+import {
+  isHealthyMenAcwySingleDosePath,
+  isHealthyPcvOlderThanFive,
+} from '@/lib/vaccine-checker/teen-history-simplification';
 
 type DoseSpacing = {
   minIntervalMonths?: number;
@@ -132,6 +136,10 @@ function pneumococcalDoseCounts(
     return [];
   }
 
+  if (isHealthyPcvOlderThanFive(dob, today)) {
+    return [0, 1];
+  }
+
   const max = maxPlausibleDosesBySchedule(
     today,
     pneumococcalHistoricalSchedule(dob, product)
@@ -151,6 +159,14 @@ function menacwyDoseCounts(
   today: Date,
   product: string | undefined
 ): number[] {
+  if (isHealthyMenAcwySingleDosePath(dob, today)) {
+    const earliestFirstDose = addWeeks(dob, 6);
+    if (isBefore(today, earliestFirstDose)) {
+      return [];
+    }
+    return range(1, 3);
+  }
+
   if (product === 'menactra') {
     const earliestFirstDose = addMonths(dob, 9);
     if (isBefore(today, earliestFirstDose)) {

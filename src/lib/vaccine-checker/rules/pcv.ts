@@ -516,15 +516,25 @@ export function calculatePcv(ctx: RuleContext): VaccineRecommendation[] {
   const history = ctx.getHistory('pneumococcal');
   const product = history?.product;
   const doses = history?.doseDates ?? [];
+  const priorDoseCount = Math.max(doses.length, history?.numberOfDoses ?? 0);
+
+  if (isOlderThanFiveYears(ctx.dob, ctx.today) && priorDoseCount >= 1) {
+    const effectiveDoses = doses.length > 0 ? doses : [ctx.today];
+    return started2YearsPlus(ctx, product ?? 'pcv', effectiveDoses);
+  }
 
   if (!product || product === 'dontKnow') {
-    if (doses.length === 0) {
+    if (doses.length === 0 && priorDoseCount === 0) {
       const ageMonths = ageAtDate(ctx.dob, ctx.today).years * 12 + ageAtDate(ctx.dob, ctx.today).months;
       if (ageMonths < 2) {
         return eligibleOrDueNow(ctx, 'pcv', addMonths(ctx.dob, 2));
       }
 
       return calculatePcvCatchUp(ctx);
+    }
+
+    if (doses.length === 0) {
+      return needsReview(product, 'note_pcvProductUnknown', 'reason_pcvProductUnknown');
     }
     return needsReview(product, 'note_pcvProductUnknown', 'reason_pcvProductUnknown');
   }

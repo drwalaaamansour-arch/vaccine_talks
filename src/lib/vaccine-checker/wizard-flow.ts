@@ -16,7 +16,11 @@ import {
   getDueRoutineVisits,
   ROUTINE_VISIT_ORDER,
 } from '@/lib/vaccine-checker/routine';
-import { categoryNeedsProduct, isVaccineRecordComplete } from '@/lib/vaccine-checker/input-adapter';
+import { isVaccineRecordCompleteForState } from '@/lib/vaccine-checker/input-adapter';
+import {
+  shouldSkipHistoryDetailsAfterDoseCount,
+  wizardRequiresProductSelection,
+} from '@/lib/vaccine-checker/teen-history-simplification';
 import {
   couldMmrDose1DateAffectVaricella,
   couldMmrDose2DateAffectVaricella,
@@ -327,7 +331,10 @@ export function shouldIncludeMmrStepInFlow(
   );
 }
 
-export function getFirstAdditionalVaccineStep(state: WizardState): WizardStepId {
+export function getFirstAdditionalVaccineStep(
+  state: WizardState,
+  today: Date = getReferenceDate()
+): WizardStepId {
   if (state.additionalVaccines.length === 0) {
     return 'review';
   }
@@ -337,7 +344,9 @@ export function getFirstAdditionalVaccineStep(state: WizardState): WizardStepId 
     return 'doseCount';
   }
 
-  return categoryNeedsProduct(first.category) ? 'productSelection' : 'doseCount';
+  return wizardRequiresProductSelection(state, first.category, today)
+    ? 'productSelection'
+    : 'doseCount';
 }
 
 export function getNextStepAfterDoseCount(
@@ -354,11 +363,15 @@ export function getNextStepAfterDoseCount(
     return getNextStepAfterAdditionalVaccineHistory(state, today);
   }
 
+  if (shouldSkipHistoryDetailsAfterDoseCount(state, vaccine, today)) {
+    return getNextStepAfterAdditionalVaccineHistory(state, today);
+  }
+
   if (vaccine.category === 'pneumococcal') {
     return vaccine.product ? 'lastDoseDate' : 'productSelection';
   }
 
-  if (categoryNeedsProduct(vaccine.category) && !vaccine.product) {
+  if (wizardRequiresProductSelection(state, vaccine.category, today) && !vaccine.product) {
     return 'productSelection';
   }
 
@@ -384,7 +397,9 @@ export function getPreviousStepBeforeMmrDate(
   state: WizardState,
   today: Date = getReferenceDate()
 ): WizardStepId {
-  const nextIncomplete = state.additionalVaccines.findIndex((record) => !isVaccineRecordComplete(record));
+  const nextIncomplete = state.additionalVaccines.findIndex(
+    (record) => !isVaccineRecordCompleteForState(state, record, today)
+  );
 
   if (nextIncomplete !== -1) {
     const nextVaccine = state.additionalVaccines[nextIncomplete];
@@ -392,10 +407,12 @@ export function getPreviousStepBeforeMmrDate(
       return 'doseCount';
     }
 
-    return categoryNeedsProduct(nextVaccine.category) ? 'productSelection' : 'doseCount';
+    return wizardRequiresProductSelection(state, nextVaccine.category, today)
+      ? 'productSelection'
+      : 'doseCount';
   }
 
-  if (state.additionalVaccines.some((record) => isVaccineRecordComplete(record))) {
+  if (state.additionalVaccines.some((record) => isVaccineRecordCompleteForState(state, record, today))) {
     return 'lastDoseDate';
   }
 
@@ -432,7 +449,9 @@ export function getNextStepAfterAdditionalVaccineHistory(
   state: WizardState,
   today: Date = getReferenceDate()
 ): WizardStepId {
-  const nextIncomplete = state.additionalVaccines.findIndex((record) => !isVaccineRecordComplete(record));
+  const nextIncomplete = state.additionalVaccines.findIndex(
+    (record) => !isVaccineRecordCompleteForState(state, record, today)
+  );
 
   if (nextIncomplete !== -1) {
     const nextVaccine = state.additionalVaccines[nextIncomplete];
@@ -440,7 +459,9 @@ export function getNextStepAfterAdditionalVaccineHistory(
       return 'doseCount';
     }
 
-    return categoryNeedsProduct(nextVaccine.category) ? 'productSelection' : 'doseCount';
+    return wizardRequiresProductSelection(state, nextVaccine.category, today)
+      ? 'productSelection'
+      : 'doseCount';
   }
 
   if (shouldShowMmrDateStep(state, today)) {

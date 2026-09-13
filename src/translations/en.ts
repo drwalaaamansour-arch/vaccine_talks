@@ -348,6 +348,10 @@ export const TRANSLATIONS = {
   historyContext_hpv: 'Vaccine history: HPV',
   influenzaPrimingQuestion: 'Has your child received influenza vaccine before?',
   influenzaPrimingQuestionAr: 'الطفل أخد تطعيم الإنفلونزا قبل كده؟',
+  influenzaCurrentSeasonQuestion: 'Has the child received the influenza vaccine for the current season?',
+  influenzaCurrentSeasonQuestionAr: 'هل أخذ تطعيم الإنفلونزا للموسم الحالي؟',
+  doseDateUnknown: "I don't remember the date",
+  doseDateUnknownAr: 'مش فاكرة التاريخ',
   influenzaDoseCountQuestionAr: 'أخد كام جرعة قبل كده؟',
   resultRecommendedDate: 'Recommended date: {date}',
   resultOriginalRecommendedDate: 'Original recommended date: {date}',
@@ -557,6 +561,10 @@ export const TRANSLATIONS = {
     'The number and timing of the remaining doses depend on the HPV vaccine product and the age at the first dose.',
   note_gardasil9ThirdDoseRequired: 'Because dose 2 was given less than 5 months after dose 1, a third dose is required.',
   reason_hpvProductUnknown: 'Product name needed for HPV schedule.',
+  note_hpvRemainingTimingDependsOnFirstDose:
+    'An additional HPV dose is needed. Exact timing and whether a third dose is required depend on the age and date of the first dose.',
+  reason_hpvFirstDoseDateUnknown:
+    'First HPV dose date was not provided — schedule details depend on when the first dose was given.',
 
   note_influenzaSeasonComplete: 'A dose has already been recorded for the current influenza season.',
   note_influenzaOneDosePerSeason: 'One dose is recommended for the current flu season.',

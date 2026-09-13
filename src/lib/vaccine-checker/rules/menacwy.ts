@@ -460,11 +460,30 @@ export function calculateMenACWY(ctx: RuleContext): VaccineRecommendation[] {
 
   const product = history.product;
   const doses = history.doseDates;
+  const priorDoseCount = Math.max(doses.length, history.numberOfDoses ?? 0);
+  const ageMonthsToday = ageInMonthsAt(ctx.dob, ctx.today);
+  const effectiveDoses =
+    doses.length > 0
+      ? doses
+      : priorDoseCount >= 1 && ageMonthsToday >= 24
+        ? [ctx.today]
+        : doses;
 
   if (!product || product === 'dontKnow' || product === 'other') {
+    if (ageMonthsToday >= 24 && priorDoseCount >= 1) {
+      return [
+        makeRecommendation({
+          id: 'menacwy-completed',
+          vaccineCategory: 'meningococcalACWY',
+          doseLabelKey: 'doseLabel_seriesComplete',
+          status: 'completed',
+          noteKeys: [],
+        }),
+      ];
+    }
+
     if (doses.length === 0) {
-      const ageMonths = ageInMonthsAt(ctx.dob, ctx.today);
-      return unknownProductZeroDoseCatchUp(ageMonths);
+      return unknownProductZeroDoseCatchUp(ageMonthsToday);
     }
 
     return [
@@ -481,10 +500,10 @@ export function calculateMenACWY(ctx: RuleContext): VaccineRecommendation[] {
   }
 
   if (product === 'menactra') {
-    return menactraRules(ctx, doses);
+    return menactraRules(ctx, effectiveDoses);
   }
 
-  return nimenrixRules(ctx, doses);
+  return nimenrixRules(ctx, effectiveDoses);
 }
 
 export function hasMenACWYHistory(ctx: RuleContext): boolean {

@@ -2,10 +2,12 @@
 
 import { useMemo, useState } from 'react';
 import { WizardStepLayout } from '@/components/wizard/WizardStepLayout';
-import { type WizardStepProps } from '@/types/wizard-types';
+import { parseDateParts, type WizardStepProps } from '@/types/wizard-types';
 import { getActiveVaccineIndex } from '@/lib/vaccine-checker/input-adapter';
 import { getNextStepAfterDoseCount } from '@/lib/vaccine-checker/wizard-flow';
 import { getAvailableDoseCounts } from '@/lib/vaccine-checker/dose-count-options';
+import { getReferenceDate } from '@/lib/vaccine-checker/wizard-flow';
+import { influenzaUsesCurrentSeasonQuestion } from '@/lib/vaccine-checker/teen-history-simplification';
 import { getVaccineHistoryStepLabel } from '@/translations/vaccine-history-labels';
 
 export function DoseCountStep({
@@ -14,17 +16,30 @@ export function DoseCountStep({
   state,
   setState,
 }: WizardStepProps) {
-  const currentIndex = getActiveVaccineIndex(state.additionalVaccines);
+  const today = getReferenceDate();
+  const currentIndex = getActiveVaccineIndex(
+    state.additionalVaccines,
+    today,
+    state.dateOfBirth
+  );
   const currentVaccine = state.additionalVaccines[currentIndex];
   const category = currentVaccine?.category ?? 'rotavirus';
 
+  const dob = state.dateOfBirth ? parseDateParts(state.dateOfBirth) : null;
+  const isInfluenzaCurrentSeason =
+    category === 'influenza' && dob !== null && influenzaUsesCurrentSeasonQuestion(dob, today);
+
+  const [currentSeasonReceived, setCurrentSeasonReceived] = useState<boolean | null>(
+    currentVaccine?.influenzaCurrentSeasonReceived ?? null
+  );
+
   const availableCounts = useMemo(() => {
-    if (!currentVaccine) {
+    if (!currentVaccine || isInfluenzaCurrentSeason) {
       return [];
     }
 
     return getAvailableDoseCounts(state, currentVaccine);
-  }, [state, currentVaccine]);
+  }, [state, currentVaccine, isInfluenzaCurrentSeason]);
 
   const selectionContextKey = `${currentIndex}:${category}:${availableCounts.join(',')}`;
   const [selectionState, setSelectionState] = useState<{
@@ -60,7 +75,32 @@ export function DoseCountStep({
   };
 
   const continueHandler = () => {
-    if (doseCount === null || doseCount === undefined || doseCount < 0 || !currentVaccine) return;
+    if (!currentVaccine) return;
+
+    if (isInfluenzaCurrentSeason) {
+      if (currentSeasonReceived === null) return;
+
+      setState((current) => {
+        const vaccines = [...current.additionalVaccines];
+        vaccines[currentIndex] = {
+          ...vaccines[currentIndex],
+          numberOfDoses: currentSeasonReceived ? 1 : 0,
+          influenzaCurrentSeasonReceived: currentSeasonReceived,
+        };
+        const nextState = {
+          ...current,
+          additionalVaccines: vaccines,
+        };
+
+        return {
+          ...nextState,
+          currentStep: getNextStepAfterDoseCount(nextState, currentIndex, today),
+        };
+      });
+      return;
+    }
+
+    if (doseCount === null || doseCount === undefined || doseCount < 0) return;
 
     setState((current) => {
       const vaccines = [...current.additionalVaccines];
@@ -76,10 +116,13 @@ export function DoseCountStep({
 
       return {
         ...nextState,
-        currentStep: getNextStepAfterDoseCount(nextState, currentIndex),
+        currentStep: getNextStepAfterDoseCount(nextState, currentIndex, today),
       };
     });
   };
+
+  const influenzaSeasonTitle =
+    language === 'ar' ? t('influenzaCurrentSeasonQuestionAr') : t('influenzaCurrentSeasonQuestion');
 
   return (
     <WizardStepLayout
@@ -87,9 +130,30 @@ export function DoseCountStep({
       currentStep={state.currentStep}
       t={t}
       contextLabel={getVaccineHistoryStepLabel('context', category, t)}
-      title={getVaccineHistoryStepLabel('doseCount', category, t)}
+      title={
+        isInfluenzaCurrentSeason
+          ? influenzaSeasonTitle
+          : getVaccineHistoryStepLabel('doseCount', category, t)
+      }
     >
-      {availableCounts.length === 0 ? (
+      {isInfluenzaCurrentSeason ? (
+        <div className="vaccine-checker-choice-row vaccine-checker-choice-row--stack">
+          <button
+            type="button"
+            onClick={() => setCurrentSeasonReceived(true)}
+            className={`btn vaccine-checker-choice ${currentSeasonReceived === true ? 'btn-primary' : 'btn-outline'}`}
+          >
+            {language === 'ar' ? t('step2YesAr') : t('step2Yes')}
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentSeasonReceived(false)}
+            className={`btn vaccine-checker-choice ${currentSeasonReceived === false ? 'btn-primary' : 'btn-outline'}`}
+          >
+            {language === 'ar' ? t('step2NoAr') : t('step2No')}
+          </button>
+        </div>
+      ) : availableCounts.length === 0 ? (
         <p className="vaccine-checker-help">{t('doseCountUnavailable')}</p>
       ) : (
         <div className="vaccine-checker-choice-row">
@@ -106,7 +170,7 @@ export function DoseCountStep({
         </div>
       )}
 
-      {doseCount && (
+      {!isInfluenzaCurrentSeason && doseCount !== null && doseCount !== undefined && (
         <p className="vaccine-checker-help">
           {language === 'ar'
             ? `${doseCount} ${doseCount === 1 ? 'جرعة' : 'جرعات'}`
@@ -117,7 +181,11 @@ export function DoseCountStep({
       <button
         type="button"
         onClick={continueHandler}
-        disabled={doseCount === null || doseCount === undefined || doseCount < 0 || availableCounts.length === 0}
+        disabled={
+          isInfluenzaCurrentSeason
+            ? currentSeasonReceived === null
+            : doseCount === null || doseCount === undefined || doseCount < 0 || availableCounts.length === 0
+        }
         className="start-button vaccine-checker-primary-action"
       >
         {t('continue')}
