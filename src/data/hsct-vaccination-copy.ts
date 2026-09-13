@@ -157,6 +157,8 @@ export type HsctVaccinationCopy = {
   references: HsctReference[];
   infographicAlt: string;
   pdfTitles: {
+    vaccinationChecklist: string;
+    hsctGuidelines: string;
     hsctVaccination: string;
     australianTable: string;
     cclgGuidelines: string;
@@ -529,6 +531,8 @@ export const HSCT_COPY: Record<HsctVaccinationLocale, HsctVaccinationCopy> = {
     references: HSCT_REFERENCES,
     infographicAlt: 'HSCT vaccination infographic',
     pdfTitles: {
+      vaccinationChecklist: 'Vaccination checklist',
+      hsctGuidelines: 'HSCT vaccination guidelines',
       hsctVaccination: 'HSCT vaccination',
       australianTable:
         'Table. Recommendations for vaccination after haematopoietic stem cell transplant in children and adults | The Australian Immunisation Handbook',
@@ -824,6 +828,8 @@ export const HSCT_COPY: Record<HsctVaccinationLocale, HsctVaccinationCopy> = {
     references: HSCT_REFERENCES,
     infographicAlt: 'إنفوجراف تطعيم HSCT',
     pdfTitles: {
+      vaccinationChecklist: 'قائمة تحقق التطعيم',
+      hsctGuidelines: 'إرشادات تطعيم زراعة الخلايا الجذعية',
       hsctVaccination: 'تطعيم HSCT',
       australianTable:
         'Table. Recommendations for vaccination after haematopoietic stem cell transplant in children and adults | The Australian Immunisation Handbook',
