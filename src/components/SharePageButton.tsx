@@ -6,9 +6,9 @@ import {
   getSharePageAccessibilityLabel,
   getSharePageCopiedMessage,
   resolvePageLanguage,
-  shareCurrentPage,
   type PageLanguage,
 } from '@/lib/page-share';
+import { sharePageNativeAware } from '@/lib/native/share';
 
 function SharePageIcon() {
   return (
@@ -31,7 +31,7 @@ export default function SharePageButton() {
   const handleShare = async () => {
     setFeedback(null);
     const payload = getCurrentPageSharePayload(document, window.location);
-    const outcome = await shareCurrentPage(payload);
+    const outcome = await sharePageNativeAware(payload);
 
     if (outcome === 'copied') {
       setFeedback(getSharePageCopiedMessage(language));

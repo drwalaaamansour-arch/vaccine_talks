@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import SearchModal from './SearchModal';
 import SharePageButton from './SharePageButton';
+import NativeAppChrome from '@/components/native/NativeAppChrome';
 import { SITE_NAME_SHORT, SITE_TAGLINE } from '@/lib/site';
 
 type NavSubLink = { href: string; label: string; labelEn?: string };
@@ -214,6 +215,7 @@ export default function Header() {
             </div>
           ) : null}
 
+          <NativeAppChrome />
           <SharePageButton />
 
           <div className="search-container">

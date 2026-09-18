@@ -308,6 +308,8 @@ export const TRANSLATIONS = {
   shareCheckerCopied: 'Vaccine Checker link copied.',
   shareResultTitle: 'Vaccine Checker Result',
   shareResultCopied: 'Result copied. You can now share it.',
+  addToCalendar: 'Add to calendar',
+  calendarEventAdded: 'Calendar file ready — choose your calendar app.',
   shareResultNotesHeading: 'Notes',
   calculationDateLabel: 'Calculation date',
   dueNow: 'Due Now',

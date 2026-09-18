@@ -3,6 +3,8 @@
 import { useMemo } from 'react';
 import { BrandName } from '@/components/wizard/BrandName';
 import { ResultsActions } from '@/components/wizard/ResultsActions';
+import { ResultsCalendarActions } from '@/components/wizard/ResultsCalendarActions';
+import { calendarEventsFromRecommendations } from '@/lib/native/checker-calendar-events';
 import { ResultsEducationalCta } from '@/components/wizard/ResultsEducationalCta';
 import { WizardStepLayout } from '@/components/wizard/WizardStepLayout';
 import { toIsoDate } from '@/lib/vaccine-checker/date-utils';
@@ -313,6 +315,14 @@ export function ResultsStep({
     [language, referenceDate]
   );
 
+  const calendarEvents = useMemo(() => {
+    const items = [...displayedDueNow, ...displayedEligibleNow, ...displayedUpcoming];
+    return calendarEventsFromRecommendations(items, (item) => {
+      const categoryLabel = getRecommendationCategoryLabel(item, language, t);
+      return `${categoryLabel} — ${t(item.doseLabelKey)}`;
+    });
+  }, [displayedDueNow, displayedEligibleNow, displayedUpcoming, language, t]);
+
   const shareSections = useMemo((): ResultsShareSection[] => {
     return [
       { titleKey: 'dueNow', section: 'dueNow', items: displayedDueNow },
@@ -521,12 +531,20 @@ export function ResultsStep({
 
           <div className="vaccine-checker-results-footer vaccine-checker-no-print">
             {checkerInput && (
-              <ResultsActions
-                currentStep={state.currentStep}
-                shareTitle={t('shareResultTitle')}
-                shareText={shareText}
-                t={t}
-              />
+              <>
+                <ResultsCalendarActions
+                  events={calendarEvents}
+                  addLabel={t('addToCalendar')}
+                  addedLabel={t('calendarEventAdded')}
+                  language={language}
+                />
+                <ResultsActions
+                  currentStep={state.currentStep}
+                  shareTitle={t('shareResultTitle')}
+                  shareText={shareText}
+                  t={t}
+                />
+              </>
             )}
 
             <button type="button" onClick={restart} className="start-button vaccine-checker-primary-action">
