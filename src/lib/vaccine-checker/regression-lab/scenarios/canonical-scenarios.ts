@@ -323,4 +323,72 @@ export const canonicalRegressionScenarios: RegressionScenario[] = [
       },
     ],
   },
+  {
+    id: 'manual-pcv-synflorix-8m-dose2-due-20260919',
+    category: 'canonical-historical',
+    historicalBugTag: 'manual-pcv-synflorix-8m-dose2-no-future-rows',
+    title: 'Manual: 8-month infant — Synflorix dose 1 on 19/03/2026 → dose 2 due, no booster row',
+    description:
+      'Walaa manual test with review showing Synflorix, 1 prior dose, dose date 19/03/2026; as-of 19/09/2026. Full doseDates[] (wizard-normal). See docs/CHECKER-PCV-SYNFLORIX-REVIEW.md § Manual case (full dates).',
+    dobLabel: '19/01/2026',
+    asOfLabel: '19/09/2026',
+    buildInput: () => {
+      const birth = dateParts(2026, 1, 19);
+      const asOf = dateParts(2026, 9, 19);
+      const dose1 = dateParts(2026, 3, 19);
+      return baseHealthyInput(birth, asOf, {
+        vaccineHistory: [
+          history({
+            category: 'pneumococcal',
+            product: 'synflorix',
+            numberOfDoses: 1,
+            firstDoseDate: dose1,
+            lastDoseDate: dose1,
+            doseDates: [dose1],
+          }),
+        ],
+      });
+    },
+    expectations: [
+      {
+        kind: 'includes',
+        bucket: 'dueNow',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          product: 'synflorix',
+          doseLabelKey: 'doseLabel_dose2',
+          status: 'due-now',
+        },
+      },
+      {
+        kind: 'excludes',
+        bucket: 'dueNow',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          doseLabelKey: 'doseLabel_dose1',
+        },
+      },
+      {
+        kind: 'absentEverywhere',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          doseLabelKey: 'doseLabel_dose3',
+        },
+      },
+      {
+        kind: 'absentEverywhere',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          doseLabelKey: 'doseLabel_booster',
+        },
+      },
+      {
+        kind: 'absentEverywhere',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          conditionalNextDose: true,
+        },
+      },
+    ],
+  },
 ];

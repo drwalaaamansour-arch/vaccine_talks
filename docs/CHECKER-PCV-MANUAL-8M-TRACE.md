@@ -2,6 +2,8 @@
 
 **Branch:** `checker-regression-lab` only · **Medical rules:** unchanged · **Regression scenario:** `manual-pcv-synflorix-8m-dose1-mar19-2026`
 
+> **Update:** When the review screen shows dose 1 date **19 Mar 2026** and `doseDates` reach the engine (normal wizard path), the result is **dose 2 due now** — see [`CHECKER-PCV-SYNFLORIX-REVIEW.md`](./CHECKER-PCV-SYNFLORIX-REVIEW.md) and scenario **`manual-pcv-synflorix-8m-dose2-due-20260919`**. This file documents the **alternate** engine state when **`doseDates[]` is empty** at calculation time.
+
 ## Inputs (manual test)
 
 | Field | Value |
