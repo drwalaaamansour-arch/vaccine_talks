@@ -410,6 +410,10 @@ export const TRANSLATIONS = {
     '{{nextDose}} is still required. Timing will be calculated from the actual date {{previousDose}} is given.',
   resultConditionalPcvInfantBoosterAfterPrimarySeries:
     'Booster is still required after the primary series is complete. It must be at least 6 months after the last primary dose. When that allows, the preferred age is 11–15 months; if the series was delayed, the booster may be given after 15 months rather than shortening the 6-month interval.',
+  resultConditionalPcvStandardBoosterAfterPrimarySeries:
+    'Booster is still required after the primary series is complete. The preferred age window is 11–15 months once the primary series and minimum intervals are met.',
+  resultConditionalPcvSevenToElevenBoosterPending:
+    'Booster is still required after Dose 2. Timing depends on when Dose 2 is given and when the child reaches 12 months of age.',
   note_pcvSynflorixBoosterMinimumAfterLastPrimary:
     'The booster can be given from {startDate}. This is at least 6 months after the last primary dose. A delayed primary series may push the booster after 15 months of age, which is acceptable.',
   resultConditionalMenbBoosterWindow:

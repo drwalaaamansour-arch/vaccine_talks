@@ -7,6 +7,7 @@ import {
   isPcvInfantRemainingPrimaryConditionalItem,
   synflorixAgeAtFirstDoseMonths,
 } from '@/lib/vaccine-checker/pcv-infant-remaining-schedule';
+import { isPcvRemainingSevenToElevenBoosterConditionalItem } from '@/lib/vaccine-checker/pcv-remaining-schedule';
 import {
   getConditionalNextDoseTranslationKey,
 } from '@/lib/vaccine-checker/result-presentation';
@@ -60,20 +61,21 @@ describe('Synflorix branch selection (age at first dose, matches calculatePcv)',
     expect(items.some((i) => isPcvInfantRemainingPrimaryConditionalItem(i))).toBe(true);
   });
 
-  it('first dose exactly at 7 months → 7–11 month branch (no before-7 remaining rows)', () => {
+  it('first dose exactly at 7 months → 7–11 month branch (conditional booster, not 3-primary rows)', () => {
     const dose1 = addMonths(birth, 7);
     expect(synflorixAgeAtFirstDoseMonths(birth, dose1)).toBe(7);
     const asOf = addMonths(birth, 8);
     const items = pcvItems(ctxInput(birth, asOf, [dose1]));
     expect(items.some((i) => isPcvInfantRemainingPrimaryConditionalItem(i))).toBe(false);
-    expect(items.some((i) => isPcvInfantRemainingBoosterConditionalItem(i))).toBe(false);
+    expect(items.some((i) => isPcvRemainingSevenToElevenBoosterConditionalItem(i))).toBe(true);
   });
 
-  it('first dose after 7 months → no before-7 remaining rows', () => {
+  it('first dose after 7 months → 7–11 conditional booster when one dose recorded', () => {
     const dose1 = addDays(addMonths(birth, 7), 1);
     expect(synflorixAgeAtFirstDoseMonths(birth, dose1)).toBe(7);
     const items = pcvItems(ctxInput(birth, addMonths(birth, 9), [dose1]));
-    expect(items.filter((i) => i.id.startsWith('pcv-remaining-'))).toHaveLength(0);
+    expect(items.some((i) => isPcvInfantRemainingPrimaryConditionalItem(i))).toBe(false);
+    expect(items.some((i) => isPcvRemainingSevenToElevenBoosterConditionalItem(i))).toBe(true);
   });
 });
 
@@ -133,7 +135,7 @@ describe('Synflorix before-7-month remaining schedule presentation', () => {
     expect(items.filter((i) => i.conditionalNextDose)).toHaveLength(0);
   });
 
-  it('does not apply to Prevenar13', () => {
+  it('Prevenar13 same infant path shows remaining rows', () => {
     const asOf = dateParts(2026, 9, 19);
     const items = pcvItems(
       baseHealthyInput(birth, asOf, {
@@ -149,6 +151,7 @@ describe('Synflorix before-7-month remaining schedule presentation', () => {
         ],
       })
     );
-    expect(items.filter((i) => i.id.startsWith('pcv-remaining-'))).toHaveLength(0);
+    expect(items.some((i) => isPcvInfantRemainingPrimaryConditionalItem(i))).toBe(true);
+    expect(items.some((i) => isPcvInfantRemainingBoosterConditionalItem(i))).toBe(true);
   });
 });

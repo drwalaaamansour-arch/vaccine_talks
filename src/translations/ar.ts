@@ -406,6 +406,10 @@ export const AR_TRANSLATIONS = {
     '{{nextDose}} لسه مطلوبة. هنحدد الميعاد بناءً على التاريخ الفعلي اللي اتاخدت فيه {{previousDose}}.',
   resultConditionalPcvInfantBoosterAfterPrimarySeries:
     'الجرعة المنشطة لسه مطلوبة بعد اكتمال سلسلة الجرعات الأساسية. لازم تكون بعد 6 شهور على الأقل من آخر جرعة أساسية. لو ينفع، العمر المفضل 11–15 شهر؛ ولو السلسلة اتأخرت، ممكن تُعطى بعد 15 شهر بدل ما نقلل فترة الـ 6 شهور.',
+  resultConditionalPcvStandardBoosterAfterPrimarySeries:
+    'الجرعة المنشطة لسه مطلوبة بعد اكتمال سلسلة الجرعات الأساسية. العمر المفضل 11–15 شهر بعد استيفاء السلسلة الأساسية والفترات الدنيا.',
+  resultConditionalPcvSevenToElevenBoosterPending:
+    'الجرعة المنشطة لسه مطلوبة بعد الجرعة الثانية. الميعاد يعتمد على تاريخ الجرعة الثانية ووصول الطفل لعمر 12 شهر.',
   note_pcvSynflorixBoosterMinimumAfterLastPrimary:
     'الجرعة المنشطة تُعطى من {startDate}. ده على الأقل 6 شهور بعد آخر جرعة أساسية. تأخر السلسلة الأساسية قد يؤخر الجرعة المنشطة بعد 15 شهر، وده مقبول.',
   resultConditionalMenbBoosterWindow:

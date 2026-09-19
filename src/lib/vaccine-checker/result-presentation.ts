@@ -11,9 +11,10 @@ import { expandEquivalentNoteKeys, getCardNoteKeys } from '@/lib/vaccine-checker
 import { getTimingDisplayLines, type TimingDisplayLine } from '@/lib/vaccine-checker/recommendation-timing';
 import { influenzaUsesCurrentSeasonQuestion } from '@/lib/vaccine-checker/teen-history-simplification';
 import {
-  isPcvInfantRemainingBoosterConditionalItem,
-  isPcvInfantRemainingPrimaryConditionalItem,
-} from '@/lib/vaccine-checker/pcv-infant-remaining-schedule';
+  isPcvRemainingBoosterAfterPrimarySeriesConditionalItem,
+  isPcvRemainingPrimaryConditionalItem,
+  isPcvRemainingSevenToElevenBoosterConditionalItem,
+} from '@/lib/vaccine-checker/pcv-remaining-schedule';
 
 function getMmrDatesFromInput(input: CheckerInput): Date[] {
   return getVaricellaSpacingMmrDatesFromInput(input);
@@ -440,12 +441,19 @@ export function getConditionalNextDoseTranslationKey(item: VaccineRecommendation
     return 'resultConditionalPcvSevenToElevenBooster';
   }
 
-  if (isPcvInfantRemainingPrimaryConditionalItem(item)) {
+  if (isPcvRemainingPrimaryConditionalItem(item)) {
     return 'resultConditionalPcvRemainingPrimaryAfterPrevious';
   }
 
-  if (isPcvInfantRemainingBoosterConditionalItem(item)) {
-    return 'resultConditionalPcvInfantBoosterAfterPrimarySeries';
+  if (isPcvRemainingSevenToElevenBoosterConditionalItem(item)) {
+    return 'resultConditionalPcvSevenToElevenBoosterPending';
+  }
+
+  if (isPcvRemainingBoosterAfterPrimarySeriesConditionalItem(item)) {
+    if (item.product === 'synflorix') {
+      return 'resultConditionalPcvInfantBoosterAfterPrimarySeries';
+    }
+    return 'resultConditionalPcvStandardBoosterAfterPrimarySeries';
   }
 
   if (item.doseLabelKey === 'doseLabel_booster' || shouldUseMenbBoosterConditionalNote(item)) {
@@ -483,6 +491,15 @@ export function getConditionalNextDoseTranslationParams(
       previousDose: translateDoseLabel(getPreviousDoseLabelKey(item.doseLabelKey)),
       nextDose: translateDoseLabel(item.doseLabelKey),
     };
+  }
+
+  const pcvRemainingBoosterKey = getConditionalNextDoseTranslationKey(item);
+  if (
+    pcvRemainingBoosterKey === 'resultConditionalPcvInfantBoosterAfterPrimarySeries' ||
+    pcvRemainingBoosterKey === 'resultConditionalPcvStandardBoosterAfterPrimarySeries' ||
+    pcvRemainingBoosterKey === 'resultConditionalPcvSevenToElevenBoosterPending'
+  ) {
+    return {};
   }
 
   if (

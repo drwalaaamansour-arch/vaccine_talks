@@ -94,19 +94,21 @@ describe('catch-up start date display (zero previous doses)', () => {
     expect(pcv?.recommendedDateLabelKey).toBeUndefined();
     expect(getTimingDisplayLines(pcv!, today)).toEqual([]);
 
-    const conditional = results.upcoming.find(
+    const projectedDose2 = results.upcoming.find(
       (item) =>
         item.vaccineCategory === 'pneumococcal' &&
         item.conditionalNextDose &&
-        item.doseLabelKey === 'doseLabel_dose2'
+        item.doseLabelKey === 'doseLabel_dose2' &&
+        item.id.endsWith('-conditional-next')
     );
-    expect(conditional?.recommendedDate).toBe(conditionalDose2Date);
-    expect(formatConditionalLine('en', conditional!)).toBe(
-      'If Dose 1 is given today, Dose 2 would be on 10/22/2026.'
+    expect(projectedDose2).toBeUndefined();
+
+    const remainingDose2 = results.upcoming.find(
+      (item) => item.id === 'pcv-remaining-dose2-after-dose1'
     );
-    expect(formatConditionalLine('ar', conditional!)).toBe(
-      'لو اتاخدت الجرعة الأولى النهارده، الجرعة الثانية تبقى يوم 22/10/2026.'
-    );
+    expect(remainingDose2?.recommendedDate).toBeUndefined();
+    expect(formatConditionalLine('en', remainingDose2!)).toMatch(/Dose 2 is still required/);
+    expect(formatConditionalLine('ar', remainingDose2!)).toMatch(/الجرعة الثانية لسه مطلوبة/);
   });
 
   it('B) 4-month child with zero Rotarix shows dose 1 due now without stale infant date', () => {
