@@ -10,6 +10,10 @@ import { iso, type CheckerInput, type VaccineRecommendation } from '@/lib/vaccin
 import { expandEquivalentNoteKeys, getCardNoteKeys } from '@/lib/vaccine-checker/result-notes';
 import { getTimingDisplayLines, type TimingDisplayLine } from '@/lib/vaccine-checker/recommendation-timing';
 import { influenzaUsesCurrentSeasonQuestion } from '@/lib/vaccine-checker/teen-history-simplification';
+import {
+  isPcvInfantRemainingBoosterConditionalItem,
+  isPcvInfantRemainingPrimaryConditionalItem,
+} from '@/lib/vaccine-checker/pcv-infant-remaining-schedule';
 
 function getMmrDatesFromInput(input: CheckerInput): Date[] {
   return getVaricellaSpacingMmrDatesFromInput(input);
@@ -436,6 +440,14 @@ export function getConditionalNextDoseTranslationKey(item: VaccineRecommendation
     return 'resultConditionalPcvSevenToElevenBooster';
   }
 
+  if (isPcvInfantRemainingPrimaryConditionalItem(item)) {
+    return 'resultConditionalPcvRemainingPrimaryAfterPrevious';
+  }
+
+  if (isPcvInfantRemainingBoosterConditionalItem(item)) {
+    return 'resultConditionalPcvInfantBoosterAfterPrimarySeries';
+  }
+
   if (item.doseLabelKey === 'doseLabel_booster' || shouldUseMenbBoosterConditionalNote(item)) {
     return 'resultConditionalBoosterStart';
   }
@@ -460,6 +472,16 @@ export function getConditionalNextDoseTranslationParams(
       previousDose: translateDoseLabel(getPreviousDoseLabelKey(item.doseLabelKey)),
       nextDose: translateDoseLabel(item.doseLabelKey),
       date: formatDateValue(item.recommendedDate),
+    };
+  }
+
+  if (
+    getConditionalNextDoseTranslationKey(item) ===
+    'resultConditionalPcvRemainingPrimaryAfterPrevious'
+  ) {
+    return {
+      previousDose: translateDoseLabel(getPreviousDoseLabelKey(item.doseLabelKey)),
+      nextDose: translateDoseLabel(item.doseLabelKey),
     };
   }
 

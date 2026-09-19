@@ -15,6 +15,8 @@ const RESULT_TRANSLATION_KEYS = [
   'resultConditionalVaricellaDose2FromPlannedDose1',
   'resultConditionalBoosterStart',
   'resultConditionalPcvSevenToElevenBooster',
+  'resultConditionalPcvRemainingPrimaryAfterPrevious',
+  'resultConditionalPcvInfantBoosterAfterPrimarySeries',
   'resultConditionalBoosterWindow',
   'resultLatestDate',
   'resultConditionalNextDose',

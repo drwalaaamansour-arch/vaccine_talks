@@ -192,6 +192,15 @@ No change at these boundaries: **first dose age stays 2 months**, so routing doe
 
 ---
 
+### Branch rule (clinical confirmation recorded)
+
+Synflorix schedule branch follows **age at first PCV dose** (same whole-month rule as `calculatePcv()`):
+
+- **First dose before 7 months** → 3 primaries in the first year + 1 booster (target **11–15 months**, and **≥ 6 months after last primary**).
+- **First dose at 7 months or later** → separate catch-up branches (`started7To11Months`, etc.); **no** before-7 “remaining schedule” presentation rows.
+
+Presentation adds conditional rows for remaining primaries/booster **without** projecting Dose 3 from an ungiven Dose 2, or a booster date before the last primary date is known. If **11–15 months** and **last primary + 6 months** cannot both be met, the checker adds `note_pcvSynflorixBoosterTimingNeedsReview` (no new medical assumption).
+
 ### Plain-language summary (manual case)
 
 **What the checker is doing:**  

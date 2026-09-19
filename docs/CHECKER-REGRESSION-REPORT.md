@@ -1,16 +1,16 @@
 # Vaccine Checker regression report
 
-Generated: 2026-09-19T15:39:38.232Z
+Generated: 2026-09-19T16:46:08.421Z
 
 ## Summary
 
-- **Total scenarios:** 276
-- **Passed:** 276
+- **Total scenarios:** 278
+- **Passed:** 278
 - **Failed:** 0
 
 ### By category
 
-- canonical-historical: 6
+- canonical-historical: 8
 - interval-boundary: 3
 - dose-state: 12
 - age-matrix: 255

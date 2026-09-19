@@ -10,6 +10,7 @@ import {
   isPcvSevenToElevenMonthZeroHistoryCatchUp,
   shouldShowPcvZeroHistoryProductSchedules,
 } from '@/lib/vaccine-checker/pcv-zero-history-schedules';
+import { shouldSuppressPcvConditionalNextDoseFromAsOf } from '@/lib/vaccine-checker/pcv-infant-remaining-schedule';
 import { isOlderThanFiveYears } from '@/lib/vaccine-checker/product-options';
 import { type AdditionalVaccineCategory } from '@/types/wizard-types';
 import {
@@ -272,6 +273,10 @@ function getConditionalNextDoseDateForItem(
   }
 
   if (item.vaccineCategory === 'pneumococcal' && shouldShowPcvZeroHistoryProductSchedules(ctx)) {
+    return null;
+  }
+
+  if (shouldSuppressPcvConditionalNextDoseFromAsOf(ctx, item)) {
     return null;
   }
 

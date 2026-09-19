@@ -369,23 +369,20 @@ export const canonicalRegressionScenarios: RegressionScenario[] = [
         },
       },
       {
-        kind: 'absentEverywhere',
+        kind: 'includes',
+        bucket: 'upcoming',
         match: {
           vaccineCategory: 'pneumococcal',
           doseLabelKey: 'doseLabel_dose3',
+          conditionalNextDose: true,
         },
       },
       {
-        kind: 'absentEverywhere',
+        kind: 'includes',
+        bucket: 'upcoming',
         match: {
           vaccineCategory: 'pneumococcal',
           doseLabelKey: 'doseLabel_booster',
-        },
-      },
-      {
-        kind: 'absentEverywhere',
-        match: {
-          vaccineCategory: 'pneumococcal',
           conditionalNextDose: true,
         },
       },

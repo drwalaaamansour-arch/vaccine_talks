@@ -406,6 +406,12 @@ export const TRANSLATIONS = {
     'If the primary doses are given on schedule, the booster can start from {date}.',
   resultConditionalPcvSevenToElevenBooster:
     'If Dose 2 is given as scheduled, the booster can start from {date}.',
+  resultConditionalPcvRemainingPrimaryAfterPrevious:
+    '{{nextDose}} is still required. Timing will be calculated from the actual date {{previousDose}} is given.',
+  resultConditionalPcvInfantBoosterAfterPrimarySeries:
+    'Booster is still required after the primary series is complete. It is normally given at 11–15 months of age, and at least 6 months after the last primary dose. The exact date will be set once all primary dose dates are known.',
+  note_pcvSynflorixBoosterTimingNeedsReview:
+    'The 11–15 month booster window and the 6-month interval after the last primary dose may not both be achievable with the dates entered. Please confirm the booster plan clinically.',
   resultConditionalMenbBoosterWindow:
     'If the primary doses are given on schedule, the preferred booster window would be from {startDate} to {endDate}.',
   resultConditionalBoosterWindow:
