@@ -11,6 +11,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
+    "test:checker-regression": "vitest run src/lib/vaccine-checker/regression-lab",
+    "regression:report": "tsx scripts/checker-regression-report.ts",
     "test:watch": "vitest"
   },
   "dependencies": {
