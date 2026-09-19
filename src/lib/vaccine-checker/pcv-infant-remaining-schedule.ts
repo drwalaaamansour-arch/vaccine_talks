@@ -1,4 +1,4 @@
-import { addMonths, ageAtDate, isAfter, laterOf } from '@/lib/vaccine-checker/date-utils';
+import { ageAtDate } from '@/lib/vaccine-checker/date-utils';
 import { makeRecommendation, type RuleContext, type VaccineRecommendation } from '@/lib/vaccine-checker/types';
 
 const PRIMARY_COUNT = 3;
@@ -67,58 +67,6 @@ function resolveSynflorixProduct(
   return fromRec?.product;
 }
 
-/**
- * Preferred booster window (11–15 months) vs minimum 6 months after last primary — may be impossible if primaries are late.
- * Does not pick a calendar date; flags for clinical review only.
- */
-export function synflorixBoosterPrimaryWindowConflict(dob: Date, doseDates: Date[]): boolean {
-  if (doseDates.length < PRIMARY_COUNT) {
-    return false;
-  }
-
-  const lastPrimary = doseDates[PRIMARY_COUNT - 1]!;
-  const earliestByAge = addMonths(dob, 11);
-  const latestByAge = addMonths(dob, 15);
-  const earliestByInterval = addMonths(lastPrimary, 6);
-  const effectiveEarliest = laterOf(earliestByAge, earliestByInterval);
-
-  return isAfter(effectiveEarliest, latestByAge);
-}
-
-export function flagSynflorixBoosterTimingConflictNotes(
-  recommendations: VaccineRecommendation[],
-  ctx: RuleContext
-): VaccineRecommendation[] {
-  const history = ctx.getHistory('pneumococcal');
-  if (history?.product !== 'synflorix') {
-    return recommendations;
-  }
-
-  const doses = history.doseDates ?? [];
-  if (!synflorixBoosterPrimaryWindowConflict(ctx.dob, doses)) {
-    return recommendations;
-  }
-
-  return recommendations.map((item) => {
-    if (
-      item.vaccineCategory !== 'pneumococcal' ||
-      item.doseLabelKey !== 'doseLabel_booster' ||
-      item.conditionalNextDose
-    ) {
-      return item;
-    }
-
-    if (item.noteKeys.includes('note_pcvSynflorixBoosterTimingNeedsReview')) {
-      return item;
-    }
-
-    return {
-      ...item,
-      noteKeys: [...item.noteKeys, 'note_pcvSynflorixBoosterTimingNeedsReview'],
-    };
-  });
-}
-
 function hasPcvRow(
   recommendations: VaccineRecommendation[],
   doseLabelKey: string,
@@ -149,7 +97,7 @@ function makeRemainingPrimary(doseNumber: 2 | 3, previousDoseNumber: 1 | 2): Vac
   });
 }
 
-function makeRemainingBooster(noteKeys: string[] = []): VaccineRecommendation {
+function makeRemainingBooster(): VaccineRecommendation {
   return makeRecommendation({
     id: 'pcv-remaining-booster-after-primary-series',
     vaccineCategory: 'pneumococcal',
@@ -157,7 +105,7 @@ function makeRemainingBooster(noteKeys: string[] = []): VaccineRecommendation {
     doseLabelKey: 'doseLabel_booster',
     status: 'upcoming',
     conditionalNextDose: true,
-    noteKeys,
+    noteKeys: [],
     urgency: 10,
   });
 }
@@ -212,14 +160,8 @@ export function appendPcvInfantPrimaryPlusBoosterRemainingSchedule(
   const boosterAlreadyShown =
     hasPcvRow(recommendations, 'doseLabel_booster') || hasPcvRow(extras, 'doseLabel_booster');
 
-  if (!boosterAlreadyShown) {
-    const conflictNotes =
-      recordedPrimaries === PRIMARY_COUNT && synflorixBoosterPrimaryWindowConflict(ctx.dob, doses)
-        ? ['note_pcvSynflorixBoosterTimingNeedsReview']
-        : [];
-    if (recordedPrimaries < PRIMARY_COUNT || conflictNotes.length > 0) {
-      extras.push(makeRemainingBooster(conflictNotes));
-    }
+  if (!boosterAlreadyShown && recordedPrimaries < PRIMARY_COUNT) {
+    extras.push(makeRemainingBooster());
   }
 
   return extras;

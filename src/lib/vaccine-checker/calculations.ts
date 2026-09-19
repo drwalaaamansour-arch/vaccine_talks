@@ -10,10 +10,7 @@ import {
 import { calculateRoutineMissing } from '@/lib/vaccine-checker/routine';
 import { assessRoutineCatchUp } from '@/lib/vaccine-checker/routine-catch-up';
 import { buildConditionalUpcomingRecommendations } from '@/lib/vaccine-checker/conditional-upcoming';
-import {
-  appendPcvInfantPrimaryPlusBoosterRemainingSchedule,
-  flagSynflorixBoosterTimingConflictNotes,
-} from '@/lib/vaccine-checker/pcv-infant-remaining-schedule';
+import { appendPcvInfantPrimaryPlusBoosterRemainingSchedule } from '@/lib/vaccine-checker/pcv-infant-remaining-schedule';
 import { coordinateMmrVaricellaPlannedDates } from '@/lib/vaccine-checker/mmr-varicella-coordination';
 import { collectImportantNotes } from '@/lib/vaccine-checker/result-notes';
 import { enrichRecommendationsForPresentation } from '@/lib/vaccine-checker/result-presentation';
@@ -125,10 +122,7 @@ export function calculateVaccineRecommendations(input: CheckerInput): CheckerRes
     ...(ctx.getHistory('influenza') ? calculateInfluenza(ctx) : calculateInfluenzaCatchUp(ctx)),
   ];
 
-  const coordinatedRecommendations = flagSynflorixBoosterTimingConflictNotes(
-    coordinateMmrVaricellaPlannedDates(allRecommendations, input),
-    ctx
-  );
+  const coordinatedRecommendations = coordinateMmrVaricellaPlannedDates(allRecommendations, input);
 
   const conditionalUpcoming = buildConditionalUpcomingRecommendations(coordinatedRecommendations, ctx);
   const pcvRemainingSchedule = appendPcvInfantPrimaryPlusBoosterRemainingSchedule(

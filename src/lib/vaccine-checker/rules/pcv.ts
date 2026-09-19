@@ -7,6 +7,7 @@ import {
   isAfter,
   isBefore,
   isOnOrAfter,
+  isOnOrBefore,
   laterOf,
 } from '@/lib/vaccine-checker/date-utils';
 import {
@@ -152,6 +153,50 @@ function eligibleOrDueNow(
   ];
 }
 
+function synflorixBeforeSevenMonthBooster(
+  ctx: RuleContext,
+  doses: Date[],
+  primaryCount: number
+): VaccineRecommendation[] {
+  const { dob, today } = ctx;
+  const lastPrimary = doses[primaryCount - 1]!;
+  const preferredWindowStart = addMonths(dob, 11);
+  const preferredWindowEnd = addMonths(dob, 15);
+  const minimumAfterLastPrimary = addMonths(lastPrimary, 6);
+  const effectiveEarliest = laterOf(preferredWindowStart, minimumAfterLastPrimary);
+
+  if (isOnOrBefore(effectiveEarliest, preferredWindowEnd)) {
+    return [
+      withRecommendedWindow(
+        {
+          id: 'pcv-booster',
+          vaccineCategory: 'pneumococcal',
+          product: 'synflorix',
+          doseLabelKey: 'doseLabel_booster',
+          noteKeys: isAfter(today, preferredWindowEnd) ? ['note_pcvBoosterDelayed'] : [],
+        },
+        effectiveEarliest,
+        preferredWindowEnd,
+        today
+      ),
+    ];
+  }
+
+  return [
+    withMinimumStartOnly(
+      {
+        id: 'pcv-booster',
+        vaccineCategory: 'pneumococcal',
+        product: 'synflorix',
+        doseLabelKey: 'doseLabel_booster',
+        noteKeys: ['note_pcvSynflorixBoosterMinimumAfterLastPrimary'],
+      },
+      effectiveEarliest,
+      today
+    ),
+  ];
+}
+
 function standardPrimaryPlusBooster(
   ctx: RuleContext,
   product: string,
@@ -174,6 +219,10 @@ function standardPrimaryPlusBooster(
           noteKeys: [],
         }),
       ];
+    }
+
+    if (product === 'synflorix') {
+      return synflorixBeforeSevenMonthBooster(ctx, doses, primaryCount);
     }
 
     return [

@@ -199,7 +199,15 @@ Synflorix schedule branch follows **age at first PCV dose** (same whole-month ru
 - **First dose before 7 months** → 3 primaries in the first year + 1 booster (target **11–15 months**, and **≥ 6 months after last primary**).
 - **First dose at 7 months or later** → separate catch-up branches (`started7To11Months`, etc.); **no** before-7 “remaining schedule” presentation rows.
 
-Presentation adds conditional rows for remaining primaries/booster **without** projecting Dose 3 from an ungiven Dose 2, or a booster date before the last primary date is known. If **11–15 months** and **last primary + 6 months** cannot both be met, the checker adds `note_pcvSynflorixBoosterTimingNeedsReview` (no new medical assumption).
+Presentation adds conditional rows for remaining primaries/booster **without** projecting Dose 3 from an ungiven Dose 2, or a booster date before the last primary date is known.
+
+**Synflorix booster precedence (before-7-month start, 3 primaries complete):**
+
+1. **Earliest date** = later of **11 months of age** and **last primary + 6 months**.
+2. If that earliest date is **on or before 15 months of age**, show a **recommended window** from that date through **15 months**.
+3. If that earliest date is **after 15 months** (delayed primaries), show **minimum start only** from that date — booster **after 15 months is acceptable**; the 6-month interval is **not** shortened to fit 11–15 months.
+
+Example: DOB 1 Jan 2026; primaries 30 Jul / 30 Sep / 30 Nov 2026 → booster from **30 May 2027** (`synflorix-booster-interval.test.ts`).
 
 ### Plain-language summary (manual case)
 

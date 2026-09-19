@@ -388,4 +388,61 @@ export const canonicalRegressionScenarios: RegressionScenario[] = [
       },
     ],
   },
+  {
+    id: 'synflorix-delayed-primaries-booster-after-15m',
+    category: 'canonical-historical',
+    historicalBugTag: 'synflorix-booster-6m-after-last-primary',
+    title: 'Synflorix delayed primaries — booster from last primary + 6 months (after 15m OK)',
+    description:
+      'DOB 1 Jan 2026; primaries 30 Jul / 30 Sep / 30 Nov 2026. Booster minimum 30 May 2027, not clinical review.',
+    dobLabel: '01/01/2026',
+    asOfLabel: '01/03/2027',
+    buildInput: () => {
+      const birth = dateParts(2026, 1, 1);
+      const asOf = dateParts(2027, 3, 1);
+      const dose1 = dateParts(2026, 7, 30);
+      const dose2 = dateParts(2026, 9, 30);
+      const dose3 = dateParts(2026, 11, 30);
+      return baseHealthyInput(birth, asOf, {
+        vaccineHistory: [
+          history({
+            category: 'pneumococcal',
+            product: 'synflorix',
+            numberOfDoses: 3,
+            firstDoseDate: dose1,
+            lastDoseDate: dose3,
+            doseDates: [dose1, dose2, dose3],
+          }),
+        ],
+      });
+    },
+    expectations: [
+      {
+        kind: 'includes',
+        bucket: 'upcoming',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          product: 'synflorix',
+          doseLabelKey: 'doseLabel_booster',
+          status: 'upcoming',
+        },
+      },
+    ],
+    validate: (results) => {
+      const booster = [...results.upcoming, ...results.dueNow].find(
+        (item) =>
+          item.vaccineCategory === 'pneumococcal' &&
+          item.product === 'synflorix' &&
+          item.doseLabelKey === 'doseLabel_booster'
+      );
+      if (!booster) return ['Expected Synflorix booster row'];
+      if (booster.minimumValidDate !== '2027-05-30') {
+        return [`Expected minimumValidDate 2027-05-30, got ${booster.minimumValidDate}`];
+      }
+      if (booster.noteKeys.includes('note_pcvSynflorixBoosterTimingNeedsReview')) {
+        return ['Must not flag needs-review for acceptable post-15m booster'];
+      }
+      return [];
+    },
+  },
 ];
