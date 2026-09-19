@@ -100,7 +100,11 @@ export default function NonHcpCommonQuestionsTopicPage({
   }
 
   return (
-    <div className="min-h-screen ncq-topic-page vax-hub-page" dir="rtl" lang="ar">
+    <div
+      className={`min-h-screen ncq-topic-page vax-hub-page${isArabic ? '' : ' vax-hub-page--en'}`}
+      dir={isArabic ? 'rtl' : 'ltr'}
+      lang={isArabic ? 'ar' : 'en'}
+    >
       <Header />
 
       <main className="hero">
@@ -145,7 +149,7 @@ export default function NonHcpCommonQuestionsTopicPage({
                 {leadEn}
               </p>
               <div className="hub-hero-meta">
-                <ArticleMetaDate {...meta} locale="ar" align="center" compact />
+                <ArticleMetaDate {...meta} locale={locale} align="center" compact />
               </div>
             </header>
 
@@ -192,7 +196,7 @@ export default function NonHcpCommonQuestionsTopicPage({
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 aria-label="Search questions"
-                dir="rtl"
+                dir={isArabic ? 'rtl' : 'ltr'}
               />
               {query ? (
                 <button

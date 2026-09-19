@@ -4192,8 +4192,8 @@ body {
 }
 
 .ncq-topic-inner {
-  direction: rtl;
-  text-align: right;
+  direction: inherit;
+  text-align: start;
 }
 
 .ncq-topic-hero .vax-hub-hero-lead {
@@ -4298,7 +4298,7 @@ body {
   font-weight: 800;
   color: #8b7355;
   border-bottom: 2px solid rgba(139, 115, 85, 0.25);
-  text-align: right;
+  text-align: start;
 }
 
 .ncq-topic-section-title:first-child {
@@ -4327,7 +4327,7 @@ body {
   border: none;
   background: transparent;
   cursor: pointer;
-  text-align: right;
+  text-align: start;
   font: inherit;
   color: #2d2a26;
 }
@@ -4382,13 +4382,13 @@ body {
   line-height: 1.8;
   color: rgba(45, 42, 38, 0.88);
   white-space: pre-wrap;
-  text-align: right;
+  text-align: start;
 }
 
 .ncq-topic-text-en {
   direction: ltr;
   unicode-bidi: embed;
-  text-align: right;
+  text-align: left;
   display: block;
 }
 
@@ -14268,6 +14268,12 @@ body {
 .vax-hub-page--en .vax-hub-inner,
 .vax-article-page--en .vax-article-inner {
   direction: ltr;
+  text-align: start;
+}
+
+.ncq-topic-page.vax-hub-page--en .ncq-topic-inner {
+  direction: ltr;
+  text-align: start;
 }
 
 .vax-hub-page--en .vax-hub-search-wrap {
