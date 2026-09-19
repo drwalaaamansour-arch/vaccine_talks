@@ -4,19 +4,11 @@ Items below are **not** treated as software bugs in the regression lab unless pr
 
 ## 1. Age-matrix scenarios vs clinical gold standard
 
-**Current behavior:** For ~250 healthy, routine-complete, zero–additional-history ages (6 weeks–5 years), the engine returns some combination of due / eligible / upcoming rows; tests only check **IDs, ISO dates, and internal consistency**.
+**Decision (owner):** Keep age-matrix **invariant-only**. Do not invent strict clinical expected outcomes per age until an explicitly approved gold-standard matrix exists.
 
-**Ambiguity:** There is no single published “expected row list” for every age in the matrix.
+## 2. PCV / Synflorix dose 1 with recorded history
 
-**Question for you:** Do you want a **clinical sign-off spreadsheet** (age → expected vaccines) that we should turn into strict `includes` expectations, or keep matrix tests as **engine smoke/invariant** only?
-
-## 2. PCV dose-state grid (1 prior Synflorix dose)
-
-**Current behavior:** Regression expects dose 1 **not** in `dueNow` when one dose is recorded, for ages 2–24 months (even months).
-
-**Ambiguity:** Catch-up paths at certain ages might legitimately surface review cards or different products.
-
-**Question for you:** If manual QA finds a age where dose 1 still shows **due now** with one recorded Synflorix dose, is that **wrong UI/state** or an approved catch-up exception?
+**Decision (owner):** Do **not** classify “dose 1 due/eligible with recorded count” as a bug yet. See **`docs/CHECKER-PCV-SYNFLORIX-REVIEW.md`** for exhaustive engine output when `numberOfDoses ≥ 1` but dates are missing or routing uses `doseDates.length` only.
 
 ## 3. Past recommended date wording
 
@@ -28,11 +20,7 @@ Items below are **not** treated as software bugs in the regression lab unless pr
 
 ## 4. `conditionalProjectedFromDate` on conditional cards
 
-**Current behavior:** Some conditional upcoming rows have a `recommendedDate` but leave `conditionalProjectedFromDate` unset; others (e.g. Varicella after MMR) set it.
-
-**Ambiguity:** Whether every conditional row should always carry `conditionalProjectedFromDate` for UI/audit.
-
-**Question for you:** Should we standardize this field on **all** conditional projections in a future presentation-only change?
+**Decision (owner):** Require the field **only** when a real projected date comes from **known user-entered or planned** data (e.g. future Varicella dose 1 after MMR). Do **not** require it for “if given today at as-of” projections. See **`docs/CHECKER-CONDITIONAL-DATE-REVIEW.md`**.
 
 ---
 

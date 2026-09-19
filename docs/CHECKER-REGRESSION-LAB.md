@@ -28,6 +28,8 @@ npm run build
 | `src/lib/vaccine-checker/regression-lab/scenarios/` | Scenario catalog |
 | `src/app/checker-regression-lab/` | Dev QA page |
 | `docs/CHECKER-REGRESSION-*.md` | Rule map, manual sheet, ambiguities, report |
+| `docs/CHECKER-PCV-SYNFLORIX-REVIEW.md` | Synflorix dose-1 vs recorded history (read-only audit) |
+| `docs/CHECKER-CONDITIONAL-DATE-REVIEW.md` | `conditionalProjectedFromDate` audit |
 
 ## Local Git exclude
 
