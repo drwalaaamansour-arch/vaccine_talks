@@ -262,4 +262,65 @@ export const canonicalRegressionScenarios: RegressionScenario[] = [
       },
     ],
   },
+  {
+    id: 'manual-pcv-synflorix-8m-dose1-mar19-2026',
+    category: 'canonical-historical',
+    historicalBugTag: 'manual-pcv-synflorix-8m-dose1-still-due',
+    title: 'Manual: 8-month infant — Synflorix dose 1 on 19/03/2026 still shows dose 1 due',
+    description:
+      'Walaa manual test (as-of 19/09/2026). Locks engine output when pneumococcal history reports 1 prior dose but doseDates[] is empty at calculatePcv (see docs/CHECKER-PCV-MANUAL-8M-TRACE.md). When doseDates includes 2026-03-19, the same rule code returns dose 2 due instead — not this scenario.',
+    dobLabel: '19/01/2026',
+    asOfLabel: '19/09/2026',
+    buildInput: () => {
+      const birth = dateParts(2026, 1, 19);
+      const asOf = dateParts(2026, 9, 19);
+      const dose1 = dateParts(2026, 3, 19);
+      return baseHealthyInput(birth, asOf, {
+        vaccineHistory: [
+          history({
+            category: 'pneumococcal',
+            product: 'synflorix',
+            numberOfDoses: 1,
+            firstDoseDate: dose1,
+            lastDoseDate: dose1,
+            doseDates: [],
+          }),
+        ],
+      });
+    },
+    expectations: [
+      {
+        kind: 'includes',
+        bucket: 'dueNow',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          product: 'synflorix',
+          doseLabelKey: 'doseLabel_dose1',
+          status: 'due-now',
+        },
+      },
+      {
+        kind: 'excludes',
+        bucket: 'dueNow',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          doseLabelKey: 'doseLabel_dose2',
+        },
+      },
+      {
+        kind: 'absentEverywhere',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          doseLabelKey: 'doseLabel_booster',
+        },
+      },
+      {
+        kind: 'absentEverywhere',
+        match: {
+          vaccineCategory: 'pneumococcal',
+          conditionalNextDose: true,
+        },
+      },
+    ],
+  },
 ];

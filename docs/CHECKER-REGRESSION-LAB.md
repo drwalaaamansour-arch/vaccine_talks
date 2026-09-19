@@ -29,6 +29,7 @@ npm run build
 | `src/app/checker-regression-lab/` | Dev QA page |
 | `docs/CHECKER-REGRESSION-*.md` | Rule map, manual sheet, ambiguities, report |
 | `docs/CHECKER-PCV-SYNFLORIX-REVIEW.md` | Synflorix dose-1 vs recorded history (read-only audit) |
+| `docs/CHECKER-PCV-MANUAL-8M-TRACE.md` | Manual 8-month Synflorix case trace (19 Sep 2026 as-of) |
 | `docs/CHECKER-CONDITIONAL-DATE-REVIEW.md` | `conditionalProjectedFromDate` audit |
 
 ## Local Git exclude
