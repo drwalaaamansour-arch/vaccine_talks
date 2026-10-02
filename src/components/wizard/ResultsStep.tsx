@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
+import { RecommendationReminderActions } from '@/components/wizard/RecommendationReminderActions';
 import { BrandName } from '@/components/wizard/BrandName';
 import { ResultsActions } from '@/components/wizard/ResultsActions';
 import { ResultsCalendarActions } from '@/components/wizard/ResultsCalendarActions';
@@ -98,6 +99,9 @@ function RecommendationCard({
   section,
   referenceDate,
   checkerInput,
+  allReminderItems,
+  reminderRefreshToken,
+  onRemindersChanged,
 }: {
   item: VaccineRecommendation;
   t: (key: string, params?: Record<string, string>) => string;
@@ -105,6 +109,9 @@ function RecommendationCard({
   section: ResultsSectionKind;
   referenceDate: Date;
   checkerInput: NonNullable<ReturnType<typeof wizardStateToCheckerInput>>;
+  allReminderItems: VaccineRecommendation[];
+  reminderRefreshToken: number;
+  onRemindersChanged: () => void;
 }) {
   const categoryLabel = getRecommendationCategoryLabel(item, language, t);
   const productLabel = getProductDisplayLabel(item.product);
@@ -169,6 +176,19 @@ function RecommendationCard({
           {t('resultLatestDate')}: {formatDate(item.latestDate, language)}
         </p>
       )}
+      <RecommendationReminderActions
+        item={item}
+        checkerInput={checkerInput}
+        allReminderItems={allReminderItems}
+        language={language}
+        t={t}
+        labelFor={(entry) => {
+          const cat = getRecommendationCategoryLabel(entry, language, t);
+          return `${cat} — ${t(entry.doseLabelKey)}`;
+        }}
+        refreshToken={reminderRefreshToken}
+        onRemindersChanged={onRemindersChanged}
+      />
     </article>
   );
 }
@@ -181,6 +201,9 @@ function ResultsSection({
   language,
   referenceDate,
   checkerInput,
+  allReminderItems,
+  reminderRefreshToken,
+  onRemindersChanged,
 }: {
   title: string;
   items: VaccineRecommendation[];
@@ -189,6 +212,9 @@ function ResultsSection({
   language: 'en' | 'ar';
   referenceDate: Date;
   checkerInput: NonNullable<ReturnType<typeof wizardStateToCheckerInput>>;
+  allReminderItems: VaccineRecommendation[];
+  reminderRefreshToken: number;
+  onRemindersChanged: () => void;
 }) {
   if (items.length === 0) {
     return null;
@@ -206,6 +232,9 @@ function ResultsSection({
           section={section}
           referenceDate={referenceDate}
           checkerInput={checkerInput}
+          allReminderItems={allReminderItems}
+          reminderRefreshToken={reminderRefreshToken}
+          onRemindersChanged={onRemindersChanged}
         />
       ))}
     </section>
@@ -228,6 +257,10 @@ export function ResultsStep({
   }, [checkerInput]);
 
   const referenceDate = checkerInput?.referenceDate ?? new Date();
+  const [reminderRefreshToken, setReminderRefreshToken] = useState(0);
+  const onRemindersChanged = useCallback(() => {
+    setReminderRefreshToken((value) => value + 1);
+  }, []);
 
   const needsReviewItems = useMemo(
     () =>
@@ -251,6 +284,12 @@ export function ResultsStep({
     () => filterRecommendationsForResultsDisplay(results?.upcoming ?? []),
     [results?.upcoming]
   );
+
+  const allReminderItems = useMemo(
+    () => [...displayedDueNow, ...displayedEligibleNow, ...displayedUpcoming],
+    [displayedDueNow, displayedEligibleNow, displayedUpcoming]
+  );
+
   const displayedCompleted = useMemo(
     () => filterRecommendationsForResultsDisplay(results?.completed ?? []),
     [results?.completed]
@@ -454,6 +493,9 @@ export function ResultsStep({
                   language={language}
                   referenceDate={referenceDate}
                   checkerInput={checkerInput}
+                  allReminderItems={allReminderItems}
+                  reminderRefreshToken={reminderRefreshToken}
+                  onRemindersChanged={onRemindersChanged}
                 />
 
                 <ResultsSection
@@ -464,6 +506,9 @@ export function ResultsStep({
                   language={language}
                   referenceDate={referenceDate}
                   checkerInput={checkerInput}
+                  allReminderItems={allReminderItems}
+                  reminderRefreshToken={reminderRefreshToken}
+                  onRemindersChanged={onRemindersChanged}
                 />
 
                 <ResultsSection
@@ -474,6 +519,9 @@ export function ResultsStep({
                   language={language}
                   referenceDate={referenceDate}
                   checkerInput={checkerInput}
+                  allReminderItems={allReminderItems}
+                  reminderRefreshToken={reminderRefreshToken}
+                  onRemindersChanged={onRemindersChanged}
                 />
 
                 <ResultsSection
@@ -484,6 +532,9 @@ export function ResultsStep({
                   language={language}
                   referenceDate={referenceDate}
                   checkerInput={checkerInput}
+                  allReminderItems={allReminderItems}
+                  reminderRefreshToken={reminderRefreshToken}
+                  onRemindersChanged={onRemindersChanged}
                 />
 
                 <ResultsSection
@@ -494,6 +545,9 @@ export function ResultsStep({
                   language={language}
                   referenceDate={referenceDate}
                   checkerInput={checkerInput}
+                  allReminderItems={allReminderItems}
+                  reminderRefreshToken={reminderRefreshToken}
+                  onRemindersChanged={onRemindersChanged}
                 />
 
                 <ResultsSection
@@ -504,6 +558,9 @@ export function ResultsStep({
                   language={language}
                   referenceDate={referenceDate}
                   checkerInput={checkerInput}
+                  allReminderItems={allReminderItems}
+                  reminderRefreshToken={reminderRefreshToken}
+                  onRemindersChanged={onRemindersChanged}
                 />
               </>
             )}

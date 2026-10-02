@@ -458,6 +458,25 @@
   .vaccine-checker-results-action svg {
     flex-shrink: 0;
   }
+  .vaccine-checker-reminder-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(64, 96, 109, 0.12);
+  }
+  .vaccine-checker-reminder-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .vaccine-checker-reminder-change {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
   .vaccine-checker-results-footer {
     display: flex;
     flex-direction: column;
