@@ -306,6 +306,8 @@ export const AR_TRANSLATIONS = {
   shareCheckerCopied: 'تم نسخ رابط Vaccine Checker.',
   shareResultTitle: 'نتيجة Vaccine Checker',
   shareResultCopied: 'تم نسخ النتيجة ويمكنك مشاركتها.',
+  addToCalendar: 'إضافة للتقويم',
+  calendarEventAdded: 'ملف التقويم جاهز — اختر تطبيق التقويم.',
   shareResultNotesHeading: 'ملاحظات',
   calculationDateLabel: 'تاريخ الحساب',
   dueNow: 'مستحق دلوقتي',

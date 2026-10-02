@@ -4,10 +4,11 @@ import Script from "next/script";
 import "./globals.css";
 import ChatButton from "@/components/ChatButton";
 import AuthSessionProvider from "@/components/AuthSessionProvider";
+import NativeAppBridge from "@/components/native/NativeAppBridge";
+import SerwistOrNativeGate from "@/components/native/SerwistOrNativeGate";
 import SiteJsonLd from "@/components/SiteJsonLd";
 import { createHomeMetadata } from "@/lib/seo";
 import { SITE_NAME_SHORT } from "@/lib/site";
-import { SerwistProvider } from "@serwist/turbopack/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -102,10 +103,11 @@ a{color:#0d9488}
         </Script>
         
         <AuthSessionProvider>
-          <SerwistProvider swUrl="/serwist/sw.js">
+          <SerwistOrNativeGate>
+            <NativeAppBridge />
             {children}
             <ChatButton />
-          </SerwistProvider>
+          </SerwistOrNativeGate>
         </AuthSessionProvider>
       </body>
     </html>
