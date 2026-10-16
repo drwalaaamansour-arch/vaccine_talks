@@ -6,7 +6,6 @@ import {
   useRef,
   useState,
 } from 'react';
-
 type HomeNewsMarqueeItem = {
   id: string;
   date: string;
@@ -22,6 +21,16 @@ type HomeNewsMarqueeItem = {
 const HOME_NEWS_MARQUEE_LIMIT = 10;
 
 const HOME_NEWS_MARQUEE_ITEMS: HomeNewsMarqueeItem[] = [
+  {
+    id: 'egypt-mr-campaign-2026-home',
+    date: 'October 16, 2026',
+    category: 'Campaign',
+    title: 'Upcoming National Measles–Rubella (MR) Vaccination Campaign',
+    body:
+      'Egypt launches a nationwide MR vaccination campaign on 25 October 2026 for children aged 9 months to 10 years — free vaccination for children aged 9 months to 10 years across Egypt.',
+    href: '/#home-newly-added',
+    linkText: 'See Newly Added / أضيف حديثاً →',
+  },
   {
     id: 'hcp-special-populations-vaccination-pdfs-2026',
     date: 'September 13, 2026',

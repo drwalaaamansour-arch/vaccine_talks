@@ -1,3 +1,5 @@
+import { MR_CAMPAIGN_2026_ANCHOR, MR_CAMPAIGN_TEASER } from '@/data/whats-new/mr-campaign-2026';
+
 export type HcpVaccineUpdateIndexItem = {
   id: string;
   date: string;
@@ -22,6 +24,17 @@ export const HCP_VACCINE_UPDATES_INTRO = [
 ] as const;
 
 export const HCP_VACCINE_UPDATE_INDEX: HcpVaccineUpdateIndexItem[] = [
+  {
+    id: MR_CAMPAIGN_2026_ANCHOR,
+    date: MR_CAMPAIGN_TEASER.date,
+    badge: MR_CAMPAIGN_TEASER.category,
+    title: MR_CAMPAIGN_TEASER.title,
+    summary:
+      'Nationwide MR campaign starting 25 October 2026 for children aged 9 months to 10 years — free of charge across Egypt.',
+    keywords:
+      'measles rubella mr campaign egypt 2026 ministry health vaccination children supplementary',
+    emoji: '📢',
+  },
   {
     id: 'shingles-cv-nature-med-2026',
     date: 'September 12, 2026',

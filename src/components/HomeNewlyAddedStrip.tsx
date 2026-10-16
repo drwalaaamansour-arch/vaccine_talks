@@ -1,6 +1,10 @@
 'use client';
 
 import { useCallback, useRef, type ComponentType } from 'react';
+import {
+  MR_CAMPAIGN_2026_HREF_AR,
+  MR_CAMPAIGN_TEASER_AR,
+} from '@/data/whats-new/mr-campaign-2026';
 
 /** Newest-first; only the first `HOME_NEWLY_ADDED_LIMIT` appear on the homepage. */
 const HOME_NEWLY_ADDED_LIMIT = 10;
@@ -49,6 +53,28 @@ function SpotlightLinkCard({
       {showReadMore ? (
         <span className="home-newly-card-more">Read more →</span>
       ) : null}
+    </a>
+  );
+}
+
+function MrCampaign2026SpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href={MR_CAMPAIGN_2026_HREF_AR}
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+      lang="ar"
+    >
+      <h3 className="home-newly-card-title home-newly-card-title--rtl">
+        {MR_CAMPAIGN_TEASER_AR.title}
+      </h3>
+      <p className="home-newly-card-body home-newly-card-body--rtl">
+        حملة MR وطنية تبدأ 25 أكتوبر 2026 للأطفال من 9 أشهر إلى 10 سنوات — مجاناً في جميع أنحاء مصر.
+      </p>
+      <span className="home-newly-card-more" dir="rtl">
+        اقرأ المزيد في ما الجديد ←
+      </span>
     </a>
   );
 }
@@ -488,6 +514,7 @@ function RecombinantShinglesCardiovascularSpotlightCard({ duplicate }: { duplica
 }
 
 const NEWLY_ADDED_SPOTLIGHT_ORDER: NewlyAddedCardComponent[] = [
+  MrCampaign2026SpotlightCard,
   AspleniaVaccinationPdfsSpotlightCard,
   ChemotherapyVaccinationPdfsSpotlightCard,
   HsctVaccinationPdfsSpotlightCard,

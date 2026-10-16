@@ -19,6 +19,8 @@ export type VaccinePageSection = {
 export type VaccinePagePdf = {
   productName: string;
   src: string;
+  /** When set, used as the PDF embed heading instead of “{productName} — product insert”. */
+  embedTitle?: string;
 };
 
 export type VaccinePageReference = {
@@ -165,7 +167,12 @@ export function HcpVaccineInsertsSection({
   return (
     <HcpGuideSection id={id} title={title} icon="📄" {...sectionProps}>
       {pdfs.map((pdf) => (
-        <HcpProductPdfEmbed key={pdf.src} productName={pdf.productName} src={pdf.src} />
+        <HcpProductPdfEmbed
+          key={pdf.src}
+          productName={pdf.productName}
+          src={pdf.src}
+          embedTitle={pdf.embedTitle}
+        />
       ))}
     </HcpGuideSection>
   );

@@ -98,7 +98,7 @@ export default function Home() {
       <HomeNewsMarquee />
 
       {/* Newly Added Section */}
-      <section className="about-section home-section">
+      <section id="home-newly-added" className="about-section home-section">
         <div className="about-elegant-card">
           <div className="card-corner card-corner-tl"></div>
           <div className="card-corner card-corner-tr"></div>

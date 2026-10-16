@@ -6,13 +6,18 @@ const EGYPT_PDF_DISCLAIMER =
 export default function HcpProductPdfEmbed({
   productName,
   src,
+  embedTitle,
 }: {
   productName: string;
   src: string;
+  embedTitle?: string;
 }) {
   return (
     <div className="hcp-vax-product-pdf">
-      <HcpGuidePdfEmbed src={src} title={`${productName} — product insert`} />
+      <HcpGuidePdfEmbed
+        src={src}
+        title={embedTitle ?? `${productName} — product insert`}
+      />
       <p className="hcp-vax-product-pdf-disclaimer" dir="rtl" lang="ar">
         {EGYPT_PDF_DISCLAIMER}
       </p>

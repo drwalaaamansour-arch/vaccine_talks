@@ -2,6 +2,8 @@ import Link from 'next/link';
 import HcpGuidePdfEmbed from '@/components/hcp-guide/HcpGuidePdfEmbed';
 import HcpVaccineUpdatesMultiPdf from '@/components/hcp-vaccine-updates/HcpVaccineUpdatesMultiPdf';
 import VaccineUpdateShell from '@/components/hcp-vaccine-updates/VaccineUpdateShell';
+import EgyptMrCampaign2026Body from '@/components/whats-new/EgyptMrCampaign2026Body';
+import { MR_CAMPAIGN_2026_ANCHOR, MR_CAMPAIGN_TEASER } from '@/data/whats-new/mr-campaign-2026';
 
 const IBD_PDF =
   '/The%20impact%20of%20a%20pneumococcal%20vaccination%20on%20disease%20activity%20in%20children%20and%20adolescents%20with%20inflammatory%20bowel%20disease%20%20a%202-year%20prospective%20study.pdf';
@@ -14,6 +16,17 @@ export default function VaccineUpdatesSections({ visibleIds }: { visibleIds: str
 
   return (
     <div className="hcp-vu-updates-list">
+      {show(MR_CAMPAIGN_2026_ANCHOR) ? (
+        <VaccineUpdateShell
+          id={MR_CAMPAIGN_2026_ANCHOR}
+          date={MR_CAMPAIGN_TEASER.date}
+          badge={MR_CAMPAIGN_TEASER.category}
+          title={MR_CAMPAIGN_TEASER.title}
+        >
+          <EgyptMrCampaign2026Body />
+        </VaccineUpdateShell>
+      ) : null}
+
       {show('shingles-cv-nature-med-2026') ? (
         <VaccineUpdateShell
           id="shingles-cv-nature-med-2026"

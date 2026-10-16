@@ -20,6 +20,8 @@ export type HcpVaccineProductPageProps = {
   imageSrc?: string;
   imageAlt?: string;
   sections: VaccinePageSection[];
+  /** Rendered after main sections and immediately before FAQ & Documents. */
+  sectionsBeforeResources?: VaccinePageSection[];
   faqHref?: string;
   docHref?: string;
   faqLabel?: string;
@@ -43,6 +45,7 @@ export default function HcpVaccineProductPage({
   imageSrc,
   imageAlt,
   sections,
+  sectionsBeforeResources,
   faqHref,
   docHref,
   faqLabel,
@@ -60,6 +63,7 @@ export default function HcpVaccineProductPage({
     hasReferences: references.length > 0,
     hasPdfs: pdfs.length > 0,
     tocExtra,
+    sectionsBeforeResources,
   });
 
   const arToc = ar
@@ -69,12 +73,14 @@ export default function HcpVaccineProductPage({
         hasReferences: (ar.references ?? references).length > 0,
         hasPdfs: (ar.pdfs ?? pdfs).length > 0,
         tocExtra: ar.tocExtra ?? tocExtra,
+        sectionsBeforeResources: ar.sectionsBeforeResources ?? sectionsBeforeResources,
       })
     : undefined;
 
   const englishBody = (
     <HcpVaccineProductPageContent
       sections={sections}
+      sectionsBeforeResources={sectionsBeforeResources}
       faqHref={faqHref}
       docHref={docHref}
       faqLabel={faqLabel}
@@ -89,6 +95,7 @@ export default function HcpVaccineProductPage({
     <HcpGuideArabicPanel contentOnly>
       <HcpVaccineProductPageContent
         sections={ar.sections}
+        sectionsBeforeResources={ar.sectionsBeforeResources ?? sectionsBeforeResources}
         faqHref={faqHref}
         docHref={docHref}
         faqLabel={ar.faqLabel ?? faqLabel}

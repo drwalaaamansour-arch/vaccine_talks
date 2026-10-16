@@ -15,22 +15,26 @@ export const InfluenzaPage: HcpVaccineProductPageProps = {
       "blocks": [
         {
           "type": "p",
-          "text": "Influenza remains a significant public health concern year after year, affecting millions worldwide and leading to substantial morbidity and mortality, particularly among vulnerable populations. Each year, the formulation of influenza vaccines is updated as new viral strains emerge and epidemiological landscapes shift. The 2024-25 influenza season introduces several important changes and recommendations aimed at providing optimal protection against circulating influenza viruses."
+          "text": "Influenza remains a significant public health concern year after year, affecting millions worldwide and leading to substantial morbidity and mortality, particularly among vulnerable populations. Each year, the formulation of influenza vaccines is updated as new viral strains emerge and epidemiological landscapes shift. The 2026-27 influenza season introduces several important changes and recommendations aimed at providing optimal protection against circulating influenza viruses."
         }
       ]
     },
     {
-      "id": "vaccine-composition-for-2025-2026",
-      "title": "Vaccine Composition for 2025-2026",
+      "id": "vaccine-composition-for-2026-2027",
+      "title": "Vaccine Composition for 2026-2027",
       "icon": "📋",
       "blocks": [
         {
           "type": "p",
-          "text": "A key update from 2025-26 influenza season is that all available vaccines are trivalent. This means they contain antigens from three different influenza virus strains: two influenza A strains and one influenza B strain. In recent years, some quadrivalent vaccines included two B strains, one from each of the Victoria and Yamagata lineages. However, for 2025-26, the B/Yamagata lineage is no longer included, as B/Yamagata viruses have not been detected globally since March 2020. Thus, the composition in 2024-25 focuses on the following: Influenza A(H1N1)pdm09-like virus, Influenza A(H3N2)-like virus, Influenza B Victoria lineage-like virus."
+          "text": "A key update from 2026-27 influenza season is that all available vaccines are trivalent. This means they contain antigens from three different influenza virus strains: two influenza A strains and one influenza B strain. In recent years, some quadrivalent vaccines included two B strains, one from each of the Victoria and Yamagata lineages. However, for 2026-27, the B/Yamagata lineage is no longer included, as B/Yamagata viruses have not been detected globally since March 2020."
         },
         {
           "type": "p",
-          "text": "The specific strains recommended for egg-based influenza vaccines for the 2025-26 season are as follows: an A/Victoria/4897/2022 (H1N1)pdm09-like virus; an A/Croatia/10136RV/2023 (H3N2)-like virus; and (Updated) a B/Austria/1359417/2021 (B/Victoria lineage)-like virus."
+          "text": "WHO recommends that vaccines for use in the 2027 southern hemisphere influenza season contain the following:"
+        },
+        {
+          "type": "p",
+          "text": "Egg-based vaccines: an A/Missouri/11/2025 (H1N1)pdm09-like virus; an A/Darwin/1454/2025 (H3N2)-like virus; and a B/Tokyo/EIS13-175/2025 (B/Victoria lineage)-like virus."
         }
       ]
     },
@@ -121,15 +125,13 @@ export const InfluenzaPage: HcpVaccineProductPageProps = {
   "pdfs": [
     {
       "productName": "Vaxigrip",
-      "src": "/Vaxigrip%202026.pdf"
+      "src": "/Vaxigrip%20tri%202026%20insert.pdf",
+      "embedTitle": "Vaxigrip tri 2026 insert.pdf"
     },
     {
       "productName": "Influvac",
-      "src": "/Influvac%202026.pdf"
-    },
-    {
-      "productName": "Influvac Tetra",
-      "src": "/Influvac%20tetra2026.pdf"
+      "src": "/Influvac%20tri2026.pdf",
+      "embedTitle": "Influvac tri2026.pdf"
     },
     {
       "productName": "GCFLU",
@@ -147,22 +149,26 @@ export const InfluenzaPage: HcpVaccineProductPageProps = {
         blocks: [
           {
             type: 'p',
-            text: 'تظل الإنفلونزا مصدر قلق صحي عام كبير عاماً بعد عام، إذ تؤثر على ملايين حول العالم وتؤدي إلى مرض ووفيات كبيرة، خاصة بين الفئات الضعيفة. كل عام تُحدَّث تركيبة لقاحات الإنفلونزا مع ظهور سلالات فيروسية جديدة وتغير المشهد الوبائي. موسم الإنفلونزا 2024–25 يقدّم عدة تغييرات وتوصيات مهمة تهدف إلى توفير حماية مثلى ضد فيروسات الإنفلونزا المتداولة.',
+            text: 'تظل الإنفلونزا مصدر قلق صحي عام كبير عاماً بعد عام، إذ تؤثر على ملايين حول العالم وتؤدي إلى مرض ووفيات كبيرة، خاصة بين الفئات الضعيفة. كل عام تُحدَّث تركيبة لقاحات الإنفلونزا مع ظهور سلالات فيروسية جديدة وتغير المشهد الوبائي. موسم الإنفلونزا 2026–27 يقدّم عدة تغييرات وتوصيات مهمة تهدف إلى توفير حماية مثلى ضد فيروسات الإنفلونزا المتداولة.',
           },
         ],
       },
       {
-        id: 'vaccine-composition-for-2025-2026',
-        title: 'تركيبة اللقاح لموسم 2025–2026',
+        id: 'vaccine-composition-for-2026-2027',
+        title: 'تركيبة اللقاح لموسم 2026–2027',
         icon: '📋',
         blocks: [
           {
             type: 'p',
-            text: 'تحديث رئيسي لموسم الإنفلونزا 2025–26 هو أن جميع اللقاحات المتاحة ثلاثية (trivalent). أي أنها تحتوي على مستضدات من ثلاث سلالات فيروس إنفلونزا مختلفة: سلالتان من فيروس الإنفلونزا A وسلالة واحدة من فيروس الإنفلونزا B. في السنوات الأخيرة، تضمنت بعض اللقاحات رباعية (quadrivalent) سلالتين B، واحدة من كل سلالة Victoria وYamagata. لكن لموسم 2025–26، لم تعد سلالة B/Yamagata مُدرجة، إذ لم تُرصد فيروسات B/Yamagata عالمياً منذ مارس 2020. وبالتالي، تركز التركيبة في 2024–25 على: فيروس شبيه بـ Influenza A(H1N1)pdm09، وفيروس شبيه بـ Influenza A(H3N2)، وفيروس شبيه بسلالة Influenza B Victoria.',
+            text: 'تحديث رئيسي لموسم الإنفلونزا 2026–27 هو أن جميع اللقاحات المتاحة ثلاثية (trivalent). أي أنها تحتوي على مستضدات من ثلاث سلالات فيروس إنفلونزا مختلفة: سلالتان من فيروس الإنفلونزا A وسلالة واحدة من فيروس الإنفلونزا B. في السنوات الأخيرة، تضمنت بعض اللقاحات رباعية (quadrivalent) سلالتين B، واحدة من كل سلالة Victoria وYamagata. لكن لموسم 2026–27، لم تعد سلالة B/Yamagata مُدرجة، إذ لم تُرصد فيروسات B/Yamagata عالمياً منذ مارس 2020.',
           },
           {
             type: 'p',
-            text: 'السلالات المحددة الموصى بها للقاحات الإنفلونزا المعتمدة على البيض لموسم 2025–26 هي: فيروس شبيه بـ A/Victoria/4897/2022 (H1N1)pdm09؛ وفيروس شبيه بـ A/Croatia/10136RV/2023 (H3N2)؛ و(مُحدَّث) فيروس شبيه بـ B/Austria/1359417/2021 (سلالة B/Victoria).',
+            text: 'توصي منظمة الصحة العالمية (WHO) أن تحتوي لقاحات موسم الإنفلونزا 2027 في نصف الكرة الجنوبي على ما يلي:',
+          },
+          {
+            type: 'p',
+            text: 'لقاحات معتمدة على البيض (Egg-based vaccines): فيروس شبيه بـ A/Missouri/11/2025 (H1N1)pdm09؛ وفيروس شبيه بـ A/Darwin/1454/2025 (H3N2)؛ وفيروس شبيه بـ B/Tokyo/EIS13-175/2025 (سلالة B/Victoria).',
           },
         ],
       },

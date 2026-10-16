@@ -30,16 +30,19 @@ export const FAQ_INFLUENZA_PAGE: FaqPageConfig = {
     },
     {
       "id": "q-3",
-      "question": "Which influenza vaccines are available during the 2025–26 season?",
+      "question": "Which influenza vaccines are available during the 2026–27 season?",
       "paragraphs": [
-        "Multiple manufacturers are producing inactivated, recombinant, and live attenuated influenza vaccines. All 2025–26 vaccines are trivalent (two influenza A and one influenza B antigens)."
+        "Multiple manufacturers are producing inactivated, recombinant, and live attenuated influenza vaccines. All 2026–27 vaccines are trivalent (two influenza A and one influenza B antigens)."
       ]
     },
     {
       "id": "q-4",
-      "question": "What are the vaccine viruses for the 2025–26 season?",
+      "question": "What are the vaccine viruses for the 2026–27 influenza season?",
       "paragraphs": [
-        "All vaccines are trivalent. B/Yamagata antigens are no longer included because B/Yamagata viruses have not been detected globally since March 2020. The 2025–26 vaccines include a new A(H3N2) component. Egg-based vaccines include: an A/Victoria/4897/2022 (H1N1)pdm09-like virus; an A/Croatia/10136RV/2023 (H3N2)-like virus; and a B/Austria/1359417/2021 (B/Victoria lineage)-like virus."
+        "The 2026–27 vaccines are all trivalent, containing two influenza A and one influenza B strain. All three components changed from 2025–26. Egg-based influenza vaccines include:",
+        "an A/Missouri/11/2025 (H1N1)pdm09-like virus;",
+        "an A/Darwin/1454/2025 (H3N2)-like virus; and,",
+        "a B/Tokyo/EIS13-175/2025 (B/Victoria lineage)-like virus."
       ]
     },
     {

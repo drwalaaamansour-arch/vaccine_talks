@@ -1,5 +1,39 @@
 import type { HcpVaccineProductPageProps } from '@/components/hcp-vaccine-product/HcpVaccineProductPage';
+import {
+  MR_CAMPAIGN_2026_HREF_AR,
+  MR_CAMPAIGN_2026_HREF_EN,
+  MR_CAMPAIGN_SECTION_ID,
+  MR_CAMPAIGN_TEASER,
+  MR_CAMPAIGN_TEASER_AR,
+} from '@/data/whats-new/mr-campaign-2026';
 import { buildVaccineArBundle } from '@/lib/build-hcp-vaccine-ar';
+import type { VaccinePageSection } from '@/components/hcp-vaccine-product/HcpVaccineContentBlocks';
+
+const mrCampaignSectionEn: VaccinePageSection = {
+  id: MR_CAMPAIGN_SECTION_ID,
+  title: MR_CAMPAIGN_TEASER.title,
+  icon: '📢',
+  blocks: [
+    { type: 'p', text: MR_CAMPAIGN_TEASER.body },
+    {
+      type: 'html',
+      html: `<p><a href="${MR_CAMPAIGN_2026_HREF_EN}">${MR_CAMPAIGN_TEASER.linkText}</a>.</p>`,
+    },
+  ],
+};
+
+const mrCampaignSectionAr: VaccinePageSection = {
+  id: MR_CAMPAIGN_SECTION_ID,
+  title: MR_CAMPAIGN_TEASER_AR.title,
+  icon: '📢',
+  blocks: [
+    { type: 'p', text: MR_CAMPAIGN_TEASER_AR.body },
+    {
+      type: 'html',
+      html: `<p><a href="${MR_CAMPAIGN_2026_HREF_AR}">${MR_CAMPAIGN_TEASER_AR.linkText}</a>.</p>`,
+    },
+  ],
+};
 
 export const MmrPage: HcpVaccineProductPageProps = {
   "metaKey": "hcpMmr",
@@ -7,6 +41,7 @@ export const MmrPage: HcpVaccineProductPageProps = {
   "lead": "The MMR vaccine is a combination vaccine that immunizes against three viral diseases: Measles: Highly contagious; causes fever, cough, rash; complications include pneumonia, encephalitis, and death. Mumps: Classically pa",
   "emoji": "📊",
   "imageSrc": "/mmr%20copy.jpeg",
+  "sectionsBeforeResources": [mrCampaignSectionEn],
   "sections": [
     {
       "id": "overview",
@@ -108,6 +143,7 @@ export const MmrPage: HcpVaccineProductPageProps = {
   ar: buildVaccineArBundle({
     title: 'MMR',
     lead: 'لقاح MMR هو لقاح مركّب يوفر مناعة ضد ثلاثة أمراض فيروسية: الحصبة: شديدة العدوى؛ تسبب حمى وسعال وطفح جلدي؛ وقد تؤدي إلى مضاعفات مثل الالتهاب الرئوي والتهاب الدماغ والوفاة. النكاف: يُعرَف كلاسيكياً بالتهاب الغدة النكافية؛ وقد يؤدي إلى التهاب السحايا وفقدان السمع والتهاب الخصية/المبيض. الحصبة الألمانية (الحصبة النمشية): خفيفة عند الأطفال لكنها خطيرة في الحمل (متلازمة الحصبة الألمانية الخلقية).',
+    sectionsBeforeResources: [mrCampaignSectionAr],
     sections: [
       {
         id: 'overview',

@@ -15,6 +15,7 @@ import type { HcpGuideTocItem } from '@/components/hcp-guide/types';
 
 export type HcpVaccineProductContentProps = {
   sections: VaccinePageSection[];
+  sectionsBeforeResources?: VaccinePageSection[];
   faqHref?: string;
   docHref?: string;
   faqLabel?: string;
@@ -33,6 +34,7 @@ function buildToc(
     hasReferences: boolean;
     hasPdfs: boolean;
     tocExtra?: HcpGuideTocItem[];
+    sectionsBeforeResources?: VaccinePageSection[];
   },
 ): HcpGuideTocItem[] {
   const ui = opts.arabic ? HCP_VACCINE_UI.ar : HCP_VACCINE_UI.en;
@@ -45,6 +47,14 @@ function buildToc(
       ...opts.tocExtra.map((item) => ({
         id: opts.arabic ? arSectionId(item.id) : item.id,
         label: item.label,
+      })),
+    );
+  }
+  if (opts.sectionsBeforeResources?.length) {
+    toc.push(
+      ...opts.sectionsBeforeResources.map((s) => ({
+        id: opts.arabic ? arSectionId(s.id) : s.id,
+        label: s.title,
       })),
     );
   }
@@ -62,6 +72,7 @@ function buildToc(
 
 export function HcpVaccineProductPageContent({
   sections,
+  sectionsBeforeResources,
   faqHref,
   docHref,
   faqLabel,
@@ -78,6 +89,9 @@ export function HcpVaccineProductPageContent({
     <>
       <HcpVaccineContentBlocks sections={sections} arabic={arabic} />
       <HcpVaccineExtraContent>{extra}</HcpVaccineExtraContent>
+      {sectionsBeforeResources?.length ? (
+        <HcpVaccineContentBlocks sections={sectionsBeforeResources} arabic={arabic} />
+      ) : null}
       <HcpVaccineResourcesSection
         id={arabic ? arSectionId('resources') : 'resources'}
         faqHref={faqHref}
