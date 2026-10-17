@@ -9,6 +9,8 @@ const AU_IMMUNOCOMPROMISE_LEVELS_PDF = `/${encodeURIComponent(
 const CHEMOTHERAPY_CHECKLIST_PDF = '/chemotherapy-vaccination-checklist.pdf';
 const CHEMOTHERAPY_GUIDELINES_PDF = '/chemotherapy-vaccination-guidelines.pdf';
 const CCLG_VACCINATIONS_GUIDELINES_PDF = '/cclg-vaccinations-guidelines-2025.pdf';
+const CCLG_VACCINATION_GUIDELINE_2026_PDF = '/cclg-vaccination-guideline-2026-branded-may2026.pdf';
+const ASCO_ADULTS_WITH_CANCER_PDF = '/asco-vaccination-adults-with-cancer-guideline.pdf';
 
 function PdfEmbed({
   src,
@@ -56,6 +58,16 @@ export default function CancerVaccinationPdfs({ arabic = false }: { arabic?: boo
         src={CHEMOTHERAPY_GUIDELINES_PDF}
         title={arabic ? 'إرشادات تطعيم العلاج الكيميائي' : 'Chemotherapy vaccination guidelines'}
         downloadName="chemotherapy-vaccination-guidelines.pdf"
+      />
+      <PdfEmbed
+        src={CCLG_VACCINATION_GUIDELINE_2026_PDF}
+        title="CCLG Vaccination Guideline 2026 (May 2026)"
+        downloadName="cclg-vaccination-guideline-2026-branded-may2026.pdf"
+      />
+      <PdfEmbed
+        src={ASCO_ADULTS_WITH_CANCER_PDF}
+        title="Vaccination of Adults With Cancer: ASCO Guideline"
+        downloadName="asco-vaccination-adults-with-cancer-guideline.pdf"
       />
       <PdfEmbed
         src={CCLG_VACCINATIONS_GUIDELINES_PDF}

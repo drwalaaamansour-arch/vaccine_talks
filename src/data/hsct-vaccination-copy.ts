@@ -162,6 +162,8 @@ export type HsctVaccinationCopy = {
     hsctVaccination: string;
     australianTable: string;
     cclgGuidelines: string;
+    cclgGuideline2026: string;
+    ascoAdultsWithCancer: string;
   };
 };
 
@@ -537,6 +539,8 @@ export const HSCT_COPY: Record<HsctVaccinationLocale, HsctVaccinationCopy> = {
       australianTable:
         'Table. Recommendations for vaccination after haematopoietic stem cell transplant in children and adults | The Australian Immunisation Handbook',
       cclgGuidelines: 'CCLG Vaccinations Guidelines 2025',
+      cclgGuideline2026: 'CCLG Vaccination Guideline 2026 (May 2026)',
+      ascoAdultsWithCancer: 'Vaccination of Adults With Cancer: ASCO Guideline',
     },
   },
   ar: {
@@ -834,6 +838,8 @@ export const HSCT_COPY: Record<HsctVaccinationLocale, HsctVaccinationCopy> = {
       australianTable:
         'Table. Recommendations for vaccination after haematopoietic stem cell transplant in children and adults | The Australian Immunisation Handbook',
       cclgGuidelines: 'إرشادات التطعيم CCLG 2025',
+      cclgGuideline2026: 'إرشادات التطعيم CCLG 2026 (مايو 2026)',
+      ascoAdultsWithCancer: 'تطعيم البالغين المصابين بالسرطان: إرشادات ASCO',
     },
   },
 };
