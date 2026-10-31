@@ -22,6 +22,16 @@ const HOME_NEWS_MARQUEE_LIMIT = 10;
 
 const HOME_NEWS_MARQUEE_ITEMS: HomeNewsMarqueeItem[] = [
   {
+    id: 'influenza-season-inserts-2026-2027-home',
+    date: 'October 31, 2026',
+    category: 'Resources',
+    title: '2026–2027 influenza season inserts now available',
+    body:
+      'Product inserts for Vaxigrip, Influvac, and GCFLU for the new influenza season are now on the HCP Influenza page — preview in the browser or download for clinic use.',
+    href: '/hcp/influenza#inserts',
+    linkText: 'Open influenza inserts →',
+  },
+  {
     id: 'egypt-mr-campaign-2026-home',
     date: 'October 16, 2026',
     category: 'Campaign',

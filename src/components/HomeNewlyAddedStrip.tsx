@@ -57,6 +57,26 @@ function SpotlightLinkCard({
   );
 }
 
+function InfluenzaSeasonInsertsSpotlightCard({ duplicate }: { duplicate?: boolean }) {
+  return (
+    <a
+      href="/hcp/influenza#inserts"
+      className="newly-added-card home-spotlight-card home-newly-strip-card"
+      aria-hidden={duplicate ? true : undefined}
+      tabIndex={duplicate ? -1 : undefined}
+    >
+      <h3 className="home-newly-card-title">
+        2026–2027 influenza season inserts now available
+      </h3>
+      <p className="home-newly-card-body">
+        New-season product inserts for Vaxigrip, Influvac, and GCFLU are now on the HCP Influenza
+        page — preview in the browser or download for clinic use.
+      </p>
+      <span className="home-newly-card-more">Read more →</span>
+    </a>
+  );
+}
+
 function MrCampaign2026SpotlightCard({ duplicate }: { duplicate?: boolean }) {
   return (
     <a
@@ -514,6 +534,7 @@ function RecombinantShinglesCardiovascularSpotlightCard({ duplicate }: { duplica
 }
 
 const NEWLY_ADDED_SPOTLIGHT_ORDER: NewlyAddedCardComponent[] = [
+  InfluenzaSeasonInsertsSpotlightCard,
   MrCampaign2026SpotlightCard,
   AspleniaVaccinationPdfsSpotlightCard,
   ChemotherapyVaccinationPdfsSpotlightCard,

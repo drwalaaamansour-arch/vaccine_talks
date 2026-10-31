@@ -126,16 +126,17 @@ export const InfluenzaPage: HcpVaccineProductPageProps = {
     {
       "productName": "Vaxigrip",
       "src": "/Vaxigrip%20tri%202026%20insert.pdf",
-      "embedTitle": "Vaxigrip tri 2026 insert.pdf"
+      "embedTitle": "Vaxigrip tri 2026-2027 insert"
     },
     {
       "productName": "Influvac",
       "src": "/Influvac%20tri2026.pdf",
-      "embedTitle": "Influvac tri2026.pdf"
+      "embedTitle": "Influvac tri2026-2027"
     },
     {
       "productName": "GCFLU",
-      "src": "/Gcflu%202026.pdf"
+      "src": "/GC_QIV_Insert%202026-2027%20(A4).pdf",
+      "embedTitle": "GC_QIV_Insert 2026-2027"
     }
   ],
   ar: buildVaccineArBundle({
