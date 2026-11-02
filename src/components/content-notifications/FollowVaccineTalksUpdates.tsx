@@ -65,6 +65,22 @@ function optionLabel(value: ContentNotificationAudience): string {
   return copy.optionBoth;
 }
 
+function followSubscribeDiagnostic(detail: unknown): string {
+  if (typeof detail === 'string' && detail.trim()) {
+    return detail.trim().slice(0, 180);
+  }
+  if (detail instanceof Error) {
+    const name = detail.name?.trim() || 'Error';
+    const message = detail.message?.trim();
+    return (message ? `${name}: ${message}` : name).slice(0, 180);
+  }
+  return 'unknown_error';
+}
+
+function withFollowSubscribeDiagnostic(detail: unknown): string {
+  return `${copy.error}\nDiagnostic: ${followSubscribeDiagnostic(detail)}`;
+}
+
 export default function FollowVaccineTalksUpdates() {
   const titleId = useId();
   const introId = useId();
@@ -186,14 +202,14 @@ export default function FollowVaccineTalksUpdates() {
       if (!result.ok) {
         if (result.reason === 'unsupported') setError(copy.unsupported);
         else if (result.reason === 'permission_denied') setError(copy.denied);
-        else setError(copy.error);
+        else setError(withFollowSubscribeDiagnostic(result.reason));
         return;
       }
       rememberFollowPromptSubscribed(window.localStorage);
       setSubscribed(true);
       closeWithoutRemembering();
-    } catch {
-      setError(copy.error);
+    } catch (error) {
+      setError(withFollowSubscribeDiagnostic(error));
     } finally {
       setBusy(false);
     }
@@ -302,7 +318,11 @@ export default function FollowVaccineTalksUpdates() {
             )}
 
             {error ? (
-              <p className="follow-updates-error" role="alert">
+              <p
+                className="follow-updates-error"
+                role="alert"
+                style={{ whiteSpace: 'pre-line' }}
+              >
                 {error}
               </p>
             ) : null}
