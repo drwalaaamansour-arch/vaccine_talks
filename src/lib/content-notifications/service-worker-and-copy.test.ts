@@ -47,13 +47,13 @@ describe('follow updates modal copy and wiring', () => {
       'اعرف أحدث المحتوى والتحديثات الجديدة على Vaccine Talks.'
     );
     expect(FOLLOW_UPDATES_COPY.question).toBe(
-      'بتستخدم Vaccine Talks بصفتك إيه؟'
+      'إنت بتستخدم Vaccine Talks علشان:'
     );
     expect(FOLLOW_UPDATES_COPY.optionHcp).toBe(
-      'من العاملين في المجال الطبي'
+      'بتشتغل في المجال الطبي'
     );
     expect(FOLLOW_UPDATES_COPY.optionParent).toBe(
-      'ولي أمر / مهتم بتطعيمات الأسرة'
+      'مهتم بتطعيمات الأسرة'
     );
     expect(FOLLOW_UPDATES_COPY.optionBoth).toBe('الاتنين');
     expect(FOLLOW_UPDATES_COPY.follow).toBe('متابعة التحديثات');

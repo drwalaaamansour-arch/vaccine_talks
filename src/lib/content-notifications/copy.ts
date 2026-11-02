@@ -19,9 +19,9 @@ export type FollowUpdatesCopy = {
 export const FOLLOW_UPDATES_COPY: FollowUpdatesCopy = {
   titleAr: '🔔 اعرف كل جديد على Vaccine Talks',
   intro: 'اعرف أحدث المحتوى والتحديثات الجديدة على Vaccine Talks.',
-  question: 'بتستخدم Vaccine Talks بصفتك إيه؟',
-  optionHcp: 'من العاملين في المجال الطبي',
-  optionParent: 'ولي أمر / مهتم بتطعيمات الأسرة',
+  question: 'إنت بتستخدم Vaccine Talks علشان:',
+  optionHcp: 'بتشتغل في المجال الطبي',
+  optionParent: 'مهتم بتطعيمات الأسرة',
   optionBoth: 'الاتنين',
   follow: 'متابعة التحديثات',
   close: 'إغلاق',
