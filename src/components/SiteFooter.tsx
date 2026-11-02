@@ -1,3 +1,5 @@
+import FollowUpdatesFooterLink from '@/components/content-notifications/FollowUpdatesFooterLink';
+
 export default function SiteFooter() {
   return (
     <footer className="footer">
@@ -49,6 +51,8 @@ export default function SiteFooter() {
           <p className="copyright-text">Content is original and may not be copied without permission.</p>
         </div>
         <div className="footer-policy">
+          <FollowUpdatesFooterLink />
+          <span className="separator">|</span>
           <a href="/copy" className="policy-link">
             Copyright & Content Policy
           </a>

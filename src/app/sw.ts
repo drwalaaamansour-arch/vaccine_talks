@@ -3,6 +3,8 @@
 import { defaultCache } from "@serwist/turbopack/worker";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
 import { ExpirationPlugin, NetworkFirst, NetworkOnly, Serwist } from "serwist";
+import { resolveNotificationClickUrl } from "@/lib/content-notifications/click-url";
+import { parsePushPayload } from "@/lib/content-notifications/payload";
 
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {
@@ -54,5 +56,48 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
+
+self.addEventListener("push", (event) => {
+  const origin = self.location.origin;
+  const payload = parsePushPayload(event.data?.text(), origin);
+  event.waitUntil(
+    self.registration.showNotification(payload.title, {
+      body: payload.body,
+      data: {
+        url: payload.url,
+        audienceType: payload.audienceType,
+        category: payload.category,
+      },
+      icon: "/icons/icon-192.png",
+      badge: "/icons/icon-192.png",
+    })
+  );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = resolveNotificationClickUrl(
+    event.notification.data?.url,
+    self.location.origin
+  );
+  event.waitUntil(openNotificationUrl(url));
+});
+
+async function openNotificationUrl(url: string) {
+  const windowClients = await self.clients.matchAll({
+    type: "window",
+    includeUncontrolled: true,
+  });
+  for (const client of windowClients) {
+    if ("focus" in client) {
+      await client.focus();
+      if ("navigate" in client) {
+        await client.navigate(url);
+        return;
+      }
+    }
+  }
+  await self.clients.openWindow(url);
+}
 
 serwist.addEventListeners();
