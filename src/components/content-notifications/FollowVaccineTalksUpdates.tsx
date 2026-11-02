@@ -55,7 +55,7 @@ function createBrowserDeps(): ContentPushClientDeps {
       });
     },
     unsubscribePush: (subscription) => subscription.unsubscribe(),
-    fetchImpl: fetch,
+    fetchImpl: window.fetch.bind(window),
   };
 }
 
