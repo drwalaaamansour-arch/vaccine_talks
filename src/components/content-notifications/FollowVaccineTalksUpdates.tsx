@@ -5,6 +5,7 @@ import {
   subscribeToContentNotifications,
   unsubscribeFromContentNotifications,
   type ContentPushClientDeps,
+  type ContentPushClientFailure,
 } from '@/lib/content-notifications/client';
 import { getFollowUpdatesCopy } from '@/lib/content-notifications/copy';
 import {
@@ -43,6 +44,7 @@ function createBrowserDeps(): ContentPushClientDeps {
     permission: browserPermission(),
     vapidPublicKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
     requestPermission: () => Notification.requestPermission(),
+    readyServiceWorker: () => navigator.serviceWorker.ready,
     getPushSubscription: async () => {
       const registration = await navigator.serviceWorker.ready;
       return registration.pushManager.getSubscription();
@@ -63,6 +65,18 @@ function optionLabel(value: ContentNotificationAudience): string {
   if (value === 'HCP') return copy.optionHcp;
   if (value === 'PARENT') return copy.optionParent;
   return copy.optionBoth;
+}
+
+function formatSubscribeDiagnostic(
+  failure: ContentPushClientFailure,
+  heading = copy.error
+): string {
+  return [
+    heading,
+    `Diagnostic: stage=${failure.stage}`,
+    `name=${failure.errorName}`,
+    `message=${failure.errorMessage}`,
+  ].join('\n');
 }
 
 export default function FollowVaccineTalksUpdates() {
@@ -185,15 +199,29 @@ export default function FollowVaccineTalksUpdates() {
       );
       if (!result.ok) {
         if (result.reason === 'unsupported') setError(copy.unsupported);
-        else if (result.reason === 'permission_denied') setError(copy.denied);
-        else setError(copy.error);
+        else if (result.reason === 'permission_denied') {
+          setError(formatSubscribeDiagnostic(result, copy.denied));
+        } else setError(formatSubscribeDiagnostic(result));
         return;
       }
       rememberFollowPromptSubscribed(window.localStorage);
       setSubscribed(true);
       closeWithoutRemembering();
-    } catch {
-      setError(copy.error);
+    } catch (error) {
+      console.error('content-push-subscribe-failed', error);
+      const errorName =
+        error instanceof Error ? error.name || 'Error' : 'Error';
+      const errorMessage = (
+        error instanceof Error ? error.message : String(error)
+      ).slice(0, 180);
+      setError(
+        [
+          copy.error,
+          'Diagnostic: stage=unknown',
+          `name=${errorName}`,
+          `message=${errorMessage}`,
+        ].join('\n')
+      );
     } finally {
       setBusy(false);
     }
@@ -302,7 +330,11 @@ export default function FollowVaccineTalksUpdates() {
             )}
 
             {error ? (
-              <p className="follow-updates-error" role="alert">
+              <p
+                className="follow-updates-error"
+                role="alert"
+                style={{ whiteSpace: 'pre-line' }}
+              >
                 {error}
               </p>
             ) : null}

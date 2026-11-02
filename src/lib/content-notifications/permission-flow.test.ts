@@ -135,3 +135,166 @@ describe('permission and subscription flow helpers', () => {
     expect(Array.from(bytes)).toEqual([1, 2, 3]);
   });
 });
+
+describe('temporary subscribe stage diagnostics', () => {
+  const baseDeps = {
+    hasNotification: true,
+    hasServiceWorker: true,
+    hasPushManager: true,
+    permission: 'granted' as const,
+    vapidPublicKey: 'BNbxR2d0',
+    requestPermission: vi.fn(),
+    getPushSubscription: vi.fn().mockResolvedValue(null),
+    subscribePush: vi.fn().mockResolvedValue({
+      toJSON: () => ({
+        endpoint: 'https://fcm.googleapis.com/fcm/send/token',
+        expirationTime: null,
+        keys: { p256dh: 'p256dh-key-value', auth: 'auth-key-value' },
+      }),
+    }),
+    unsubscribePush: vi.fn(),
+    fetchImpl: vi.fn().mockResolvedValue({ ok: true }) as unknown as typeof fetch,
+  };
+
+  it('tags support-check failures', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', false, baseDeps);
+    expect(result).toMatchObject({
+      ok: false,
+      reason: 'requires_user_action',
+      stage: 'support_checks',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags missing VAPID public key', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      vapidPublicKey: undefined,
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      reason: 'vapid_unconfigured',
+      stage: 'vapid_public_key',
+      errorMessage: 'public_key_missing',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags Notification.requestPermission failures', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      permission: 'default',
+      requestPermission: vi.fn().mockRejectedValue(new TypeError('permission boom')),
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      stage: 'notification_permission',
+      errorName: 'TypeError',
+      errorMessage: 'permission boom',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags service worker ready failures', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      readyServiceWorker: vi
+        .fn()
+        .mockRejectedValue(new Error('ready failed')),
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      stage: 'service_worker_ready',
+      errorMessage: 'ready failed',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags existing subscription lookup failures', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      getPushSubscription: vi
+        .fn()
+        .mockRejectedValue(new Error('lookup failed')),
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      stage: 'existing_push_subscription',
+      errorMessage: 'lookup failed',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags pushManager.subscribe failures', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      subscribePush: vi
+        .fn()
+        .mockRejectedValue(new DOMException('subscribe failed', 'AbortError')),
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      stage: 'push_manager_subscribe',
+      errorName: 'AbortError',
+      errorMessage: 'subscribe failed',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags subscription.toJSON failures', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      subscribePush: vi.fn().mockResolvedValue({
+        toJSON: () => {
+          throw new Error('toJSON failed');
+        },
+      }),
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      stage: 'subscription_to_json',
+      errorMessage: 'toJSON failed',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags POST subscribe network failures', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      fetchImpl: vi.fn().mockRejectedValue(new TypeError('fetch failed')) as unknown as typeof fetch,
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      stage: 'subscribe_post',
+      errorName: 'TypeError',
+      errorMessage: 'fetch failed',
+    });
+    errorSpy.mockRestore();
+  });
+
+  it('tags subscribe response status and body', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const result = await subscribeToContentNotifications('HCP', true, {
+      ...baseDeps,
+      fetchImpl: vi.fn().mockResolvedValue({
+        ok: false,
+        status: 503,
+        text: async () => '{"error":"content_push_store_unconfigured"}',
+      }) as unknown as typeof fetch,
+    });
+    expect(result).toMatchObject({
+      ok: false,
+      stage: 'subscribe_response',
+      errorMessage: '503 {"error":"content_push_store_unconfigured"}',
+    });
+    errorSpy.mockRestore();
+  });
+});
