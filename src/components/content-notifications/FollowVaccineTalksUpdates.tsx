@@ -8,6 +8,7 @@ import {
   type ContentPushClientFailure,
 } from '@/lib/content-notifications/client';
 import { getFollowUpdatesCopy } from '@/lib/content-notifications/copy';
+import { createBrowserContentPushClientDeps } from '@/lib/content-notifications/browser';
 import {
   FOLLOW_PROMPT_SUBSCRIBED_KEY,
   clearFollowPromptSubscribed,
@@ -25,6 +26,8 @@ const AUDIENCE_OPTIONS: ContentNotificationAudience[] = [
 ];
 
 const copy = getFollowUpdatesCopy();
+const FOLLOW_UPDATES_EVENT = 'vaccine-talks:open-follow-updates';
+const FOLLOW_UPDATES_STATUS_EVENT = 'vaccine-talks:content-push-status';
 
 function browserPermission(): NotificationPermission | 'unsupported' {
   if (typeof Notification === 'undefined') return 'unsupported';
@@ -32,33 +35,7 @@ function browserPermission(): NotificationPermission | 'unsupported' {
 }
 
 function createBrowserDeps(): ContentPushClientDeps {
-  const hasNotification = typeof window !== 'undefined' && 'Notification' in window;
-  const hasServiceWorker =
-    typeof navigator !== 'undefined' && 'serviceWorker' in navigator;
-  const hasPushManager = typeof window !== 'undefined' && 'PushManager' in window;
-
-  return {
-    hasNotification,
-    hasServiceWorker,
-    hasPushManager,
-    permission: browserPermission(),
-    vapidPublicKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
-    requestPermission: () => Notification.requestPermission(),
-    readyServiceWorker: () => navigator.serviceWorker.ready,
-    getPushSubscription: async () => {
-      const registration = await navigator.serviceWorker.ready;
-      return registration.pushManager.getSubscription();
-    },
-    subscribePush: async (key) => {
-      const registration = await navigator.serviceWorker.ready;
-      return registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: key as BufferSource,
-      });
-    },
-    unsubscribePush: (subscription) => subscription.unsubscribe(),
-    fetchImpl: window.fetch.bind(window),
-  };
+  return createBrowserContentPushClientDeps();
 }
 
 function optionLabel(value: ContentNotificationAudience): string {
@@ -111,12 +88,9 @@ export default function FollowVaccineTalksUpdates() {
 
   useEffect(() => {
     const openFromEvent = () => openFromFallback();
-    window.addEventListener('vaccine-talks:open-follow-updates', openFromEvent);
+    window.addEventListener(FOLLOW_UPDATES_EVENT, openFromEvent);
     return () => {
-      window.removeEventListener(
-        'vaccine-talks:open-follow-updates',
-        openFromEvent
-      );
+      window.removeEventListener(FOLLOW_UPDATES_EVENT, openFromEvent);
     };
   }, [openFromFallback]);
 
@@ -206,6 +180,11 @@ export default function FollowVaccineTalksUpdates() {
       }
       rememberFollowPromptSubscribed(window.localStorage);
       setSubscribed(true);
+      window.dispatchEvent(
+        new CustomEvent(FOLLOW_UPDATES_STATUS_EVENT, {
+          detail: { subscribed: true },
+        })
+      );
       closeWithoutRemembering();
     } catch (error) {
       console.error('content-push-subscribe-failed', error);
@@ -240,6 +219,11 @@ export default function FollowVaccineTalksUpdates() {
       }
       clearFollowPromptSubscribed(window.localStorage);
       setSubscribed(false);
+      window.dispatchEvent(
+        new CustomEvent(FOLLOW_UPDATES_STATUS_EVENT, {
+          detail: { subscribed: false },
+        })
+      );
       closeWithoutRemembering();
     } catch {
       setError(copy.error);
