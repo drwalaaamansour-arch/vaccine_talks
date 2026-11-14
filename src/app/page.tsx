@@ -1,3 +1,4 @@
+import FollowUpdatesFooterLink from '@/components/content-notifications/FollowUpdatesFooterLink';
 import Header from '@/components/Header';
 import HomeNewlyAddedStrip from '@/components/HomeNewlyAddedStrip';
 import HomeNewsMarquee from '@/components/HomeNewsMarquee';
@@ -172,6 +173,8 @@ export default function Home() {
             </p>
           </div>
           <div className="footer-policy">
+            <FollowUpdatesFooterLink />
+            <span className="separator">|</span>
             <a href="/copy" className="policy-link">Copyright & Content Policy</a>
             <span className="separator">|</span>
             <a href="/copy" className="policy-link arabic">حقوق النشر والاستخدام</a>

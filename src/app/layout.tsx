@@ -3,6 +3,7 @@ import { Inter, Cairo } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import ChatButton from "@/components/ChatButton";
+import FollowVaccineTalksUpdates from "@/components/content-notifications/FollowVaccineTalksUpdates";
 import AuthSessionProvider from "@/components/AuthSessionProvider";
 import SiteJsonLd from "@/components/SiteJsonLd";
 import { createHomeMetadata } from "@/lib/seo";
@@ -104,6 +105,7 @@ a{color:#0d9488}
         <AuthSessionProvider>
           <SerwistProvider swUrl="/serwist/sw.js">
             {children}
+            <FollowVaccineTalksUpdates />
             <ChatButton />
           </SerwistProvider>
         </AuthSessionProvider>

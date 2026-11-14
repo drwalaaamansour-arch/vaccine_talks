@@ -1,0 +1,333 @@
+'use client';
+
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import {
+  subscribeToContentNotifications,
+  unsubscribeFromContentNotifications,
+  type ContentPushClientDeps,
+  type ContentPushClientFailure,
+} from '@/lib/content-notifications/client';
+import { getFollowUpdatesCopy } from '@/lib/content-notifications/copy';
+import { createBrowserContentPushClientDeps } from '@/lib/content-notifications/browser';
+import {
+  FOLLOW_PROMPT_SUBSCRIBED_KEY,
+  clearFollowPromptSubscribed,
+  isBrowserPushSupported,
+  rememberFollowPromptDismissed,
+  rememberFollowPromptSubscribed,
+  shouldShowFollowPrompt,
+} from '@/lib/content-notifications/prompt-storage';
+import type { ContentNotificationAudience } from '@/lib/content-notifications/types';
+
+const AUDIENCE_OPTIONS: ContentNotificationAudience[] = [
+  'HCP',
+  'PARENT',
+  'BOTH',
+];
+
+const copy = getFollowUpdatesCopy();
+const FOLLOW_UPDATES_EVENT = 'vaccine-talks:open-follow-updates';
+const FOLLOW_UPDATES_STATUS_EVENT = 'vaccine-talks:content-push-status';
+
+function browserPermission(): NotificationPermission | 'unsupported' {
+  if (typeof Notification === 'undefined') return 'unsupported';
+  return Notification.permission;
+}
+
+function createBrowserDeps(): ContentPushClientDeps {
+  return createBrowserContentPushClientDeps();
+}
+
+function optionLabel(value: ContentNotificationAudience): string {
+  if (value === 'HCP') return copy.optionHcp;
+  if (value === 'PARENT') return copy.optionParent;
+  return copy.optionBoth;
+}
+
+function formatSubscribeDiagnostic(
+  failure: ContentPushClientFailure,
+  heading = copy.error
+): string {
+  return [
+    heading,
+    `Diagnostic: stage=${failure.stage}`,
+    `name=${failure.errorName}`,
+    `message=${failure.errorMessage}`,
+  ].join('\n');
+}
+
+export default function FollowVaccineTalksUpdates() {
+  const titleId = useId();
+  const introId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocused = useRef<HTMLElement | null>(null);
+  const [open, setOpen] = useState(false);
+  const [audience, setAudience] = useState<ContentNotificationAudience | null>(
+    null
+  );
+  const [subscribed, setSubscribed] = useState(false);
+  const [supported, setSupported] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const closeWithoutRemembering = useCallback(() => {
+    setOpen(false);
+    setError(null);
+    previouslyFocused.current?.focus?.();
+  }, []);
+
+  const dismissForThirtyDays = useCallback(() => {
+    rememberFollowPromptDismissed(Date.now(), window.localStorage);
+    closeWithoutRemembering();
+  }, [closeWithoutRemembering]);
+
+  const openFromFallback = useCallback(() => {
+    setError(null);
+    setOpen(true);
+  }, []);
+
+  useEffect(() => {
+    const openFromEvent = () => openFromFallback();
+    window.addEventListener(FOLLOW_UPDATES_EVENT, openFromEvent);
+    return () => {
+      window.removeEventListener(FOLLOW_UPDATES_EVENT, openFromEvent);
+    };
+  }, [openFromFallback]);
+
+  useEffect(() => {
+    const deps = createBrowserDeps();
+    const pushSupported = isBrowserPushSupported(deps);
+    setSupported(pushSupported);
+
+    let cancelled = false;
+    (async () => {
+      let alreadySubscribed =
+        window.localStorage.getItem(FOLLOW_PROMPT_SUBSCRIBED_KEY) === '1';
+      if (pushSupported) {
+        try {
+          const registration = await navigator.serviceWorker.ready;
+          const existing = await registration.pushManager.getSubscription();
+          alreadySubscribed = Boolean(existing);
+        } catch {
+          /* keep localStorage value */
+        }
+      }
+      if (cancelled) return;
+      setSubscribed(alreadySubscribed);
+      window.dispatchEvent(
+        new CustomEvent(FOLLOW_UPDATES_STATUS_EVENT, {
+          detail: { subscribed: alreadySubscribed },
+        })
+      );
+      if (alreadySubscribed) {
+        rememberFollowPromptSubscribed(window.localStorage);
+        return;
+      }
+      if (shouldShowFollowPrompt(Date.now(), window.localStorage)) {
+        setOpen(true);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    previouslyFocused.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const frame = window.requestAnimationFrame(() => {
+      closeRef.current?.focus();
+    });
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        dismissForThirtyDays();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open, dismissForThirtyDays]);
+
+  const onFollow = useCallback(async () => {
+    setError(null);
+    if (!supported) {
+      setError(copy.unsupported);
+      return;
+    }
+    if (!audience) {
+      setError(copy.pickAudience);
+      return;
+    }
+
+    setBusy(true);
+    try {
+      const result = await subscribeToContentNotifications(
+        audience,
+        true,
+        createBrowserDeps()
+      );
+      if (!result.ok) {
+        if (result.reason === 'unsupported') setError(copy.unsupported);
+        else if (result.reason === 'permission_denied') {
+          setError(formatSubscribeDiagnostic(result, copy.denied));
+        } else setError(formatSubscribeDiagnostic(result));
+        return;
+      }
+      rememberFollowPromptSubscribed(window.localStorage);
+      setSubscribed(true);
+      window.dispatchEvent(
+        new CustomEvent(FOLLOW_UPDATES_STATUS_EVENT, {
+          detail: { subscribed: true },
+        })
+      );
+      closeWithoutRemembering();
+    } catch (error) {
+      console.error('content-push-subscribe-failed', error);
+      const errorName =
+        error instanceof Error ? error.name || 'Error' : 'Error';
+      const errorMessage = (
+        error instanceof Error ? error.message : String(error)
+      ).slice(0, 180);
+      setError(
+        [
+          copy.error,
+          'Diagnostic: stage=unknown',
+          `name=${errorName}`,
+          `message=${errorMessage}`,
+        ].join('\n')
+      );
+    } finally {
+      setBusy(false);
+    }
+  }, [audience, closeWithoutRemembering, supported]);
+
+  const onUnsubscribe = useCallback(async () => {
+    setError(null);
+    setBusy(true);
+    try {
+      const result = await unsubscribeFromContentNotifications(
+        createBrowserDeps()
+      );
+      if (!result.ok) {
+        setError(copy.error);
+        return;
+      }
+      clearFollowPromptSubscribed(window.localStorage);
+      setSubscribed(false);
+      window.dispatchEvent(
+        new CustomEvent(FOLLOW_UPDATES_STATUS_EVENT, {
+          detail: { subscribed: false },
+        })
+      );
+      closeWithoutRemembering();
+    } catch {
+      setError(copy.error);
+    } finally {
+      setBusy(false);
+    }
+  }, [closeWithoutRemembering]);
+
+  if (!open) return null;
+
+  return (
+        <div className="follow-updates-layer">
+          <div
+            className="follow-updates-backdrop"
+            onClick={dismissForThirtyDays}
+            aria-hidden="true"
+          />
+          <div
+            className="follow-updates-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            aria-describedby={introId}
+            lang="ar"
+            dir="rtl"
+          >
+            <button
+              ref={closeRef}
+              type="button"
+              className="follow-updates-close"
+              onClick={dismissForThirtyDays}
+              aria-label={copy.close}
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+
+            <h2 id={titleId} className="follow-updates-title">
+              {copy.titleAr}
+            </h2>
+            <p id={introId} className="follow-updates-intro">
+              {copy.intro}
+            </p>
+
+            {supported ? (
+              <>
+                <fieldset className="follow-updates-audience">
+                  <legend className="follow-updates-question">
+                    {copy.question}
+                  </legend>
+                  {AUDIENCE_OPTIONS.map((value) => (
+                    <label key={value} className="follow-updates-option">
+                      <input
+                        type="radio"
+                        name="content-notification-audience"
+                        value={value}
+                        checked={audience === value}
+                        onChange={() => setAudience(value)}
+                      />
+                      <span>{optionLabel(value)}</span>
+                    </label>
+                  ))}
+                </fieldset>
+
+                {subscribed ? (
+                  <button
+                    type="button"
+                    className="start-button follow-updates-submit follow-updates-submit--secondary"
+                    onClick={onUnsubscribe}
+                    disabled={busy}
+                  >
+                    {busy ? copy.saving : copy.unsubscribe}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="start-button follow-updates-submit"
+                    onClick={onFollow}
+                    disabled={busy}
+                  >
+                    {busy ? copy.saving : copy.follow}
+                  </button>
+                )}
+              </>
+            ) : (
+              <p className="follow-updates-unsupported" role="status">
+                {copy.unsupported}
+              </p>
+            )}
+
+            {error ? (
+              <p
+                className="follow-updates-error"
+                role="alert"
+                style={{ whiteSpace: 'pre-line' }}
+              >
+                {error}
+              </p>
+            ) : null}
+          </div>
+        </div>
+  );
+}
