@@ -114,6 +114,11 @@ export default function FollowVaccineTalksUpdates() {
       }
       if (cancelled) return;
       setSubscribed(alreadySubscribed);
+      window.dispatchEvent(
+        new CustomEvent(FOLLOW_UPDATES_STATUS_EVENT, {
+          detail: { subscribed: alreadySubscribed },
+        })
+      );
       if (alreadySubscribed) {
         rememberFollowPromptSubscribed(window.localStorage);
         return;
