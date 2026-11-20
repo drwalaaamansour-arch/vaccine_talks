@@ -16,6 +16,7 @@ import {
   resolveFireDateForReminder,
 } from '@/lib/reminders/reminder-schedule-dates';
 import { getStoredGroup, isMemberKeyScheduled } from '@/lib/reminders/reminder-storage';
+import { getReminderCardUiPhase } from '@/lib/reminders/reminder-ui-state';
 
 type RecommendationReminderActionsProps = {
   item: VaccineRecommendation;
@@ -27,15 +28,6 @@ type RecommendationReminderActionsProps = {
   refreshToken: number;
   onRemindersChanged: () => void;
 };
-
-function formatLongDisplayDate(isoDate: string, language: 'en' | 'ar'): string {
-  const [year, month, day] = isoDate.split('-').map(Number);
-  const date = new Date(year, month - 1, day);
-  if (language === 'ar') {
-    return date.toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' });
-  }
-  return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-}
 
 export function RecommendationReminderActions({
   item,
@@ -91,6 +83,11 @@ export function RecommendationReminderActions({
     return findReminderGroupForItem(allReminderItems, childScopeId, referenceDate, item);
   }, [allReminderItems, childScopeId, eligibility, item, referenceDate]);
 
+  const uiPhase = getReminderCardUiPhase(item, referenceDate, {
+    isScheduled: Boolean(scheduledGroupId),
+    isChanging: changing,
+  });
+
   const runSchedule = useCallback(
     async (fireAt: Date, overdueUsedSafeDate: boolean) => {
       if (!group || !eligibility.eligible) {
@@ -132,20 +129,22 @@ export function RecommendationReminderActions({
     [eligibility, group, labelFor, language, onRemindersChanged, t]
   );
 
-  if (item.conditionalNextDose) {
-    return (
-      <p className="vaccine-checker-help vaccine-checker-reminder-note">{t('reminderConditionalUnavailable')}</p>
-    );
-  }
-
-  if (!eligibility.eligible) {
+  if (uiPhase === 'hidden') {
     return null;
   }
 
-  const displayDate = formatLongDisplayDate(eligibility.recommendedDate, language);
-  const isScheduled = Boolean(scheduledGroupId);
+  if (uiPhase === 'conditional_message') {
+    return (
+      <div className="vaccine-checker-reminder-actions vaccine-checker-reminder-actions--conditional">
+        <p className="vaccine-checker-help vaccine-checker-reminder-note">{t('reminderConditionalUnavailable')}</p>
+      </div>
+    );
+  }
 
   const handleSet = () => {
+    if (!eligibility.eligible) {
+      return;
+    }
     const fireAt = resolveFireDateForReminder(
       eligibility.recommendedDate,
       referenceDate,
@@ -170,7 +169,7 @@ export function RecommendationReminderActions({
   };
 
   const handleChangeSubmit = async () => {
-    if (!group || !changeDate) {
+    if (!group || !changeDate || !eligibility.eligible) {
       return;
     }
     const [y, m, d] = changeDate.split('-').map(Number);
@@ -200,23 +199,31 @@ export function RecommendationReminderActions({
 
   return (
     <div className="vaccine-checker-reminder-actions">
-      <p className="vaccine-checker-help">{displayDate}</p>
-      {!isScheduled && !changing && (
+      {uiPhase === 'set' && (
         <button
           type="button"
-          className="vaccine-checker-results-action"
+          className="vaccine-checker-results-action vaccine-checker-reminder-primary"
           disabled={busy}
           onClick={handleSet}
         >
+          <span className="vaccine-checker-reminder-icon" aria-hidden="true">
+            🔔
+          </span>
           {t('reminderSetAction')}
         </button>
       )}
-      {isScheduled && !changing && (
+
+      {uiPhase === 'scheduled' && (
         <div className="vaccine-checker-reminder-actions-row">
-          <span className="vaccine-checker-help">{t('reminderSetLabel')}</span>
+          <p className="vaccine-checker-reminder-set-badge">
+            <span className="vaccine-checker-reminder-icon" aria-hidden="true">
+              ✓
+            </span>
+            {t('reminderSetLabel')}
+          </p>
           <button
             type="button"
-            className="vaccine-checker-results-action"
+            className="vaccine-checker-results-action vaccine-checker-reminder-secondary"
             disabled={busy}
             onClick={() => void handleCancel()}
           >
@@ -224,18 +231,19 @@ export function RecommendationReminderActions({
           </button>
           <button
             type="button"
-            className="vaccine-checker-results-action"
+            className="vaccine-checker-results-action vaccine-checker-reminder-secondary"
             disabled={busy}
             onClick={() => {
               setChanging(true);
-              setChangeDate(eligibility.recommendedDate);
+              setChangeDate(eligibility.eligible ? eligibility.recommendedDate : '');
             }}
           >
             {t('reminderChangeAction')}
           </button>
         </div>
       )}
-      {changing && (
+
+      {uiPhase === 'changing' && eligibility.eligible && (
         <div className="vaccine-checker-reminder-change">
           <label className="vaccine-checker-help" htmlFor={`reminder-change-${item.id}`}>
             {t('reminderChangePrompt')}
@@ -246,26 +254,29 @@ export function RecommendationReminderActions({
             value={changeDate}
             onChange={(event) => setChangeDate(event.target.value)}
           />
-          <button
-            type="button"
-            className="vaccine-checker-results-action"
-            disabled={busy}
-            onClick={() => void handleChangeSubmit()}
-          >
-            {t('reminderChangeConfirm')}
-          </button>
-          <button
-            type="button"
-            className="vaccine-checker-results-action"
-            disabled={busy}
-            onClick={() => setChanging(false)}
-          >
-            {t('reminderChangeCancel')}
-          </button>
+          <div className="vaccine-checker-reminder-actions-row">
+            <button
+              type="button"
+              className="vaccine-checker-results-action vaccine-checker-reminder-secondary"
+              disabled={busy}
+              onClick={() => void handleChangeSubmit()}
+            >
+              {t('reminderChangeConfirm')}
+            </button>
+            <button
+              type="button"
+              className="vaccine-checker-results-action vaccine-checker-reminder-secondary"
+              disabled={busy}
+              onClick={() => setChanging(false)}
+            >
+              {t('reminderChangeCancel')}
+            </button>
+          </div>
         </div>
       )}
+
       {feedback && (
-        <p className="vaccine-checker-share-feedback" role="status" aria-live="polite">
+        <p className="vaccine-checker-share-feedback vaccine-checker-reminder-feedback" role="status" aria-live="polite">
           {feedback}
         </p>
       )}

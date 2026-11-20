@@ -2,18 +2,26 @@ import { describe, expect, it } from 'vitest';
 import { AR_TRANSLATIONS, TRANSLATIONS } from '@/translations';
 
 describe('reminder UI copy', () => {
-  it('17–18. English and Arabic exact-date reminder actions', () => {
+  it('7–8. English and Arabic Set Reminder labels', () => {
     expect(TRANSLATIONS.reminderSetAction).toBe('Set Reminder');
-    expect(TRANSLATIONS.reminderCancelAction).toBe('Cancel Reminder');
-    expect(AR_TRANSLATIONS.reminderSetAction).toBe('Set Reminder');
+    expect(AR_TRANSLATIONS.reminderSetAction).toBe('تعيين تذكير');
   });
 
-  it('19–20. English and Arabic conditional unavailable message', () => {
+  it('scheduled / cancel / change English and Arabic labels', () => {
+    expect(TRANSLATIONS.reminderSetLabel).toBe('Reminder Set');
+    expect(TRANSLATIONS.reminderCancelAction).toBe('Cancel');
+    expect(TRANSLATIONS.reminderChangeAction).toBe('Change');
+    expect(AR_TRANSLATIONS.reminderSetLabel).toBe('تم تعيين التذكير');
+    expect(AR_TRANSLATIONS.reminderCancelAction).toBe('إلغاء');
+    expect(AR_TRANSLATIONS.reminderChangeAction).toBe('تغيير');
+  });
+
+  it('conditional unavailable message (EN + AR)', () => {
     expect(TRANSLATIONS.reminderConditionalUnavailable).toBe(
       'Reminder will be available once the vaccination date is known.'
     );
     expect(AR_TRANSLATIONS.reminderConditionalUnavailable).toBe(
-      'هنقدر نحدد الـ Reminder لما تاريخ التطعيم يبقى معروف.'
+      'هنقدر نحدد التذكير لما نعرف تاريخ التطعيم.'
     );
   });
 });

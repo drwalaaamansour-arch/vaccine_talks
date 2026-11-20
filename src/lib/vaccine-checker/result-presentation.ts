@@ -10,6 +10,7 @@ import { iso, type CheckerInput, type VaccineRecommendation } from '@/lib/vaccin
 import { expandEquivalentNoteKeys, getCardNoteKeys } from '@/lib/vaccine-checker/result-notes';
 import { getTimingDisplayLines, type TimingDisplayLine } from '@/lib/vaccine-checker/recommendation-timing';
 import { influenzaUsesCurrentSeasonQuestion } from '@/lib/vaccine-checker/teen-history-simplification';
+import { withReminderDatePreservedFromChecker } from '@/lib/reminders/reminder-source-date';
 
 function getMmrDatesFromInput(input: CheckerInput): Date[] {
   return getVaricellaSpacingMmrDatesFromInput(input);
@@ -284,7 +285,9 @@ export function enrichRecommendationsForPresentation(
 ): VaccineRecommendation[] {
   const referenceDate = startOfDay(input.referenceDate);
 
-  return recommendations.map((item) => {
+  return recommendations.map((recommendation) => {
+    const item = withReminderDatePreservedFromChecker(recommendation);
+
     if (item.conditionalNextDose) {
       return item;
     }

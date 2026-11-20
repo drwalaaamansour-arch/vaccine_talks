@@ -101,4 +101,23 @@ describe('getReminderEligibility', () => {
       overdue: true,
     });
   });
+
+  it('8. overdue with display date hidden uses reminderDate', () => {
+    const item = rec({
+      id: 'pcv-dose2',
+      vaccineCategory: 'pneumococcal',
+      product: 'synflorix',
+      doseLabelKey: 'doseLabel_dose2',
+      status: 'due-now',
+      recommendedDate: undefined,
+      reminderDate: '2026-09-30',
+      timingKind: 'FIXED_DATE',
+    });
+    const overdueRef = new Date(2026, 9, 2);
+    expect(getReminderEligibility(item, overdueRef)).toEqual({
+      eligible: true,
+      recommendedDate: '2026-09-30',
+      overdue: true,
+    });
+  });
 });

@@ -30,6 +30,8 @@ export type VaccineRecommendation = {
   status: RecommendationStatus;
   timingKind?: TimingKind;
   recommendedDate?: string;
+  /** Exact Checker ISO date for reminders; preserved when display `recommendedDate` is hidden. */
+  reminderDate?: string;
   windowStart?: string;
   windowEnd?: string;
   minimumValidDate?: string;

@@ -458,24 +458,81 @@
   .vaccine-checker-results-action svg {
     flex-shrink: 0;
   }
+  .vaccine-checker-recommendation-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+    margin-bottom: 0.65rem;
+  }
+  .vaccine-checker-recommendation-stack:last-child {
+    margin-bottom: 0;
+  }
+  .vaccine-checker-reminder-block {
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid rgba(64, 96, 109, 0.16);
+    border-radius: 0.75rem;
+    background: rgba(64, 96, 109, 0.045);
+    box-sizing: border-box;
+  }
   .vaccine-checker-reminder-actions {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.65rem;
-    padding-top: 0.65rem;
-    border-top: 1px solid rgba(64, 96, 109, 0.12);
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  .vaccine-checker-reminder-actions--conditional {
+    padding-block: 0.1rem;
+  }
+  .vaccine-checker-reminder-note {
+    margin: 0;
+  }
+  .vaccine-checker-reminder-icon {
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .vaccine-checker-reminder-primary {
+    width: 100%;
+  }
+  .vaccine-checker-reminder-secondary {
+    flex: 1 1 calc(50% - 0.25rem);
+    min-width: min(100%, 6.5rem);
+  }
+  .vaccine-checker-reminder-set-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    width: 100%;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: rgba(53, 90, 99, 0.95);
   }
   .vaccine-checker-reminder-actions-row {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch;
     gap: 0.5rem;
+    width: 100%;
   }
   .vaccine-checker-reminder-change {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
+  }
+  .vaccine-checker-reminder-change input[type='date'] {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .vaccine-checker-reminder-feedback {
+    margin: 0;
+    text-align: start;
+    font-size: 0.875rem;
   }
   .vaccine-checker-results-footer {
     display: flex;

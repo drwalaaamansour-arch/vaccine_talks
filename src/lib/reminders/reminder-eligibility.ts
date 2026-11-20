@@ -1,8 +1,10 @@
 import { isBefore, startOfDay } from '@/lib/vaccine-checker/date-utils';
 import { parseRecommendedIsoDate } from '@/lib/vaccine-checker/result-presentation';
 import type { RecommendationStatus, TimingKind, VaccineRecommendation } from '@/lib/vaccine-checker/types';
-
-const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+import {
+  getReminderScheduleDateIso,
+  isValidReminderIsoDate,
+} from '@/lib/reminders/reminder-source-date';
 
 export type ReminderIneligibleReason =
   | 'conditional'
@@ -20,19 +22,6 @@ export type ReminderEligibilityResult =
 
 const ACTIONABLE_STATUSES: RecommendationStatus[] = ['due-now', 'eligible-now', 'upcoming'];
 
-function isValidCalendarIsoDate(isoDate: string): boolean {
-  if (!ISO_DATE.test(isoDate)) {
-    return false;
-  }
-  const parsed = parseRecommendedIsoDate(isoDate);
-  const [year, month, day] = isoDate.split('-').map(Number);
-  return (
-    parsed.getFullYear() === year &&
-    parsed.getMonth() === month - 1 &&
-    parsed.getDate() === day
-  );
-}
-
 function inferDisqualifyingTimingKind(item: VaccineRecommendation): TimingKind | null {
   if (item.timingKind) {
     return item.timingKind;
@@ -40,10 +29,10 @@ function inferDisqualifyingTimingKind(item: VaccineRecommendation): TimingKind |
   if (item.windowStart && item.windowEnd) {
     return 'RECOMMENDED_WINDOW';
   }
-  if (item.minimumValidDate && !item.recommendedDate) {
+  if (item.minimumValidDate && !getReminderScheduleDateIso(item)) {
     return 'MINIMUM_START_ONLY';
   }
-  if (item.earliestDate && item.latestDate && !item.recommendedDate) {
+  if (item.earliestDate && item.latestDate && !getReminderScheduleDateIso(item)) {
     return 'AGE_LIMIT_RANGE';
   }
   return null;
@@ -83,13 +72,14 @@ export function getReminderEligibility(
     return { eligible: false, reason: 'window' };
   }
 
-  if (!item.recommendedDate?.trim()) {
+  const scheduleDate = getReminderScheduleDateIso(item);
+  if (!scheduleDate) {
     return { eligible: false, reason: 'missing_date' };
   }
 
-  const recommendedDate = item.recommendedDate.trim();
+  const recommendedDate = scheduleDate;
 
-  if (!isValidCalendarIsoDate(recommendedDate)) {
+  if (!isValidReminderIsoDate(recommendedDate)) {
     return { eligible: false, reason: 'invalid_date' };
   }
 

@@ -43,6 +43,12 @@ import {
   type ResultsSectionKind,
 } from '@/lib/vaccine-checker/result-presentation';
 import { VACCINE_RESULT_CARD_CLASS } from '@/components/wizard/vaccine-result-card-styles';
+import {
+  getRecommendationReminderLayout,
+  REMINDER_BLOCK_SHELL_CLASS,
+  VACCINE_RECOMMENDATION_STACK_CLASS,
+} from '@/lib/reminders/reminder-ui-layout';
+import { getSupplementalCardScheduleDateIso } from '@/lib/reminders/reminder-ui-state';
 
 function formatDate(isoDate: string | undefined, language: 'en' | 'ar'): string {
   if (!isoDate) return '';
@@ -130,8 +136,11 @@ function RecommendationCard({
   const isNeedsReview = section === 'needsReview';
   const cardNotes = getDisplayCardNoteKeys(item, checkerInput);
   const showInlineNotes = !isNeedsReview && cardNotes.length > 0;
+  const supplementalScheduleDate = getSupplementalCardScheduleDateIso(item, referenceDate);
+  const reminderLayout = getRecommendationReminderLayout(item, referenceDate, section);
 
   return (
+    <div className={VACCINE_RECOMMENDATION_STACK_CLASS}>
     <article className={VACCINE_RESULT_CARD_CLASS}>
       <p className="vaccine-checker-review-label">{categoryLabel}</p>
       {productLabel && (
@@ -176,20 +185,28 @@ function RecommendationCard({
           {t('resultLatestDate')}: {formatDate(item.latestDate, language)}
         </p>
       )}
-      <RecommendationReminderActions
-        item={item}
-        checkerInput={checkerInput}
-        allReminderItems={allReminderItems}
-        language={language}
-        t={t}
-        labelFor={(entry) => {
-          const cat = getRecommendationCategoryLabel(entry, language, t);
-          return `${cat} — ${t(entry.doseLabelKey)}`;
-        }}
-        refreshToken={reminderRefreshToken}
-        onRemindersChanged={onRemindersChanged}
-      />
+      {supplementalScheduleDate && (
+        <p className="vaccine-checker-help">{formatDate(supplementalScheduleDate, language)}</p>
+      )}
     </article>
+    {reminderLayout.separateReminderBlockBelow && (
+      <div className={REMINDER_BLOCK_SHELL_CLASS}>
+        <RecommendationReminderActions
+          item={item}
+          checkerInput={checkerInput}
+          allReminderItems={allReminderItems}
+          language={language}
+          t={t}
+          labelFor={(entry) => {
+            const cat = getRecommendationCategoryLabel(entry, language, t);
+            return `${cat} — ${t(entry.doseLabelKey)}`;
+          }}
+          refreshToken={reminderRefreshToken}
+          onRemindersChanged={onRemindersChanged}
+        />
+      </div>
+    )}
+    </div>
   );
 }
 
